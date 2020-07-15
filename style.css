@@ -1,0 +1,102 @@
+nav {
+    background-color: #0B3F62;
+    overflow: hidden;
+}
+
+nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+body {
+    font-size: 115%;
+    margin: auto;
+    padding: 20px;
+    max-width: 600px;
+    text-align: left;
+    background-color: white;
+    position: relative;
+}
+
+.page-content {
+    line-height: 1.15;
+    padding: 0px 10px;
+}
+
+.cv-content {
+    font-size: 85%;
+    padding: 0px 10px;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.date {
+    color: gray;
+    font-style: italic;
+}
+
+table {
+    padding-inline-start: 40px;
+}
+
+table tr td a {
+    text-decoration: none;
+}
+
+table tr td a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    width: 95%;
+    border: none;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.274);
+}
+
+footer {
+    line-height: 1.5;
+    margin-top: 60px;
+    text-align: center;
+}
+
+footer #sub div {
+    font-size: 75%;
+    padding: 5px;
+}
+
+footer #links {
+    float: center;
+    padding: 10px;
+}
+
+footer #links a {
+    color: #0B3F62;
+    float: center;
+    text-align: center;
+    padding: 5px 25px;
+    text-decoration: none;
+}
+
+footer #links a:hover {
+    text-decoration: underline;
+}
+
+footer #quote {
+    margin: auto;
+    width: 40%;
+}
