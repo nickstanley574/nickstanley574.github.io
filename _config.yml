@@ -1,0 +1,9 @@
+collections:
+  posts:
+    output: true
+    permalink: blog/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
