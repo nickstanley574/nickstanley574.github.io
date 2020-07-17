@@ -12,4 +12,4 @@ My Heroku account contains half completed apps and only a few apps are in a stab
 
 Writing is the same way. Everything I write is not going to make it to this blog, heck half the paragraphs I wrote didn’t make it to this post. This acceptance is motivating me to start somewhere and start writing.
 
-In a year from now, I am curious what I am going to think about my blog.Will I realize how choppy the writing is? Will I notice a grammar mistake? Or will I look at it like I look at my Heroku Apps? Everything I did and did not post added to my knowledge and skills and I am better because of it.
+In a year from now, I am curious what I am going to think about my blog. Will I realize how choppy the writing is? Will I notice a grammar mistake? Or will I look at it like I look at my Heroku Apps? Everything I did and did not post added to my knowledge and skills and I am better because of it.
