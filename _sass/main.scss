@@ -55,6 +55,7 @@ table {
 
 table tr td a {
     text-decoration: none;
+    color: #0B3F62;
 }
 
 table tr td a:hover {
@@ -62,7 +63,7 @@ table tr td a:hover {
 }
 
 hr {
-    width: 95%;
+    width: 80%;
     border: none;
     height: 1px;
     background-color: rgba(128, 128, 128, 0.274);
@@ -80,6 +81,7 @@ footer #sub div {
 }
 
 footer #links {
+    font-size: 85%;
     float: center;
     padding: 10px;
 }
