@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        ".jekyll-cache/": true,
+        "_site/": true,
+        "Gemfile.lock": true,
+        ".vscode/": true
+    }
+}
