@@ -36,7 +36,25 @@ body {
     padding: 0px 10px;
 }
 
-.date {
+.alignleft {
+    float: left;
+    width: 33.33333%;
+    text-align: left;
+}
+
+.aligncenter {
+    float: left;
+    width: 33.33333%;
+    text-align: center;
+}
+
+.alignright {
+    float: left;
+    width: 33.33333%;
+    text-align: right;
+}
+
+​ .date {
     color: gray;
     font-style: italic;
 }
@@ -93,4 +111,46 @@ footer #links a:hover {
 footer #quote {
     margin: auto;
     width: 40%;
+}
+
+// ------------------------
+.cv p {
+    margin-top: 0.6em;
+    font-size: 0.85em;
+}
+
+.cv ul {
+    font-size: 0.85em;
+    padding-inline-start: 20px;
+}
+
+.cv li {
+    margin-bottom: 0.3em;
+}
+
+.company {
+    display: block;
+    font-size: 1.4em;
+    margin-top: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.job-title {
+    display: block;
+    font-size: 1em;
+    margin-top: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.job-date {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 0.4em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
 }
