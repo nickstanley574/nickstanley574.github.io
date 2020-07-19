@@ -7,7 +7,7 @@ nav a {
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 6px 15px;
+    padding: 8px 15px;
     text-decoration: none;
 }
 
@@ -18,7 +18,7 @@ nav a:hover {
 
 body {
     margin: auto;
-    padding: 20px;
+    padding: 15px;
     max-width: 600px;
     text-align: left;
     background-color: white;
@@ -26,8 +26,7 @@ body {
 }
 
 .page-content {
-    font-size: 115%;
-    line-height: 1.15;
+    font-size: 110%;
     padding: 0px 10px;
 }
 
@@ -49,6 +48,47 @@ table tr td a:hover {
     text-decoration: underline;
 }
 
+.cv p {
+    margin-top: 0.7em;
+    font-size: 0.90em;
+}
+
+.cv ul {
+    font-size: 0.90em;
+    padding-inline-start: 20px;
+}
+
+.cv li {
+    margin-bottom: 0.3em;
+}
+
+.cv .company {
+    display: block;
+    font-size: 1.4em;
+    margin-top: 0.85em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.cv .job-title {
+    display: block;
+    font-size: 1em;
+    margin-top: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.cv .job-date {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 0.4em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
 hr {
     width: 80%;
     border: none;
@@ -68,9 +108,7 @@ footer #sub div {
 }
 
 footer #links {
-    font-size: 85%;
     float: center;
-    padding: 10px;
 }
 
 footer #links a {
@@ -88,46 +126,4 @@ footer #links a:hover {
 footer #quote {
     margin: auto;
     width: 40%;
-}
-
-// ------------------------
-.cv p {
-    margin-top: 0.7em;
-    font-size: 0.90em;
-}
-
-.cv ul {
-    font-size: 0.90em;
-    padding-inline-start: 20px;
-}
-
-.cv li {
-    margin-bottom: 0.3em;
-}
-
-.company {
-    display: block;
-    font-size: 1.4em;
-    margin-top: 0.85em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
-
-.job-title {
-    display: block;
-    font-size: 1em;
-    margin-top: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
-
-.job-date {
-    display: block;
-    font-size: 0.9em;
-    margin-top: 0.4em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
 }
