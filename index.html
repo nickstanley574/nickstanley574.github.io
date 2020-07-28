@@ -16,14 +16,11 @@ title: Home
 
 <h2>Posts 📚</h2>
 
-<div style="width:90%">
 {% for post in site.posts %}
     <div>
-        <td><i>{{ post.date | date_to_string }}</i></td>
-        <td><a href="{{ post.url }}">{{ post.title }} {{ post.emoji }}</a></td>
-        <div style="font-size: 80%; font-style: italic; padding-left:25px">
-            <div>{{ post.excerpt }}</div>
-        </div>
+        <div class="post-title"><a href="{{ post.url }}">{{ post.title }} {{ post.emoji }}</a></div>
+        <div class="post-date">{{ post.date | date_to_string }}</div>
+        <div class="post-excerpt">{{ post.excerpt | strip_html}}</div>
+        <div class="post-link"><a href="{{ post.url }}">Continue reading...</a></div>
     </div>
 {% endfor %}
-</div>
