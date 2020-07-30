@@ -16,6 +16,10 @@ nav a:hover {
     color: black;
 }
 
+.topnav-right {
+    float: right;
+}
+
 body {
     margin: auto;
     padding: 15px;
@@ -26,7 +30,7 @@ body {
 }
 
 .page-content {
-    font-size: 115%;
+    font-size: 110%;
     padding: 0px 10px;
 }
 
