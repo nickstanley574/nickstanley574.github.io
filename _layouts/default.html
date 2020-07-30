@@ -10,6 +10,7 @@
     <link rel="manifest" href="/assets/favicons/site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% feed_meta %}
     {% seo %}
   </head>
@@ -20,6 +21,9 @@
         <a href="/">Home</a>
         <a href="/projects/">Projects</a>
         <a href="/cv/">CV</a>
+        <div class="topnav-right">
+          <a href="/feed.xml" target="_blank"><i class="fa fa-rss fa-lg"></i></a>
+        </div>
     </nav>
 
     <div class="page-content">{{ content }}</div>
