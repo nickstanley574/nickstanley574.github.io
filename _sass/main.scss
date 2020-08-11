@@ -1,6 +1,7 @@
 nav {
     background-color: #0B3F62;
     overflow: hidden;
+    font-size: 110%;
 }
 
 nav a {
@@ -23,14 +24,15 @@ nav a:hover {
 body {
     margin: auto;
     padding: 15px;
-    max-width: 650px;
+    max-width: 700px;
+    line-height: 1.5;
     text-align: left;
     background-color: white;
     position: relative;
 }
 
 .page-content {
-    font-size: 110%;
+    font-size: 120%;
     padding: 0px 5px;
 }
 
