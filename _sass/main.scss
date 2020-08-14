@@ -99,11 +99,12 @@ p code {
 
 .post-link a:link,
 .post-link a:visited {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
+    color: #0B3F62;
     text-decoration: none;
-    color: initial;
+}
+
+.post-link a:hover {
+    text-decoration: underline;
 }
 
 hr {
