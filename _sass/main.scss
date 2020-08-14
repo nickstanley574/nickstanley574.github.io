@@ -1,7 +1,6 @@
 nav {
     background-color: #0B3F62;
     overflow: hidden;
-    font-size: 110%;
 }
 
 nav a {
@@ -23,31 +22,59 @@ nav a:hover {
 
 body {
     margin: auto;
-    padding: 15px;
-    max-width: 700px;
+    padding: 20px;
+    max-width: 725px;
     line-height: 1.5;
     text-align: left;
-    background-color: white;
     position: relative;
 }
 
 .page-content {
-    font-size: 120%;
+    font-size: 1.2em;
     padding: 0px 5px;
 }
 
+p code {
+    background: #f4f4f4;
+    font-family: monospace;
+    padding: 0.75px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border: 0.5px solid #ddd;
+}
+
+.language-plaintext code {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 5px solid #0B3F62;
+    color: #1b1b1b;
+    font-family: monospace;
+    max-width: 100%;
+    overflow: auto;
+    padding: 0.75em 1.8em;
+    display: block;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    margin-top: 5px
+}
+
 .date {
-    color: gray;
-    font-style: italic;
+    color: #485661;
+    font-weight: bold;
 }
 
 .post-title {
     display: block;
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin-top: 1em;
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+}
+
+.post-excerpt * {
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
 }
 
 .post-title a:link,
@@ -61,8 +88,9 @@ body {
 }
 
 .post-date {
+    color: #485661;
     display: block;
-    font-size: 0.92em;
+    font-size: 0.95em;
     margin-top: 0.25em;
     font-weight: bold;
     margin-left: 0;
@@ -120,9 +148,9 @@ body {
 }
 
 hr {
-    width: 80%;
+    width: 75%;
     border: none;
-    height: 1px;
+    height: 2px;
     background-color: rgba(128, 128, 128, 0.274);
 }
 
@@ -133,7 +161,7 @@ footer {
 }
 
 footer #sub div {
-    font-size: 80%;
+    font-size: 0.85em;
     padding: 5px;
 }
 

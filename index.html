@@ -19,8 +19,8 @@ title: Home
 {% for post in site.posts %}
     <div>
         <div class="post-title"><a href="{{ post.url }}">{{ post.title }} {{ post.emoji }}</a></div>
-        <div class="post-date">{{ post.date | date_to_string }}</div>
-        <div class="post-excerpt">{{ post.excerpt | strip_html}}</div>
+        <div class="post-date">{{ post.date | date: '%B %d, %Y' }}</div>
+        <div class="post-excerpt">{{ post.excerpt }}</div>
         <div class="post-link"><a href="{{ post.url }}">Continue reading...</a></div>
     </div>
 {% endfor %}
