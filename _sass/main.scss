@@ -97,54 +97,13 @@ p code {
     margin-right: 0;
 }
 
-.post-excerpt {
-    margin-top: 0.5em;
-}
-
-.post-link {
-    margin-top: 8px;
-    margin-bottom: 2.2em;
-}
-
-.cv p {
-    margin-top: 0.7em;
-    font-size: 0.90em;
-}
-
-.cv ul {
-    font-size: 0.90em;
-    padding-inline-start: 20px;
-}
-
-.cv li {
-    margin-bottom: 0.3em;
-}
-
-.cv .company {
-    display: block;
-    font-size: 1.4em;
-    margin-top: 0.85em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
-
-.cv .job-title {
-    display: block;
-    font-size: 1em;
-    margin-top: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
-
-.cv .job-date {
-    display: block;
-    font-size: 0.9em;
-    margin-top: 0.4em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+.post-link a:link,
+.post-link a:visited {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: initial;
 }
 
 hr {
