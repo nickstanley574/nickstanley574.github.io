@@ -23,7 +23,7 @@ nav a:hover {
 body {
     margin: auto;
     padding: 20px;
-    max-width: 725px;
+    max-width: 750px;
     line-height: 1.5;
     text-align: left;
     position: relative;
@@ -55,7 +55,8 @@ p code {
     display: block;
     word-wrap: normal;
     white-space: pre-wrap;
-    margin-top: 5px
+    margin-top: 5px;
+    font-size: 0.9em;
 }
 
 .date {
