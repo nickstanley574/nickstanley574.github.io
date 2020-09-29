@@ -1,4 +1,8 @@
 
+future: false
+
+author: "Nick Stanley"
+
 collections:
   posts:
     output: true
