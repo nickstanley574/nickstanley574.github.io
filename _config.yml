@@ -1,6 +1,4 @@
 
-future: false
-
 collections:
   posts:
     output: true
