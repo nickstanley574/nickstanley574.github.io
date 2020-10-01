@@ -28,28 +28,28 @@ While this rickroll seems harmless the arbitrary execution of code on your compu
 
 While the pervious example is a _"no duh sherlock"_ the copy button is a bit let obvious. What is less obvious is the copy button which purpose to save you the backbreaking task of highlighting and `ctrl + c` or `right click copy` the text itself. Below of some examples in the last month of where I have encountered the copy text button:
 
-#### [Amazon EC2 key pairs - aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
+#### [Amazon EC2 key pairs | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_docs_aws.png">
+    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_docs_aws.png">
 </div>
 
-#### [Getting Started: Install Nomad - hashicorp.com](https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started)
+#### [Getting Started: Install Nomad | hashicorp.com](https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started)
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_hashicorp.png">
+    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_hashicorp.png">
 </div>
 
-#### [Running commands on your Linux instance at launch - aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+#### [Running commands on your Linux instance at launch | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_docs_aws_userdata.png">
+    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_docs_aws_userdata.png">
 </div>
 
-#### [How To List Users in the Oracle Database - oracletutorial.com](https://www.oracletutorial.com/oracle-administration/oracle-list-users/)
+#### [How To List Users in the Oracle Database | oracletutorial.com](https://www.oracletutorial.com/oracle-administration/oracle-list-users/)
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_oracle_tutorial.png">
+    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_oracle_tutorial.png">
 </div>
 
 
@@ -90,12 +90,30 @@ function nefariousCopy(n) {
 Oh `BadActor666` provides the Docker command I am looking for and I can easily copy & paste it into my terminal via the copy button.
 
 <div style="text-align: center;">
-<video style="max-width: 100%;"  controls>
+<video style="max-width: 80%;"  controls>
   <source src="{{ page.asset }}/ghostbusters.mp4" type="video/mp4">
   Your browser does not support HTML video.
 </video>
 </div>
 
+
+Ouch! You just got ghostbusted! 
+
+```
+<button class="button" onclick="nefariousCopy()"><span>📋</span></button> 
+```
+
+
+```
+function nefariousCopy(n) {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.textContent = `curl -L ${window.location.host}{{ page.asset }}/ghostbusters \n`;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+```
 
 
 ## Normal Select, Copy & Paste
@@ -128,9 +146,9 @@ Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
 
 You see where this is going. 
 
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
     <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
-</div>
+</div> -->
 
 ## Worst Case Scenarios
 
