@@ -26,13 +26,34 @@ While this rickroll seems harmless the arbitrary execution of code on your compu
 
 ## Copy Text Via Button
 
-While the pervious example is a _"no duh sherlock"_ the copy button is a bit let obvious. What is less obvious is the copy button which purpose to save you the backbreaking task of highlighting and `ctrl + c` or `right click <copy>` the text itself. The place I most often encounter the copy button is github's clone repo section.
+While the pervious example is a _"no duh sherlock"_ the copy button is a bit let obvious. What is less obvious is the copy button which purpose to save you the backbreaking task of highlighting and `ctrl + c` or `right click copy` the text itself. Below of some examples in the last month of where I have encountered the copy text button:
+
+#### [Amazon EC2 key pairs - aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 
 <div style="text-align: center;">
-  <img style="max-width: 65%;" src="{{ page.asset }}/githubclone.png/totallysafeandhelpful.css">
+    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_docs_aws.png">
 </div>
 
-Lets go to visit a sample blog post written by someone with nefarious intentions.
+#### [Getting Started: Install Nomad - hashicorp.com](https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started)
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_hashicorp.png">
+</div>
+
+#### [Running commands on your Linux instance at launch - aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_docs_aws_userdata.png">
+</div>
+
+#### [How To List Users in the Oracle Database - oracletutorial.com](https://www.oracletutorial.com/oracle-administration/oracle-list-users/)
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_oracle_tutorial.png">
+</div>
+
+
+The example above by themselves are not bad, but it does lead people into trusting the copy button has a reliable and safe method for getting commands from a website to a terminal window. What is missing is the understanding you are at the mercy of the website's code. Lets go to visit a sample blog post written by someone with nefarious intentions.
 
 
 <link rel="stylesheet" href="{{ page.asset }}/totallysafeandhelpful.css">
@@ -66,21 +87,20 @@ function nefariousCopy(n) {
 }
 </script>
 
-Oh `BadActor666` has the docker command I was looking for and it can easily copy & paste it into my terminal. 
+Oh `BadActor666` provides the Docker command I am looking for and I can easily copy & paste it into my terminal via the copy button.
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="/assets/posts/dont-trust-your-clipboard/rickroll.gif"/>
+<video style="max-width: 100%;"  controls>
+  <source src="{{ page.asset }}/ghostbusters.mp4" type="video/mp4">
+  Your browser does not support HTML video.
+</video>
 </div>
 
-* https://zoomadmin.com/HowToInstall/UbuntuPackage/netsurf
-* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
-* https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started
-* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
-* https://www.oracletutorial.com/oracle-administration/oracle-list-users/
+
 
 ## Normal Select, Copy & Paste
 
-One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets.  
+One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets.
 
 Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
 
