@@ -160,10 +160,15 @@ You see where this is going. All aboard 🚂🚃🚃🚃 !
 </video>
 </div>
 
-## Worst Case Scenarios
+## Composing the Attack
+
 
 
 ### Social Engineering
+
+> Social engineering is the psychological manipulation of people into performing actions or divulging confidential information. All social engineering techniques are based on specific attributes of human decision-making known as cognitive biases.These biases, sometimes called "bugs in the human hardware", are exploited in various combinations to create attack techniques.
+
+
 
 #### The Attack
 ```
@@ -173,7 +178,7 @@ sudo apt install -yq nginx
 sudo systemctl start nginx
 ```
 
-### Compromising a Blog
+### Compromising a Blog, Website 
 
 ## Why the Disclaimer?
 
@@ -189,6 +194,8 @@ yep … the internet sucks.
 
 ### NO?
 You could argue I am being paranoid, and how often does this really happen. And you are missing the point. We should be doing thought experiments on how would you circumvent security or trick users because that is what keeps us vigilant. Plus it only take one miss step and you are the reason your company is compromised. Some paranoid is a good thing to have in the software discipline.
+
+If you trust a software to run your app you might trust that software's website security is to be trusted. 
 
 ### Good! Now What?
 
