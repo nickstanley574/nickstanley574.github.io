@@ -134,7 +134,7 @@ Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
   <br>
 </div>
 
-... seems safe enough. Looks like any other code snippet from any of the following websites and blogs:
+... seems safe enough. Looks like any other code snippet from any of the following websites and blogs.
 
 #### [Install Homebrew - brew.sh](https://brew.sh/)
 <div style="text-align: center;">
