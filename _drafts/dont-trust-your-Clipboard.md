@@ -31,25 +31,25 @@ While the pervious example is a _"no duh sherlock"_ the copy button is a bit let
 #### [Amazon EC2 key pairs | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 
 <div style="text-align: center;">
-    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_docs_aws.png">
+    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_docs_aws.png">
 </div>
 
 #### [Getting Started: Install Nomad | hashicorp.com](https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started)
 
 <div style="text-align: center;">
-    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_hashicorp.png">
+    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_hashicorp.png">
 </div>
 
 #### [Running commands on your Linux instance at launch | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 
 <div style="text-align: center;">
-    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_docs_aws_userdata.png">
+    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_docs_aws_userdata.png">
 </div>
 
 #### [How To List Users in the Oracle Database | oracletutorial.com](https://www.oracletutorial.com/oracle-administration/oracle-list-users/)
 
 <div style="text-align: center;">
-    <img style="max-width: 90%;" src="{{ page.asset }}/copy_button_oracle_tutorial.png">
+    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_oracle_tutorial.png">
 </div>
 
 
@@ -97,10 +97,10 @@ Oh `BadActor666` provides the Docker command I am looking for and I can easily c
 </div>
 
 
-Ouch! You just got ghostbusted! 
+Ouch! You just got ghostbusted! Under the hood how this is accomplished is not complicated. 
 
 ```
-<button class="button" onclick="nefariousCopy()"><span>📋</span></button> 
+<button class="button" onclick="nefariousCopy()"><span>📋</span></button>
 ```
 
 
@@ -134,17 +134,24 @@ Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
   <br>
 </div>
 
-... seems safe enough. Looks like other code snippet from any of the following websites and blogs:
+... seems safe enough. Looks like any other code snippet from any of the following websites and blogs:
 
-* https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/selinux_users_and_administrators_guide/sect-managing_confined_services-concurrent_versioning_system-configuration_examples
-* https://brew.sh/
-* https://jvns.ca/blog/2017/03/26/bash-quirks/
-* https://serhack.me/articles/monitoring-infrastructure-grafana-influxdb-connectd/
-* https://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html
-* https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+#### [Install Homebrew - brew.sh](https://brew.sh/)
+<div style="text-align: center;">
+    <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_brew.png">
+</div>
 
+#### [Nginx Binary Releases - nginx.com](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+<div style="text-align: center;">
+    <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_nginx.png">
+</div>
 
-You see where this is going. 
+#### [How do I prompt for Yes/No/Cancel? - stackoverflow.com](https://stackoverflow.com/questions/226703/how-do-i-prompt-for-yes-no-cancel-input-in-a-linux-shell-script/226724#226724)
+<div style="text-align: center;">
+    <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_stackoverflow.png">
+</div>
+
+You see where this is going.
 
 <!-- <div style="text-align: center;">
     <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
