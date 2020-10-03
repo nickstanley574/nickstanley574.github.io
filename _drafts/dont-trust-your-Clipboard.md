@@ -151,11 +151,14 @@ Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
     <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_stackoverflow.png">
 </div>
 
-You see where this is going.
+You see where this is going. All aboard 🚂🚃🚃🚃 !
 
-<!-- <div style="text-align: center;">
-    <img style="max-width: 100%;" src="/assets/images/rickroll.gif"/>
-</div> -->
+<div style="text-align: center;">
+<video style="max-width: 80%;"  controls>
+  <source src="{{ page.asset }}/choochoo.mp4" type="video/mp4">
+  Your browser does not support HTML video.
+</video>
+</div>
 
 ## Worst Case Scenarios
 
