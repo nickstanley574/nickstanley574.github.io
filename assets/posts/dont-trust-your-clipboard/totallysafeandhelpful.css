@@ -53,3 +53,11 @@ td {
 .button:hover:before {
     content: "😈";
 }
+
+.button2:hover span {
+    display: none
+}
+
+.button2:hover:before {
+    content: "😈";
+}
