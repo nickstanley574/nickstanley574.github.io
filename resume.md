@@ -106,7 +106,7 @@ Evaluated and provided feedback to students' solutions and Enforced DePaul's Aca
 #### Summer 2013, 2014
 Clearwater Camp is a American Camp Association member providing a summer camping experience for ages 8-16. During the summer lived on site and maintenance the camp grounds, cabins, equipment and vehicles.
 
-#### Hughes Seed Farm | Woodstock, IL | Corn Detasseler
+### Hughes Seed Farm | Woodstock, IL | Corn Detasseler
 #### Summer 2011, 2012
 Farm work. Road on tractors, pulled corn tassels, and drove trucks all starting before the rooster crowed.
 
