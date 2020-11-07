@@ -21,11 +21,19 @@ Backstop Solutions Group is a Software-as-a-Service company, providing cloud bas
 #### Jun 2019 - Sep 2020
 Developing and automating internal systems, applications and processes that support research & development, testing, database and leadership teams.
 
-* Collaborated with Infrastructure team to develop processes in hybrid cloud environment with brick and mortar data centers and multiple AWS accounts.
-* Project Lead - Migrated Testing System from a persistent to a OnDemand model, using Bash, Python, Ruby, Groovy and AWS, increasing productivity, suitability while reducing costs.
-* Developed scripts using the boto3 Python library to automate tasks and procedures.
+
+* Project Lead - Migrated testing system from a persistence to On-Demand model, increasing productivity and suitability while reducing costs.
+* Developed a EC2 instance backup restore process using AWS Data Lifecycle Manger (DLM).
+* Introduced AWS CLI and IAM roles to Jenkins Infrastructure to automate tasks.
+* Support development process for US and China offices.
 * Part of team wide effort to decompose a legacy orchestration monolithic app into microservices.
-* Working in a SOC2 environment with separation of duties and a hybrid cloud architecture.
+* Developed automated JIRA workflows using Adaptavist ScriptRunner.
+* Collaborated with Infrastructure team to develop processes in hybrid cloud environment with brick and mortar datacenters and multiple AWS accounts.
+* Responsible for Creating AWS IAM Users, Policies, Groups etc.
+* Provisioning of AWS service resources including EC2, VPC, EBS, AMI, S3 buckets.
+* Perform security assessments and implement remediations.
+* Created auto auditing scripts that searched for orphaned resources on AWS accounts.
+* Many hats: tools developer, automation engineer, cloud architect ... the list goes on.
 * Developed PowerShell scripts for Windows automation (a necessary evil).
 
 ## 🌎 Discovery Education
@@ -35,13 +43,38 @@ Discovery Education provides digital curriculum resources for classrooms worldwi
 #### Aug 2016 - Jun 2019
 Project Lead on configuration management software upgrades, monitoring and alerting platform migration and development of deployment system. Worked in and promoted a Open-Source first solutions culture using open source over third-party vendor build solutions.
 
+* Part of team that created a AWS Disaster recovery POC using Terraform, EC2, RDS and Puppet.
+* Managed Puppet infrastructure through major version upgrades.
+* Deployed Nagios, Puppet and Elasticsearch on OpenStack using Heat.
+* Perform on call duties to manage alerts on PagerDuty and solve issues.
+* Automated processes using Puppet, Python-Fabric, Bash and Jenkins.
+* Implemented ELK Stack with Metricbeats to collect and monitor system metrics.
+* Deployed initial implementation of NGINX WAF/ModSecurity.
+* Monitoring and Alerting SME;
+* Co-authored Infrastructure team development model implementing Scrum concepts including story points, burn-downs, and sprints.
+* Assisted the administration of Katello (Red Hat Satellite Server) that manages Linux packages, dependencies, and patches.
+* Supported organization wide effort to migrating Adobe Coldfusion applications to Lucee based Docker images.
+
 ### Jr. Software Engineer | Systems & Operations
 #### Aug 2015 - Aug 2016
 Assisted in the implementing of infrastructure resources in three regions; United States, Canada and United Kingdom. Responsibilities included the development and design of systems, software deployment, hardware upgrades, scripting, documentation, platform upgrades, monitoring and hardware management.
 
+* Migrated Gluster volumes to AWS S3 using AWS Snowball.
+* Maintained the SDLCs for Coldfusion/Lucee, Meteor, and Flask web applications.
+* Redesigned and deployed Nagios implementation using Puppet.
+* Configured the intrusion prevention software Fail2Ban to prevent brute force attacks.
+* Supported the org’s content publishing pipeline using S3, Handbrake, Gluster, and Cyberduck.
+* Analyzed and resolved merge conflicts in Git and SVN.
+
 ### Intern Systems & Infrastructure
 #### Summer 2015
 Selected for a three-month summer internship out of more than 150 applicants. Developed skills related to devops, systems, testing, networking and Linux administration in a global organization.
+
+* Installed, upgraded, and configured CentOS 6.x, and 7.x nodes.
+* Developed Puppet modules and downloaded pre-written modules from Puppet Forge.
+* General Linux administration on 500+ nodes in three geographic regions.
+* Implemented pre-built and custom Nagios checks.
+* Configured Apache and Nginx.
 
 ## 🎓 DePaul University
 
