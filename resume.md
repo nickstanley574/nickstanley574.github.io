@@ -78,7 +78,9 @@ Selected for a three-month summer internship out of more than 150 applicants. De
 
 ## 🎓 DePaul University
 
-Master of Science - Software Engineering 2019<br>Bachelor of Science - Computer Science 2016
+Master of Science - Software Engineering 2019
+
+Bachelor of Science - Computer Science 2016
 
 ### Technical Support
 #### Sep 2013 - Mar 2016
