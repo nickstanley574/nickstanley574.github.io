@@ -1,7 +1,7 @@
 ---
 permalink: /resume/
 layout: default
-title: resume
+title: Resume
 style: resume
 ---
 
