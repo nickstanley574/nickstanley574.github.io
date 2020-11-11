@@ -32,7 +32,7 @@ style: projects
 
 Github: <a href="https://github.com/nickstanley574/freeCodeCampProjects" target="_blank">https://github.com/nickstanley574/freeCodeCampProjects</a>
 
-Live: <a href="https://nickstanley574.github.io/freeCodeCampProjects/" target="_blank">https://nickstanley574.github.io/freeCodeCampProjects/</a>
+Live: <a href="https://nickstanley574.github.io/freeCodeCampProjects/"</a>
 
 * Responsive Web Design
 * Front End Libraries
