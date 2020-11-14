@@ -10,7 +10,7 @@ My name is Nicholas Stanley
 * I also graduated from DePaul with a Master in Software Engineering in 2019
 * During my master program I was in the Graduate Assistant program has a Tutor.
 * I am currently working at Backstop solutions as a Senior DevOps Engineer leading a team of 4.
- 
+
 ## Overview and Goals
 
 * A quick list review
@@ -18,8 +18,12 @@ My name is Nicholas Stanley
 * Explore Loop patterns Counter, Accumulator, index iteration
 
 ### Assumptions
+* You learn programing concepts, you use programing languages to apply those concepts.
 * You already have a basic understanding of the python syntax. (indentation, `print()`, variable expressions)
 * You are aware if what a list is and just need a quick refresher.
+
+### Resources Used
+* Introduction to Computing Using Python - An Application Development Focus by Ljubomir Perkovic
 
 ## Quick List Overview
 
@@ -49,7 +53,7 @@ vehicles = ['sedan','train','truck','plane']
 
 A list's items are indexed starting a zero. You can also thing of index has position. Like get me the item at position 2.
 ```
-# index/position:
+# index:
 #              0       1       2       3
 vehicles = ['sedan','train','truck','plane']
 ```
@@ -159,7 +163,7 @@ truck
 plane
 Done.
 ```
-`<variable` can even be something like `vehicle_var`
+`<variable>` can even be something like `vehicle_var`
 #### Loop 3b
 ```
 print('Start.')
@@ -183,7 +187,7 @@ Done.
 
 ### Loop 4 - No `<variable>` in `<indented code block>`
 
-Even thought we have used the `<variable>` in the `<indented code block>` for every example so far that is not a requirement of `for` loops.
+Even thought we have used the for loop `<variable>` in the `<indented code block>` in every example so far that is not a requirement of `for` loops.
 
 #### Loop 4a
 ```
@@ -222,15 +226,92 @@ Start.
 Done.
 ```
 
+## The `range()` Function
+
+One of the builtin methods used a lot with Python for loops is `range()`. 
+
+`range()` allows users to generate a object of numbers within a given range.
+
+We can put `range()` in the `<sequence>` section of a `for` b/c it returns a iterable object.
+
+```
+# create a sequence of 6 integers, and print each item in the sequence:
+for i in range(6):
+    print(i)
+
+--- output ---
+0
+1
+2
+3
+4
+5
+```
+Notice that we get `0,1,2,3,4,5`, but not `6`. the reason why is b/c `range(6)` says give me the first `6` integers, but again we start indexing at `0`. You can see there are indeed `6` items in the list, but that means we stop at `5`.
+
+> In case it comes up range() changed between python2 and python3. In python2 `range()` returns a list, in python3 it now returns a range object. python2: `print(range(3)) -> [0,1,2]` in python3 `print(range(3)) -> range(0,3)` which is still iterable and works the same way.
+
+
 ## Counter Loop
 
+We use the counter pattern when we need to execute a block of code for every integer is some range. The pervious `range()` example was a simple counter loop. lets 
 
+```
+for i in range(6):
+    if (i % 2) == 0:
+        print(i)
 
-
+--- output ---
+0
+2
+4
+```
 
 ## Accumulator Loop
 
+* A common pattern in loops is to accumulate a value in every iteration of the loop.
+* To accomplish this wee need a variable defined outside of the for loop that is modified during every for loop iteration.
 
+```
+numLst = [2, 4, 3, 7]
+sum = 0
+for n in numLst:
+    sum = sum + n
+print(sum)
+
+--- output ---
+16
+
+```
+
+```
+numLst = [ 2, 4, 3, 7 ]     |    sum = 0
+
+n      =   2                |    sum = sum + n
+                            |    sum =  0  + 2 = 2
+ 
+n      =      4             |    sum = sum + n
+                            |    sum =  2  + 4 = 6
+ 
+n      =         3          |    sum = sum + n
+                            |    sum =  6  + 3 = 9
+ 
+n      =            7       |    sum = sum + n
+                            |    sum =  9  + 7 = 16
+```
+
+```
+n = 10
+power = 3
+valueLst = []
+for value in range(n):
+ if(value % power == 0):
+     valueLst.append(value)
+print(valueLst)
+
+--- output ---
+[0, 3, 6, 9]
+```
 
 ## for Loop iteration thought indexes
 
