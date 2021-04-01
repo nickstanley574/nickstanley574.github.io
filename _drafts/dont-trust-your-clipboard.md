@@ -158,7 +158,7 @@ Lets go back to Look at another post from  totally-safe-and-helpful.blog ...
     <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_stackoverflow.png">
 </div>
 
-You see where this is going. All aboard 🚂🚃🚃🚃 !
+You see where this is going. All aboard 🚂 !
 
 <div style="text-align: center;">
 <video style="max-width: 80%;"  controls>
