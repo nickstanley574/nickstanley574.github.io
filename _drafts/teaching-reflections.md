@@ -6,7 +6,7 @@ asset: "/assets/posts/teaching-reflections"
 
 My last post was in August, 5 months ago. What have I been doing? Well a lot. In August, my manager left and I became the interim DevOps Manager and at the same time I bought a house. If that wasn’t enough, in winter as a pandemic hobby, I started teaching intro into computer science courses at DePaul University.
 
-I come from a family of educators, my mother, father, two aunts, and two uncles varying from primary school to higher-ed. Besides learning how to make martinis and knowing what teachers say about their students, I learned teaching at any level is more of a vocation than a profession. While I have always known teaching is hard, experiencing it is something very different.
+I come from a family of educators, my mother, father, aunts, and uncles varying from primary school to higher-ed. Besides learning how to make martinis and knowing what teachers say about their students, I learned teaching at any level is more of a vocation than a profession. While I have always known teaching is hard, experiencing it is something very different.
 
 The oddest thing from being an instructor is I now have a Rate My Professor page. I never thought back when I was looking at Rate My Professor posts during my college years I would one day have my own. Seeing the student posts makes me realize that students are evaluating me just has much has I am evaluating them. While I am reteaching myself materials I am about to teach to students 30+ students and be ready for a litany of unknown questions which kind felt like:
 
