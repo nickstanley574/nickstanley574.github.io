@@ -4,7 +4,7 @@ emoji: 🍎
 asset: "/assets/posts/teaching-reflections"
 ---
 
-My last post was in August, 5 months ago. What have I been doing? Well a lot. In August, my manager left and I became the interim DevOps Manager and at the same time I bought a house. If that wasn’t enough, in winter as a pandemic hobby, I started teaching intro into computer science courses at DePaul University.
+My last post was in August, 7 months ago. What have I been doing? Well a lot. In August, my manager left and I became the interim DevOps Manager and at the same time I bought a house. If that wasn’t enough, in winter as a pandemic hobby, I started teaching intro into computer science courses at DePaul University.
 
 I come from a family of educators, my mother, father, aunts, and uncles varying from primary school to higher-ed. Besides learning how to make martinis and knowing what teachers say about their students, I learned teaching at any level is more of a vocation than a profession. While I have always known teaching is hard, experiencing it is something very different.
 
