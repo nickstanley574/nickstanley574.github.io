@@ -28,4 +28,4 @@ During our conversation, I realized grading too leniently is an injustice to the
 
 On the other hand, you see students start the quarter nervous and confused. At first they start off with low grades. Then, they start asking questions and coming to office hours. Midway through the quarter those low grades start to become high grades and the students end the quarter with B+ or A-. Seeing that happens makes you feel good and makes you want to teach again.
 
-Overall, teaching was a lot of work, but really enjoyable. Since DePaul is on the quarter system the majority of intro computer science courses are in the autumn and winter quarters. The earliest I would teach again is autumn quarter of 2021. I hope that I do it again, but only enrollment, life circumstances, and time will tell.
+Overall, teaching was a lot of work, but really enjoyable. Since DePaul is on the quarter system the majority of intro computer science courses are in the autumn and winter quarters. The earliest I would teach again is autumn quarter of 2021. I hope that I do it again, only enrollment, life circumstances, and time will tell.
