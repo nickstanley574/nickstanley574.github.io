@@ -16,7 +16,7 @@ At the same time, I am reteaching myself materials I am about to teach to 30+ st
     <img style="max-width: 60%;" src="{{ page.asset }}/whendidyoubecomeanexpert.png">
 </div>
 
-Initially, my assumption was the lectures were going to be the hardest part of teaching. Figuring out how to fill hours of content and keep students engaged concerned me. After the third lecture I realized that I was not only an instructor, but an entertainer.
+Initially, my assumption was the lectures were going to be the hardest part of teaching. Figuring out how to fill hours of content and keep students engaged daunted me. After the third lecture I realized that I was not only an instructor, but an entertainer.
 
 Students could read the book and do the practice problems on their own, but learning is easier when it's entertaining. That's why children (and adults) remember material from a MythBusters or Magic School Bus episodes over reading a chapter in a textbook. Realizing this lecturing became fun, figuring out examples and slides became a mental puzzle to solve.
 
