@@ -22,7 +22,7 @@ Students could read the book and do the practice problems on their own, but lear
 
 The hardest part for me was evaluating students' work. It was tough to give low grades at first. It not too long ago I was a student thinking; "If I fail a course I wasted a lot of time and money".
 
-For students who didn't try, it wasn't hard assigning a low grade. For the students who did try, worked hard, and still struggled it was a lot more difficult to assign a low grade. Unfortunately, sometimes trying is not enough. Students need to achieve a certain level of skills in a course. Just because they are trying doesn't mean they can pass. This was a hard lesson to learn and I talked to a fellow instructor about it.
+For students who didn't try, it wasn't hard assigning a low grade. For the students who did try, worked hard, and still struggled it was a lot more difficult. Unfortunately, sometimes trying is not enough. Students need to achieve a certain level of skills in a course. Just because they are trying doesn't mean they can pass. This was a hard lesson to learn and I talked to a fellow instructor about it.
 
 During our conversation, I realized grading too leniently is an injustice to the student who studied, understood the material, and earned their grade. It's an injustice to the student who is struggling because its setting them up for failure in the next level classes. Finally, it's an injustice to yourself because passing students who are not ready hurts your reputation among other instructors.
 
