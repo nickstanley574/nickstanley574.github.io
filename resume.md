@@ -10,11 +10,14 @@ Backstop Solutions Group is a Software-as-a-Service company, providing cloud bas
 
 ###  Senior Software Engineer | Development Operations
 #### Oct 2020 - Present
+Took on responsibilities of DevOps Manager after the former manager’s departure; One-on-Ones with team members, participated in architecture/roadmap planning, delegated ticket assignments, paired with team members to make sure they were getting the support to complete their tasks.
 
 * Run organization wide Trouble in a Production (TPS) meetings.
 * Participated in the hiring process; designed coding challenges, and interview process alongside other managers and lead engineers.
+* Designed homework challenges and interview process for engineering positions and participated in the screening and interview process.
 * Developing custom Jira, Jenkins, and Gitlab integrations to enforce compliance checks, security practices, and development procedures.
-* Took on responsibilities of DevOps Manager after the former manager’s departure; One-on-Ones with team members, participated in architecture/roadmap planning, delegated ticket assignments, paired with team members to make sure they were getting the support to complete their tasks.
+* Maintaining and building Continuous Integration / Continuous Delivery CICD pipelines using Nomad, Consul, Vault and Jenkins.
+* Chat noise ... I mean ChatOp
 
 
 ### Software Engineer | Development Operations
