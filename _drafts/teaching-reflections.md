@@ -8,17 +8,17 @@ My last post was in August, 7 months ago. What have I been doing? Well a lot. In
 
 I come from a family of educators, my mother, father, aunts, and uncles varying from primary school to higher-ed. Besides learning how to make martinis and knowing what teachers say about their students, I learned teaching at any level is more of a vocation than a profession. While I have always known teaching is hard, experiencing it is something very different.
 
-The oddest thing from being an instructor is I now have a Rate My Professor page. I never thought back when I was looking at Rate My Professor posts during my college years I would one day have my own. Seeing the student posts makes me realize that students are evaluating me just has much has I am evaluating them. While I am reteaching myself materials I am about to teach to students 30+ students and be ready for a litany of unknown questions which kind felt like:
+The most bizarre aspect of being an instructor is having a ratemyprofessors.com page. Never did I imagine when I was looking at Rate My Professors posts during my college years I would one day have my own. Reading the students' posts made me realize students are evaluating me has much has I am evaluating them.
+
+At the same time, I am reteaching myself materials I am about to lecture to students 30+ students and be ready for a litany of unknown questions which felt like:
 
 <div style="text-align: center;">
     <img style="max-width: 60%;" src="{{ page.asset }}/whendidyoubecomeanexpert.png">
 </div>
 
-Initially, I thought the hardest part of teaching was going to be the lectures. How am I going to fill hours of content and keep students engaged? After the second lecture I realized that I was not only an instructor but an entertainer.
+Initially, my assumption was the lectures were going to be hardest part of teaching. How am I going to fill hours of content and keep students engaged? After the second lecture I realized that I was not only an instructor, but an entertainer.
 
-Students could read the book, do the practice problems, but learning is a lot easier when it's entertaining. That's why children (and adults) will remember a MythBusters or a Magic School Bus episode over reading a chapter in a textbook.
-
-After realizing that I found lecturing fun, figuring out engaging examples and in class activities to teach core concepts became like a mental puzzle to solve. It was enjoyable thinking about examples, homework and exam questions that evaluate a student understanding of specific topics and skills.
+Students could read the book and do the practice problems on their own, but, learning is easier when it's entertaining. That's why children (and adults) remember material from a MythBusters or a Magic School Bus episode over reading a chapter in a textbook. After realizing this lecturing became fun, figuring out examples, homeworks and exams became a mental puzzle to solve.
 
 The hardest part for me was evaluating students' work. It was really hard for me to give low grades at first, because not too long ago I was a student thinking; "If I fail a course I wasted \$\$\$\$ and a lot of time". For students who didn't try, it wasn't too hard giving a low grade, however, for the students who did try and still struggled I help has much has I could.
 
