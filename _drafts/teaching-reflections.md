@@ -24,7 +24,7 @@ The hardest part for me was evaluating students' work. It was tough to give low 
 
 For students who didn't try, it wasn't hard assigning a low grade. For the students who did try, worked hard, and still struggled it was a lot more difficult. Unfortunately, sometimes trying is not enough. Students need to achieve a certain level of skills in a course. Just because they are trying doesn't mean they can pass. This was a hard lesson to learn and I talked to a fellow instructor about it.
 
-During our conversation, I realized grading too leniently is an injustice to the student who studied, understood the material, and earned their grade. It's an injustice to the student who is struggling because its setting them up for failure in the next level classes. Finally, it's an injustice to yourself because passing students who are not ready hurts your reputation among other instructors.
+During our conversation, I realized grading too leniently is an injustice to the student who studied, understood the material, and earned their grade. It's an injustice to the student who is struggling because its setting them up for failure in the next level courses. Finally, it's an injustice to yourself because passing students who are not ready hurts your reputation among other instructors.
 
 On the other hand, you see students start the quarter nervous and confused. At first they start off with low grades. Then, they start asking questions and coming to office hours. Midway through the quarter those low grades start to become high grades and the students end the quarter with a B or better. Seeing that happens makes you feel good and makes you want to teach again.
 
