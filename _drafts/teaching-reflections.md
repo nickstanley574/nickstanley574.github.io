@@ -10,7 +10,7 @@ I come from a family of educators, my mother, father, aunts, and uncles ranging 
 
 The most bizarre aspect of being an instructor is having a ratemyprofessors.com page. Never did I imagine when I was looking at Rate My Professors posts during my college years I would one day have my own. Reading the students' posts made me realize students are evaluating me has much has I am evaluating them.
 
-At the same time, I am reteaching myself materials I am about to lecture to students 30+ students and be ready for a litany of unknown questions which felt like:
+At the same time, I am reteaching myself materials I am about to teach to 30+ students and be ready for a litany of unknown questions which felt like:
 
 <div style="text-align: center;">
     <img style="max-width: 60%;" src="{{ page.asset }}/whendidyoubecomeanexpert.png">
