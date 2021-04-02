@@ -17,7 +17,7 @@ Took on responsibilities of DevOps Manager after the former manager’s departur
 * Designed homework challenges and interview process for engineering positions and participated in the screening and interview process.
 * Developing custom Jira, Jenkins, and Gitlab integrations to enforce compliance checks, security practices, and development procedures.
 * Maintaining and building Continuous Integration / Continuous Delivery CICD pipelines using Nomad, Consul, Vault and Jenkins.
-* Chat noise ... I mean ChatOp
+* Chat noise ... I mean ChatOps
 
 
 ### Software Engineer | Development Operations
