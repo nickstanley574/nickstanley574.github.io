@@ -20,7 +20,7 @@ Initially, my assumption was the lectures were going to be hardest part of teach
 
 Students could read the book and do the practice problems on their own, but learning is easier when it's entertaining. That's why children (and adults) remember material from a MythBusters or Magic School Bus episodes over reading a chapter in a textbook. Realizing this lecturing became fun, figuring out examples and slides became a mental puzzle to solve.
 
-The hardest part for me was evaluating students' work. It was tough to give low grades at first. It not too long ago I was a student thinking; "If I fail a course I wasted money and a lot of time".
+The hardest part for me was evaluating students' work. It was tough to give low grades at first. It not too long ago I was a student thinking; "If I fail a course I wasted a lot of time and money".
 
 For students who didn't try, it wasn't hard assigning a low grade. For the students who did try, worked hard, and still struggled it was a lot more difficult to assign a low grade. Unfortunately, sometimes trying is not enough. Students need to achieve a certain level of skills in a course. Just because they are trying doesn't mean they can pass. This was a hard lesson to learn and I talked to a fellow instructor about it.
 
