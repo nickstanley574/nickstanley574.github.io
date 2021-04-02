@@ -97,9 +97,9 @@ Tutored undergraduate and graduate students in the following subjects and concep
 #### 2015 - 2016
 Evaluated and provided feedback to students' solutions and Enforced DePaul's Academic Integrity Policy. While communicating with professors regarding expectations, course polices, homework assignments and solutions.
 
-* SC 300 - Data Structures I Winter - 2015
-* SE 350 - Object-Oriented Software Development Spring - 2016
-* CSC 374 - Computer Systems II Spring - 2016
+* SC 300 - Data Structures I - Winter 2015
+* SE 350 - Object-Oriented Software Development - Spring 2016
+* CSC 374 - Computer Systems II - Spring 2016
 
 ### Scholarships
 * Warren Krueger & Ronnveig Ernst Computer Science Scholarship
