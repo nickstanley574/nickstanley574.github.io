@@ -1,0 +1,19 @@
+2021-08-01 14:16:58 - INFO  - VOY612 - Starting Duotronic damon...
+2021-08-01 14:16:59 - INFO  - TOS812 - /var/opt/m5/run (PID: 55458)
+2021-08-01 14:17:05 - INFO  - TNG530 - firmware build beta-4729.4
+2021-08-01 14:17:05 - INFO  - TNG531 - async_tsx: jpi initialized (wpc)
+2021-08-01 14:17:02 - INFO  - TNG530 - Identifying ship class - Constitution - Registry - NCC-1701
+2021-08-01 14:17:09 - WARN  - TNG821 - personal onboard - 15
+2021-08-01 14:17:20 - INFO  - TNG712 - running system safety tests /var/opt/m5/safety
+2021-08-01 14:17:11 - INFO  - VOY291 - load average: 4.36, 3.45, 2.15
+2021-08-01 14:17:23 - ERROR - TOS0M5 - Failed to initialize (Fatal).
+raktajino.m5.PopulationException:
+    at com.beta.duotronic.Impulse.GetEngineStatus(ImpulseControlDriveAdapter.rak:76)
+    at org.smontgomery.IRC.TankChecks(PressureCheck.rak:4321)
+    at com.beta.duotronic.ExceptionHandlerConnection.doFilter(ExceptionHandlerFilter.rak:28)
+2021-08-01 14:17:50 - INFO  - TAS823 - running post failure cleanup up tasks.
+2021-08-01 14:17:54 - INFO  - TNG323 - notifying crew of system failure.
+2021-08-01 14:18:07 - INFO  - VOY612 - isolinear processor
+2021-08-01 14:18:09 - INFO  - TNG923 - i8042 AUX port at 0x60,0x64 irq 12
+2021-08-01 14:18:17 - INFO  - DS9291 - x86/mm: Checking user space page tables
+2021-08-01 14:18:25 - EXIT  - TOS442 - cleanup compete Duotronic exiting.

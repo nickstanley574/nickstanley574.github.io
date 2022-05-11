@@ -207,7 +207,7 @@ $ sudo apt-get install apache2
 [sudo] password for nick:
 ```
 
-When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install `apache` and `nginx`. 
+When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install `apache` and `nginx`.
 
 ```
 nick /home $ sudo apt-get install apache2
@@ -220,8 +220,11 @@ Reading package lists... Done
 nick /home $
 ```
 
-Notice how for the second sudo command didn't require a password. Thats because sudo has a setting entitled, `timestamp_timeout` sets the number of minutes that can elapse before sudo will ask for a passwd again. This allow to run multiple sudo command in short pervious of time without needing to re-enter your password over and over again.By default is value is set to 5 minutes.
+Notice how for the second sudo command didn't require a password. Thats because sudo has a setting entitled, `timestamp_timeout` sets the number of minutes that can elapse before sudo will ask for a passwd again. This allow to run multiple sudo command in short pervious of time without needing to re-enter your password over and over again. By default is value is set to 5 minutes. This is where hackers can
 
+```
+
+```
 
 
 
