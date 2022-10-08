@@ -6,7 +6,10 @@ author: "Nick Stanley"
 collections:
   posts:
     output: true
-    permalink: blog/:year/:month/:day/:title/
+    permalink: /blog/:year/:month/:day/:title
+  books:
+    output: true
+    permalink: /books/:title
 
 plugins:
   - jekyll-feed

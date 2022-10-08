@@ -1,1 +1,1 @@
-jekyll serve --drafts 
+jekyll serve

@@ -1,3 +1,8 @@
+---
+year_read: 2020
+layout: book
+---
+
 # LDAP System Administration
 
 By Gerald Carter
