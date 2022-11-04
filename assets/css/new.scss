@@ -152,6 +152,9 @@ footer #links a:hover {
 
 
 @media screen and (max-width: 600px) {
+    * {
+        font-size: 97%;
+    }
     body {
         padding: 9px;
     }
