@@ -8,15 +8,15 @@ title: Library
 
 
 2022
-- Running Serverless Introduction to aws lambda and serverless applications - Gojko Adzic  
+- Running Serverless Introduction to AWS lambda and serverless applications - Gojko Adzic  
 
 2021
 - Pro Git by Scott Chacon (8/10)
-- Continuous Delivery with Docker and Jenkins By Rafal Leszko
+- [Continuous Delivery with Docker and Jenkins By Rafal Leszko](/library/continuous-delivery-with-docker-and-jenkins)
 - Running Serverless By Gojko Adzie
 
 2020
-- [LDAP System Administration by Gerald Carter]()
+- [LDAP System Administration by Gerald Carter](/library/ldap-system-administration)
 - Accelerate By Nicole Forsgren, Jez Humble, and Gene Kim
 - The Art of Software Testing by Corey Sandler & Tom Badgett
 
