@@ -7,9 +7,9 @@ collections:
   posts:
     output: true
     permalink: /blog/:year/:month/:day/:title
-  books:
+  library:
     output: true
-    permalink: /books/:title
+    permalink: /library/:title
 
 plugins:
   - jekyll-feed
