@@ -11,8 +11,6 @@ By Rafal Leszko
 
 Jez Humble - "Continuos Delivery is the ability to get changes of all types -- including new features, configuration changes, bug fixes, and experiments -- into prod, or into the hands of the users, safely, and quickly in a **sustainable way**.  
 
-🗨️ annot. - The most important part of this this is "suitable way" which most people miss this part and focus on CI in the same order the sentenace is order when in realilty you need to start with core idea of **susainable way** and that will enable you to have all the other fun stuff. Its like a runner don't just run fast you need to train, have a routine, commit to a healthy lifestyle and when you start you slowlly get faster and run longer.  
-
 <div class="row">
   <div class="column">
     <h4>Shortcomings of the Traditional Delivery Process</h4>
