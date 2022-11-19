@@ -6,6 +6,9 @@ title: Library
 
 <h2>Library 📚</h2>
 
+Welcome to my bookcase, these are the books I read. Some books have a link to my book notes page. Taking notes and annotation while reading is a habit I started in high school, it helps me learn and is a great reference if I need a memory trigger on a specific subject.
+
+<hr>
 
 2022
 - Running Serverless Introduction to AWS lambda and serverless applications - Gojko Adzic  
@@ -13,7 +16,7 @@ title: Library
 2021
 - Pro Git by Scott Chacon (8/10)
 - [Continuous Delivery with Docker and Jenkins By Rafal Leszko](/library/continuous-delivery-with-docker-and-jenkins)
-- Running Serverless By Gojko Adzie
+- Running Serverless by Gojko Adzie
 
 2020
 - [LDAP System Administration by Gerald Carter](/library/ldap-system-administration)
@@ -21,7 +24,7 @@ title: Library
 - The Art of Software Testing by Corey Sandler & Tom Badgett
 
 2019
-- The Phoenix Project by  Kim, Gene, Behr, Kevin, Spafford, George
+- The Phoenix Project by  Kim Gene, Behr Kevin, Spafford, George
 - The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change by Fournier, Camille
 
 2018
