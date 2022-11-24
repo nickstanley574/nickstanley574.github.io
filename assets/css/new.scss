@@ -67,9 +67,10 @@ body {
 	max-width: 800px;
 	font-size: 18px;
 	position: relative;
+    line-height: 1.5;
 }
 
-p code {
+p code, li code {
     background: #f4f4f4;
     font-family: monospace;
     font-size: 82%;
@@ -159,4 +160,9 @@ hr {
     height: 1px;
     background-color: lightgrey;
     width: 70%;
+}
+
+mark {
+    background-color: #ffff66;
+    border-radius: 25%;
 }
