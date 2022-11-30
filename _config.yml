@@ -10,6 +10,9 @@ collections:
   library:
     output: true
     permalink: /library/:title
+  drafts_public:
+    output: true
+    permalink: /drafts_public/:title
 
 plugins:
   - jekyll-feed
