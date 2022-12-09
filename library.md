@@ -11,10 +11,11 @@ Welcome to my bookcase, these are the books I read. Some books have a link to my
 <hr>
 
 2022
-- Running Serverless Introduction to AWS lambda and serverless applications - Gojko Adzic  
+- Release It - Michael Nyhard
+- The Clean Coder - Robert Martin
 
 2021
-- Pro Git by Scott Chacon (8/10)
+- Pro Git by Scott Chacon
 - [Continuous Delivery with Docker and Jenkins By Rafal Leszko](/library/continuous-delivery-with-docker-and-jenkins)
 - Running Serverless by Gojko Adzie
 
@@ -24,11 +25,13 @@ Welcome to my bookcase, these are the books I read. Some books have a link to my
 - The Art of Software Testing by Corey Sandler & Tom Badgett
 
 2019
+- The DevOps Handbook by Gene Kim, Zez Humble, Patrick DeBois, and John Willis
 - The Phoenix Project by  Kim Gene, Behr Kevin, Spafford, George
 - The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change by Fournier, Camille
 
 2018
 - The Evolution of cloud computing; How to plan for change by Clive Longbottom
+- Zero Trust Networks by Evan Gilman & Doug barth
 
 2017
 -  Software Testing and Analysis: Process, Principles and Techniques Process, Principles and Techniques - Pezze, Mauro, Young, Michal, Brand: Wiley
@@ -41,4 +44,4 @@ Welcome to my bookcase, these are the books I read. Some books have a link to my
 2015
 - Introduction To Programming in Java: An Interdisciplinary Approach by Robert Sedgewick
 - Vagrant Up and Running O'Reilly Mitchel Hashimoto
-- Zero Trust Networks by Evan Gilman & Doug barth
+- The Pragmatic Programmer By Andrew Hunt & David Thomas
