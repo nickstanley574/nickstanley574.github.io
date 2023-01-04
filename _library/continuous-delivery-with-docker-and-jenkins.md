@@ -5,7 +5,7 @@ layout: book
 
 # Continuous Delivery with Docker and Jenkins
 
-By Rafal Leszko
+By: Rafal Leszko - ISBN: 978-1787125230 - Published On: 2017-08-27
 
 ## 1 Introducing Continuous Delivery 
 
