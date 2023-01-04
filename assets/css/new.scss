@@ -86,7 +86,7 @@ p code, li code {
     font-family: monospace;
     max-width: 100%;
     overflow: auto;
-    padding: 0.4em 0.75em;
+    padding: 0.3em 0.65em;
     display: block;
     word-wrap: normal;
     font-size: 0.82em;
@@ -114,6 +114,28 @@ p code, li code {
     margin-bottom: 0.35em;
     display: inline;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+td,  th {
+    padding: 6px;
+}
+  
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+    
+th {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: left;
+    background-color: #0B3F62;
+    color: white;
+}
+
 
 //
 // Footer
@@ -171,3 +193,5 @@ footer #quote {
     margin: auto;
     width: 50%;
 }
+
+
