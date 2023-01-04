@@ -514,3 +514,204 @@ We can't do this on the client before setting it because we would need to someho
 Because encryption is such a common need, AWS implemented ita part of the platform.
 
 You can flip a switch and all newly create files on s3 will be encrypted at rest, regardless of where they come from. With CloudFormation, that switch is the `BucketEncryption` property.
+
+# 9. Handling platform events
+
+This chapter explains how to trigger Lambda functions after platform events such as file uploads to S3. You will also learn the diff between synchronous and asynchronous Lambda invocations. 
+
+The pervious chapter let user upload files, but the app didn't process the upload. To do this we have options
+
+**Create an API endpoint backed by a Lambda that synchronously converts image files into to thumbnails.** It could send the outputs back to the user or save the output to to S3 and redirect the user to the result locations. Simple, but it would not work for large files. API Gateway will stop the requests that take longer then 29 seconds. API Gateway does not allow long-running tasks. 
+
+**Handle the conversion asynchronously.** A typical 3-tier server app the standard way to handle this is to create API endpoints.
+1. The first endpoint would start a background task and send the task reference back to the client
+2. The second endpoint allows the client to check the status of the task
+3. The third allows the client to get outcome of the tasks. 
+
+We can do this via Lambdas, but it can make the app cheaper and faster with serverless designs. We can move some of the orchestration tasks from the app to the platform. 
+
+Instead of a API endpoint we can give the client a pre-signed URL to check the results on S3. With a API endpoint, we'd pay for an API call, a Lambda execution and access to check S3. With the direct S3 approach we only pay for S3 access. 
+
+Similarly, we do not need a separate endpoint to trigger the conversion. Many AWS resources can notify Lambda functions about events. S3 can call a Lambda once a files is upload or deleted. There is no need to pay for the API call and Lambda. 
+
+## <mark>Generating Test Events</mark>
+
+Events coming from S3 will have a diff structure to those coming from API Gateway.
+
+Use `sam local generate-event` to create sample events
+
+S3 upload:
+```
+sam local generate-event s3 put` 
+```
+
+## Working with files 
+
+When we create files in a Lambda resource we need to consider cleaning them up. <mark>Although Lambda functions calls aer independent they are NOT stateless. Lambda can choose to reuses a resource over and over again for the same function. If we never cleanup, the local disk the resource might run out of space. </mark>
+
+## Working with asynchronous events
+
+Lambda supports two types of calls, synchronous and asynchronous:
+* Sync Calls -- expect the caller to wait until the Lambda completes. The Lambda reports the result directly to the caller.
+* Async Calls -- complete immediately, and the Lambda keeps running in the background. The Lambda can't send the results to the client. S3 and most other platform services use this method.
+
+With Async calls, the function needs to be responsible for storing the output somewhere.
+
+## Avoiding circular references  
+
+SAM sets up Lambda function polices together with the IAM role for the function. To set up the functions, it needs to first setup the role. To setup the role, it would need to know about the target buckers for the permissions.On the other hand, SAM sets up bucket lifecycle event, such as invoking function, together with the bucket. 
+
+So in order o setup the bucket, it would need to know the function reference expecting bucket events. So the upload bucket depends on the conversion function, which depends on the role, which depends on the bucket. Hence the circular dependency. 
+
+To fix this wee need to setup a custom IAM polices and not use SAM templates. SAM can then create the function role, then the conversion function, then the bucket lifestyle events, and then append a policy to an existing role. That way, the function and the role will not depend on the buckets during create. 
+
+### Setting custom IAM polices
+
+CloudFormation has a resource for attaching polices to existing roles, `AWS::IAM::Policy`. We can specify an IAM polices that lets teh roles execute `s3:GetObject` on any resource in the target bucket,  and attach it to the role after both the bucket and the role are create. The policy would depend both on the role adn the bucket, but nothing would depend on the policy it self.
+
+## Handling asynchronous errors with dead letters
+
+With synchronous calls, errors can be reported directly back to the caller, and the caller can then decided to retry or not. With asynchronous calls, the caller can't do that, because its not waiting on results. 
+
+<mark>To project again't infra issues, Lambda will auto retry twice. AWS doesn't state officially state the duration between retires but it seems the first will happen right after a error and the second retry will happen about a minute later.</mark>
+
+If Lambda retires processing an event, it will send the same request ID as in the original attempt. 
+
+If the second retry fails Lambda gives up assuming the issue is with the code. 
+
+Failed events are not necessarily lost fot forever; you can config Lambda to send them a *death letter queue*. You can then set up post failure steps after a failure like, but not limited to, notifying staff of the issue, creating a error report or even a custom retry step.
+
+Lambda can use two types of death letter queues:
+* Amazon Simple Queue Service (SQS)
+  * Better for offline or batch processing.
+  * Sores the message for a listener to retrieve it. If nobody is listening when a message arrives, SQL will keep it in the queue. 
+* Amazon Simple Notification Service (SNS)
+  * Better choice for instant processing.
+  * will ignore message if it has no subscriptions when the message arrives. 
+
+## Conditional resources
+
+CloudFormation can activate or deactivate resources based on conditional, which we need to setup in a separate template sections titled `Conditions`.
+
+```
+Conditions:
+  ContactEmailSet: !Not [ !Equals [ '', !Ref ContactEmailAddress]]
+```
+
+Checks if the `ContactEmailAddress` parameter has a value. 
+
+<hr>
+
+# Part III Designing serverless applications 
+
+<hr>
+
+# 10. Using application components
+
+Lambda runs a reduced version of Amazon Linux, a clone of CentOs, which is a clone of Red Hat Enterprise Linux. ImageMagick tools are usually present on Linux systems; however, they are not included in the more recent Lambda environment.  
+
+## The AWS Serverless Application Repository  
+
+The *AWS Serverless Application Repository* (SAR) is a library of AWS SAM applications. The purposes are to enable orgs to share reusable components internally, so teams can easily deploy infra templates built by other teams and it works a a public library, making a few hundred open-source components available to everyone.
+
+## Lambda layers
+
+A *Lambda layer* is a file package that can be deployed to AWS and then attached to many functions. Layers are useful for sharing large packages across functions and for speeding up deployments. 
+
+From the perspective of a Lambda function, layer is effectively a shared read-only filesystem. Files from a layer appear in the `/opt` directory and we can access them as if they were including the the function. 
+
+A single function can only attach up to 5 layers.
+
+### Linking function with layers
+
+LAyers similarly to functions, get numerical incremental version every time they are published. Unlike Lambda functions, there are NO textual aliases for layer versions, so it's Not possible to mark a current or latest version easily or use a label to differentiate between prod and testing later version. 
+
+This is a serious limitation, and it's logical to expect AWS to provide between solution the future. 
+
+## Publishing to SAR 
+
+SAM just need a bit of metadata about the application added to the template to publish to SAR.
+
+```
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: image-thumbnails
+    Description: >
+      A sample application for the Running Serverless book tutorial
+    Author: Gojko Adzic
+    SemanticVersion: 1.0.0
+    SpdxLicenseId: MIT
+    LicenseUrl: LICENSE.md
+    ReadmeUrl: README.md 
+    Labels: ['layer', 'image', 'lambda', 'imagemagick']
+    HomePageUrl: https://runningserverless.com
+    SourceCodeUrl: https://runningserverless.com
+```
+You can use markdown to create a basic markup such as header and links. 
+
+Before we can publish the app to the repo, we need to allow SAR to read template from our deployment bucket. 
+
+# 11. Managing session and user workflows 
+
+This chapter explains how to manage session data n serverless apps and how to reduce ops costs by moving user workflows and app assets out of Lambda functions. 
+
+We used Lambda function to generate HTML code for browsers. There are 3 big problems with this. 
+
+1. There is no feedback from the conversion process to the client. 
+2. There is not error handling. 
+3. We have two lambdas that share an implicit session state. 
+
+The typical solutions in a tradition web app would be to handle the user session workflow in the middle application layer, but this is creates a lot of problems in server architectures. 
+
+With Lambda, app developers do not control request routing, so sticky sessions are not possible. Requests from the same user might reach two different Lambda instance with different memory session states.
+
+## Moving session state out of Lambda functions 
+
+Session state CANNOT reside in Lambda functions; full stop. 
+
+The usual solution would be to put session state into some kind of distributed data grid. DynamoDB would fits well in this case. Each Lambda could read out the session state the the beginning of the request and save it at the end. BUT this will make each function slower, increase costs and make the app more error prone since function my experience problem update session state and returning to the client. 
+
+In chapter 8, we move the gatekeeper out of the app and onto the platform. As a result, client code can talk directly to AWS using temp access grants. Keeping the workflow on the server side is not improving security anymore. It is safe to move user workflows all the way to the **client devices** and the user session data. <mark> Instead of making the backend stateful, we can keep the user state on the front end.</mark>
+
+### Resumable sessions  
+
+A Big limitation of moving session sate to client devices is the unexpected problem on the frontend can cause user to lose session info. If the browner crashes hal-way though a workflow, the client will not be able to resume the session. 
+
+If you want to create resumable session or let users across multiple browser tabs or devices concurrently, then you'll need to sync session state somehow. 
+
+In a typical three-tier the solution would be keep session in the application server or in a database. 
+
+With serverless there are several ways of synchronizing client session without the app later:
+* Amazon Cognito has its own synchronization mechanism for a small amount of user data such as preferences. Its called Cognito Sync.
+* For more complex objects, you can give clients direct access to a DynamoDB table, where each user is restricted to reading and writing only their state.
+* For situation where different users need to share session state (for example in collaborative editing), us AWS AppSync. AppSync is a managed hierarchial database intended for direct use by client devices, and it can auto sync state across multiple clients, resolve conflicts and even deal with offline usage scenarios. 
+
+### Minimise coordination
+
+With state on the client, we need to minimise the chatter between the client devices and network services, and the amount of coordination between Lambda executions. There are two ways to achieve this: 
+
+* For tightly couple tasks, aggregate processing so that different requests are independent.
+* For loosely coupled tasks, send full context info with each requests. 
+
+<mark>Controlling the user session from the client allow us to create a much better user-end experience and reduce costs.The downside is that the client code will need to be MUCH more complex and we will need some way of deploy and managing web assets and client-side code in addition to Lambda code.</mark>
+
+## Moving static assets out of Lambda functions
+
+Traditional web apps bundle code and assets and web servers are responsible for sending both to client devices. Translated to the Lambda world, that would mean including client-side JavaScript and web assets in a Lambda function and creating at least another API endpoint and new function to send those files to clients on demand. 
+
+Serving application static contents such as images, style sheets, client-side JavaScript and HTML files thought a Lambda is a BAD idea. Those files are typically public and do no need auth.
+
+With serverless its better to put static assets somewhere for client to fetch them directly, for example S3. <mark>This is so comment that S3 can pretend to be a web server.</mark>
+
+## Using S3 as a web server
+
+There are two ways of using S3 as a web server:
+* Bucket Endpoints
+  * Allow direct access to S3 objects usings HTTPS
+  * AWS auto activates this endpoint when you create an S3 Bucket.
+  * Access to the bucket endpoint is controlled via IAM 
+* Website Endpoints
+  * Optional feature of s3 that can perform some basic web workflows.
+  * This endpoint has a diff URL from the bucket endpoint. 
+
+S3 will auto assign a domain to a website endpoint. Its not possible to set a custom domain, but you can put a CDN between the users and the website endpoint and conf a custom domain name in the CDN. this is the usual approach.
