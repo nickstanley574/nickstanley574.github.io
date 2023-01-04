@@ -4,7 +4,7 @@ layout: default
 title: Library
 ---
 
-<h2>Library 📚</h2>
+## Library 📚
 
 Welcome to my bookcase, these are the books I read. Some books have a link to my book notes page. Taking notes and annotation while reading is a habit I started in high school, it helps me learn and is a great reference if I need a memory trigger on a specific subject.
 
