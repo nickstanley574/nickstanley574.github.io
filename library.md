@@ -13,11 +13,12 @@ Welcome to my bookcase, these are the books I read. Some books have a link to my
 2022
 - Release It - Michael Nyhard
 - The Clean Coder - Robert Martin
+- [Running Serverless by Gojko Adzie](/library/running-serverless-adzic)
 
 2021
 - Pro Git by Scott Chacon
 - [Continuous Delivery with Docker and Jenkins By Rafal Leszko](/library/continuous-delivery-with-docker-and-jenkins)
-- Running Serverless by Gojko Adzie
+- Team Topologies by Matthew Skelton and Manuel Pais
 
 2020
 - [LDAP System Administration by Gerald Carter](/library/ldap-system-administration)
