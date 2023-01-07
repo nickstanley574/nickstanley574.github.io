@@ -778,4 +778,90 @@ One of the biggest concerns is how to protect against someone doing a billion re
 
 ### API throttling 
 
+API Gateway can auto throttle requests, one way of controlling the risk of abuse is to limit the number of requests from the API. 
+
+You can config this for busrt requests per second or steady-sate requests per by using `MethodSettings` Property of the API resource.
+
+### Lambda throttling 
+
+We can limit financial risk from Lambda functions in two ways
+
+1. Restrict the time allowed for execution. Use the `Timeout` setting on the individual functions. You'll need to balance this with giving the function enoughs time to complete expected tasks. 
+  * 🗨️ - I am not sure if this is the best option. This might protect again't a stalled method once in a while, but the book uses the example of a user uploading a massive file that takes too long to process. If the process fails nothing is preventing a user from trying ... again ... and again ... and again which might result in more costs. In reality this "large file" example should be solved somehow by putting a limit on the size of 
+2. Control the number of concurrent execution for the function. This is effectively throttling requests at the lambda level. By default Lambda limits concurrent executions to 1000 (You can incease this limit by contacting AWS support). Individual Lambda functions can request a much lower limit by using the `ReservedConcurrentExecution` property.
+
+
+### Monitoring throttling 
+
+We can use CloudWatch alert to notify us about throttling events. 
+
+# 13. Deployment options
+
+## Think about jobs, not functions
+
+Mention Lambdas and function together and people who know functional programing make wrong assumption about AWS Lambda, such as that it is stateless, or that it can parallelize calculations automatically. 
+
+That is why we need to unpick a terminological mess in order to discuss architecture of application base on cloud functions. 
+
+A single Lambda can have a deployment package up to 250MB more than enough for a enterprise app server. There is nothing preventing a big monolithic website and deploying it as a single Lambda function. 
+
+Likewise there is nothing preventing a deployment of a API where each endpoint is handled by a separate Lambda. 
+
+Anything between the two extremes is possible. 
+
+Lambda functions can be just small skeleton initializer which download additional code from a S3 to the temp disk space, because the temp space is shared between executions, this costly init can happen once once per cold start and most requests will not suffer from the additional over head.
+
+Lambda functions are not really stateless or state ful, they are transient. 
+
+Instead of thinking about deploying functions, it is more useful to think about structuring function around discrete jobs which doesn't necessarily perform a single code function. Instead of thinking about stateless or stateful services, its more useful to design for share-nothing architecture, when different parts can own data and share state, but different functions and instances of a single function don't actively share data between themselves.
+
+## One Lambda or many? 
+
+<mark>The common wisdom today seems to be monolithic code is bad and micro-services are boot, but I disagree. Monoliths are usually simpler to develop and manage thant a network service and in many cases faster to deploy. Dividing code and data into multiple machines introduces complexity related to synchronization and consistency, which simply does not exist when everything is in a single memory space. 🗨️ I agree with this!</mark>
+
+Lambda provides many options for breaking down or aggregating processing, and its important to look at the platform constraints so you can pick the best solution in a particular case. 
+
+### Aggregate processing data ownership 
+
+If modifying or accessing data and it needs to ensure conceptual consistency, aggregate it into a single function (and ideally a single request). Data consistency is easier to achieve with a single process then multiple process, even if they run the same code. 
+
+Note the common argument in favor of distributed system over single-instance services is more machines usually have better resilience, but with Lambda this does not app. The platform will handle failover and recovery even if you set the concurrently limit to 1. 
+
+### Aggregate code that needs to be consistent
+
+<mark>A important constraint of the Lambda platform is that different function don't deploy atomically.Its best to design the code assuming thats there will be a shorty period of time where different function may run with different version of app code or that there will be two versions of the same ruction running in parallel. </mark>
+
+<mark>If 2 prices of code need to be fully consistent with each other at all times, put them into the same functions.</mark> 
+
+### Divide code around security boundaries 
+
+Different function can have different security polices, but different parts of the function always run under the same privileges. If you need to reduce or increase the security privileges for some part of a process, it's better to extract that part into a separate Lambda with a separate IAM role. Smaller, more focussed function are less risky from a security perspective.
+
+### Divide code around CPU and Memory needs
+
+Because Lambda chares for memory allocation multiplied by CPU time, bundling task with different memory needs can be unnecessarily expensive. 
+
+When two different usages of the same code have different CPU or memory needs, isolating those usages into two different function van save a lot of money. Think about jobs (uses cases ) when deciding on Lambda granularity not code units. 
+
+### Divide tasks around timing restrictions    
+
+For tasks that take longer then 15 minutes Lambda might not be the correct solutions or you may be able to split a task into several steps and potentially parallelising the work. 
+
+Spitting a job into smaller tasks due to timing restriction typically require an additional process to coordinate the execution of subtasks, and report error or success. Once option for such an umbrella process is to move it to a client devices.
+
+For tasks that cannot be paralleised, consider using AWS Fargate. Its a task management system for Elastic Containers servers with similar billing to Lambda. Fargate tasks start a lot more slowly then Lambda but if the expected duration for a tasks longer then 15 minutes  and few dozen seconds wont matter much.
+
+## Sharing behavior 
+
+There are currently thee options for sharing behavior
+
+* common libraries
+* Lambda layers
+* Invoking one function form another 
+
+There option differ primarily in four aspects: 
+* Latency to execution shared code
+* Runtime or deploy-time consistency
+* sharing across programming language runtime
+* Deployment speed and complexity. 
 
