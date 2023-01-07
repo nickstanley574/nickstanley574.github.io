@@ -715,3 +715,67 @@ There are two ways of using S3 as a web server:
   * This endpoint has a diff URL from the bucket endpoint. 
 
 S3 will auto assign a domain to a website endpoint. Its not possible to set a custom domain, but you can put a CDN between the users and the website endpoint and conf a custom domain name in the CDN. this is the usual approach.
+
+### Working with cross-origin resource sharing
+
+Client code will need to access resource from S3 and API Gateway, which will be on different domains. 
+
+To prevent fraud, browsers request special authorization when a page from one domain want to access resources from another domain. This is cross-origin resources sharing (CORS). 
+
+Here is a quick overview:
+
+An **origin**, in browser terminology, is a combination of URL protocol, domain and, optionally, network port. For example: `https://runningserverless.com`.
+
+Browsers will load resources from a different origin during primary page parsing, but they will not allow background network requests to different origin so easily. 
+
+For example a page from `https://runningserverless.com` will load a image from `gojko.net` without any configuration, however, the same image will not be able to be read asynchronously using JavaScript unless CORS settings allow it. 
+
+Before executing a network request from JavaScript code, browsers will verify that the page is allowed to access a resource on a different origin. To do this a *pre-flight* request is sent to the resource URL. The pre-flight request is an HTTP call using the `OPTIONS` method, including the resource it wants to access and the CORS content URL. <mark>Its essentially a browser asking the remote serve: 'If I were to try making this request for a page from this origin, will you let me?'</mark>
+
+The resource server is supposed to reply to the pre-flight request repeating the requested origin and providing ta list of HTTP header and method it would allow for the resource. Technically, the server respond needs to include the policy in the `Access-Control-Allow-Origin`, `Access-Control-Allow-Method`, and `Access-Control-Allow-Headers` HTTP headers.
+
+The browser compares the headers to the request the Javascript want send. If everything matches the full request is made, otherwise the request will fail. 
+
+When the resource server responds to the full request; it also needs to include the `Access-Control-Allow-Origin` header, without that the browser will refuse to pass the result back to the JavaScript code.
+
+<mark>CORS errors are tricky to troubleshoot, becuase they only apply to background browser actions. Running the same request from a command line won't show any problems. You won't find any logs on the server, because browsers kill request before they they get to our API.</mark> 
+
+When we move web assets to a separate website and move th client workflow to JavaScript, will introduce CORS issues into our example application.
+
+1. "retrieving the web page" is a direct request so it is not affected by CORS
+2. "get pre-signed grants" will be a JavaScript call to the API Gateway URL, which will be on a different domain, so it will be restricted by CORS.
+3. "upload file" will post a from dynamically to the upload bucket URL, also a different origin and restricted by CORS.
+4. "get results" also requires CORS, because we'll be polling the results bucket dynamically to check whether the file is ready. 
+
+<div style="text-align: center;">
+  <img style="max-width: 60%;" src="/assets/books/runningServerlessAdzic_ch11LambdaDiagram.svg">
+</div>
+
+# 12.Designing robust applications 
+
+## API endpoints with pah parameters 
+
+APU Gateways have a simple solution for case when a port of the request needs to be flexible.Declare an API endpoint using a parameter name in curly braces, and the API Gateway will use it for all matching requests. For example, `/sign/{extension}` and it will handle `/sign/jpg`, `/sign/gif` and any other request with `sign/` in the future. 
+
+To read out the value of the param in a Lambda function. we can use the `pathParameters` field of the API Gateway event. 
+
+Any component of a path can contain a parameter: `/sign/{extension}/image` or multiple `/sign/{extension}/image/{size}`. 
+n
+We CANNOT create `/sign/{extension}` and `sign/{type}` as the same time; API Gateway would not know who to choose between them. 
+
+
+### Greedy Path Parameters
+
+**Greedy parameters** matches one or more path components. `/sign/{proxy+}` will match `/sign/jpg` and `/sign/jpg/size/500` this is a useful trick if you want to build your own request routing inside of a lambda function.
+
+<mark>To prevent user errors, we will need to validate extensions using a list of supported types in the Lambda function connected to the API endpoints.</mark>
+
+## Protecting Against abuse
+
+Our example app is completely exposed to the internet. A billion people coming to the app could start a billion requests, and AWS will happily scale, but this is a financial risk.
+
+One of the biggest concerns is how to protect against someone doing a billion requests just o being down a system (DoS attack) or cause financial damage by racking up the AWS bill.
+
+### API throttling 
+
+
