@@ -9,7 +9,7 @@ style: resume
 
 .button {
   width: 8em;
-  background-color: #e8e8e8;
+  background-color: #f5f5f5;
   border-style: solid;
   border-width: 2px;
   padding: 3px 7px;
