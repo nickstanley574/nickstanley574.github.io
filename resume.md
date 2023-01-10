@@ -4,8 +4,60 @@ layout: default
 title: Resume
 style: resume
 ---
+<style>
 
-## 📈 Backstop Solutions
+
+.button {
+  width: 6.5em;
+  background-color: #e8e8e8;
+  border-style: solid;
+  border-width: 2px;
+  padding: 3px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 85%;
+}
+
+.button:hover {
+    background-color: #0B3F62;
+    color: white;
+    text-decoration: none;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    text-align: center
+}
+
+.row {
+    margin-block-start: 0em;
+    margin-block-end: 0em;  
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+</style>
+
+<div class="row">
+  <div class="column">
+        <a class="button" href="/assets/NicholasStanleyResume.pdf" target="_blank">Download <i class="bi bi-file-pdf-fill"></i></a>
+  </div>
+  <div class="column">
+        <a class="button" href="https://www.linkedin.com/in/nickstanley574/" target="_blank">LinkedIn <i class="bi bi-linkedin"></i></a>
+  </div>
+  <div class="column">
+        <a class="button" href="https://github.com/nickstanley574" target="_blank">GitHub <i class="bi bi-github"></i></a>
+  </div>
+</div>
+
+## Backstop Solutions 📈
+
 Backstop Solutions Group is a Software-as-a-Service company, providing cloud based solutions to hedge funds, funds-of-funds, endowments, and other institutional investors.
 
 ###  Senior Software Engineer | Development Operations
@@ -39,7 +91,7 @@ Developing and automating internal systems, applications and processes that supp
 * Many hats: tools developer, automation engineer, cloud architect ... the list goes on.
 * Developed PowerShell scripts for Windows automation (a necessary evil).
 
-## 🌎 Discovery Education
+## Discovery Education 🌎
 Discovery Education provides digital curriculum resources for classrooms worldwide with digital textbooks,multimedia content, and a professional development community.
 
 ### Software Engineer | Systems & Operations
@@ -79,7 +131,7 @@ Selected for a three-month summer internship out of more than 150 applicants. De
 * Implemented pre-built and custom Nagios checks.
 * Configured Apache and Nginx.
 
-## 🎓 DePaul University
+## DePaul University 🎓
 
 Master of Science - Software Engineering 2019
 
@@ -106,7 +158,7 @@ Evaluated and provided feedback to students' solutions and Enforced DePaul's Aca
 * St. Vincent de Paul Scholarship
 * DePaul Leadership Scholarship
 
-## 🚜 Early Jobs
+## Early Jobs 🚜
 ### Clearwater Camp | Maintenance & Grounds
 #### Summer 2013, 2014
 Clearwater Camp is a American Camp Association member providing a summer camping experience for ages 8-16. During the summer lived on site and maintenance the camp grounds, cabins, equipment and vehicles.
