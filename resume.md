@@ -8,7 +8,7 @@ style: resume
 
 
 .button {
-  width: 6.5em;
+  width: 8em;
   background-color: #e8e8e8;
   border-style: solid;
   border-width: 2px;
@@ -46,7 +46,7 @@ style: resume
 
 <div class="row">
   <div class="column">
-        <a class="button" href="/assets/NicholasStanleyResume.pdf" target="_blank">Download <i class="bi bi-file-pdf-fill"></i></a>
+        <a class="button" href="/assets/NicholasStanleyResume.pdf" target="_blank">PDF Version <i class="bi bi-file-pdf-fill"></i></a>
   </div>
   <div class="column">
         <a class="button" href="https://www.linkedin.com/in/nickstanley574/" target="_blank">LinkedIn <i class="bi bi-linkedin"></i></a>
