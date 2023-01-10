@@ -18,7 +18,7 @@ style: resume
   display: inline-block;
   cursor: pointer;
   border-radius: 10px;
-  font-size: 85%;
+  font-size: 84%;
 }
 
 .button:hover {
