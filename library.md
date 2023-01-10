@@ -17,7 +17,7 @@ title: Library
 
 ## Library 📚
 
-When I read a book to learn I rarely read it once. It take multiple passes and multiple formats to fully ingest and understand the material. My methodology is this. **1.** Read the book and highlight sections the are interesting or seem important. **2.** After a period of time read again take notes and annotation. **3.** Again wait a period of time, then read the notes and curate them; remove/add sections, update text. If a sections is confusing or you still don't understand it go back to the book and review it and update our notes. **4.** If the book contains examples. tutorials or practice problems then go back and do them. **5.** Review the notes from time to time.
+When I read a book to learn I rarely read it once. It take multiple passes and multiple formats to understand the material. My methodology is this. **1.** Read the book and highlight sections the are interesting or seem important. **2.** After short period of time read it again taking notes. **3.** Read the notes and curate them; remove/add sections, update text. If a sections is confusing or you still don't understand it go back to the book and review it and update our notes. **4.** If the book contains examples. tutorials or practice problems then go back and do them. **5.** Review the notes from time to time.
 <hr>
 
 #### 2022
