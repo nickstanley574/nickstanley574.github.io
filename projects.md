@@ -26,7 +26,7 @@ style: projects
 </style>
 
 <div class="box">
-    <h2 style="">FreeCodeCamp</h2><img style="padding-left:8px" width="28" src="/assets/images/favicon-32x32.png">
+    <h2 style="">FreeCodeCamp</h2><img style="padding-left:8px" width="28" src="/assets/images/freeCodeCampLogo.svg">
 </div>
 
 Github: <a href="https://github.com/nickstanley574/freeCodeCampProjects" target="_blank">https://github.com/nickstanley574/freeCodeCampProjects</a>
