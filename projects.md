@@ -4,11 +4,11 @@ layout: default
 title: Projects
 style: projects
 ---
-
+ 
 <style>
 .box {
-   display: flex;
-   align-items:center;
+    display: flex;
+    align-items:center;
     font-size: 1.17em;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -22,16 +22,15 @@ style: projects
     margin-block-end: 0em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-
 }
 </style>
 
 <div class="box">
-    <img style="padding-right:8px" width="26" src="/assets/images/favicon-32x32.png"><h2 style="">FreeCodeCamp</h2>
+    <h2 style="">FreeCodeCamp</h2><img style="padding-left:8px" width="28" src="/assets/images/favicon-32x32.png">
 </div>
 
 Github: <a href="https://github.com/nickstanley574/freeCodeCampProjects" target="_blank">https://github.com/nickstanley574/freeCodeCampProjects</a>
-
+<br>
 Live: <a href="https://nickstanley574.github.io/freeCodeCampProjects/">https://nickstanley574.github.io/freeCodeCampProjects/</a>
 
 * Responsive Web Design
