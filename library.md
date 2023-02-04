@@ -55,4 +55,4 @@ When I read a book to learn I rarely read it once. It take multiple passes and m
 #### 2015
 - Introduction To Programming in Java: An Interdisciplinary Approach by Robert Sedgewick
 - Vagrant Up and Running O'Reilly Mitchel Hashimoto
-- The Pragmatic Programmer By Andrew Hunt & David Thomas
+- [The Pragmatic Programmer By Andrew Hunt & David Thomas](/library/the-pragmatic-programmer)
