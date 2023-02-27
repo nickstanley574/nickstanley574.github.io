@@ -5,19 +5,28 @@ title: Home
 
 <h2>Greetings! 👋</h2>
 <p>
-    I'm Nick and I'm a Software Engineer that accidentally found my way into software operations right when DevOps concepts were gaining momentum and industry wide adoption. I have seen DevOps philosophies succeeded/fail and have already been in tech long enough to see a new kid on the block emerged called SRE.
+    My name is Nick Stanley and I'm a Software Engineer focusing on Development Operations, Site Reliability and Security and Compliance automation.
 </p>
 <p>
-    The primary goal of this site is for me to be a better writer. I believe the only way to learn or improve a skill is to try, fail, learn, and repeat. Keeping that in mind and embracing Adam Savage's quote "Failure is always an option", let the learning commence. I hope a side effect my personal improvements project is others find my content interesting and worth sharing.
+    The primary goal of this site is for me to be a better writer. I believe the only way to learn or improve a skill is to try, fail, learn, and repeat.
+    Keeping that in mind and embracing Adam Savage's quote "Failure is always an option", let the learning commence. I hope a side effect my personal
+    improvements project is others find my content interesting and worth sharing.
 </p>
-
 
 <h2>Posts 📝</h2>
 
 {% for post in site.posts %}
     <div>
-        <div class="post-title"><a href="{{ post.url }}">{{ post.title }} {{ post.emoji }}</a></div>
-        <div class="post-date">{{ post.date | date: '%B %d, %Y' }}</div>
-        <div class="post-excerpt">{{ post.excerpt }}</div>
+        <div class="post-title">
+            <a href="{{ post.url }}">{{ post.title }} {{ post.emoji }}</a>
+        </div>
+        
+        <div class="post-date">
+            {{ post.date | date: '%B %d, %Y' }}
+        </div>
+        
+        <div class="post-excerpt">
+            {{ post.excerpt | strip_html }}
+        </div>
     </div>
 {% endfor %}

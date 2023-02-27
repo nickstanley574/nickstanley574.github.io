@@ -6,7 +6,6 @@ style: resume
 ---
 <style>
 
-
 .button {
   width: 8em;
   background-color: #f5f5f5;
@@ -42,6 +41,10 @@ style: resume
     justify-content: center;  
 }
 
+li {
+  padding-bottom: 6px
+}
+
 </style>
 
 <div class="row">
@@ -58,12 +61,15 @@ style: resume
 
 ## Backstop Solutions 📈
 
-Backstop Solutions Group is a Software-as-a-Service company, providing cloud based solutions to hedge funds, funds-of-funds, endowments, and other institutional investors.
+Backstop Solutions Group is a Software-as-a-Service company, providing cloud based solutions to hedge funds, 
+funds-of-funds, endowments, and other institutional investors.
 
-###  Senior Software Engineer | Development Operations
-#### Oct 2020 - Present
-Took on responsibilities of DevOps Manager after the former manager’s departure; One-on-Ones with team members, participated in architecture/roadmap planning, delegated ticket assignments, paired with team members to make sure they were getting the support to complete their tasks.
+{% include resume-position.html 
+  title="Senior Software Engineer - DevOps"
+  date="Oct 2020 - Present"
+%}
 
+* Took on responsibilities of DevOps Manager after the former manager’s departure; One-on-Ones with team members, participated in architecture/roadmap planning, delegated ticket assignments, paired with team members to make sure they were getting the support to complete their tasks.
 * Run organization wide Trouble in a Production (TPS) meetings.
 * Participated in the hiring process; designed coding challenges, and interview process alongside other managers and lead engineers.
 * Designed homework challenges and interview process for engineering positions and participated in the screening and interview process.
@@ -71,11 +77,10 @@ Took on responsibilities of DevOps Manager after the former manager’s departur
 * Maintaining and building Continuous Integration / Continuous Delivery CICD pipelines using Nomad, Consul, Vault and Jenkins.
 * Chat noise ... I mean ChatOps
 
-
-### Software Engineer | Development Operations
-#### Jun 2019 - Sep 2020
-Developing and automating internal systems, applications and processes that support research & development, testing, database and leadership teams.
-
+{% include resume-position.html 
+  title="Software Engineer - DevOps"
+  date="Jun 2019 - Sep 2020"
+%}
 
 * Project Lead - Migrated testing system from a persistence to On-Demand model, increasing productivity and suitability while reducing costs.
 * Developed a EC2 instance backup restore process using AWS Data Lifecycle Manger (DLM).
@@ -89,15 +94,20 @@ Developing and automating internal systems, applications and processes that supp
 * Perform security assessments and implement remediations.
 * Created auto auditing scripts that searched for orphaned resources on AWS accounts.
 * Many hats: tools developer, automation engineer, cloud architect ... the list goes on.
-* Developed PowerShell scripts for Windows automation (a necessary evil).
+* Developed PowerShell scripts for Windows automation.
+* Developed scripts using the boto3 Python library to automate tasks and procedures. 
 
 ## Discovery Education 🌎
+
 Discovery Education provides digital curriculum resources for classrooms worldwide with digital textbooks,multimedia content, and a professional development community.
 
-### Software Engineer | Systems & Operations
-#### Aug 2016 - Jun 2019
-Project Lead on configuration management software upgrades, monitoring and alerting platform migration and development of deployment system. Worked in and promoted a Open-Source first solutions culture using open source over third-party vendor build solutions.
+{% include resume-position.html 
+  title="Systems/DevOps Engineer"
+  date="2016 - 2019"
+%}
 
+* Project Lead on configuration management software upgrades, monitoring and alerting platform migration and development of deployment system.
+* Worked in and promoted a opensource first solutions culture using open source over third-party vendor build solutions.
 * Part of team that created a AWS Disaster recovery POC using Terraform, EC2, RDS and Puppet.
 * Managed Puppet infrastructure through major version upgrades.
 * Deployed Nagios, Puppet and Elasticsearch on OpenStack using Heat.
@@ -110,20 +120,23 @@ Project Lead on configuration management software upgrades, monitoring and alert
 * Assisted the administration of Katello (Red Hat Satellite Server) that manages Linux packages, dependencies, and patches.
 * Supported organization wide effort to migrating Adobe Coldfusion applications to Lucee based Docker images.
 
-### Jr. Software Engineer | Systems & Operations
-#### Aug 2015 - Aug 2016
-Assisted in the implementing of infrastructure resources in three regions; United States, Canada and United Kingdom. Responsibilities included the development and design of systems, software deployment, hardware upgrades, scripting, documentation, platform upgrades, monitoring and hardware management.
+{% include resume-position.html 
+  title="Systems Engineer Jr."
+  date="2015 - 2016"
+%}
 
+* Responsibilities included the development and design of systems, software deployment, hardware upgrades, scripting, documentation, platform upgrades, monitoring and hardware management.
 * Migrated Gluster volumes to AWS S3 using AWS Snowball.
 * Maintained the SDLCs for Coldfusion/Lucee, Meteor, and Flask web applications.
 * Redesigned and deployed Nagios implementation using Puppet.
 * Configured the intrusion prevention software Fail2Ban to prevent brute force attacks.
-* Supported the org’s content publishing pipeline using S3, Handbrake, Gluster, and Cyberduck.
+* Supported content publishing pipeline using S3, Handbrake, Gluster, and Cyberduck.
 * Analyzed and resolved merge conflicts in Git and SVN.
 
-### Intern Systems & Infrastructure
-#### Summer 2015
-Selected for a three-month summer internship out of more than 150 applicants. Developed skills related to devops, systems, testing, networking and Linux administration in a global organization.
+{% include resume-position.html 
+  title="Intern Systems & Infrastructure"
+  date="Summer 2015"
+%}
 
 * Installed, upgraded, and configured CentOS 6.x, and 7.x nodes.
 * Developed Puppet modules and downloaded pre-written modules from Puppet Forge.
@@ -133,37 +146,59 @@ Selected for a three-month summer internship out of more than 150 applicants. De
 
 ## DePaul University 🎓
 
-Master of Science - Software Engineering 2019
+* Master of Science - Software Engineering 2019
+* Bachelor of Science - Computer Science 2016
 
-Bachelor of Science - Computer Science 2016
+{% include resume-position.html 
+  title="Adjunct Instructor"
+  date="2020 - 2021"
+%}
 
-### Technical Support
-#### Sep 2013 - Mar 2016
+Taught introduction into computer science courses, using the Python programming language, focusing on classes, objects, recursion,
+exception handling, runtime analysis, web crawling and GUIs.Teaching intro computer science courses, using the Python programming language,
+focusing on classes, objects, recursion, exception handling, runtime analysis, web crawling and GUIs.
+
+
+
+{% include resume-position.html 
+  title="Technical Support"
+  date="2013 - 2016"
+%}
+
 Responsible for imaging and deployment of faculty work stations and lab machines, as well as, providing technical support to both faculty and students.
 
-### Graduate Assistant Tutor
-#### Sep 2016 - May 2019
+{% include resume-position.html 
+  title="Graduate Assistant | Tutor"
+  date="2016 - 2019"
+%}
+
 Tutored undergraduate and graduate students in the following subjects and concepts: Java and Python syntax and structure, Introduction into Computer Science, Data Structures, Sorting Algorithms, Object Oriented Design Patterns, Introductory SQL,Bash, and Basic Linux administration and configuration.
 
-### Course Grader
-#### 2015 - 2016
-Evaluated and provided feedback to students' solutions and Enforced DePaul's Academic Integrity Policy. While communicating with professors regarding expectations, course polices, homework assignments and solutions.
+{% include resume-position.html 
+  title="Course Assistant | Grader"
+  date="2015 - 2016"
+%}
 
-* SC 300 - Data Structures I - Winter 2015
-* SE 350 - Object-Oriented Software Development - Spring 2016
-* CSC 374 - Computer Systems II - Spring 2016
+Evaluated and provided feedback to students' solutions While communicating with professors regarding expectations, course polices, homework assignments and solutions.
 
 ### Scholarships
 * Warren Krueger & Ronnveig Ernst Computer Science Scholarship
 * St. Vincent de Paul Scholarship
 * DePaul Leadership Scholarship
 
-## Early Jobs 🚜
-### Clearwater Camp | Maintenance & Grounds
-#### Summer 2013, 2014
+## Early Summer Jobs 🚜
+
+{% include resume-position.html 
+  title="Clearwater Camp | Maintenance & Grounds"
+  date="Summer 2013, 2014"
+%}
+
 Clearwater Camp is a American Camp Association member providing a summer camping experience for ages 8-16. During the summer lived on site and maintenance the camp grounds, cabins, equipment and vehicles.
 
-### Hughes Seed Farm | Corn Detasseler
-#### Summer 2011, 2012
+{% include resume-position.html 
+  title="Hughes Seed Farm | Corn Detasseler"
+  date="Summer 2011, 2012"
+%}
+
 Farm work. Road on tractors, pulled corn tassels, and drove trucks all starting before the rooster crowed.
 
