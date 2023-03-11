@@ -512,9 +512,203 @@ true from the perspective of a caller.
 
 *If all the routine’s preconditions are met by the caller, the routine shall guarantee that all postconditions and invariants will be true when it completes.*
 
-**TIP 30** Design with Contracts
+**TIP 31** Design with Contracts
 
-### 22 Dead Programs Tell No Lies
+## 22 Dead Programs Tell No Lies
+
+It’s easy to fall into the “it can’t happen” mentality. Most of us have written code that didn’t check that a file closed successfully, or that a trace statement got written as we expected. And all things being equal, it’s likely that we didn’t need to—the code in question wouldn’t fail under any normal conditions. But we’re coding defensively.
+
+All errors give you information. You could convince yourself that the error can’t happen, and choose to ignore it. Instead, Pragmatic Programmers tell themselves that if there is an error, something very, very bad has happened.
+
+**TIP 32** Crash Early
+
+### Crash, Don’t Trash
+
+Many times, crashing your program is the best thing you can do. The alternative may be to continue, writing corrupted data to some vital database or commanding the washing machine into its twentieth consecutive spin cycle. <mark>A dead program normally does a lot less damage than a crippled one.</mark>
+
+## 23 Assertive Programming
+
+It seems that there’s a mantra that every programmer must memorize early in his or her career. "THIS CAN NEVER HAPPEN..." "This code won’t be used 30 years from now, so two-digit dates are fine." "This application will never be used abroad, so why internationalize it?" "count can’t be negative." "This printf can’t fail."
+
+> **TIP 33** -- If It Can’t Happen, Use Assertions to Ensure That It Won’t
+
+Don’t use assertions in place of real error handling. Assertions check for things that should never happen.
+
+### Leave Assertions Turned On
+
+There is a common misunderstanding about assertions, promulgated by the people who write compilers and language environments:
+
+"Assertions add some overhead to code. Because they check for things that should never happen, they’ll get triggered only by a bug in the code. Once the code has been tested and shipped, they are no longer needed, and should be turned off to make the code run faster. Assertions are a debugging facility."
+
+There are two patently wrong assumptions here.
+* First, they assume that testing finds all the bugs. In reality, for any complex program you are unlikely to test even a miniscule percentage of the permutations
+your code will be put through.
+* Second, the optimists are forgetting that your program runs in a dangerous world. During testing, rats probably won’t gnaw through a communications cable, someone playing a game won’t exhaust memory, and log files won’t fill the hard drive. These things might happen when your program runs in a production environment. Your first line of defense is checking for any possible error, and your second is using assertions to try to detect those you’ve missed.
+
+Turning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice. There’s dramatic value, but it’s hard to get life insurance.
+
+## 24 When to Use Exceptions
+
+We believe that exceptions should rarely be used as part of a program’s normal flow; <mark> exceptions should be reserved for unexpected events.</mark>
+
+Assume that an uncaught exception will terminate your program and ask yourself, “Will this code still run if I remove all the exception handlers?” If the answer is "no," then maybe exceptions are being used in non-exceptional circumstances.
+
+For example, if your code tries to open a file for reading and that file does not exist, should an exception be raised? 
+
+Our answer is, **"It depends."**
+
+* If the file _should_ have been there, then an exception **is** warranted. Something unexpected happened. A file you were expecting to exist disappeared. 
+* If you have no idea whether the file should exist or not, then it doesn’t seem exceptional if you can’t find it, and an error return is appropriate.
+
+> **TIP 34** -- Use Exceptions for Exceptional Problems
+
+Programs that use exceptions as part of their normal processing suffer from all the readability and maintainability problems
+of classic spaghetti code.
+
+### Error Handlers Are an Alternative
+
+An error handler is a routine that is called when an error is detected.
+
+You can register a routine to handle a specific category of errors. 
+
+There are times when you may want to use error handlers, either in-stead of or alongside exceptions.
+
+Clearly, if you are using a language such as C, which does not support exceptions, this is one of your few other options. However, sometimes
+error handlers can be used even in languages (such as Java) that have
+a good exception handling scheme built in.
+
+## 25 How to Balance Resources
+
+We all manage resources whenever we code: memory, transactions, threads, files, timers—all kinds of things with limited availability.
+
+> **TIP 35** -- Finish What You Start
+
+It simply means that the routine or object that allocates a resource should be responsible for deallocating it. 
 
 
+### Nest Allocations
 
+The basic pattern for resource allocation can be extended for routines that need more than one resource at a time. There are just two more suggestions:
+
+1. <mark>Deallocate resources in the opposite order to that in which you allocate them. That way you won’t orphan resources if one resource contains references to another.</mark>
+2. When allocating the same set of resources in different places in your code, always allocate them in the same order. This will reduce the possibility of deadlock. 
+
+### Objects and exceptions
+
+If you are programming in an object-oriented language, you may find it useful to encapsulate resources in classes. Each time you need a particular resource type, you instantiate an object of that class. When the object goes out of scope, or is reclaimed by the garbage collector, the object’s destructor then deallocates the wrapped resource.
+
+### Balancing and Exceptions 
+
+If an exception is thrown, how do you guarantee that everything allocated prior to the exception is tidied up? **The answer depends to some extent on the language.**
+
+# Chapter 5 - Bend, or Break
+
+In order to keep up with today’s near-frantic pace of change, we need to make every effort to write code that’s as loose—as flexible—as possible. In this chapter, we’ll tell you how to make reversible decisions, so your code can stay flexible and adaptable in the face of an uncertain world.
+
+## 26 Decoupling and the Law of Demeter
+
+Organize your code into cells (modules) and limit the interaction between them. 
+
+What’s wrong with having modules that know about each other? Nothing in principle — we don’t need to be as paranoid as spies or dissidents. However, you do need to be careful about how many other modules you interact with and, more importantly, how you came to interact with them.
+
+
+Traversing relationships between objects directly can quickly lead to a combinatorial explosion of dependency relationships. If `n` objects all know about each other, then a change to just one object can result
+in the other `n -1` objects needing changes
+
+You can see symptoms of this phenomenon in a number of ways:
+* Simple changes to one module that propagate through unrelated modules in the system.
+* Developers who are afraid to change code because they aren’t sure what might be affected.
+
+Systems with many unnecessary dependencies are very hard and expensive to maintain, and tend to be highly unstable. 
+
+### The Law of Demeter for Functions 
+
+> **TIP 36** -- Minimize Coupling Between Modules
+
+The Law of Demeter for functions states that any method of an object should call only methods belonging to:
+1. itself
+2. any parameters that were passed in to the method
+3. any objects it created
+4. any directly held component objects
+
+```
+class Demeter {
+    private:
+        A *a;
+        int func();
+public:
+    //...
+    void example(B& b);
+}
+
+void Demeter::example(B& b) { // 
+    C c;
+    int f = func();     // <= 1. itself
+    b.invert();         // <= 2. any parameters that were passed in to the method
+    a = new A();
+    a->setActive();     // <= 3. any objects it created
+    c.print();          // <= 4. any directly held component objects
+}
+```
+
+## ► 27 Metaprogramming
+
+Every time we have to go in and change the code to accommodate some change in business logic, or in the law, or in management’s personal tastes of the day, we run the risk of breaking the system—of introducing
+a new bug. So we say “out with the details!” Get them out of the code. 
+
+### Dynamic Configuration
+
+> **TIP 37** -- Configure, Don’t Integrate
+
+First, we want to make our systems highly configurable. Not just things such as screen colors, but deeply ingrained items such as the choice of algorithms, database products, middleware technology, and user-interface style. These items should be implemented as configuration options, not through integration or engineering. Use **metadata** to describe configuration options for an application: tuning parameters, user preferences, the installation directory, and so on.
+
+We use the term in its broadest sense. Metadata is any data that describes the application—how it should run, what resources it should use, and so on. Typically, metadata is accessed and used at runtime, not at compile time.
+
+### Metadata-Driven Applications
+
+> **TIP 38** -- Put Abstractions in Code, Details in Metadata
+
+There are several benefits to this approach:
+* It forces you to decouple your design, which results in a more flexible and adaptable program.
+* It forces you to create a more robust, abstract design by deferring details—deferring them all the way out of the program
+* You can customize the application without recompiling it.
+* Metadata can be expressed in a manner that’s much closer to the problem domain than a general-purpose programming language.
+* You may even be able to implement several different projects using the same application engine, but with different metadata.
+
+### Business Logic
+
+<mark>Because business policy and rules are more likely to change than any other aspect of the project, it makes sense to maintain them in a very flexible format.</mark>
+
+## ► 28 Temporal Coupling
+
+We are talking about the role of time as a design element of the software itself. There are two aspects of time that are important to us:
+* concurrency - things happening at the same time
+* ordering - the relative positions of things in time
+
+When people first sit down to design an architecture or write a program, things tend to be linear. That’s the way most people think do this and then always do that.
+
+But thinking this way leads to temporal coupling: coupling in time.
+* Method A must always be called before method B;
+* only one report can be run at a time;
+* you must wait for the screen to redraw before the button click is received.
+* Tick must happen before tock.
+
+We need to allow for concurrency and to think about decoupling any time or order dependencies
+
+> **TIP 39** -- Analyze Workflow to Improve Concurrency
+
+One way to do this is to capture their description of workflow using a notation such as the UML activity diagram. You can use diagrams to maximize parallelism by identifying items that could be performed in parallel.
+
+> **TIP 40** -- Design Using Services
+
+Instead of components, we have really created services—independent, concurrent objects behind well-defined, consistent interfaces.
+
+### Design for Concurrency
+
+With linear code, it’s easy to make assumptions that lead to sloppy programming. But concurrency forces you to think through things a bit more carefully—you’re not alone at the party anymore. Because things can now happen at the “same time,” you may suddenly see some time based dependencies.
+
+To begin with, any global or static variables must be protected from concurrent access. 
+
+> **TIP 41** -- Always Design for Concurrency
+
+## ► It’s Just a View
