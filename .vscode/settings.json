@@ -4,5 +4,8 @@
         "_site/": true,
         "Gemfile.lock": true,
         ".vscode/": true
-    }
+    },
+    "cSpell.words": [
+        "creds"
+    ]
 }
