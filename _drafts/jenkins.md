@@ -21,7 +21,7 @@ adminUser : YouShouldNotSeeThis
 password1 : user1 : ambergoose14
 
 
-
+If you have access to the job's script, pipline, Jenkinsfile or have the abuility to replay the job, then you also have access to all secrets that job has access too. 
 
 
 What exactly happens during a build is often controlled by people less trusted than a Jenkins administrator;  Most Jenkins environments grow over time requiring their trust models to evolve as the environment grows. Please consider scheduling regular "check-ups" to review whether any disabled security settings should be re-enabled.
