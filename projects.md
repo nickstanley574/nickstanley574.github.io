@@ -4,12 +4,11 @@ layout: default
 title: Projects
 style: projects
 ---
- 
+
 <style>
 .box {
     display: flex;
     align-items:center;
-    font-size: 1.17em;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
@@ -38,3 +37,9 @@ Live: <a href="https://nickstanley574.github.io/freeCodeCampProjects/">https://n
 * Data Visualization
 * JavaScript Algorithms DataStructures
 * APIs and Microservices
+
+<div class="box">
+    <h2 style="">LineLock</h2><img style="padding-left:8px" width="28" src="https://nickstanley574.github.io/linelock/favicon.ico">
+</div>
+
+Simple static page that encrypt and decrypts single lines of text using the crypto-js javascript library. - [Github](https://github.com/nickstanley574/linelock) - [Live](https://nickstanley574.github.io/linelock/)
