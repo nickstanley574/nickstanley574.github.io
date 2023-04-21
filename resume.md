@@ -72,7 +72,7 @@ funds-of-funds, endowments, and other institutional investors.
   title="Senior Software Engineer - DevOps"
   date="Oct 2020 - Present"
 %}
-* Responsible for the internal container deployment and orchestration system utilizing Ruby, Python, Nomad, Vault, Consul, Nginx, and Jenkins.
+* {: .pdfresume} Responsible for the internal container deployment and orchestration system utilizing Ruby, Python, Nomad, Vault, Consul, Nginx, and Jenkins.
 * Lead DevOps team member of the Oracle to Postgres migration project. 
 * Participating in business continuity planning; Identifying single points of failure and developing procedures to ensure core business would keep functioning during worst case scenarios.
 * Took on responsibilities of DevOps Manager after the former manager’s departure; One-on-Ones with team members, participated in architecture/roadmap planning, delegated ticket assignments, paired with team members to make sure they were getting the support to complete their tasks.
