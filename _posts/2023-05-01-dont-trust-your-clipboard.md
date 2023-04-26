@@ -4,11 +4,7 @@ emoji: 🗒️
 asset: "/assets/posts/dont-trust-your-clipboard"
 ---
 
-One of the best things about the software profession is the culture of knowledge sharing. You can find solutions, manuals, tutorials, and blogs all over the internet with examples, commands, and code snippets.
-
-At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources such as tutorials, Stack Overflow posts, READMEs, gists, blogs, and the like.
-
-Just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals, which can also lead to severe consequences.
+At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources such as tutorials, Stack Overflow posts, READMEs, gists, blogs, and the like. Just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals, which can also lead to severe consequences.
 
 This post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution, as there may be risks involved. Later on, we will delve into the reasons why I felt the need to include this disclaimer.
 
@@ -27,11 +23,11 @@ Although the rickroll itself may seem harmless, the fact that it involves arbitr
     <img style="max-width: 85%;" src="{{ page.asset }}/copy_select_brew.png">
 </div>
 
-Running arbitrary code that you do not understand or trust. Let's examine the different methods of copying text that can lead to code execution, including copying via button and the traditional select, copy, and paste method.
+Let's examine the different methods of copying text that can lead to code execution, including copying via button and the traditional select, copy, and paste method.
 
 ## Copy Text Via Button
 
-The copy button purpose is to save you the backbreaking task of highlighting and `ctrl + c` or `right click copy` the text itself. Below of some examples in the last month of where I have encountered the copy text button:
+The copy button purpose is to save you the backbreaking task of highlighting and `ctrl + c` or `right click copy` the text itself. Below of some examples where I have encountered the copy text button:
 
 #### [Amazon EC2 key pairs | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 
@@ -48,7 +44,7 @@ Github injects a copy button for all code block in READMEs.
 </div>
 
 
-The examples above are not inherently harmful, but they lead individuals trust the copy button as a means of transferring commands from a website to a terminal. What's overlooked is that you are at the mercy of the website's code. Let's consider a scenario where we visit a blog post written by someone with malicious intent.
+The examples above are not inherently harmful, but they lead individuals to trust the copy button as a means of transferring commands from a website to a terminal. What's overlooked is that you are at the mercy of the website's code. Let's consider a scenario where we visit a blog post written by someone with malicious intent.
 
 <link rel="stylesheet" href="{{ page.asset }}/totallysafeandhelpful.css">
 
@@ -113,7 +109,7 @@ This is what is copied to the clipboard when the copy button is clicked:
 curl -L https://nickstanley574.github.io{{ page.asset }}/ghostbusters \n
 ```
 
-Using `select()` plus `execCommand()` is the way most copy buttons on webpage work, just instead of adding a dummy element and text behind seen They select and copy the text from elements seen by the user, but the user is at the mercy of the copy function.
+Using `select()` plus `execCommand()` is the way most copy buttons on webpage work, just instead of adding a dummy element, they select and copy the text from elements seen by the user, but the user is at the mercy of the copy function.
 
 ## Select, Copy & Paste
 
