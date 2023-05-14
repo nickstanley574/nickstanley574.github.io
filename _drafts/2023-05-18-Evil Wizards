@@ -1,0 +1,37 @@
+
+I was reviewing my Pragmatic Programmer notes the other day and I came accross the my notes on the "Evil Wixards" section. 
+
+Tool makers and infrastructure vendors have come up with a magic bullet, the wizard. Wizards are great. Just click a single button, answer a couple of simple questions, and the wizard will automatically generate skeleton code for you.
+
+
+All the time the applications themselves are getting more complex. Most
+developments now use a multitier model, possibly with some middle-
+ware layer or a transaction monitor. These programs are expected to be
+dynamic and flexible, and to interoperate with applications written by
+third parties.
+
+Oh, and did we mention that we needed it all next week?
+
+Developers are struggling to keep up. If we were using the same kind
+of tools that produced the basic dumb-terminal applications 20 years
+ago, we’d never get anything done.
+
+So the tool makers and infrastructure vendors have come up with a
+magic bullet, the wizard. Wizards are great. Do you need an MDI appli-
+cation with OLE container support? Just click a single button, answer a
+couple of simple questions, and the wizard will automatically generate
+skeleton code for you. The Microsoft Visual C++ environment creates
+over 1,200 lines of code for this scenario, automatically. Wizards are
+hard at work in other contexts, too. You can use wizards to create server
+components, implement Java beans, and handle network interfaces—
+all complex areas where it’s nice to have expert help.
+
+But using a wizard designed by a guru does not automatically make Joe
+developer equally expert. Joe can feel pretty good—he’s just produced
+a mass of code and a pretty spiffy-looking program. He just adds in the
+specific application functionality and it’s ready to ship. But unless Joe
+actually understands the code that has been produced on his behalf,
+he’s fooling himself. He’s programming by coincidence. Wizards are a
+one-way street—they cut the code for you, and then move on. If the code they produce isn’t quite right, or if circumstances change and you
+need to adapt the code, you’re on your own.
+

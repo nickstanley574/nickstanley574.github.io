@@ -711,4 +711,141 @@ To begin with, any global or static variables must be protected from concurrent 
 
 > **TIP 41** -- Always Design for Concurrency
 
-## ► It’s Just a View
+## ► 29 It’s Just a View
+
+We don’t want to have three separate copies of the data. So we create a model—the data itself, with common operations to manipulate it. Then we can create separate views that display the data in different ways: as a spreadsheet, as a graph, or in a totals box. Each of these views may have its own controller. The graph view may have a controller that allows you to zoom in or out, or pan around the data, for example. None of this affects the data itself, just that view. This is the key concept behind the Model-View-Controller (MVC) idiom: separating the model from both the GUI that represents it and the controls that manage the view.
+
+The view and controller are tightly coupled, and in some implementations of MVC the view and controller are a single component.
+
+> **TIP 42** -- Separate Views from Models
+
+### Beyond GUIs
+
+* **Model** - The abstract data model representing the target object. The model has no direct knowledge of any views or controllers.
+* **View** - A way to interpret the model. It subscribes to changes in the model and logical events from the controller.
+* **Controller** - A way to control the view and provide the model with new data. It publishes events to both the model and the view.
+
+## ► 30 Blackboards
+
+Consider how detectives might use a blackboard to coordinate and solve a murder investigation. Each detective may make
+contributions to this potential murder mystery by adding facts, statements from witnesses, any forensic evidence that might arise, and soon. As the data accumulates, a detective might notice a connection and post that observation or speculation as well.
+
+None of the detectives needs to know of the existence of any other detective—they watch the board for new information, and add their findings.
+
+The detectives may be trained in different disciplines, may have different levels of education and expertise, and may not even work in the same precinct. They share a desire to solve the case, but that’s all.
+
+Different detectives may come and go during the course of the process, and may work different shifts.
+
+There are no restrictions on what may be placed on the blackboard. It may be pictures, sentences, physical evidence, and so on.
+
+A blackboard system lets us decouple our objects from each other completely, providing a forum where knowledge consumers and producers can exchange data anonymously and asynchronously. As you might guess, it also cuts down on the amount of code we have to write.
+
+> **TIP 43** -- Use Blackboards to Coordinate Workflow
+
+# Chapter 6 - While You Are Coding
+
+Pragmatic Programmers think critically about all code, including our own. We constantly see room for improvement in our programs and our designs. In Refactoring, we look at techniques that help us fix up existing code even while we’re in the midst of a project.
+
+## ► 31 Programming by Coincidence
+
+### Accidents of Implementation
+
+Accidents of implementation are things that happen simply because that’s the way the code is currently written. You end up relying on undocumented error or boundary conditions. "It works now, better leave well enough alone. . . .”
+
+It’s easy to be fooled by this line of thought. Why should you take the risk of messing with something that’s working? 
+
+* It may not really be working—it might just look like it is.
+* The boundary condition you rely on may be just an accident. In different circumstances (a different screen resolution, perhaps), it might behave differently.
+* Undocumented behavior may change with the next release of the library.
+* Additional and unnecessary calls make your code slower.
+* Additional calls also increase the risk of introducing new bugs of their own.
+
+### Implicit Assumptions
+
+Coincidences can mislead at all levels—from generating requirements through to testing. At all levels, people operate with many assumptions in mind but these assumptions are rarely documented and are often in conflict between different developers. Assumptions that aren’t based on well-established facts are the bane of all projects.
+
+> **TIP 44** -- Don’t Program by Coincidence
+
+### How to Program Deliberately
+
+* Always be aware of what you are doing. 
+* <mark>Don’t code blindfolded. Attempting to build an application you don’t fully understand, or to use a technology you aren’t familiar with, is an invitation to be misled by coincidences.</mark>
+* Proceed from a plan. 
+* Rely only on reliable things. Don’t depend on accidents or assumptions.
+* <mark>Document your assumptions.</mark>
+* Don’t just test your code, but test your assumptions as well. 
+* Prioritize your effort.
+* Don’t be a slave to history. Don’t let existing code dictate future code.
+
+## ► 32 Algorithm Speed
+
+### The O() Notation
+
+The O() notation is a mathematical way of dealing with approximation.
+
+Whenever you find yourself writing a simple loop, you know that you have an *O(n)* algorithm. If that loop contains an inner loop, then you’re looking at *O(m x n)*. You should be asking yourself how largethese values can get. If the numbers are bounded, then you’ll know how long the code will take to run. If the numbers depend on external factors (such as the number of records in an overnight batch run, or the number of names in a list of people), then you might want to stop and consider the effect that large values may have on your running time or memory consumption.
+
+> **TIP 45** -- Estimate the Order of Your Algorithms
+
+> **TIP 46** -- Test Your Estimates
+
+If it’s tricky getting accurate timings, use code profilers to count the number of times the different steps in your algorithm get executed, and plot these figures against the size of the input.
+
+## ► 33 Refactoring
+
+Code needs to evolve; it’s not a static thing.
+
+<mark>Unfortunately, the most common metaphor for software development is building construction. Well, software doesn’t quite work that way. Rather than construction, software is more like gardening—it is more organic than concrete. You plant many things in a garden according to an initial plan and conditions. Some thrive, others are destined to end up as compost. You may move plantings relative to each other to take advantage of the inter- play of light and shadow, wind and rain. Overgrown plants get split or pruned, and colors that clash may get moved to more aesthetically pleasing locations. You pull weeds, and you fertilize plantings that are in need of some extra help. You constantly monitor the health of the garden, and make adjustments (to the soil, the plants, the layout) as needed.</mark>
+
+### When Should You Refactor?
+
+1. Duplication
+2. Nonorthogonal design. 
+3. Outdated knowledge. 
+4. Performance. 
+
+> **TIP 47** -- Refactor Early, Refactor Often
+
+### How Do You Refactor?
+
+Martin Fowler offers the following simple tips on how to refactor without doing more harm than good:
+
+1. Don’t try to refactor and add functionality at the same time.
+2. <mark>Make sure you have good tests before you begin refactoring. Run the tests as often as possible. That way you will know quickly if your changes have broken anything.<mark>
+3. Take short, deliberate steps.
+
+## ► 34 Code That’s Easy to Test
+
+### Unit Testing
+
+A software unit test is code that exercises a module. Typically, the unit test will establish some kind of artificial environment, then invoke rou- tines in the module being tested. It then checks the results that are returned, either against known values or against the results from previous runs of the same test (regression testing).
+
+> **TIP 48** -- Design to Test
+
+When you design a module, or even a single routine, you should design both its contract and the code to test that contract. By designing code to pass a test and fulfill its contract, you may well consider boundary conditions and other issues that wouldn’t occur to you otherwise. There’s no better way to fix errors than by avoiding them in the first place. In fact, by building the tests before you implement the code, you get to try out the interface before you commit to it.
+
+Regardless of the technology you decide to use, test harnesses should include the following capabilities
+
+* A standard way to specify setup and cleanup
+* A method for selecting individual tests or all available tests
+* A means of analyzing output for expected (or unexpected) results
+* A standardized form of failure reporting
+
+### A Culture of Testing
+
+All software you write will be tested—if not by you and your team, then by the eventual users—so you might as well plan on testing it thoroughly.
+
+> **TIP 49** -- Test Your Software, or Your Users Will
+
+## 35 Evil Wizards
+
+Tool makers and infrastructure vendors have come up with a magic bullet, the wizard. Wizards are great. Just click a single button, answer a couple of simple questions, and the wizard will automatically generate skeleton code for you.
+
+But using a wizard designed by a guru does not automatically make Joe developer equally expert. Joe can feel pretty good—he’s just produced a mass of code and a pretty spiffy-looking program. He just adds in the specific application functionality and it’s ready to ship. But unless Joe actually understands the code that has been produced on his behalf, he’s fooling himself. He’s programming by coincidence.
+
+Wizards are a one-way street—they cut the code for you, and then move on. If the code they produce isn’t quite right, or if circumstances change and you need to adapt the code, you’re on your own.
+
+> **TIP 50** -- Don’t Use Wizard Code You Don’t Understand
+
+
+# Chapter 7 - While You Are Coding
