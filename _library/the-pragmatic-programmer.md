@@ -49,7 +49,7 @@ The construction of software should be an engineering discipline. However, this 
 
 Being responsible, Pragmatic Programmers won’t sit idly by and watch their projects fall apart through neglect.
 
-## 1 The Cat Ate My Source Code
+## ➤ 1 The Cat Ate My Source Code
 
 *The greatest of all weaknesses is the fear of appearing weak.* - J. B. Bossuet, Politics from Holy Writ, 1709
 
@@ -65,7 +65,7 @@ Don’t blame someone or something else, or make up an excuse. Don’t blame all
 
 **TIP 3:** Provide Options, Don’t Make Lame Excuses
 
-## 2 Software Entropy 
+## ➤ 2 Software Entropy 
 
 Entropy is a term from physics that refers to the amount of “disorder” in a system. Unfortunately, the laws of thermodynamics guarantee that the entropy in the universe tends toward a maximum. When disorder increases in software, programmers call it “software rot.”
 
@@ -77,7 +77,7 @@ Don’t leave “broken windows” (bad designs, wrong decisions, or poor code) 
 
 By the same token, if you find yourself on a team and a project where the code is pristinely beautiful—cleanly written, well designed, and elegant you will likely take extra special care not to mess it up, just like the firefighters. Even if there’s a fire raging (deadline, release date, trade show demo, etc.), you don’t want to be the first one to make a mess.
 
-## 3 Stone Soup and Boiled Frogs
+## ➤ 3 Stone Soup and Boiled Frogs
 
 You may be in a situation where you know exactly what needs doing and how to do it. The entire system just appears before your eyes you know it’s right. But ask permission to tackle the whole thing and you’ll be met with delays and blank stares. People will form committees, budgets will need approval, and things will get complicated. Everyone will guard their own resources. Sometimes this is called “start-up fatigue.”
 
@@ -90,7 +90,7 @@ specifications feature by feature, while patch after patch gets added to a piece
 
 **TIP 6** Remember the Big Picture 
 
-## 4 Good-Enough Software
+## ➤ 4 Good-Enough Software
 
 <mark>The real world just won’t let us produce much that’s truly perfect, particularly not bug-free software. Time, technology, and temperament all conspire against us. Discipline yourself to write software that’s good enough—good enough for your users, for future maintainers, for your own peace of mind. </mark>
 
@@ -109,7 +109,7 @@ Programming is like painting. You start with a blank canvas and materials. You u
 
 But artists will tell you that all the hard work is ruined if you don’t know when to stop. If you add layer upon layer, detail over detail, the painting becomes lost in the paint.
 
-## 5 Your Knowledge Portfolio
+## ➤ 5 Your Knowledge Portfolio
 
 Your knowledge becomes out of date as new techniques, languages, and environments are developed. Your knowledge is a <mark>they’re expiring asset.</mark>
 
@@ -141,7 +141,7 @@ You need to ensure that the knowledge in your portfolio is accurate and unswayed
 
 There are very few simple answers.
 
-## 6 Communicate!
+## ➤ 6 Communicate!
 
 ### Know What You Want to Say
 
@@ -156,12 +156,12 @@ We’ve all sat in meetings where a development geek glazes over the eyes of the
 ```
 # The WISDOM acrostic—understanding an audience
 
-                    What do you want them to learn?
-      What is their Interest in what you’ve got to say?
-                How Sophisticated are they?
-           How much Detail do they want?
-Whom do you want to Own the information?
-        How can you Motivate them to listen to you?
+                    W-hat do you want them to learn?
+      What is their I-nterest in what you’ve got to say?
+                How S-ophisticated are they?
+           How much D-etail do they want?
+Whom do you want to O-wn the information?
+        How can you M-otivate them to listen to you?
 
 What
 Interest
@@ -204,7 +204,7 @@ Always respond to e-mails and voice mails, even if the response is simply “I�
 
 # Chapter 2 A Pragmatic Approach
 
-## 7 The Evils of Duplication
+## ➤ 7 The Evils of Duplication
 
 Most people assume that maintenance begins when an application is released, that maintenance means fixing bugs and enhancing features. We think these people are wrong. Programmers are constantly in maintenance mode. Our understanding changes day by day.
 
@@ -223,7 +223,7 @@ EVERY PIECE OF KNOWLEDGE MUST HAVE A SINGLE, UNAMBIGUOUS, AUTHORITATIVE REPRESEN
 
 **TIP 12** Make It Easy to Reuse
 
-## 8 Orthogonality
+## ➤ 8 Orthogonality
 
 “Orthogonality” is a term borrowed from geometry. Two lines are orthogonal if they meet at right angles, such as the axes on a graph. 
 
@@ -258,7 +258,7 @@ There are several techniques you can use to maintain orthogonality:
 * Avoid global data
 * Avoid similar functions.
 
-## 9 Reversibility
+## ➤ 9 Reversibility
 
 Engineers prefer simple, single solutions to problems. Management tends to agree with the engineers: single, easy answers fit nicely on spreadsheets and project plans. If only the real world would cooperate!
 
@@ -272,7 +272,7 @@ Suppose you decide, early in the project, to use a relational database from vend
 
 **TIP 14** There Are No Final Decisions
 
-## 10 Tracer Bullets
+## ➤ 10 Tracer Bullets
 
 *Ready, fire, aim...*
 
@@ -305,7 +305,7 @@ With a prototype, you’re aiming to explore specific aspects of the final syste
 
 The tracer code approach addresses a different problem. You need to know how the application as a whole hangs together. You want to show your users how the interactions will work in practice, and you want to give your developers an architectural skeleton on which to hang code.
 
-## 11 Prototypes and Post-it Notes
+## ➤ 11 Prototypes and Post-it Notes
 
 We build software prototypes to analyze and expose risk, and to offer chances for correction at a greatly reduced cost. Like the car makers, we can target a prototype to test one or more specific aspects of a project.
 
@@ -326,13 +326,13 @@ Prototypes are designed to answer just a few questions, so they are much cheaper
 
 <mark>Before you embark on any code-based prototyping, make sure that everyone understands that you are writing disposable code.</mark>Prototypes can be deceptively attractive to people who don’t know that they are just prototypes. You must make it very clear that this code is disposable, incomplete, and unable to be completed.
 
-## 12 Domain Languages
+## ➤ 12 Domain Languages
 
 Languages influence how you think about a problem, and how you think about communicating. 
 
 **TIP 17** Program Close to the Problem Domain
 
-## 13 Estimating
+## ➤ 13 Estimating
 
 **TIP 18** Estimate to Avoid Surprises
 
@@ -384,7 +384,7 @@ Every craftsman starts his or her journey with a basic set of good quality tools
 
 Like the craftsman, expect to add to your toolbox regularly. Always be on the lookout for better ways of doing things.
 
-## 14 The Power of Plain Text
+## ➤ 14 The Power of Plain Text
 
 Plain text is made up of printable characters in a form that can be read and understood directly by people.
 
@@ -398,13 +398,13 @@ Human-readable forms of data, and self-describing data, will outlive all other f
 
 Virtually every tool in the computing universe, from source code management systems to compiler environments to editors and stand-alone filters, can operate on plain text.
 
-## 15 Shell Games
+## ➤ 15 Shell Games
 
 Every woodworker needs a good, solid, reliable workbench, for a programmer manipulating files of text, that workbench is the command shell. From the shell prompt, you can invoke your full repertoire of tools, using pipes to combine them in ways never dreamt of by their original developers. 
 
 **TIP 21** Use the Power of Command Shells
 
-## 16 Power Editing
+## ➤ 16 Power Editing
 
 You need to be able to manipulate text as effortlessly as possible, because text is the basic raw material of programming.
 
@@ -414,7 +414,7 @@ We think it is better to know one editor very well, and use it for all editing t
 
 **TIP 22** Use a Single Editor Well
 
-## 17 Source Code Control
+## ➤ 17 Source Code Control
 
 **TIP 23** Always Use Source Code Control
 
@@ -423,7 +423,7 @@ Always. Even if you are a single-person team on a one-week project. Even if it�
 
 <mark>There is a tremendous hidden benefit in having an entire project under the umbrella of a source code control system: you can have product builds that are automatic and repeatable.</mark>
 
-## 18 Debugging
+## ➤ 18 Debugging
 
 No one writes perfect software, so it’s a given that debugging will take up a major portion of your day. 
 
@@ -469,13 +469,13 @@ When you find yourself surprised by a bug (perhaps even muttering “that’s im
 
 **TIP 27** Don't Assume It - Prove IT
 
-## 19 Text Manipulation
+## ➤ 19 Text Manipulation
 
 Pragmatic Programmers manipulate text the same way woodworkers shape wood. Text manipulation languages are to programming what routers. Here router means the tool that spins cutting blades very, very fast, not a device for interconnecting networks. They are noisy, messy, and somewhat brute force. Make mistakes with them, and entire pieces can be ruined
 
 **TIP 28** Learn a Text Manipulation Language
 
-## 20 Code Generators
+## ➤ 20 Code Generators
 
 **TIP 29** Write Code That Writes Code
 
@@ -497,7 +497,7 @@ We are constantly interfacing with other people’s code—code that might not l
 
 Pragmatic Programmers take this a step further. They don’t trust themselves, either. Knowing that no one writes perfect code, including themselves, Pragmatic Programmers code in defenses against their own mistakes.
 
-## 21 Design by Contract
+## ➤ 21 Design by Contract
 
 A contract defines your rights and responsibilities, as well as those of the other party. In addition, there is an agreement concerning repercussions if either party fails to abide by the contract.
 
@@ -514,7 +514,7 @@ true from the perspective of a caller.
 
 **TIP 31** Design with Contracts
 
-## 22 Dead Programs Tell No Lies
+## ➤ 22 Dead Programs Tell No Lies
 
 It’s easy to fall into the “it can’t happen” mentality. Most of us have written code that didn’t check that a file closed successfully, or that a trace statement got written as we expected. And all things being equal, it’s likely that we didn’t need to—the code in question wouldn’t fail under any normal conditions. But we’re coding defensively.
 
@@ -526,7 +526,7 @@ All errors give you information. You could convince yourself that the error can�
 
 Many times, crashing your program is the best thing you can do. The alternative may be to continue, writing corrupted data to some vital database or commanding the washing machine into its twentieth consecutive spin cycle. <mark>A dead program normally does a lot less damage than a crippled one.</mark>
 
-## 23 Assertive Programming
+## ➤ 23 Assertive Programming
 
 It seems that there’s a mantra that every programmer must memorize early in his or her career. "THIS CAN NEVER HAPPEN..." "This code won’t be used 30 years from now, so two-digit dates are fine." "This application will never be used abroad, so why internationalize it?" "count can’t be negative." "This printf can’t fail."
 
@@ -547,7 +547,7 @@ your code will be put through.
 
 Turning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice. There’s dramatic value, but it’s hard to get life insurance.
 
-## 24 When to Use Exceptions
+## ➤ 24 When to Use Exceptions
 
 We believe that exceptions should rarely be used as part of a program’s normal flow; <mark> exceptions should be reserved for unexpected events.</mark>
 
@@ -577,7 +577,7 @@ Clearly, if you are using a language such as C, which does not support exception
 error handlers can be used even in languages (such as Java) that have
 a good exception handling scheme built in.
 
-## 25 How to Balance Resources
+## ➤ 25 How to Balance Resources
 
 We all manage resources whenever we code: memory, transactions, threads, files, timers—all kinds of things with limited availability.
 
@@ -605,12 +605,11 @@ If an exception is thrown, how do you guarantee that everything allocated prior 
 
 In order to keep up with today’s near-frantic pace of change, we need to make every effort to write code that’s as loose—as flexible—as possible. In this chapter, we’ll tell you how to make reversible decisions, so your code can stay flexible and adaptable in the face of an uncertain world.
 
-## 26 Decoupling and the Law of Demeter
+## ➤ 26 Decoupling and the Law of Demeter
 
 Organize your code into cells (modules) and limit the interaction between them. 
 
 What’s wrong with having modules that know about each other? Nothing in principle — we don’t need to be as paranoid as spies or dissidents. However, you do need to be careful about how many other modules you interact with and, more importantly, how you came to interact with them.
-
 
 Traversing relationships between objects directly can quickly lead to a combinatorial explosion of dependency relationships. If `n` objects all know about each other, then a change to just one object can result
 in the other `n -1` objects needing changes
@@ -651,7 +650,7 @@ void Demeter::example(B& b) { //
 }
 ```
 
-## ► 27 Metaprogramming
+## ➤ 27 Metaprogramming
 
 Every time we have to go in and change the code to accommodate some change in business logic, or in the law, or in management’s personal tastes of the day, we run the risk of breaking the system—of introducing
 a new bug. So we say “out with the details!” Get them out of the code. 
@@ -679,7 +678,7 @@ There are several benefits to this approach:
 
 <mark>Because business policy and rules are more likely to change than any other aspect of the project, it makes sense to maintain them in a very flexible format.</mark>
 
-## ► 28 Temporal Coupling
+## ➤ 28 Temporal Coupling
 
 We are talking about the role of time as a design element of the software itself. There are two aspects of time that are important to us:
 * concurrency - things happening at the same time
@@ -711,7 +710,7 @@ To begin with, any global or static variables must be protected from concurrent 
 
 > **TIP 41** -- Always Design for Concurrency
 
-## ► 29 It’s Just a View
+## ➤ 29 It’s Just a View
 
 We don’t want to have three separate copies of the data. So we create a model—the data itself, with common operations to manipulate it. Then we can create separate views that display the data in different ways: as a spreadsheet, as a graph, or in a totals box. Each of these views may have its own controller. The graph view may have a controller that allows you to zoom in or out, or pan around the data, for example. None of this affects the data itself, just that view. This is the key concept behind the Model-View-Controller (MVC) idiom: separating the model from both the GUI that represents it and the controls that manage the view.
 
@@ -725,7 +724,7 @@ The view and controller are tightly coupled, and in some implementations of MVC 
 * **View** - A way to interpret the model. It subscribes to changes in the model and logical events from the controller.
 * **Controller** - A way to control the view and provide the model with new data. It publishes events to both the model and the view.
 
-## ► 30 Blackboards
+## ➤ 30 Blackboards
 
 Consider how detectives might use a blackboard to coordinate and solve a murder investigation. Each detective may make
 contributions to this potential murder mystery by adding facts, statements from witnesses, any forensic evidence that might arise, and soon. As the data accumulates, a detective might notice a connection and post that observation or speculation as well.
@@ -746,7 +745,7 @@ A blackboard system lets us decouple our objects from each other completely, pro
 
 Pragmatic Programmers think critically about all code, including our own. We constantly see room for improvement in our programs and our designs. In Refactoring, we look at techniques that help us fix up existing code even while we’re in the midst of a project.
 
-## ► 31 Programming by Coincidence
+## ➤ 31 Programming by Coincidence
 
 ### Accidents of Implementation
 
@@ -777,7 +776,7 @@ Coincidences can mislead at all levels—from generating requirements through to
 * Prioritize your effort.
 * Don’t be a slave to history. Don’t let existing code dictate future code.
 
-## ► 32 Algorithm Speed
+## ➤ 32 Algorithm Speed
 
 ### The O() Notation
 
@@ -791,7 +790,7 @@ Whenever you find yourself writing a simple loop, you know that you have an *O(n
 
 If it’s tricky getting accurate timings, use code profilers to count the number of times the different steps in your algorithm get executed, and plot these figures against the size of the input.
 
-## ► 33 Refactoring
+## ➤ 33 Refactoring
 
 Code needs to evolve; it’s not a static thing.
 
@@ -814,7 +813,7 @@ Martin Fowler offers the following simple tips on how to refactor without doing 
 2. <mark>Make sure you have good tests before you begin refactoring. Run the tests as often as possible. That way you will know quickly if your changes have broken anything.<mark>
 3. Take short, deliberate steps.
 
-## ► 34 Code That’s Easy to Test
+## ➤ 34 Code That’s Easy to Test
 
 ### Unit Testing
 
@@ -837,7 +836,7 @@ All software you write will be tested—if not by you and your team, then by the
 
 > **TIP 49** -- Test Your Software, or Your Users Will
 
-## 35 Evil Wizards
+## ➤ 35 Evil Wizards
 
 Tool makers and infrastructure vendors have come up with a magic bullet, the wizard. Wizards are great. Just click a single button, answer a couple of simple questions, and the wizard will automatically generate skeleton code for you.
 
@@ -887,7 +886,7 @@ Create and maintain a project glossary—one place that defines all the specific
 
 > **TIP 54** -- Use a Project Glossary
 
-## ► 37 Solving Impossible Puzzles
+## ➤ 37 Solving Impossible Puzzles
 
 Some constraints are absolute; others are merely preconceived notions.Absolute constraints must be honored, however distasteful or stupid they may appear to be. On the other hand, some apparent constraints may not be real constraints at all. 
 
@@ -899,7 +898,7 @@ It’s not whether you think inside the box or outside the box. The problem lies
 
 When faced with an intractable problem, enumerate all the possible avenues you have before you. Don’t dismiss anything, no matter how unusable or stupid it sounds. Now go through the list and explain why a certain path cannot be taken. Are you sure? Can you prove it?
 
-## ► 38 Not Until You’re Ready
+## ➤ 38 Not Until You’re Ready
 
 You too need to listen to the voice that whispers “wait.” If you sit down to start typing and there’s some nagging doubt in your mind, heed it.
 
@@ -915,7 +914,7 @@ On the other hand, as the prototype progresses you may have one of those moments
 
 When you make the decision to prototype as a way of investigating your unease, be sure to remember why you’re doing it. The last thing you want is to find yourself several weeks into serious development before remembering that you started out writing a prototype.
 
-## ► 39 The Specification Trap
+## ➤ 39 The Specification Trap
 
 The specification is also an agreement with the user a codification of their needs and an implicit contract that the final system will be in line with that requirement.
 
@@ -935,7 +934,7 @@ Just to be clear, we are not against generating specifications. Indeed, we recog
 
 Detailed specifications are clearly appropriate for life-critical systems. We feel they should also be produced for interfaces and libraries used by others. When your entire output is seen as a set of routine calls, you’d better make sure those calls are well specified.
 
-## ► 40 Circles and Arrows
+## ➤ 40 Circles and Arrows
 Computing has never been short of methods intended to make programming more like engineering. Each method gathers its disciples, and each enjoys a period of popularity. Then each is replaced by the next.
 
 Some developers, adrift in a sea of sinking projects, keep clinging to the latest fad. At the end of the day, though, it doesn’t matter how good the flot is, the developers are still aimlessly adrift.
@@ -959,7 +958,7 @@ Look at methodologies critically, then extract the best from each and meld them 
 
 As soon as you have more than one person working on a project, you need to establish some ground rules and delegate parts of the project accordingly. <mark> The single most important factor in making project-level activities work consistently and reliably is to automate your procedures. </mark>
 
-## ► 41 Pragmatic Teams
+## ➤ 41 Pragmatic Teams
 
 **No Broken Windows** - Teams as a whole should not tolerate broken windows—those small imperfections that no one fixes. 
 
@@ -977,7 +976,7 @@ someone else is handling an issue. Even the best-intentioned teams can be oblivi
 **Automation** - A great way to ensure both consistency and accuracy is to automate
 everything the team does. To ensure that things get automated, appoint one or more team members as tool builders to construct and deploy the tools that automate the project drudgery. Have them produce makefiles, shell scripts, editor templates, utility programs, and the like.
 
-## ► 42 Ubiquitous Automation
+## ➤ 42 Ubiquitous Automation
 
 ### All on Automatic
 
@@ -987,7 +986,7 @@ People just aren’t as repeatable as computers are. Nor should we expect them t
 
 Because memory is the second thing you lose as you age, we don’t want to rely on it too heavily. We can run scripts to perform procedures for us automatically, based on the content of source code and documents. Our goal is to maintain an automatic, unattended, content- driven workflow.
 
-## ► 43 Ruthless Testing
+## ➤ 43 Ruthless Testing
 
 > **TIP 62** -- Test Early. Test Often. Test Automatically.
 
@@ -1006,11 +1005,8 @@ project work and play well with each other.
 
 **Resource exhaustion, errors, and recovery** -  In the real world, your programs don’t have limitless resources; they run out of things.
 
-
 **Performance testing** - Performance testing, stress testing, or testing under load may be an important aspect of the project as well.
-Ask yourself if the software meets the performance requirements under
-real-world conditions—with the expected number of users, or connec-
-tions, or transactions per second. Is it scalable?
+Ask yourself if the software meets the performance requirements under real-world conditions—with the expected number of users, or connections, or transactions per second. Is it scalable?
 
 **Usability testing** - It is performed with real users, under real environmental conditions. Look at usability in terms of human factors. Not only do we want our own tools to fit our hands, but we want the tools we create for users to fit their hands as well.
 
@@ -1047,7 +1043,7 @@ If a bug slips through the net of existing tests, you need to add a new test to 
 
 Once a human tester finds a bug, it should be the last time a human tester finds that bug. The automated tests should be modified to check for that particular bug
 
-## ► 44 It’s All Writing
+## ➤ 44 It’s All Writing
 
 Pragmatic Programmers embrace documentation as an integral part of the overall development process. Writing documentation can be made easier by not duplicating effort or wasting time, and by keeping documentation close at hand—in the code itself, if possible.
 
@@ -1057,7 +1053,7 @@ Pragmatic Programmers embrace documentation as an integral part of the overall d
 
 **Comments in Code** - comments should discuss why something is done, its purpose and its goal. The code already shows how it is done, so commenting on this is redundant. Commenting gives you the perfect opportunity to document those elusive bits of a project that can’t be documented anywhere else: engineering trade-offs, why decisions were made, what other alternatives were discarded, and so on.
 
-## ► 45 Great Expectations
+## ➤ 45 Great Expectations
 
 In reality, the success of a project is measured by how well it meets the expectations of its users. A project that falls below their expectations is deemed a failure, no matter how good the deliverable is in absolute terms.
 
@@ -1070,7 +1066,7 @@ controlling what users should hope to get from their systems. We think this is a
 
 There are some important techniques that can be used to facilitate this process. Of these, Tracer Bullets, page 48, and Prototypes and Post it Notes, page 53, are the most important.
 
-## ► 46 Pride and Prejudice
+## ➤ 46 Pride and Prejudice
 
 > **TIP 70** -- Sign Your Work
 
