@@ -59,7 +59,7 @@ body {
 	max-width: 860px;
 	font-size: 18px;
 	position: relative;
-    line-height: 1.45;
+    line-height: 1.4;
 }
 
 p code, li code {
@@ -223,6 +223,10 @@ ul {
     padding-inline-start: 20px;
 }
 
+li {
+    padding-bottom: 0.15em;
+}
+
 
 
 blockquote {
@@ -234,4 +238,35 @@ blockquote {
 
 blockquote p {
     padding: 1em
+}
+
+.book-title {
+    padding: 0px;
+    margin: 3px;
+}
+.book-sub {
+    padding: 0px;
+    margin: 3px;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: .75em 0;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #000;
+}
+
+.separator:not(:empty)::before {
+  margin-right: .55em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .55em;
 }
