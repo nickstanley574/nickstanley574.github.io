@@ -24,6 +24,13 @@ style: projects
 }
 </style>
 
+
+<div class="box">
+    <h2 style="">Local Jenkins</h2><img style="padding-left:8px" width="28" src="https://www.jenkins.io/favicon.ico">
+</div>
+
+For personal projects, I need CI/CD. While GitHub Workflows is an option, I prefer keeping some repos private to avoid costs. This local Jenkins is my solution to this need.  [Github](https://github.com/nickstanley574/local-jenkins)
+
 <div class="box">
     <h2 style="">FreeCodeCamp</h2><img style="padding-left:8px" width="28" src="/assets/images/freeCodeCampLogo.svg">
 </div>
