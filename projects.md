@@ -26,18 +26,25 @@ style: projects
 
 
 <div class="box">
+    <h2 style="">Continuous Delivery Pipeline Demo</h2><img style="padding-left:8px" width="28" src="https://img.icons8.com/flat-round/64/piping.png">
+</div>
+
+Continuous Delivery demo focusing on demonstrating different steps in a Continuous Delivery Pipeline for a very basic flask application.
+
+[GitHub](https://github.com/nickstanley574/Continuous-Delivery-Pipeline-Demo)
+
+<div class="box">
     <h2 style="">Local Jenkins</h2><img style="padding-left:8px" width="28" src="https://www.jenkins.io/favicon.ico">
 </div>
 
-For personal projects, I need CI/CD. While GitHub Workflows is an option, I prefer keeping some repos private to avoid costs. This local Jenkins is my solution to this need.  [Github](https://github.com/nickstanley574/local-jenkins)
+For personal projects, I need CI/CD. While GitHub Workflows is an option, I prefer to keep some repos
+private which would incur a cost. To avoid this I created this local Jenkins setup.
+
+[GitHub](https://github.com/nickstanley574/local-jenkins)
 
 <div class="box">
     <h2 style="">FreeCodeCamp</h2><img style="padding-left:8px" width="28" src="/assets/images/freeCodeCampLogo.svg">
 </div>
-
-Github: <a href="https://github.com/nickstanley574/freeCodeCampProjects" target="_blank">https://github.com/nickstanley574/freeCodeCampProjects</a>
-<br>
-Live: <a href="https://nickstanley574.github.io/freeCodeCampProjects/">https://nickstanley574.github.io/freeCodeCampProjects/</a>
 
 * Responsive Web Design
 * Front End Libraries
@@ -45,8 +52,12 @@ Live: <a href="https://nickstanley574.github.io/freeCodeCampProjects/">https://n
 * JavaScript Algorithms DataStructures
 * APIs and Microservices
 
+[GitHub](https://github.com/nickstanley574/freeCodeCampProjects)
+
 <div class="box">
     <h2 style="">LineLock</h2><img style="padding-left:8px" width="28" src="https://nickstanley574.github.io/linelock/favicon.ico">
 </div>
 
-Simple static page that encrypt and decrypts single lines of text using the crypto-js javascript library. - [Github](https://github.com/nickstanley574/linelock) - [Live](https://nickstanley574.github.io/linelock/)
+Simple static page that encrypt and decrypts single lines of text using the crypto-js javascript library.
+
+[GitHub](https://github.com/nickstanley574/linelock) - [Live](https://nickstanley574.github.io/linelock/)
