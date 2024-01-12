@@ -5,15 +5,18 @@ title: Home
 
 <h2>Greetings! 👋</h2>
 <p>
-    Hello, my name is Nick Stanley and I am a Software Engineer with a focus on development operations, site reliability, and security/compliance automation.
+    My name is Nick Stanley and I am a Platform Engineer with a focus on development
+    operations, site reliability, and security & compliance automation.
 </p>
 <p>
-    The purpose of this website is to help me become a better writer.
-    I firmly believe that the most effective approach to learning or improving any skill is through experimentation, making mistakes, learning from them, and repeating the process.
-    With Adam Savage's quote "failure is always an option" in mind, I am embracing this mindset with this blog.
+    The purpose of this website is to help me become a better writer and to self-curate
+    my own knowledge portfolio, the 'The Pragmatic Programmer'puts it. I believe that the
+    most effective approach to learning or improving any skill is through experimentation,
+    making mistakes, learning from them, and repeating.
 </p>
 <p>
-    While my primary goal is to improve my writing, I also hope that others find the content on this site interesting and worth sharing.
+    This page you will find Blog posts, project contains coding project, library is the list
+    of technical books I have read along with notes, and resume is self explanatory. 
 </p>
 
 <h2>Posts 📝</h2>
@@ -21,13 +24,9 @@ title: Home
 {% for post in site.posts %}
     <div>
         <div class="post-title">
-            <a href="{{ post.url }}">{{ post.title }} {{ post.emoji }}</a>
+            <a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }} {{ post.title }} {{ post.emoji }}</a>
         </div>
-        
-        <div class="post-date">
-            {{ post.date | date: '%B %d, %Y' }}
-        </div>
-        
+                
         <div class="post-excerpt">
             {{ post.excerpt | strip_html }}
         </div>
