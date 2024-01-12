@@ -46,11 +46,7 @@ private which would incur a cost. To avoid this I created this local Jenkins set
     <h2 style="">FreeCodeCamp</h2><img style="padding-left:8px" width="28" src="/assets/images/freeCodeCampLogo.svg">
 </div>
 
-* Responsive Web Design
-* Front End Libraries
-* Data Visualization
-* JavaScript Algorithms DataStructures
-* APIs and Microservices
+I decided to do the FreeCodeCamp courses for three reasons. Firstly, to stay updated on self-starting developers' learning methods. Secondly, not being a frontend developer, I want to better my skills beyond basic designs. Lastly, I support frontend pipelines, testing processes, and software operations, and I felt I should have a better understanding on how the frontend code is developed.
 
 [GitHub](https://github.com/nickstanley574/freeCodeCampProjects)
 
