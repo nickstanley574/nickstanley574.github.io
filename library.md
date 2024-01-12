@@ -17,8 +17,6 @@ title: Library
 
 ## Library 📚
 
-<hr>
-
 #### 2023
 - Zero Trust Networks - Evan Gilman & Dough Barth
 - Staff Engineer - Will Larson
