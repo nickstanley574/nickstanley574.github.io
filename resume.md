@@ -64,5 +64,5 @@ li {
 </div>
 
 <p>
-  <iframe id="pdfviewer" src="/assets/NicholasStanleyResume.pdf" frameborder="0" width="100%"  height="1000px"></iframe>
+  <iframe id="pdfviewer" src="/assets/NicholasStanleyResume.pdf" frameborder="0" width="100%"  height="2200px"></iframe>
 </p>
