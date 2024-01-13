@@ -53,7 +53,7 @@ li {
 
 <div class="row">
   <div class="column">
-        <a class="button" href="/assets/NicholasStanleyResume.pdf" target="_blank">PDF Version <i class="bi bi-file-pdf-fill"></i></a>
+        <a class="button" href="/assets/NicholasStanleyResume.pdf" target="_blank">Full Screen <i class="bi bi-file-pdf-fill"></i></a>
   </div>
   <div class="column">
         <a class="button" href="https://www.linkedin.com/in/nickstanley574/" target="_blank">LinkedIn <i class="bi bi-linkedin"></i></a>
