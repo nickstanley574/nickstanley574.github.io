@@ -4,22 +4,15 @@ title: Home
 ---
 
 <h2>Greetings! 👋</h2>
+
 <p>
-    My name is Nick Stanley and I am a Platform Engineer with a focus on development
-    operations, site reliability, and security & compliance automation.
-</p>
-<p>
-    The purpose of this website is to help me become a better writer and to self-curate
-    my own knowledge portfolio, the 'The Pragmatic Programmer'puts it. I believe that the
-    most effective approach to learning or improving any skill is through experimentation,
-    making mistakes, learning from them, and repeating.
-</p>
-<p>
-    This page you will find Blog posts, project contains coding project, library is the list
-    of technical books I have read along with notes, and resume is self explanatory. 
+    My name is Nick Stanley, and I'm a Platform Engineer specializing in DevOps, site reliability,
+    and security & compliance automation. This website is my space to improve my writing and curate my
+    knowledge portfolio, as described in 'The Pragmatic Programmer.' Here, you'll find my blog posts,
+    projects, technical book notes, and resume.
 </p>
 
-<h2>Posts 📝</h2>
+<h2>Posts</h2>
 
 {% for post in site.posts %}
     <div>
@@ -27,7 +20,7 @@ title: Home
             <a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }} {{ post.title }} {{ post.emoji }}</a>
         </div>
                 
-        <div class="post-excerpt">
+        <div>
             {{ post.excerpt | strip_html }}
         </div>
     </div>
