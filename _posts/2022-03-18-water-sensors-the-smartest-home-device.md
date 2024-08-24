@@ -3,6 +3,7 @@ layout: post
 emoji: 🌊
 draft: https://docs.google.com/document/d/1lBWgbpYiMLFNIf_ugl8ZjvNxjCpuHnJt5i4KVWpBjFQ/edit
 title: 'Water Sensors: The Smartest Home Device' 
+excerpt: Smart water sensors are worth every penny and every minute I need to maintain.
 ---
 
 The Internet-of-Things is here, light bulbs, thermostats, outlets, microwaves, fridges, dishwashers, meat thermometers, grills and much more is “smart” now. As I see it, most smart devices add complexity to life and do not make life easier. I subscribe to the idea that; **My possessions should serve me. I should not serve them.**
@@ -16,4 +17,4 @@ In addition to the hassle factor, there are privacy and security concerns that l
 
 A little over a year after I setup the sensors, my partner and I were woken up a Pagerduty alert at 2 in the morning. That was the moment the hot water hose under our kitchen sink decided to fail. My guess is the water was going for no more than 2 minutes before the alarm triggered, and in that time 2 to 4 gallons of water got on the kitchen floor. If we stayed asleep we would have easily woken up to an disaster.
 
-“Smart” water sensors are worth every penny and every minute I need to maintain them by updating firmware, testing them and changing their batteries. They have paid for themselves and are one of the few IoT devices on my home network.
+Smart water sensors are worth every penny and every minute I need to maintain them by updating firmware, testing them and changing their batteries. They have paid for themselves and are one of the few IoT devices on my home network.

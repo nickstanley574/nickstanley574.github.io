@@ -41,13 +41,6 @@ style: resume
     justify-content: center;  
 }
 
-body {
-  line-height: 1.3em; 
-}
-
-li {
-  padding-bottom: 7px
-}
 
 </style>
 

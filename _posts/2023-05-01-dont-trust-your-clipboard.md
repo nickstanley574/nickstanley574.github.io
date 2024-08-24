@@ -2,6 +2,7 @@
 layout: post
 emoji: 🗒️
 asset: "/assets/posts/dont-trust-your-clipboard"
+excerpt: Copy-pasting code seems harmless, but could it be the hacker's next exploit? Don't let habit blind you from the hidden risks of copy-paste in your terminal.
 ---
 
 At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources everyday without a second thought, however, just as hackers exploit our desensitization to opening emails and clicking on links, we can also become accustomed to the potential risks of copying and pasting code into their terminals.
@@ -34,7 +35,7 @@ The copy button purpose is to save you the backbreaking task of highlighting and
 #### [Amazon EC2 key pairs | aws.amazon.com](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 
 <div style="text-align: center;">
-    <img style="max-width: 80%;" src="{{ page.asset }}/copy_button_docs_aws.png">
+    <img style="max-width: 100%;" src="{{ page.asset }}/copy_button_docs_aws.png">
 </div>
 
 #### [pyenv/pyenv README| github.com](https://github.com/pyenv/pyenv)
@@ -127,7 +128,7 @@ Lets go back to Look at another post from  totally-safe-and-helpful.blog.
 Seems safe enough; Looks like any other code snippet on the internet. You can see where this is going. All aboard 🚂 !
 
 <div style="text-align: center;">
-<video style="max-width: 75%;"  controls>
+<video style="max-width: 90%;"  controls>
   <source src="{{ page.asset }}/choochoo.webm">
   Your browser does not support HTML video.
 </video>

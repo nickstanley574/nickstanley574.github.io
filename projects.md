@@ -5,55 +5,43 @@ title: Projects
 style: projects
 ---
 
-<style>
-.box {
-    display: flex;
-    align-items:center;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
 
-.box h2 {
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-</style>
+### Continuous Delivery Pipeline Demo
 
 
-<div class="box">
-    <h2 style="">Continuous Delivery Pipeline Demo</h2><img style="padding-left:8px" width="28" src="https://img.icons8.com/flat-round/64/piping.png">
-</div>
+The objective is to effectively illustrate the structure and essential components of a pseudo-real-world-like pipeline, highlighting the steps different stakeholders within a company may require, along with the rationale behind them. The application itself contains minimal features, as the primary focus of this project is to showcase the pipeline.
 
-Continuous Delivery demo focusing on demonstrating different steps in a Continuous Delivery Pipeline for a very basic flask application.
+[GitHub <i class="bi bi-github"></i>](https://github.com/nickstanley574/Continuous-Delivery-Pipeline-Demo)
 
-[GitHub](https://github.com/nickstanley574/Continuous-Delivery-Pipeline-Demo)
 
-<div class="box">
-    <h2 style="">Local Jenkins</h2><img style="padding-left:8px" width="28" src="https://www.jenkins.io/favicon.ico">
-</div>
+### Local Jenkins
 
-For personal projects, I need CI/CD. While GitHub Workflows is an option, I prefer to keep some repos
-private which would incur a cost. To avoid this I created this local Jenkins setup.
+For personal projects, I often need a CI/CD process but prefer to keep some projects private and avoid GitHub Workflows' costs for private repos. To address this, I set up a local Jenkins that runs my projects out of the box. This approach ensures package version consistency, closely mirrors the production environment, and leverages containerization effectively.
+
 
 [GitHub <i class="bi bi-github"></i>](https://github.com/nickstanley574/local-jenkins)
 
-<div class="box">
-    <h2 style="">FreeCodeCamp</h2><img style="padding-left:8px" width="28" src="/assets/images/freeCodeCampLogo.svg">
-</div>
+
+
+### FreeCodeCamp
 
 I decided to do the FreeCodeCamp courses for three reasons. To stay updated on self-starting developers' learning methods, I want to better my UI skills, and I support frontend pipelines and felt I should have a better understanding on how frontend code is developed.
 
-[GitHub](https://github.com/nickstanley574/freeCodeCampProjects)
+[GitHub <i class="bi bi-github"></i>](https://github.com/nickstanley574/freeCodeCampProjects)
 
-<div class="box">
-    <h2 style="">LineLock</h2><img style="padding-left:8px" width="28" src="https://nickstanley574.github.io/linelock/favicon.ico">
-</div>
+
+### LineLock
+
 
 Simple static page that encrypt and decrypts single lines of text using the crypto-js javascript library.
 
-[GitHub](https://github.com/nickstanley574/linelock) - [Live](https://nickstanley574.github.io/linelock/)
+[GitHub <i class="bi bi-github"></i>](https://github.com/nickstanley574/linelock) - [Live <i class="bi bi-globe2"></i>](https://nickstanley574.github.io/linelock/)
+
+
+### Systems Sandbox
+
+
+Collection of notes, command and script that I like to keep on had and reference.
+
+{: style="text-align: center;"}
+[GitHub <i class="bi bi-github"></i>](https://github.com/nickstanley574/linelock)
