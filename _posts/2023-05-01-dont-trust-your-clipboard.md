@@ -1,6 +1,5 @@
 ---
 layout: post
-emoji: 🗒️
 asset: "/assets/posts/dont-trust-your-clipboard"
 excerpt: Copy-pasting code seems harmless, but could it be the hacker's next exploit? Don't let habit blind you from the hidden risks of copy-paste in your terminal.
 ---

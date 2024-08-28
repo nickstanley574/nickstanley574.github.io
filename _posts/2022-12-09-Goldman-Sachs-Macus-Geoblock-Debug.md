@@ -1,6 +1,5 @@
 ---
 layout: post
-emoji: 🔎🦟
 asset: "/assets/posts/marcus-login-bug"
 ---
 

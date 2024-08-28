@@ -1,6 +1,5 @@
 ---
 layout: post
-emoji: ❎
 ---
 
 The other day I talked to a former colleague about what makes a good engineer in addition to technical and communication skills. The conversation centered around how people handle being wrong and making mistakes.

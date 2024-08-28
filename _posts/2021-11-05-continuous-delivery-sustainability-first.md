@@ -1,6 +1,5 @@
 ---
 layout: post
-emoji: 🏃
 ---
 
 "Continuous Delivery is the ability to get changes of all types – including new features, configuration changes, bug fixes, and experiments – into prod, or into the hands of the users, safely, and quickly in a sustainable way." --Jez Humble

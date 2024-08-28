@@ -1,6 +1,5 @@
 ---
 layout: post
-emoji: 🤔
 ---
 I have been wanting to write a blog since I first started following tech blogs when I was a freshman in college. Over the years I have started and stopped many times, I have created a WordPress website, purchased a domain, made a posting schedule, paid for hosting, but I never did any actual writing.
 

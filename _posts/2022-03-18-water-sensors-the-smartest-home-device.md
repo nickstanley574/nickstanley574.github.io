@@ -1,6 +1,5 @@
 ---
 layout: post
-emoji: 🌊
 draft: https://docs.google.com/document/d/1lBWgbpYiMLFNIf_ugl8ZjvNxjCpuHnJt5i4KVWpBjFQ/edit
 title: 'Water Sensors: The Smartest Home Device' 
 excerpt: Smart water sensors are worth every penny and every minute I need to maintain.

@@ -1,6 +1,5 @@
 ---
 layout: post
-emoji: 📖
 ---
 
 When I read a book to learn I try read it more then once. It take multiple passes and multiple formats to learn material.
