@@ -1,5 +1,5 @@
 ---
-layout: book
+layout: default
 ---
 
 <h2 class="book-title">The Pragmatic Programmer </h2> 

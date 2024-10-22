@@ -2,7 +2,6 @@
 permalink: /resume/
 layout: default
 title: Resume
-style: resume
 ---
 <style>
 
@@ -11,7 +10,7 @@ style: resume
   background-color: #f5f5f5;
   border-style: solid;
   border-width: 2px;
-  padding: 3px 7px;
+  padding: 3px 6px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

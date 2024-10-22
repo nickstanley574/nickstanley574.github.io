@@ -1,6 +1,6 @@
 ---
 year_read: 2017
-layout: book
+layout: default
 ---
 
 # Continuous Delivery with Docker and Jenkins

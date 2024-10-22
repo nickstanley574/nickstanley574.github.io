@@ -1,6 +1,6 @@
 ---
 year_read: 2020
-layout: book
+layout: default
 ---
 
 # LDAP System Administration
