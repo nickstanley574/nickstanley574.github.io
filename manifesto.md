@@ -16,6 +16,10 @@ Normalized Deviance happens when undesirable behaviors become culturally accepte
 
 Avoid getting attached to specific tools or processes. Just like treating computing resources as cattle, not pets, implementations should follow suit. If needs change or better solutions come up, be ready to drop or adapt the implementation for the desired outcome.
 
+### Have a Big Signature
+
+Ensure that you sign your work with a big signature so that people know who created it. However, avoid bragging; instead, let people recognize the signature in the code through your comments, docstrings, clear variable names, and detailed commit messages.
+
 ### Embrace Mistakes & Misconceptions
 
 When we make mistakes or have misconceptions, we have the opportunity to learn and correct misunderstandings that could arise in the future. A good engineer acknowledges this, handles it gracefully, and views these moments as learning opportunities. This holds true for both the party that corrects and the one being corrected.
@@ -24,5 +28,6 @@ When we make mistakes or have misconceptions, we have the opportunity to learn a
 
 Documentation should not be seen as a chore, but instead as automation to save you time in the future—either by enabling others to understand something without you having to explain it to them or by helping you re-teach yourself what you did. 
 
-### Have a Big Signature
-Ensure that you sign your work with a big signature so that people know who created it. However, avoid bragging; instead, let people recognize the signature in the code through your comments, docstrings, clear variable names, and detailed commit messages.
+### Software Exists Because of Users
+
+Users are the foundation of any software project, and you have a responsibility to act as their advocate. They've placed their trust in you by sharing their data and expecting your project to be there when needed. It's essential to advocate for their needs, especially since they don't see the behind-the-scenes work. This means promoting sound testing practices, building reliable systems, and ensuring robust security.
