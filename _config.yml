@@ -1,0 +1,20 @@
+
+future: false
+
+author: "Nick Stanley"
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title
+  library:
+    output: true
+    permalink: /library/:title
+  drafts_public:
+    output: true
+    permalink: /drafts_public/:title
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag

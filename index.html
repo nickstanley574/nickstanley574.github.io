@@ -1,0 +1,20 @@
+---
+layout: default
+title: Home
+---
+
+<h1>Greetings 👋</h1>
+
+<p>
+    My name is Nick Stanley, and I'm a Platform Engineer specializing in DevOps, site reliability,
+    and security & compliance automation. This website is a space to improve my writing and curate my
+    knowledge portfolio. Here, you'll find my blog posts, projects, book notes, and my resume and manifesto.
+</p>
+
+<h2>Posts</h2>
+
+<ul>
+{% for post in site.posts %}
+    <li>{{ post.date | date: "%Y-%m-%d" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
