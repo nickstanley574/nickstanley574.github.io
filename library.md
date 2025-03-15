@@ -8,6 +8,7 @@ title: Library
 
 ## Books
 
+- Terraform Up & Running
 - [The Pragmatic Programmer](/library/the-pragmatic-programmer)
 - The Manager's Path
 - [Running Serverless](/library/running-serverless-adzic)
