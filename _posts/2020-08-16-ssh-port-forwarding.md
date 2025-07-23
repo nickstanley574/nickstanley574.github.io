@@ -1,8 +1,6 @@
 ---
 layout: post
-emoji: 🐡
 title: SSH Port Forwarding
-excerpt: Uncovering hidden gems like SSH port forwarding with L and R options.
 ---
 
 The software discipline has an abundance of tools, options and commands. An individual will never know them all. Tools used by someone every day can hide a hidden trick they never knew existed. One of my favorite tricks to show people is SSH port forwarding using the `L` and `R` options. They are not hard to use or understand and once added to your toolbox, open a whole new world of advantages.

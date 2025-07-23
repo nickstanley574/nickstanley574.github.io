@@ -1,6 +1,5 @@
 ---
 layout: post
-excerpt: A casual chat over beers sparks a critical security fix IP whitelisting saves the day by securing AWS Access Keys.
 ---
 
 A few weeks back, I was discussing security with friends over a few beers. We talked about IP whitelisting to secure environments—like using specific IP access for a jump host or allowing the build server to deploy to particular instances. The conversation moved to AWS, specifically about how scary AWS Access Keys are since they don’t require MFA. Someone mentioned they thought you needed to be on the VPN to allow the usage of the Access Keys, and someone else asked what you have set up to enforce that?

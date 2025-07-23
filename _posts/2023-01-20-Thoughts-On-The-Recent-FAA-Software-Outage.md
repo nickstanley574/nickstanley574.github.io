@@ -2,7 +2,6 @@
 layout: post
 title: Thoughts on the Recent FAA Software Outage 
 asset: /assets/posts/thoughts-on-the-recent-faa-software-outage
-excerpt: Can you image being that engineer and in future interviews being as "What was the biggest mistake you made in your career?" and saying "I moved the wrong file, and caused the first FAA ground stop since 2001 and cost airlines millions". 
 ---
 
 <div style="text-align: center;">

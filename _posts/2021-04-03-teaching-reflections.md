@@ -1,7 +1,6 @@
 ---
 layout: post
 asset: "/assets/posts/teaching-reflections"
-excerpt: Navigating the challenges of teaching and fair grading.
 ---
 
 My last post was in August, 7 months ago. What have I been doing? Well a lot. In August, my manager left and I became the interim DevOps Manager and I bought a house. If that wasn’t enough, in winter as a pandemic hobby, I started teaching intro computer science courses at DePaul University.

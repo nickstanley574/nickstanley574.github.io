@@ -1,6 +1,5 @@
 ---
 layout: post
-excerpt: Imitate until you embody it.
 ---
 
 “Fake it until you make it” is a terrible saying. It implies that people who “made it” faked it the whole way and it diminishes their accomplishments, sacrifices, and discipline.  There is an exception to every rule, but most people who I would call successful worked their tails off.

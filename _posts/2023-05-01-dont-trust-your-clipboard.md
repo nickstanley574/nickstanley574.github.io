@@ -1,7 +1,6 @@
 ---
 layout: post
 asset: "/assets/posts/dont-trust-your-clipboard"
-excerpt: Copy-pasting code seems harmless, but could it be the hacker's next exploit? Don't let habit blind you from the hidden risks of copy-paste in your terminal.
 ---
 
 At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It's common to copy code from various online sources everyday without a second thought, however, just as hackers exploit our desensitization to opening emails and clicking on links, we can also become accustomed to the potential risks of copying and pasting code into their terminals.

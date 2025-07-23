@@ -2,7 +2,6 @@
 layout: post
 draft: https://docs.google.com/document/d/1lBWgbpYiMLFNIf_ugl8ZjvNxjCpuHnJt5i4KVWpBjFQ/edit
 title: 'Water Sensors: The Smartest Home Device' 
-excerpt: Smart water sensors are worth every penny and every minute I need to maintain.
 ---
 
 The Internet-of-Things is here, light bulbs, thermostats, outlets, microwaves, fridges, dishwashers, meat thermometers, grills and much more is “smart” now. As I see it, most smart devices add complexity to life and do not make life easier. I subscribe to the idea that; **My possessions should serve me. I should not serve them.**

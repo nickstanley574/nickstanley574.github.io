@@ -4,7 +4,7 @@ layout: default
 title: Manifesto
 ---
 
-# Manifesto ✒️
+# Manifesto
 
 Engineering is a practice and to help guide your designs, decisions, and direction you need to coninusuly reflect, review, and refine your work and approach. To help with this everyone should have a personal Manifesto to help you guide and look back on your growth. This way you can re center yourself, update your  and become a better engineer and better at your pratice. With that said here aremy core development philosophies.
 

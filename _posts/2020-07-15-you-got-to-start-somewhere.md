@@ -1,6 +1,7 @@
 ---
 layout: post
 ---
+
 I have been wanting to write a blog since I first started following tech blogs when I was a freshman in college. Over the years I have started and stopped many times, I have created a WordPress website, purchased a domain, made a posting schedule, paid for hosting, but I never did any actual writing.
 
 Part of my issue is I see writing as a chore … I don’t like doing it. The dislike stems from not doing non-technical writing outside of the classroom. To me writing is akin to a university essay assignment. Study a topic, develop a thesis, write a draft, get feedback, write a final draft, and upload the PDF to the virtual dropbox. A couple of weeks later a grade is posted. How many times did you review the feedback from a graded assignment and update it?

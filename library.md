@@ -4,7 +4,7 @@ layout: default
 title: Library
 ---
 
-# Library 📚
+# Library
 
 ## Books
 
