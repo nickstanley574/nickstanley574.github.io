@@ -56,5 +56,5 @@ title: Resume
 </div>
 
 <p>
-  <iframe id="pdfviewer" src="/assets/NicholasStanleyResume.pdf" frameborder="0" width="100%"  height="2200px"></iframe>
+  <iframe id="pdfviewer" src="/assets/NicholasStanleyResume.pdf" frameborder="2" width="100%"  height="800px"></iframe>
 </p>
