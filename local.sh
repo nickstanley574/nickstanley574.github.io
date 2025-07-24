@@ -1,9 +1,7 @@
 #!/bin/bash
 
-PORT=4000
-
-if netstat -tulpn | grep -q $PORT; then
-    sudo kill $(sudo lsof -t -i:$PORT)
-fi
-
-bundle exec jekyll serve $1 $2
+docker run --rm \
+  --volume="/home/nick/workspace/nickstanley574.github.io:/srv/jekyll" \
+  --publish 4000:4000 \
+  jekyll/jekyll:latest \
+  jekyll serve --watch --drafts --host 0.0.0.0
