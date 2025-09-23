@@ -8,8 +8,6 @@ asset: /assets/posts/thoughts-on-the-recent-faa-software-outage
     <img style="max-width: 50%;" src="{{ page.asset }}/faa-outage-news-post.png">
 </div>
 
-{{ page.excerpt }}
-
 ### Quick Background
 
 The system that went down provided "Notices to Air Missions", NOTAMs these are simple text information about conditions at airports such as constructions, closed running, landing obstructions, and more. NOTAMs are used during the route planning of a flight. Once a flight airborne the NOTAMs system is not needed to complete the flight.
