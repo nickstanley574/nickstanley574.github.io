@@ -61,7 +61,8 @@ title: Library
 
 - [Adam Ragusea](https://www.youtube.com/@aragusea) - "I cook and I show you how you can too."
 - [John Malecki Unscrewed](https://www.youtube.com/@John_Malecki) - Woodworking, DIY, and internet treads.
-- [Adam Savage’s Tested](https://www.youtube.com/@tested)
+- [Adam Savage’s Tested](https://www.youtube.com/@tested) - Reliving Mythbusters
+- [JeffGeerling](https://www.youtube.com/@JeffGeerling) - Go to for all things selfhosted and Pi.
 
 ### Just for Fun
 
