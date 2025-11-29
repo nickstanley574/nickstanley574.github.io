@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "**/.git/modules/**": true,
+    "**/submodules/**": true,
+    "public": true,
+    "themes": true
+  }
+}
