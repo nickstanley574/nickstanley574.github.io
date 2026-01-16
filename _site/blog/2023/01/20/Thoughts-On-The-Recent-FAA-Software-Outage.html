@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Thoughts on the Recent FAA Software Outage | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Thoughts on the Recent FAA Software Outage</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Thoughts on the Recent FAA Software Outage" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2023/01/20/Thoughts-On-The-Recent-FAA-Software-Outage" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2023/01/20/Thoughts-On-The-Recent-FAA-Software-Outage" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-20T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Thoughts on the Recent FAA Software Outage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2023-01-20T00:00:00-06:00","datePublished":"2023-01-20T00:00:00-06:00","headline":"Thoughts on the Recent FAA Software Outage","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2023/01/20/Thoughts-On-The-Recent-FAA-Software-Outage"},"url":"http://0.0.0.0:4000/blog/2023/01/20/Thoughts-On-The-Recent-FAA-Software-Outage"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h1>Thoughts on the Recent FAA Software Outage</h1>
+<div class="post-date">
+    Friday, January 20, 2023
+</div>
+
+<div style="text-align: center;">
+    <img style="max-width: 50%;" src="/assets/posts/thoughts-on-the-recent-faa-software-outage/faa-outage-news-post.png" />
+</div>
+
+<div style="text-align: center;">
+    <img style="max-width: 50%;" src="/assets/posts/thoughts-on-the-recent-faa-software-outage/faa-outage-news-post.png" />
+</div>
+
+<h3 id="quick-background">Quick Background</h3>
+
+<p>The system that went down provided “Notices to Air Missions”, NOTAMs these are simple text information about conditions at airports such as constructions, closed running, landing obstructions, and more. NOTAMs are used during the route planning of a flight. Once a flight airborne the NOTAMs system is not needed to complete the flight.</p>
+
+<h3 id="swish-cheese">Swish Cheese</h3>
+
+<p>There is a big difference between “who’s caused it?” and “who’s at fault? “. The individual’s actions caused the issue they are not necessarily at fault because there is normally a chain of events that lead to a issue like this. Just like aviation disasters. There might be environment factors, cultural factors, improper procedures, wrong assumes or external factors that are at fault that lead to the incident occurring. Doctor Reason’s Swiss Cheese Model illustrates this concept.</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 55%;" src="/assets/posts/thoughts-on-the-recent-faa-software-outage/swiss-cheese-model.png" />
+    <div class="container-center">
+        <p>
+        Swiss cheese model by James Reason published in 2000. Source: <a href="https://openi.nlm.nih.gov/detailedresult.php?img=PMC1298298_1472-6963-5-71-1&amp;req=4" rel="nofollow">https://openi.nlm.nih.gov/detailedresult.php?img=PMC1298298_1472-6963-5-71-1&amp;req=4</a>, open-access, CC Attribution 2.0 Generic
+        </p>
+    </div>
+</div>
+
+<p>Here are the questions I have to better understand and identify where the holes in the swiss cheese happened for this incident.</p>
+
+<ul>
+  <li>Why was file change done manually? Why wasn’t it automated?</li>
+  <li>Is there a test/stage environment for testing changes?
+    <ul>
+      <li>Is the environment maintained in a similar way to prod?</li>
+      <li>Is the environment enough like Prod?</li>
+      <li>Was the action tested in the environment?
+        <ul>
+          <li>Yes. Why did it work in a pre-prod before prod? or  Why did the change move forward in prod?</li>
+          <li>No. It was not tested
+            <ul>
+              <li>Was the technician rushed?</li>
+              <li>Was it deemed a simple change a testing not need?</li>
+              <li>Was this a “common” task that happened often?</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>If there is no prod like test environment them:
+    <ul>
+      <li>How can do you test changes?</li>
+      <li>Why is there no test environment, is it related to costs?</li>
+      <li>Was there one in the past?</li>
+    </ul>
+  </li>
+  <li>If failed, why was the backup that was restored a day old?
+    <ul>
+      <li>Was is the backup cadence?</li>
+      <li>How often is the restore process verified?</li>
+    </ul>
+  </li>
+  <li>Were proper procedures followed?
+    <ul>
+      <li>Yes. What needs to be added to the procedure for this doesn’t happen again?</li>
+      <li>No, they were not.
+        <ul>
+          <li>How many times was this type of work done not following proper procedure  without issue?</li>
+          <li>How many other individuals have not followed procedures in the past without issue?</li>
+          <li>Is there a culture of <strong><a href="https://en.wikipedia.org/wiki/Normalization_of_deviance">Normalized Deviance</a></strong> that lead to the individual think this action was normal?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="notams-approximate-uptime">NOTAM’s Approximate Uptime</h3>
+
+<p>The NOTAM system was first introduced in 1993 and I can only find 1 instance of the system wide outage going down, the most recent one. After reading a numbers of articles there are many quotes like the one below indicating NOTAM outages are rare.</p>
+
+<blockquote>
+  <p>“I don’t ever remember the NOTAM system going down like this. I’ve been flying 53 years,” said John Cox, a former airline pilot and now an aviation-safety consultant. – <a href="https://www.cbsnews.com/dfw/news/faa-notam-definition-outage-notice-to-air-missions/">www.cbsnews.com - Irina Ivanova</a></p>
+</blockquote>
+
+<p>While the software outage started at 8:30PM ET the FAA backup phone system continued to allow departures until 7:30AM ET the next day. At this point the phone system was overwhelmed by the volume and the FAA ordered a ground stop at 7:30AM until the software system was restored at 9:30 AM ET.</p>
+
+<p>The are 262,968 hours in 30 years and if we count the backup process as part of the overall NOTAM system there was about 2.5 hours of downtime.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uptime = (262,968 - 2.5) / 262,968 * 100 = 99.999049314%
+</code></pre></div></div>
+
+<p>Look at that five-nines.</p>
+
+<p>That not to say we should brush off the outage. What happen was unacceptable and improvements need to be made to help mitigate something like this from happening again. However the reality is it will happen again. It like plane accidents, we can investigates, find the root cause, put in place fixed and mitigations, but another accident will happen It is the reality of human systems, they are flawed.</p>
+
+<h3 id="a-humbling-reminder-of-centralized-systems">A Humbling Reminder of Centralized Systems</h3>
+
+<p>This event is a humbling reminder that shows into today’s modern age of software dependencies. A single person actions, heck a single keystroke, can affect millions. It reminds me that I am in a position where I could affect clients using the sofware systems I develop and support.</p>
+
+
+<div id="back-to-top">
+    <a onclick="scrollToTop()">▲ Back to Top ▲</a>
+  </div>
+</body>
+
+</html>
