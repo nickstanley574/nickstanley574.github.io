@@ -1,0 +1,69 @@
+baseURL: 'https://nickstanley574.github.io/'
+languageCode: en-us
+title: Nick Stanley
+theme: PaperMod
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+
+params:
+  defaultTheme: auto
+  disableThemeToggle: false
+  profileMode:
+    enabled: true
+    title: "Nick Stanley"
+    subtitle: "<br>Plaform Engineering Manager at <a href=\"https://ionanalytics.com/\">Ion Analytics</a><br><hr>I'm Nick Stanley, a Platform Engineer focused on DevOps, site reliability, and security automation. This site showcases my blog posts, projects, book notes, resume, and professional manifesto.<br><br>"
+    imageUrl: "nick.jpg" 
+    imageWidth: 225
+    imageHeight: 225
+  socialIcons:
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/nickstanley574/"
+      align: center
+    - name: "github"
+      url: "https://github.com/nickstanley574"
+      align: center
+    - name: "CV"
+      url: "TODO"
+      align: center
+    - name: "Email"
+      url: "mailto:nickstanley574@gmail.com"
+      align: center
+  assets:
+    favicon: "favicon/favicon.ico"
+
+menu:
+  main:
+
+    - identifier: home
+      name: Home
+      url: /
+      weight: 1
+
+    - identifier: about
+      name: About
+      url: /about
+      weight: 5
+
+    - identifier: manifesto
+      name: Manifesto
+      url: /manifesto
+      weight: 6
+
+    - identifier: library
+      name: Library
+      url: /library
+      weight: 7
+
+    - identifier: blog
+      name: Blog
+      url: /posts/
+      weight: 8
+
+    - identifier: resume
+      name: Resume
+      url: /resume
+      weight: 20

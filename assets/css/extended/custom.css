@@ -1,0 +1,32 @@
+/* placeholder for eventual custom styles */
+
+.faceplant {
+  box-shadow: rgba(0,0,0,0.5) 0 0 15px;
+}
+
+.dark {
+  background-color: var(--code-bg) !important;
+}
+
+
+/* Custom subhead styling for blog post descriptions */
+.post-description {
+  font-size: 1.15em;
+  color: var(--secondary);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+/* Dark mode adjustment if needed (optional, since var(--secondary) adapts) */
+.dark .post-description {
+  color: var(--secondary);
+}
+
+/* Hide post date in PaperMod theme */
+.post-meta {
+  display: none;
+}

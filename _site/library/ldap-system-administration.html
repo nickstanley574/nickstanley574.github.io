@@ -1,0 +1,1165 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ldap System Administration | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Ldap System Administration</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Ldap System Administration" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="LDAP System Administration" />
+<meta property="og:description" content="LDAP System Administration" />
+<link rel="canonical" href="http://0.0.0.0:4000/library/ldap-system-administration" />
+<meta property="og:url" content="http://0.0.0.0:4000/library/ldap-system-administration" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-26T15:30:52-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Ldap System Administration" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2025-07-26T15:30:52-05:00","datePublished":"2025-07-26T15:30:52-05:00","description":"LDAP System Administration","headline":"Ldap System Administration","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/library/ldap-system-administration"},"url":"http://0.0.0.0:4000/library/ldap-system-administration"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h1 id="ldap-system-administration">LDAP System Administration</h1>
+
+<p>By Gerald Carter</p>
+
+<p>ISBN: 1-56592-491-6</p>
+
+<h2 id="chapter-1-now-where-did-i-put-that-or-what-is-a-directory">Chapter 1. “Now where did I put that…?”, or “What is a directory?”</h2>
+
+<p>While directory services can take on many different forms, the following five characteristics hold true (at a minimum):</p>
+
+<ul>
+  <li>A directory service is highly optimized for reads.</li>
+  <li>A directory service implements a distributed model for storing information.</li>
+  <li>A directory service can extend the types of information it stores.</li>
+  <li>A directory service has advanced search capabilities.</li>
+  <li>A directory service has loosely consistent replication among directory servers.</li>
+</ul>
+
+<h3 id="11-the-lightweight-directory-access-protocol">1.1 The Lightweight Directory Access Protocol</h3>
+
+<p>By organizing your information well and thinking carefully about the common information needed by client applications, you can reduce data redundancy in your directories and therefore reduce the administrative overhead needed to maintain that data.</p>
+
+<h3 id="12-what-is-ldap">1.2 What Is LDAP?</h3>
+
+<h4 id="lightweight"><strong>L</strong>ightweight</h4>
+
+<p>Why is LDAP considered lightweight? Lightweight compared to what? (As we look at LDAP in more detail, you’ll certainly be asking how something this complex could ever be considered lightweight.) LDAP is lightweight in comparison to the X.500 directory service.</p>
+
+<h4 id="directory"><strong>D</strong>irectory</h4>
+
+<p>Directory services and databases share a number of important characteristics, such as fast searches and an extendable schema. They differ in that a directory is designed to be read much more than it is written; in contrast, a database assumes that read and write operations occur with roughly the same frequency.</p>
+
+<p>Remember that LDAP is just a protocol; we’ll discuss what that means shortly, but essentially, it’s a set of messages for accessing certain kinds of data. The protocol doesn’t say anything about where the data is stored. A software vendor implementing an LDAP server is free to use whatever backend it desires, ranging from flat text files on one extreme to highly scalable, indexed relational databases on the other.</p>
+
+<h4 id="access-protocol"><strong>A</strong>ccess <strong>P</strong>rotocol</h4>
+
+<p>Think of LDAP as the message-based, client/server protocol defined in RFC 2251. LDAP is asynchronous (although many development kits provide both blocking and non blocking APIs), meaning that a client may issue multiple requests and that responses to those requests may arrive in an order different from that in which they were issued.</p>
+
+<h3 id="13-ldap-models">1.3 LDAP Models</h3>
+
+<h4 id="information-model">Information model</h4>
+
+<p>The information model provides the structures and data types necessary for building an LDAP directory tree.An entry is the basic unit in an LDAP directory.</p>
+
+<p>You can visualize an entry as either an interior or exterior node in the <strong>Directory Information Tree (DIT)</strong>.</p>
+
+<p>In entry contains information about an instance of one or more <code class="language-plaintext highlighter-rouge">objectClasses</code>. These <code class="language-plaintext highlighter-rouge">objectClasses</code> have certain required or optional attributes.</p>
+
+<h4 id="naming-model">Naming model</h4>
+
+<p>The naming model defines how entries and data in the DIT are uniquely referenced. Each entry has an attribute that is unique among all siblings of a single parent. This unique attribute is called the relative distinguished name (RDN).</p>
+
+<p>This string created by combining RDNs to form a unique name is called the node’s distinguished name (DN)</p>
+
+<h4 id="functional-model">Functional model</h4>
+
+<p>The functional model is the LDAP protocol itself.</p>
+
+<h4 id="security-model">Security model</h4>
+
+<p>The security model provides a mechanism for clients to prove their identity (authentication) and for the server to control an authenticated client’s access to data (authorization).</p>
+
+<h2 id="chapter-2-ldapv3-overview">Chapter 2. LDAPv3 Overview</h2>
+
+<h3 id="21-ldif">2.1 LDIF</h3>
+
+<p>Most system administrators prefer to use plain-text files for server configuration information, as opposed to some binary store of bits.</p>
+
+<p>The <strong>LD</strong>AP <strong>I</strong>nterchange <strong>F</strong>ormat (LDIF), defined in RFC 2849, is a standard text file format for storing LDAP configuration information and directory contents. In its most basic form, an LDIF file is:</p>
+
+<ul>
+  <li>A collection of entries separated from each other by blank lines</li>
+  <li>A mapping of attribute names to values</li>
+  <li>A collection of directives that instruct the parser how to process the information</li>
+</ul>
+
+<p>LDIF files are often used to import new data into your directory or make changes to existing data. The data in theLDIF file must obey the schema rules of your LDAP directory.</p>
+
+<p>Think of the schema as a data definition for your directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># LDIF listing for the entry
+dn: dc=plainjoe,dc=org
+objectClass: domain
+dc: plainjoe
+</code></pre></div></div>
+
+<p>basis LDIF syntax:</p>
+<ul>
+  <li>Comments in an LDIF file begin with a pound character <code class="language-plaintext highlighter-rouge">#</code></li>
+  <li>Attributes are listed on the left hand side of the colon <code class="language-plaintext highlighter-rouge">:</code>, and values are presented on the right hand side. <strong>The colon character is separated from the value by a space.</strong></li>
+  <li>The <code class="language-plaintext highlighter-rouge">dn</code> attribute uniquely identifies the distinguished name (DN) of the entry.</li>
+</ul>
+
+<h4 id="211-distinguished-names-and-relative-distinguished-names">2.1.1 Distinguished Names and Relative Distinguished Names</h4>
+
+<p>It is important to realize that the full DN of an entry does not actually need to be stored as an attribute within that entry.</p>
+
+<p>The DN is like the absolute path between the root of a filesystem and a file, a relative distinguished name (RDN)is like a filename. This is also similar a relational database system in which two or more fields can be used in combination to generate a unique index key.</p>
+
+<p>Suppose that there are two employees named Jane Smith in your company: one in the Sales Department and one in the Engineering Department. Now suppose the entries for these employees have a common parent. Neither the common name (<code class="language-plaintext highlighter-rouge">cn</code>) nor the organizational unit (<code class="language-plaintext highlighter-rouge">ou</code>) attribute is unique in its own right. However, both can be used in combination to generate a unique RDN. This would look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example of two entries with a multivalued RDN
+dn: cn=Jane Smith+ou=Sales,dc=plainjoe,dc=org
+cn: Jane Smith
+ou: Sales
+&lt;...remainder of entry deleted...&gt;
+
+dn: cn=Jane Smith+ou=Engineering,dc=plainjoe,dc=org
+cn: Jane Smith
+ou: Engineering
+&lt;...remainder of entry deleted...&gt;
+</code></pre></div></div>
+
+<p>In the multivalued RDN, the plus character <code class="language-plaintext highlighter-rouge">+</code> separates the two attribute values used to form the RDN.</p>
+
+<p>To prevent the <code class="language-plaintext highlighter-rouge">+</code> character from being interpreted as a special character, we need to escape it using a backslash <code class="language-plaintext highlighter-rouge">\</code>. The other special characters that require a backslash-escape if used within an attribute value are:</p>
+<ul>
+  <li>A space or pound <code class="language-plaintext highlighter-rouge">#</code> character occurring at the beginning of the string.</li>
+  <li>A space occurring at the end of the string</li>
+  <li><code class="language-plaintext highlighter-rouge">,</code>,<code class="language-plaintext highlighter-rouge">"</code>,<code class="language-plaintext highlighter-rouge">\</code>,<code class="language-plaintext highlighter-rouge">&lt;</code>,<code class="language-plaintext highlighter-rouge">&gt;</code>,<code class="language-plaintext highlighter-rouge">;</code></li>
+</ul>
+
+<p>RFC 2253 defines a method of unambiguously representing a DN using a UTF-8 string representation. This normalization process boils down to:</p>
+<ul>
+  <li>Removing all nonescaped whitespace surrounding the equal sign (=) in each RDN</li>
+  <li>Making sure the appropriate characters are escaped</li>
+  <li>Removing all nonescaped spaces surrounding the multi-value RDN join character (+)</li>
+  <li>Removing all nonescaped trailing spaces on RDNs</li>
+</ul>
+
+<p>the normalized version of:
+<code class="language-plaintext highlighter-rouge">cn=gerald carter + ou=sales,  dc=plainjoe ,dc=org</code>
+would be:
+<code class="language-plaintext highlighter-rouge">cn=gerald carter+ou=sales,dc=plainjoe,dc=org</code></p>
+
+<p>The string representation of a distinguished name is normally case-preserving, and the logic used to determine if two DNs are equal is usually a case-insensitive match.
+Therefore:
+<code class="language-plaintext highlighter-rouge">cn=Gerald Carter,ou=People,dc=plainjoe,dc=org</code>
+would be equivalent to:
+<code class="language-plaintext highlighter-rouge">cn=gerald carter,ou=people,dc=plainjoe,dc=org</code></p>
+
+<h3 id="22-what-is-an-attribute">2.2 What Is an Attribute?</h3>
+
+<p>Attribute types and the associated syntax rules are similar to variable and data type declarations found in many programming languages. The comparison is not that big of a stretch. Attributes are used to hold values. Variables in programs perform a similar task—they store information.</p>
+
+<p>Unlike variables, LDAP attributes can be multivalued. Most procedural programming languages “store and replace” semantics of variable assignment. When you assign a new value to a variable, its old value is replaced.</p>
+
+<p>This isn’t true for LDAP; assigning a new value to an attribute adds the value to the list of values the attribute already has.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># LDIF listing for dn: ou=devices,dc=plainjoe,dc=org
+dn: ou=devices,dc=plainjoe,dc=org
+objectclass: organizationalUnit
+ou: devices
+telephoneNumber: +1 256 555-5446
+telephoneNumber: +1 256 555-5447
+description: Container for all network enabled
+ devices existing within the plainjoe.org domain
+</code></pre></div></div>
+<blockquote>
+  <p>Note that the description attribute spans two lines. Line continuation in LDIF is implemented by leaving exactly one space at the beginning of a line. LDIF does not require a backslash <code class="language-plaintext highlighter-rouge">\</code> to continue one line to the next.</p>
+</blockquote>
+
+<p>The LDIF file lists two values for the telephoneNumber attribute. In real life, it’s common for an entity to be reachable via two or more phone numbers.</p>
+
+<p>Some attributes can contain only a single value at any given time. Whether an attribute is single- or multivalued depends on the attribute’s definition in the server’s schema.</p>
+
+<p>Examples of single-valued attributes include an entry’s country (c), displayable name (displayName), ora user’s Unix numeric ID (uidNumber).</p>
+
+<h4 id="221-attribute-syntax">2.2.1 Attribute Syntax</h4>
+
+<p>Attribute type definitions include matching rules that tell an LDAP server how to make comparisons.</p>
+
+<h4 id="222-what-does-the-value-of-the-objectclass-attribute-mean">2.2.2 What Does the Value of the objectClass Attribute Mean?</h4>
+
+<p>All entries in an LDAP directory must have an objectClass attribute, and this attribute must have at least one value. Each objectClass value acts as a template for the data to be stored in an entry. It defines a set of attributes that must be present in the entry and a set of optional attributes that may or may not be present.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># LDIF listing for dn: ou=devices,dc=plainjoe,dc=org
+dn: ou=devices,dc=plainjoe,dc=org
+objectclass: organizationalUnit
+ou: devices
+telephoneNumber: +1 256 555-5446
+telephoneNumber: +1 256 555-5447
+description: Container for all network enabled
+ devices existing within the plainjoe.org domain
+</code></pre></div></div>
+<p>The entry’s objectClass is an organizationalUnit.</p>
+
+<p>Here’s how to understand an objectClass definition:</p>
+<ul>
+  <li>An objectClass possesses an OID, just like attribute types, encoding syntaxes, and matching rules.</li>
+  <li>The keyword <code class="language-plaintext highlighter-rouge">MUST</code> denotes a set of attributes that must be present in any instance of this object.</li>
+  <li>The keyword <code class="language-plaintext highlighter-rouge">MAY</code> defines a set of attributes whose presence is optional in an instance of the object.</li>
+  <li>The keyword <code class="language-plaintext highlighter-rouge">SUP</code> specifies the parent object from which this object was derived.
+    <ul>
+      <li>A derived object possesses all the attribute type requirements of its parent.</li>
+      <li>Attributes can be derived from other attributes as well,inheriting the syntax of its parent as well as matching rules, although the latter can be locally overridden by the new attribute.</li>
+      <li>LDAP objects do not support multiple inheritance; they have a single parent object, like Java objects.</li>
+    </ul>
+  </li>
+  <li>It is possible for two object classes to have common attribute members. Because the attribute type namespace is flat for an entire schema, the <code class="language-plaintext highlighter-rouge">telephoneNumber</code> attribute belonging to an <code class="language-plaintext highlighter-rouge">organizationalUnit</code> is the same attribute type as the <code class="language-plaintext highlighter-rouge">telephoneNumber</code> belonging to some other <code class="language-plaintext highlighter-rouge">objectclass</code>, such as a <code class="language-plaintext highlighter-rouge">person</code>.</li>
+</ul>
+
+<h5 id="object-class-types">Object Class Types</h5>
+
+<p>Structural object classes - Represent a real-world object, such as a person or an organizationalUnit. Each entry within an LDAP directory must have exactly one structural object class listed in the objectClass attribute. <strong>According to the LDAP data model, once an entry’s structural objectclass has been instantiated, it cannot be changed without deleting and re-adding the entire entry.</strong></p>
+
+<p>Auxiliary object classes - Add certain characteristics to a structural class. These classes cannot be used on their own, but only to supplement an existing structural object. There is a special auxiliary object class referred to in RFC 2252 named extensibleObject, which an LDAP server may support.</p>
+
+<p>Abstract object classes - Act the same as their counterparts in object-oriented programming. These classes cannot be used directly, but only as ancestors of derived classes. The most common abstract class relating to LDAP (and X.500) that you will use is the top object class, which is the parent or ancestor of all LDAP object classes.</p>
+
+<h3 id="23-what-is-the-dc-attribute">2.3 What Is the dc Attribute?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># LDIF listing for the entry
+dn: dc=plainjoe,dc=org
+dn: dc=plainjoe,dc=org
+objectclass: domain
+dc: plainjoe
+</code></pre></div></div>
+
+<p>Because DNS domain names are guaranteed to be unique across the Internet and canbe located easily, mapping an organization’s domain name to an LDAP DN provides a simple way of determining the base suffix served by a directory and ensures that the naming context will be globally unique.</p>
+
+<p>To support a mapping between a DNS domain name and an LDAP directory namespace, RFC 2247 defines two objects for storing domain components.</p>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">dcObject</code> is an auxiliary class to augment an existing entry containing organizational information (e.g., an <code class="language-plaintext highlighter-rouge">organizationalUnit</code>).</li>
+  <li>The <code class="language-plaintext highlighter-rouge">domainobject</code> class acts as a standalone container for both the organizational information and the domain name component (i.e., the <code class="language-plaintext highlighter-rouge">dc</code> attribute). The <code class="language-plaintext highlighter-rouge">organizationalUnit</code> and <code class="language-plaintext highlighter-rouge">domain</code> objects have many common attributes.</li>
+</ul>
+
+<h4 id="231-where-is-dcorg">2.3.1 Where Is dc=org?</h4>
+
+<p>If the directory’s root entry was dc=org, with a child entry of dc=plainjoe,dc=org, then the naming context would have been <code class="language-plaintext highlighter-rouge">dc=org</code>. Our server would then unnecessarily respond to queries for any entry whose DN ended with <code class="language-plaintext highlighter-rouge">dc=org</code>, even though it only has knowledge of entries underneath <code class="language-plaintext highlighter-rouge">dc=plainjoe,dc=org</code>.</p>
+
+<p>In this respect, designing an LDAP namespace is similar to designing a DNS hierarchy. Domain name servers for plainjoe.org have no need to service requests for the .org domain. These requests should be referred to the server that actually contains information about the requested hosts.</p>
+
+<h3 id="24-schema-references">2.4 Schema References</h3>
+
+<p>“What do all of theseabbreviations mean?” There is no single source of information describing all possible LDAPv3 attribute types and object classes, but there are a handful of online sites that can be consulted to cover the most common schema items.</p>
+
+<h3 id="25-authentication">2.5 Authentication</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dn: cn=gerald carter,ou=people,dc=plainjoe,dc=org
+objectClass: person
+cn: gerald carter
+sn: carter
+telephoneNumber: 555-1234
+userPassword: {MD5}Xr4ilOzQ4PCOq3aQ0qbuaQ==
+</code></pre></div></div>
+
+<p>We have added an attribute named userPassword. This attribute stores a representation of the credentials necessary to authenticate a user. The prefix describes how the credentials are encoded.</p>
+
+<p><strong>The act of being authenticated by an LDAP directory is called binding.</strong> Most users are accustomed to providing ausername and password pair when logging onto a system.</p>
+
+<h4 id="anonymous-authentication">Anonymous Authentication</h4>
+<p>Anonymous Authentication is the process of binding to the directory using an empty DN and password.</p>
+
+<h4 id="simple-authentication">Simple Authentication</h4>
+<p>For Simple Authentication, <strong>the login name in the form of a DN is sent with a password in clear text to the LDAP server.</strong> The server then attempts to match this password with the userPassword value, or with some other predefined attribute that is contained in the entry for the specified DN. If the password is stored in a hashed format, the server must generate the hash of the transmitted password and compare it to the stored version.However, the original password has been transmitted over the network in the clear. If both passwords (or password hashes) match, the client is successfully authenticated. <strong>While this authentication method is supported by virtually all existing LDAP servers (including LDAPv2 servers), its major drawback is its dependency on the client transmitting clear-text values across the network.</strong></p>
+
+<h4 id="simple-authentication-over-ssltls">Simple Authentication Over SSL/TLS</h4>
+<p>LDAP can negotiate an encrypted transport layer prior to performing any bind operations. Thus, all user information is kept secure (as well as anything else transmitted during the session).</p>
+<ul>
+  <li>LDAP over SSL (LDAPS - tcp/636) is well supported by many LDAP servers, both commercial and opensource. Although frequently used, it has been deprecated in favor of the StartTLS LDAP extended operation.</li>
+  <li>RFC 2830 introduced an LDAPv3 extended operation for negotiating TLS over the standard tcp/389 port. This operation, which is known as StartTLS, allows a server to support both encrypted and non encrypted sessions on the same port, depending on the clients’ requests.</li>
+</ul>
+
+<h4 id="simple-authentication-and-security-layer-sasl">Simple Authentication and Security Layer (SASL)</h4>
+
+<p>SASL supports a pluggable authentication scheme by allowing a client and server to negotiate the authentication mechanism prior to the transmission of any user credentials.</p>
+
+<p>RFC 2222 defines the several authentication schemes for SASL, including:</p>
+<ul>
+  <li>Kerberos v4 (KERBEROS_V4)</li>
+  <li>The Generic Security Service Application Program Interface, Version 2 (GSSAPI)</li>
+  <li>The S/Key mechanism (SKEY), which is a one-time password scheme based on the MD5 message digest algorithm.</li>
+  <li>The External (EXTERNAL) mechanism, which allows an application to make use of a user’s credentials provided by a lower protocol layer, such as authentication provided by SSL/TLS.</li>
+</ul>
+
+<p>During the binding process, the client asks the server to authenticate its request using a particular SASL plug-in.The client and server then perform any extra steps necessary to validate the user’s credentials. Once a success or failure condition has been reached, the server returns a response to the client’s bind request as usual, and LDAP communication continues normally.</p>
+
+<h3 id="26-distributed-directories">2.6 Distributed Directories</h3>
+
+<p>In a distributed directory, different hosts possess different portions of the directory tree.</p>
+
+<p>There are many reasons for distributing the directory tree across multiple hosts. Including but not limited too Performance, Geographic location, and Administrative boundaries.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">referral</code> object contains only a single required attribute, <code class="language-plaintext highlighter-rouge">ref</code>. This attribute holds the URI that points to the host that contains the subtree.
+The most common URI used as a ref value looks like:<code class="language-plaintext highlighter-rouge">ldap://[host:port]/dn</code></p>
+
+<p>For example, the LDIF listing for the new <code class="language-plaintext highlighter-rouge">peopleou</code> entry is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># LDIF listing for the entry ou=people,dc=plainjoe,dc=org
+dn: ou=people,dc=plainjoe,dc=orgobject
+Class: referral
+ref: ldap://server2.plainjoe.org/ou=people,dc=plainjoe,dc=org
+</code></pre></div></div>
+<p>Configuring the superior knowledge reference link, also called simply a referral but not to be confused with the referral object class, from the second server back to the main directory is a vendor-dependent operation, so it is difficult to tell you exactly what to expect.</p>
+
+<h2 id="chapter-3-openldap">Chapter 3. OpenLDAP</h2>
+
+<p>Why are we using the OpenLDAP  server instead of one from another vendor like: Sun Microsystem’s SunOne directory server, Novell’s eDirectory , and Microsoft’s Active Directory (although MSAD directory encompasses much more than just LDAP.)</p>
+
+<p>OpenLDAP is attractive for several reasons:</p>
+<ul>
+  <li>The OpenLDAP source code is available for download from http://www.openldap.org/ under the OpenLDAPPublic License.</li>
+  <li>OpenLDAP is available for multiple platforms, including Linux, Solaris, Mac OS 10.2, and Windows (in its various incarnations)</li>
+  <li>The OpenLDAP project is a continuation of the original University of Michigan LDAP server.</li>
+</ul>
+
+<h3 id="31-obtaining-the-openldap-distribution">3.1 Obtaining the OpenLDAP Distribution</h3>
+
+<p>The OpenLDAP project does not make binary distributions of its software available. The reason for this has a lot todo with the number of dependencies it has on other packages. Many Linux vendors include precompiled versions ofOpenLDAP with their distributions.</p>
+
+<p>There are several advantages of LDAPv3 over the previous version, such as:</p>
+<ul>
+  <li>The ability to refer clients to other LDAP servers for information. The LDAPv2 RFCs contained no provision for returning a referral to a client.</li>
+  <li>The ability to publish the server’s schema via LDAP operations, which makes it easier for clients to learn the server’s schema before performing searches. The only way to determine the schema supported by anLDAPv2 server was to examine the server’s configuration files.</li>
+  <li>Improved security and flexibility for authentication credentials and data via SASL and SSL/TLS. LDAPv2supported only simple binds.</li>
+</ul>
+
+<p>The OpenLDAP 2 release is an LDAPv3 server. However, LDAPv2 clients are not going away anytime soon.Therefore, OpenLDAP 2 and the majority of other LDAP servers can support both LDAPv2 and v3 clients.</p>
+
+<h3 id="32-software-requirements">3.2 Software Requirements</h3>
+
+<ul>
+  <li>Support for POSIX threads, either by the operating system or an external library.</li>
+  <li>SSL/TLS libraries (such as the OpenSSL package, which is available from http://www.openssl.org/).</li>
+  <li>A database manager library that supports DBM type storage facilities. The current library of choice is theBerkeley DB 4.1 package from Sleepycat Software (http://www.sleepycat.com/)</li>
+  <li>Release 2.1 of the SASL libraries from Carnegie Mellon University (http://asg.web.cmu.edu/sasl/sasl-library.html)</li>
+</ul>
+
+<h3 id="34-openldap-clients-and-servers">3.4 OpenLDAP Clients and Servers</h3>
+
+<p>Installed components included with OpenLDAP:</p>
+
+<ul>
+  <li>The LDAP server: <code class="language-plaintext highlighter-rouge">libexec/slapd</code></li>
+  <li>The LDAP replication helper: <code class="language-plaintext highlighter-rouge">libexec/slurpd</code></li>
+  <li>Command-line tools for adding, modifying, and deleting entries on an LDAP server:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bin/ldapadd</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/ldapmodify</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/ldapdelete</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/ldapmodrdn</code></li>
+    </ul>
+  </li>
+  <li>Command-line utilities for searching for an LDAP directory or testing a compare operation on a specific attribute held by an entry.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bin/ldapsearch</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/ldapcompare</code></li>
+    </ul>
+  </li>
+  <li>A tool for changing the password attribute in LDAP entries: <code class="language-plaintext highlighter-rouge">bin/ldappasswd</code></li>
+  <li>Tools for manipulating the local backend data store used by the <code class="language-plaintext highlighter-rouge">slapd</code> daemon.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">sbin/slapadd</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbin/slapcat</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbin/slapindex</code></li>
+    </ul>
+  </li>
+  <li>A simple utility to generate password hashes suitable for use in slapd.conf: <code class="language-plaintext highlighter-rouge">sbin/slappasswd</code></li>
+</ul>
+
+<h3 id="35-the-slapdconf-configuration-file">3.5 The slapd.conf Configuration File</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">slapd.conf</code> file is the central source of configuration information for the OpenLDAP standalone server (<code class="language-plaintext highlighter-rouge">slapd</code>),the replication helper daemon (<code class="language-plaintext highlighter-rouge">slurpd</code>), and related tools, such as <code class="language-plaintext highlighter-rouge">slapcat</code> and <code class="language-plaintext highlighter-rouge">slapadd</code>.</p>
+
+<p>As a general rule, the OpenLDAP client tools such as <code class="language-plaintext highlighter-rouge">ldapmodify</code> and <code class="language-plaintext highlighter-rouge">ldapsearch</code> use <code class="language-plaintext highlighter-rouge">ldap.conf</code> (not <code class="language-plaintext highlighter-rouge">slapd.conf</code>) for default settings.</p>
+
+<p>For general needs, the slapd.conf file used by OpenLDAP 2 can be broken into two sections. The first section contains parameters that affect the overall behavior of the OpenLDAP servers (for example, the level of information sent to log files). The second section is composed of parameters that relate to a particular database backend used by the slapd daemon.</p>
+
+<p>🔐 For security reasons, the slapd.conf file should be readable and writable only by the user who runs the slapd daemon, which is normally the superuser. A working server’s slapd.conf often contains sensitive information that should be restricted from unauthorized viewing.</p>
+
+<h4 id="351-schema-files">3.5.1 Schema Files</h4>
+
+<p>OpenLDAP 2 includes several popular schema files to be used at the administrator’s discretion.</p>
+
+<p>All the <code class="language-plaintext highlighter-rouge">attributeType</code> and <code class="language-plaintext highlighter-rouge">objectClass</code> definitions required for a bare-bones server are included in the file <code class="language-plaintext highlighter-rouge">core.schema</code>.</p>
+
+<p>In the configuration file, the <code class="language-plaintext highlighter-rouge">include</code> parameter specifies schemas to be included by the server:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/local/etc/openldap/slapd.conf
+
+# Global section
+
+## Include the minimum schema required.
+include     /usr/local/etc/openldap/schema/core.schema
+
+#######################################################
+## Database sections omitted
+</code></pre></div></div>
+
+<p>There are several schema files included with a default OpenLDAP 2.1 installation::</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">corba.schema</code> - A schema for storing Corba objects in an LDAP directory, as described in RFC 2714.</li>
+  <li><code class="language-plaintext highlighter-rouge">core.schema</code> - OpenLDAP’s required core schema. This schema defines basic LDAPv3 attributes and objects described in RFCs 2251-2256.</li>
+  <li><code class="language-plaintext highlighter-rouge">cosine.schema</code> - A schema for supporting the COSINE and X.500 directory pilots. Based on RFC 1274</li>
+  <li><code class="language-plaintext highlighter-rouge">inetorgperson.schema</code> - The schema that defines the <code class="language-plaintext highlighter-rouge">inetOrgPerson</code> object class and its associated attributes defined in RFC 2798. This object is frequently used to store contact information for people.</li>
+  <li><code class="language-plaintext highlighter-rouge">misc.schema</code> - A schema that defines a small group of miscellaneous objects and attributes.</li>
+</ul>
+
+<p>The client applications that you want to support may require you to include schema files in addition to core.schema. Make sure you are aware of dependencies between schema files. Dependencies are normally described at the beginning of the file.</p>
+
+<h4 id="352-logging">3.5.2 Logging</h4>
+
+<p>OpenLDAP logging levels</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-1</code>: All logging information</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code>: No Logging information</li>
+  <li><code class="language-plaintext highlighter-rouge">1</code>: Trace function calls</li>
+  <li><code class="language-plaintext highlighter-rouge">2</code>: Packet-handling debugging information</li>
+  <li><code class="language-plaintext highlighter-rouge">4</code>: Heavy trace debugging</li>
+  <li><code class="language-plaintext highlighter-rouge">8</code>: Connection management</li>
+  <li><code class="language-plaintext highlighter-rouge">16</code>: Packets sent and received</li>
+  <li><code class="language-plaintext highlighter-rouge">32</code>: Search filter processing</li>
+  <li><code class="language-plaintext highlighter-rouge">64</code>: Configuration file processing</li>
+  <li><code class="language-plaintext highlighter-rouge">128</code>: Access control list processing</li>
+  <li><code class="language-plaintext highlighter-rouge">256</code>: Statistics for connection, operations, and results</li>
+  <li><code class="language-plaintext highlighter-rouge">512</code>: Statistics for results returned to clients</li>
+  <li><code class="language-plaintext highlighter-rouge">1024</code>: Communication with shell backends</li>
+  <li><code class="language-plaintext highlighter-rouge">2048</code>: Print entry parsing debug information</li>
+</ul>
+
+<h4 id="353-sasl-options">3.5.3 SASL Options</h4>
+
+<p>slapd.conf has three SASL-related global options. These are:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sasl-host hostname</code> is the fully qualified domain name of the host used for SASL authentication.</li>
+  <li><code class="language-plaintext highlighter-rouge">sasl-realm string</code> is theSASL domain used for authentication.</li>
+  <li><code class="language-plaintext highlighter-rouge">sasl-secprops properties</code> allows you to define various conditions that affect SASL security properties</li>
+</ul>
+
+<h4 id="354-ssltls-options">3.5.4 SSL/TLS Options</h4>
+
+<p>Like the SASL parameters, slapd.conf offers several options for configuring settings related to SSL and TLS. These parameters include:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">TLSCipherSuite cipher-suite-specification</code>: specify which ciphers the server will accept. It also specifies a preference order for the ciphers.This should be a colon-separated list of cipher suites.</li>
+  <li><code class="language-plaintext highlighter-rouge">TLSCertificateFile filename</code> and <code class="language-plaintext highlighter-rouge">TLSCertificateKeyFile filename</code>: inform <code class="language-plaintext highlighter-rouge">slapd</code> of the location of the server’s certificate and the associated private key. This will be used to implement both LDAP over SSL (LDAPS) and the StartTLS extended operation.</li>
+</ul>
+
+<p>Here are the TLS configuration parameters in the context of slapd.conf:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/local/etc/openldap/slapd.conf
+
+# Global section
+
+## Include the minimum schema required.
+
+include     /usr/local/etc/openldap/schema/core.schema
+
+## Added logging parameters
+
+loglevel     296
+pidfile      /usr/local/var/slapd.pid
+argsfile     /usr/local/var/slapd.args
+
+## TLS options for slapd
+TLSCipherSuite          HIGH
+TLSCertificateFile      /etc/local/slapd-cert.pem
+TLSCertificateKeyFile   /etc/local/slapd-key.pem
+
+#########################################################
+Database sections omitted
+</code></pre></div></div>
+
+<h4 id="355-more-security-related-parameters">3.5.5 More Security-Related Parameters</h4>
+
+<p><code class="language-plaintext highlighter-rouge">security</code> - parameter allows us to specify general security strength factors. To take full advantage of the security parameter, you must disable simple binds and use only SASL mechanismsfor authentication.</p>
+
+<p><code class="language-plaintext highlighter-rouge">require</code> - allows an administrator to define general conditions that must be met to provide access to the directory. Accepts a comma-separated list of the config values.</p>
+
+<p><code class="language-plaintext highlighter-rouge">allow</code> and <code class="language-plaintext highlighter-rouge">disallow</code> parameters provide another means of enabling and disabling certain features.</p>
+
+<p><code class="language-plaintext highlighter-rouge">password-hash</code> - defines the default password encryption scheme used to store values inthe <code class="language-plaintext highlighter-rouge">userPassword</code> attribute.</p>
+
+<p>After covering these final parameters, you can complete the global section of your <code class="language-plaintext highlighter-rouge">slapd.conf</code>:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/local/etc/openldap/slapd.conf
+
+# Global section
+
+## Include the minimum schema required.
+include     /usr/local/etc/openldap/schema/core.schema
+
+## Added logging parameters
+loglevel     296
+pidfile      /usr/local/var/slapd.pid
+argsfile     /usr/local/var/slapd.args
+
+## TLS options for slapd
+TLSCipherSuite          HIGH
+TLSCertificateFile      /etc/local/slapd-cert.pem
+TLSCertificateKeyFile   /etc/local/slapd-key.pem
+
+## Misc security settings
+password-hash     {SSHA}
+
+#########################################################
+Database sections omitted
+</code></pre></div></div>
+
+<h4 id="356-serving-up-data">3.5.6 Serving Up Data</h4>
+
+<p>A database section begins with the <code class="language-plaintext highlighter-rouge">database</code> directive and continues until the next occurrence of the <code class="language-plaintext highlighter-rouge">database</code> directive or the end of the file. This parameter has several possible values:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">bdb</code> - This backend has been specifically written to take advantage of the Berkley DB 4 database manager; it is the recommendedbackend used on an OpenLDAP server.</li>
+  <li><code class="language-plaintext highlighter-rouge">ldbm</code> - An ldbm database is implemented via either the GNU Database Manager or the Sleepycat Berkeley DB software package.</li>
+  <li><code class="language-plaintext highlighter-rouge">passwd</code> - The passwd backend is a quick and dirty means of providing a directory interface to the system passwd(5)file.</li>
+</ul>
+
+<p>The naming context allows slapd to servemultiple, potentially disconnected partitions from a single server.The following example defines the naming context of the database tocorrespond with the local domain name, a practice recommended by RFC 2247:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Define the beginning of example database.
+database     bdb
+
+## Define the root suffix you serve.
+suffix          "dc=plainjoe,dc=org"
+</code></pre></div></div>
+
+<p>Each LDAP directory can have a root DN (rootdn), which is similar to the superuser account on Unix systems.</p>
+
+<p>The naming of the root DN is arbitrary, although the cn values of “admin” and “Manager” have become commonchoices.</p>
+
+<p>The root DN also requires a corresponding root password (<code class="language-plaintext highlighter-rouge">rootpw</code>), which can be stored in clear text orencrypted form using one of the prefixes accepted by the password-hash parameter.</p>
+
+<p>🔐 OpenLDAP 2 provides the <code class="language-plaintext highlighter-rouge">slappasswd</code> utility for generating {CRYPT}, {MD5}, {SMD5}, {SSHA}, and {SHA} passwords. <strong>Do not place the root password in plain text regardless of what the permissions on <code class="language-plaintext highlighter-rouge">slapd.conf</code> are</strong>. Even if the password is encrypted, it is extremely important not to allow unauthorized users to view <code class="language-plaintext highlighter-rouge">slapd.conf</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Define a root DN for superuser privileges.
+rootdn      "cn=Manager,dc=plainjoe,dc=org"
+
+## Define the password used with rootdn. This is a salted secure hash of the phrase "secret."
+rootpw          {SSHA}2aksIaicAvwc+DhCrXUFlhgWsbBJPLxy
+</code></pre></div></div>
+
+<p>You aren’t required to define a root password. If no rootpw directive is present, the rootdn is authenticated usingthe server’s default authentication method (e.g., SASL).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">directory</code> and <code class="language-plaintext highlighter-rouge">mode</code> parameters define the physical location and filesystem permissions of the createddatabase files. These parameters are necessary because, when using an ldbm backend, slapd manages the datastore itself.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">index</code> parameter specifies the attributes on which slapd should maintain indexes. These indexes are used tooptimize searches, similar to the indexes used by a relational database management system. There can be multiple index definitions for the same database—and even multiple attributes or index types—on thesame line. I cannot stress the use of proper indexes enough. Misconfigured indexes are probably the number one reasonadministrators experience performance problems with OpenLDAP servers.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">cachesize</code> parameter allows you to tune caching according to the needs of the directory.  The default is to cache <code class="language-plaintext highlighter-rouge">1000</code> entries. If your total directory size is less than <code class="language-plaintext highlighter-rouge">1000</code> entries, there is no need to modify this setting. If your directory contains <code class="language-plaintext highlighter-rouge">1000000</code> entries, a cache size of <code class="language-plaintext highlighter-rouge">100000</code> would not be unusual.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Define the beginning of example database.
+database        bdb
+
+## Define the root suffix you serve.
+suffix          "dc=plainjoe,dc=org"
+
+## Define a root DN for superuser privileges
+.rootdn          "cn=Manager,dc=plainjoe,dc=org"
+
+## Define the password used with rootdn. This is the Base64-encoded MD5 hash of"secret."
+rootpw          {SSHA}2aksIaicAvwc+DhCrXUFlhgWsbBJPLxy
+
+## Directory containing the database files.
+directory       /var/ldap/plainjoe.org
+
+## Files should be created rw for the owner **only**.
+mode            0600
+
+## Maintain presence and equality searches on the cn and uid attributes.
+index           objectClass     eq
+index          cn          pres,eq
+
+## db tuning parameters; cache 2,000 entries in memory
+cachesize       2000
+</code></pre></div></div>
+
+<h3 id="36-access-control-lists-acls">3.6 Access Control Lists (ACLs)</h3>
+
+<p><strong>Who has <em>Access</em> to <em>What</em>?</strong></p>
+
+<p>The most frequent forms of <strong>“Who”</strong> include:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">*</code> - Matches any connected user, including anonymous connection</li>
+  <li><code class="language-plaintext highlighter-rouge">self</code> - The DN of the currently connected user, assuming he has been successfully authenticated by a previous bindrequest.</li>
+  <li><code class="language-plaintext highlighter-rouge">anonymous</code> - Nonauthenticated user connections</li>
+  <li><code class="language-plaintext highlighter-rouge">users</code> - Authenticated user connections</li>
+  <li><em>Regular expression</em> - Matches a DN or an SASL identity.</li>
+</ul>
+
+<p>The simplest way to control access is to define a default level of authorization. A global <code class="language-plaintext highlighter-rouge">slapd.conf</code> parameter defines the default access given to a user in the absence of a more explicit rule.</p>
+
+<p>Summary of access levels from most (top) to least (bottom):</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">write</code> - Access to update attribute values</li>
+  <li><code class="language-plaintext highlighter-rouge">read</code> - Access to read search results</li>
+  <li><code class="language-plaintext highlighter-rouge">search</code> - Access to apply search filters</li>
+  <li><code class="language-plaintext highlighter-rouge">compare</code> - Access to compare attributes</li>
+  <li><code class="language-plaintext highlighter-rouge">auth</code> - Access to bind (authenticate). This requires that the client send a username in the form of a DN andsome type of credentials to prove his or her identity.</li>
+  <li><code class="language-plaintext highlighter-rouge">none</code> - No access</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Give users search access when no other ACL applies.
+defaultaccess     search
+</code></pre></div></div>
+
+<p>The <strong>“What”</strong> defines the entry and attributes to which the ACL should apply. It is composed of three basicparts, all of which are optional:</p>
+<ul>
+  <li>A regular expression defining the DN of the proposed target of the ACL.</li>
+  <li>An LDAP search filter that conforms to RFC 2254.</li>
+  <li>A comma-separated list of attribute names taking the form <code class="language-plaintext highlighter-rouge">attrs=attributeList</code>. If this item is notpresent, the ACL applies to all attributes held by the entry that matches the DN regular expression pattern</li>
+</ul>
+
+<p>The following ACL grants read access to everyone:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Simple ACL granting read access to the world
+access to *
+    by * read
+</code></pre></div></div>
+
+<p>This next example restricts access to the <code class="language-plaintext highlighter-rouge">userPassword</code> attribute; any user can access the attribute, but can access it only for authentication purposes. Users can’t read or write this attribute.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Restrict userPassword to be used for authentication only.
+access to attrs=userPassword
+  by * auth
+</code></pre></div></div>
+
+<p>If a user should be allowed to modify her own password in the directory, the ACL would need to be rewritten as follows:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Restrict userPassword to be used for authentication only, but allow users to modify
+# their own passwords.
+access to attrs=userPassword
+  by self write
+  by * auth
+</code></pre></div></div>
+
+<p><strong>ACLs are evaluated on a “first match wins” basis. This means that more restrictive ACLs should be listed prior to more general ones.</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Restrict userPassword to be used for authentication only, but allow users to modify
+# their own passwords.
+access to attrs=userPassword
+  by self write
+  by * auth
+
+# Simple ACL granting read access to the world
+access to *
+  by * read
+</code></pre></div></div>
+
+<h2 id="chapter-4-openldap-building-a-company-white-pages">Chapter 4. OpenLDAP: Building a Company White Pages</h2>
+
+<h3 id="41-a-starting-point">4.1 A Starting Point</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/local/etc/openldap/slapd.conf
+# Global section
+
+## Include the minimum schema required.
+include       /usr/local/etc/openldap/schema/core.schema
+
+## Added logging parameters
+loglevel      296
+pidfile       /usr/local/var/slapd.pid
+argsfile      /usr/local/var/slapd.args
+
+## TLS options for slapd
+TLSCipherSuite             HIGH
+TLSCertificateFile         /etc/local/slapd-cert.pem
+TLSCertificateKeyFile      /etc/local/slapd-key.pem
+
+## Misc security settings
+password-hash         {SSHA}
+
+#######################################################
+## Define the beginning of example database.
+database bdb
+
+## Define the root suffix you serve.
+suffix                "dc=plainjoe,dc=org"
+
+## Define a root DN for superuser privileges.
+rootdn                "cn=Manager,dc=plainjoe,dc=org"
+
+## Define the password used with rootdn. This is the base64-encoded MD5 hash of
+## "secret."
+rootpw                {SSHA}2aksIaicAvwc+DhCrXUFlhgWsbBJPLxy
+
+## Directory containing the database files
+directory             /var/ldap/plainjoe.org
+
+## Files should be created rw for the owner **only**.
+mode                  0600
+
+## Indexes to maintain
+index                 objectClass          eq
+index                 cn                   pres,eq
+
+## db tuning parameters; cache 2,000 entries in memory
+cachesize             2000
+
+# Simple ACL granting read
+access to the worldaccess to *
+  by * read
+</code></pre></div></div>
+
+<h3 id="42-defining-the-schema">4.2 Defining the Schema</h3>
+
+<p>The first step in implementing a directory is determining what information to store in the directory.</p>
+
+<p>Information stored in anexisting Human Resources database can provide a good starting point. Of course, you may not want to place all ofthis information in your directory.</p>
+
+<p>An alternative to starting with an existing database is to determine which employee attributes you wish to makeavailable and define a schema to match that list. The reverse also works: you can select a standard schema anduse the attributes already defined.</p>
+
+<p>For your directory, the <code class="language-plaintext highlighter-rouge">inetOrgPerson</code> schema defined in RFC 2798 is more than adequate.</p>
+
+<p>Another way to reduce the number of name collisions is to redesign the directory layout to reduce the total numberof user entries sharing a common parent. In other words, group employees in some type of logical container, suchas a departmental organizational unit.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                  dc=planjoe,dc=org
+                  //              \\
+               on=sales          on=engineering
+                //                  \\
+  cn=John Arbuckle                 cn=John Arbuckle
+</code></pre></div></div>
+
+<p>Here is an employee entry that contains the attributes needed for our directory</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## LDIF entry for employee "Gerald W. Carter"
+dn: cn=Gerald W. Carter,ou=people,dc=plainjoe,dc=org
+objectClass: inetOrgPerson
+cn: Gerald W. Carter
+sn: Carter
+mail: jerry@plainjoe.org
+mail: gcarter@valinux.com
+labeledURI: http://www.plainjoe.org/
+roomNumber: 1234 Dudley Hall
+departmentNumber: Engineering
+telephoneNumber: 222-555-2345
+pager: 222-555-6789
+mobile: 222-555-1011
+</code></pre></div></div>
+
+<h4 id="deep-or-wide">Deep or Wide?</h4>
+
+<p>Is it better to maintain a shallow (and wide) tree or a deep (and narrow) directory? The best structurefor your directory depends on two factors.</p>
+
+<p>First, how likely is it for a change to force an entry (in our case, a person) to be moved from oneorganizational unit to another? The answer to this question is based on a solid understanding of yourorganization and its needs. Deeper directory trees imply that an entry must meet more requirementsin order to be placed in a certain container.</p>
+
+<p>Second, does the implementation of your LDAP directory server favor one design over another? ForOpenLDAP, this answer depends on your needs. The determining factor will be the number of updates,or writes, that will be made to the directory. To update an entry, the slapd server obtains a lock onthe parent entry for the requesting client. Now suppose that you have a very shallow directory treewith 10,000 entries under a single parent. If many updates occur at the same time, the contention forthe lock on the parent entry will be very high. The end result will be slower updates because processeswill block waiting for the lock.</p>
+
+<p>A deeper tree means that you can often make searches more efficient by giving a more detailedsearch base. For more information on designing LDAP namespaces, you may wish to read Howes, etal., Understanding and Deploying LDAP Directory Services (MacMillan Technical Press).</p>
+
+<h3 id="43-updating-slapdconf">4.3 Updating slapd.conf</h3>
+
+<p>Once the schema has been selected, the next step is to modify slapd.conf to support the selected attribute typesand object classes. In order to support the inetOrgPerson object class, you must include inetorgperson.schema,core.schema, and cosine.schema in slapd.conf. The comments that begin inetorgperson.schema outline thedependency on the COSINE schema. Here are the modifications to the global section of slapd.conf:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/local/etc/openldap/slapd.conf
+
+# Global section
+
+## Include the minimum schema required.
+include         /usr/local/etc/openldap/schema/core.schema
+
+## Added to support the inetOrgPerson object.
+include         /usr/local/etc/openldap/schema/cosine.schema
+include         /usr/local/etc/openldap/schema/inetorgperson.schema
+
+## Added logging parameters
+...
+</code></pre></div></div>
+
+<p>To better supportsearches for employees, you should modify the set of indexes to include a more complete list of attributes.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Indexes to maintain
+index         objectClass         eq
+index         cn,sn,mail          eq,sub
+index         departmentNumber    eq
+</code></pre></div></div>
+
+<h3 id="45-adding-the-initial-directory-entries">4.5 Adding the Initial Directory Entries</h3>
+
+<p>There are two ways to add information to your directory; which method to use depends on the directory’s state.</p>
+
+<p>First, <code class="language-plaintext highlighter-rouge">slapadd</code> and the other <code class="language-plaintext highlighter-rouge">slap*</code>. They allow an administrator to import entries directly into the database files and export the entire directory as an LDIF file. They work directly with the database, and don’t interact with <code class="language-plaintext highlighter-rouge">slapd</code>.</p>
+
+<p>Second, the OpenLDAP distribution includes a number of tools, such as <code class="language-plaintext highlighter-rouge">ldapmodify</code>, that can update a livedirectory using the LDAPv3 network operations. These tools access the directory through the server.</p>
+
+<p>A good rule of thumb is that the <code class="language-plaintext highlighter-rouge">slap*</code> tools are used for getting your LDAP server online, and the <code class="language-plaintext highlighter-rouge">ldap*</code> tools are for day-to-day administration of the directory.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">slapcat</code> utility dumps the contents of an entire directory (including persistent operational attributes such asmodifyTimeStamp) in LDIF format.</p>
+
+<p><code class="language-plaintext highlighter-rouge">slapcat</code> can provide a useful means of backing up thed irectory. Unlike the actual DBM datafiles, which are machine- and version-dependent, LDIF is very portable andallows easier editing in case of corrupted data. I don’t mean to discourage you from backing up the DBM files, butyou could do worse than backing up the directory in both forms.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">slapindex</code> command can be used to regenerate the indexes for a bdb backend. <strong>This might be necessary if anew index was added to slapd.conf after the directory was populated with entries.</strong></p>
+
+<p>To start populating your directory, create a file containing the LDIF entries of the top-level nodes. These LDIFentries build the root node and the people organizational unit:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /tmp/top.ldif
+
+## Build the root node.
+dn: dc=plainjoe,dc=org
+dc: plainjoe
+objectClass: dc
+ObjectobjectClass: organizationalUnit
+ou: PlainJoe Dot Org
+
+## Build the people ou.
+dn: ou=people,dc=plainjoe,dc=org
+ou: people
+objectClass: organizationalUnit
+
+--------------------------------------
+root# slapadd -v -l /tmp/top.ldif
+</code></pre></div></div>
+
+<h4 id="451-verifying-the-directorys-contents">4.5.1 Verifying the Directory’s Contents</h4>
+
+<p>You can use <code class="language-plaintext highlighter-rouge">ldapsearch</code> to query the server. <code class="language-plaintext highlighter-rouge">ldapsearch</code> allows you to dig through your directory, test for the existence of data, and test whether access control has been set up correctly.</p>
+
+<p>For now, focus on very simple searches that assure you the directory is up and running correctly.</p>
+
+<p>In its simplest form, a query requires the following information:</p>
+<ul>
+  <li>The LDAP server’s hostname or IP address</li>
+  <li>The credentials (i.e., user DN and password) to use to bind to the host</li>
+  <li>The search base in the form of a DN</li>
+  <li>The scope of the directory to search</li>
+  <li>A search filter</li>
+  <li>A list of attributes to return</li>
+</ul>
+
+<p>“Show me everything” search: <code class="language-plaintext highlighter-rouge">ldapsearch -x -b "dc=plainjoe,dc=org" "(objectclass=*)"</code></p>
+
+<h4 id="452-updating-what-is-already-there">4.5.2 Updating What Is Already There</h4>
+
+<p>Te name <code class="language-plaintext highlighter-rouge">ldapmodify</code> is a little misleading; this utility can <strong>add</strong> new entries and <strong>delete</strong> or <strong>update</strong> existing entries using some of the advanced features of LDIF for its input language.</p>
+
+<p>The following LDIF listing defines two entries that we will add to our directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /tmp/users.ldif
+
+## LDIF entry for "Gerald W. Carter"
+dn: cn=Gerald W. Carter,ou=people,dc=plainjoe,dc=org
+cn: Gerald W. Carter
+sn: Carter
+mail: jerry@plainjoe.org
+mail: gcarter@valinux.com
+labeledURI: http://www.plainjoe.org/
+roomNumber: 1234 Dudley Hall
+departmentNumber: Engineering
+telephoneNumber: 222-555-2345
+pager: 222-555-6789
+mobile: 222-555-1011
+objectclass: inetOrgPerson
+
+## LDIF entry for "Jerry Carter"
+dn: cn=Jerry Carter,ou=people,dc=plainjoe,dc=org
+cn: Jerry Cartersn: Carter
+mail: carter@nowhere.net
+telephoneNumber: 555-123-1234
+objectclass: inetOrgPerson
+</code></pre></div></div>
+
+<p>The following command shows how to add these entries to the directory while it is running. Because write privileges are required to add new entries, <code class="language-plaintext highlighter-rouge">ldapmodify</code> binds to the directory using the credentials from the <code class="language-plaintext highlighter-rouge">rootdn</code> and <code class="language-plaintext highlighter-rouge">rootpw</code> <code class="language-plaintext highlighter-rouge">slapd.conf</code> parameters.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldapmodify -D "cn=Manager,dc=plainjoe,dc=org" -w secret -x -a -f /tmp/users.ldif
+</code></pre></div></div>
+<p>There are two common causes of this error message. You may have forgotten to include all the necessary schemafiles in slapd.conf, or you may have extra whitespace at the end of line in the LDIF file.</p>
+
+<p>Now let’s see how a modification works. Suppose you want to add a URL to the entry for cn=JerryCarter,ou=people,dc=plainjoe,dc=org. To add a URL, use the <code class="language-plaintext highlighter-rouge">labeledURI</code> attribute. In addition, you should delete the gcarter@valinux.com email address for “Gerald W. Carter” because it hasbecome invalid.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## /tmp/update.ldif
+
+## Add a web page location to Jerry Carter.
+dn: cn=Jerry Carter,ou=people,dc=plainjoe,dc=org
+changetype: modify
+add: labeled
+URIlabeledURI: http://www.plainjoe.org/~jerry/
+
+## Remove an email address from Gerald W. Carter.
+dn: cn=Gerald W. Carter,ou=people,dc=plainjoe,dc=org
+changetype: modify
+delete: mail
+mail: gcarter@valinux.com
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">changetype</code> keyword in the LDIF file is the key to modifying existing entries. This keyword can accept thefollowing values:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">add</code> - Adds the entry to the directory.</li>
+  <li><code class="language-plaintext highlighter-rouge">delete</code> - Deletes the entry from the directory.</li>
+  <li><code class="language-plaintext highlighter-rouge">modify</code> - Modifies the attributes of an entry. With this keyword, you can both add and delete attribute values.</li>
+  <li><code class="language-plaintext highlighter-rouge">modrdn</code> - Changes the RDN of an entry.</li>
+  <li><code class="language-plaintext highlighter-rouge">moddn</code> - Changes the DN of an entry.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ldapmodify -D "cn=Manager,dc=plainjoe,dc=org" -w secret -x -v -f /tmp/update.ldif
+</code></pre></div></div>
+
+<p>LDIF file is parsed sequentially from the top. Therefore, later LDIF entries can modify entriescreated previously in the file.</p>
+
+<p>Modifying the <code class="language-plaintext highlighter-rouge">RDN</code> of an entry takes a little more thought than adding an entry or changing an attribute of anentry. <strong>If the entry is not a leaf node, changing its <code class="language-plaintext highlighter-rouge">RDN</code> orphans the children in the directory because the <code class="language-plaintext highlighter-rouge">DN</code> of their parent has changed.</strong> You should make sure that you don’t leave orphaned nodes in the directory—you should move the nodes with their parent or give them a new parent.</p>
+
+<p>With that in mind, let’s think about how to changethe RDN of the entry:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## /tmp/modrdn.ldif
+
+## Change the RDN from "Jerry Carter" to "Gerry Carter."
+dn: cn=Jerry Carter,ou=people,dc=plainjoe,dc=org
+changetype: modrdn
+newrdn: cn=Gerry Carter
+deleteoldrdn: 1
+</code></pre></div></div>
+
+<p>If an entire subtree of the directory needs to be moved, a better solution may be to export the subtree to an LDIF file, modify all occurrences of the changed attribute in all the DNs, and finally re-add the subtree to the newlocation. Once the information has been entered correctly into a location, you can then use a recursive ldapdeleteto remove the old subtree.</p>
+
+<h2 id="chapter-5-replication-referrals-searching-and-sasl-explained">Chapter 5. Replication, Referrals, Searching, and SASL Explained</h2>
+
+<h3 id="51-more-than-one-copy-is-a-good-thing">5.1 More Than One Copy Is “a Good Thing”</h3>
+
+<p>Because LDAP replication is vendor-specific at the moment, it is not possible to replicate data from one vendor’sserver to another vendor’s server.</p>
+
+<p>Here are a few symptoms that indicate the need for directoryreplicas:</p>
+<ul>
+  <li>If one application makes heavy use of the directory and slows down the server’s response to other client applications.</li>
+  <li>If the directory server does not have enough CPU power to handle the number of requests it is receiving,installing a replica can improve response time. You may also wish to install several read-only replicas and usesome means of load balancing, such as round-robin DNS or a virtual server software package.</li>
+  <li>If the directory server cannot be taken offline for backups, consider implementing a read-only replica toprovide service while the master server is taken down for backups or normal maintenance.</li>
+  <li>if your directory is a critical part of the services provided by your network, using replicas can help providefailover and redundancy.</li>
+</ul>
+
+<p>This design uses a secondary daemon (<code class="language-plaintext highlighter-rouge">slurpd</code>) to process a change log written by the standalone LDAP server (<code class="language-plaintext highlighter-rouge">slapd</code>). <code class="language-plaintext highlighter-rouge">slurpd</code> then forwards the changes to the replica’s local slapd instance using normal LDAP modifycommands.</p>
+
+<h4 id="512-replication-in-a-nutshell">5.1.2 Replication in a Nutshell</h4>
+
+<ol>
+  <li>Stop the master server’s slapd daemon</li>
+  <li>Reconfigure the master server’s slapd.conf to enable replication to the new slave server.</li>
+  <li>Copy the database from the master server to the replica.</li>
+  <li>Configure the replica server’s slapd.conf.</li>
+  <li>Start the replica server’s slapd process</li>
+  <li>Start the master server’s slapd process.</li>
+  <li>Start the master server’s slurpd process</li>
+</ol>
+
+<h3 id="513-configuring-the-master-server">5.1.3 Configuring the Master Server</h3>
+
+<p>You need toadd two directives to the database section of slapd.conf.
+First, you need to add the name of the log file in which slapd will record all LDAP modifications. This is specifiedusing the replogfile parameter:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## -- master slapd --
+# Specify the location of the file to append changes to.
+replogfile     /var/ldap/slapd.replog
+</code></pre></div></div>
+
+<p>The second parameter you need to add informs slurpd where to send the changes. You add this parameter,<code class="language-plaintext highlighter-rouge">replica</code>, just below the replogfile directive.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## -- master slapd --
+# Set the hostname and bind credentials used to propagate the changes in the# replogfile.
+
+replica     host=replica1.plainjoe.org:389
+            suffix="dc=plainjoe,dc=org"
+            binddn="cn=replica,dc=plainjoe,dc=org"
+            credentials=MyPass
+            bindmethod=simple
+            tls=yes
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">replica</code> specifies the host and port to which the data should be sent, the portion of the partition to be replicated,the DN to use when binding to the replicated server, <strong>any credentials that are acquired</strong>, and information about thebinding method and protocols.</p>
+
+<h3 id="514-configuring-the-replica-server">5.1.4 Configuring the Replica Server</h3>
+
+<p>The first step in creating a replica is to initialize its database with a current copy of the directory from the masterserver.</p>
+
+<p>There are two ways to accomplish this:</p>
+
+<ol>
+  <li>Copy the master’s database files to the replica.</li>
+  <li>Export the master’s database to an LDIF file and reimport the entries into the replica.</li>
+</ol>
+
+<p>A more general way to transfer the master’s database is to export the database to an LDIF fileusing <code class="language-plaintext highlighter-rouge">slapcat</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@master# slapcat -b "dc=plainjoe,dc=org" -l contents.ldif
+
+...copy contents.ldif to the slave server...
+root@replica1# slapadd -l contents.ldif
+</code></pre></div></div>
+
+<p>Once the data has been copied to the slave server, it is time to update the replica’s slapd.conf to accept updatesfrom the master server. The global section of the replica’s configuration file will be identical to the master server’s.</p>
+
+<p>The database section of the slave’s slapd.conf will also be identical, minus the replication parameters and with anappropriate local <code class="language-plaintext highlighter-rouge">rootdn</code> and <code class="language-plaintext highlighter-rouge">rootpw</code>. For the purposes of this chapter, the slave’s database section contains the following <code class="language-plaintext highlighter-rouge">rootdn</code> and <code class="language-plaintext highlighter-rouge">rootpw</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## -- slave slapd --##
+replica's administrative DN
+
+rootdn     "cn=replica,dc=plainjoe,dc=org"
+
+## Salted Secure Hash version of MyPass
+rootpw     {SSHA}SMKnFPO435G+QstIzNGb4RGjT0KLz2TV
+
+## Define the DN that will be used by the master slurpd to replicate data. Normally,
+## this is the rootdn of the slave server or, at the minimum, a DN that is allowed
+## write access to all entries via an ACL.
+updatedn     "cn=replica,dc=plainjoe,dc=org"
+
+## Specify the LDAP URL of the master server, which can accept update requests.
+updateref     ldap://pogo.plainjoe.org
+</code></pre></div></div>
+
+<p>The last step is to launch the master and slave’s slapdprocesses using the procedure described in earlier chapters.</p>
+
+<h2 id="52-distributing-the-directory">5.2 Distributing the Directory</h2>
+
+<p>Let’s assume tha, the top level of your directory server (<code class="language-plaintext highlighter-rouge">dc=plainjoe,dc=org</code>) ismaintained by one department, and the server containing host information (<code class="language-plaintext highlighter-rouge">ou=hosts,dc=plainjoe,dc=org</code>) ismanaged by another. How can these two directories be combined into one logical DIT?</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------------------
+| dc=plainjoe,dc=org |
+----------------------
+                  \\
+                -------------------------------
+                | ou=hosts,dc=plainjoe,dc=org |
+                -------------------------------
+</code></pre></div></div>
+<p>The definition for the ou=hosts partition held by the second server is very similar to the database section we havebeen using so far.</p>
+
+<p>(Skipping for now, currenlty not needed for my purposes)</p>
+
+<h3 id="53-advanced-searching-options">5.3 Advanced Searching Options</h3>
+
+<p>In its commonly used form, an LDAP search filter has the following syntax: <code class="language-plaintext highlighter-rouge">(attribute filterOperator value )</code></p>
+
+<p>the attribute is the actual name of the attribute type. The filterOperator is one of: <code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">~=</code>, <code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code></p>
+
+<p>The value portion can be either an absolute value, such as carter or 555-1234, or a pattern using the asterisk(<code class="language-plaintext highlighter-rouge">*</code>) character as a wildcard. Here are some wildcard searches:<code class="language-plaintext highlighter-rouge">(telephoneNumber=555*)</code> Finds all telephone numbers beginning with 555.</p>
+
+<p>You can combine single filters like these using the following Boolean operators: <code class="language-plaintext highlighter-rouge">&amp;</code> AND, <code class="language-plaintext highlighter-rouge">|</code> OR, <code class="language-plaintext highlighter-rouge">!</code> NOT.</p>
+
+<p>LDAP search filters use prefix notation for joining search conditions. To search for users with a surname(<code class="language-plaintext highlighter-rouge">sn</code>) of “smith” or “jones,” you can build the following filter:<code class="language-plaintext highlighter-rouge">(|(sn=smith)(sn=jones))</code></p>
+
+<p>o look for people with a last name of “smith” or “jones” and a firstname beginning with “John,” the search would be modified to look like: <code class="language-plaintext highlighter-rouge">(&amp;(|(sn=smith)(cn=jones))(cn=john*))</code></p>
+
+<h4 id="531-following-referrals-with-ldapsearch">5.3.1 Following Referrals with ldapsearch</h4>
+
+<p>By default, the ldapsearch tool shipped with OpenLDAP 2 prints information about referral objects but does notautomatically follow them. To follow the searchreferral, give the -C (chase referrals) option when you invoke ldapsearch:</p>
+
+<h4 id="532-limiting-your-searches">5.3.2 Limiting Your Searches</h4>
+
+<p>Searchesw ith filters such as (objectclass=*) can put quite a strain on the directory server and generate more outpu than you want to deal with.</p>
+
+<p>OpenLDAP 2 slapd.conf global search limit parameters:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sizelimit integer</code> - Defines the maximum number of entries that the server will return to a client when respondingto a search request. The default value is 500 entries.</li>
+  <li><code class="language-plaintext highlighter-rouge">timelimitinteger</code> - Specifies the maximum number of seconds in real time to be spent when responding to asearch request. The default limit is 1 hour (3,600 seconds)</li>
+</ul>
+
+<p>Command-line parameters for defining search limits in ldapsearch:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-l integer</code> - Specifies the number of seconds in real time to wait for a response to a search request. A value of 0removes the timelimit default in ldap.conf</li>
+  <li><code class="language-plaintext highlighter-rouge">-z integer</code> - Defines the maximum number of entries to be retrieved as a result of a successful search request. Avalue of 0 removes the limits set by the sizelimit option in ldap.conf.</li>
+</ul>
+
+<h3 id="54-determining-a-servers-capabilities">5.4 Determining a Server’s Capabilities</h3>
+
+<h4 id="rootdse">rootDSE</h4>
+<p>The <code class="language-plaintext highlighter-rouge">rootDSE</code> object contains information about features such as the server naming context, implemented SASL mechanisms, and supported LDAP extensions and controls.</p>
+
+<p>LDAPv3 requires that the <code class="language-plaintext highlighter-rouge">rootDSE</code> has an empty DN.</p>
+
+<p>To list the <code class="language-plaintext highlighter-rouge">rootDSE</code>, perform a base-level search using a DN of “”. OpenLDAP will provide only values held by the <code class="language-plaintext highlighter-rouge">rootDSE</code> if the search requests that operational attributes be returned, so the <code class="language-plaintext highlighter-rouge">+</code> character is appended to the search request:
+<code class="language-plaintext highlighter-rouge">$ ldapsearch -x -s base -b "" "(objectclass=*)" +</code></p>
+
+<h4 id="subschemasubentry">SubSchemaSubentry</h4>
+<p>The <code class="language-plaintext highlighter-rouge">SubSchemaSubentry</code> attribute specifies the base search suffix for querying the schema supported by theserver. This means that clients can verify that the server supports a given matching rule, attribute type, or objectclass prior to performing an operation that depends on a certain characteristic.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ ldapsearch -D "cn=Manager,dc=plainjoe,dc=org" -w n0pass -x -s base -b "cn=SubSchema" "(objectclass=*)" +</code></p>
+
+<h3 id="55-creating-custom-schema-files-for-slapd">5.5 Creating Custom Schema Files for slapd</h3>
+
+<p>Creating a custom schema file for OpenLDAP is a simple process:</p>
+<ul>
+  <li>Assign a unique OID for all new attribute types and object classes.</li>
+  <li>Create the schema file and include it in <code class="language-plaintext highlighter-rouge">slapd.conf</code>.</li>
+</ul>
+
+<p>When creating new attributes or object classes, it is agood idea to use an OID that is guaranteed to be unique, whether or not the schema will ever be used outside ofyour organization. The best way to guarantee that the OID is unique is to obtain a private enterprise number andplace all your definitions under that number.</p>
+
+<p>Let’s call the new object <code class="language-plaintext highlighter-rouge">plainjoePerson</code>. Add the following definition to a custom schema file namedplainjoe.schema; you’ll use this file for all custom objects that you define.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/local/etc/openldap/schema/plainjoe.schema
+
+## objectclass definition for 'plainjoePerson' depends on core.
+schema.objectclass ( 1.3.6.1.4.1.7165.1.1.1.1 NAME 'plainjoePerson'
+  SUP person STRUCTURAL
+  MUST (userPassword $ mail) )
+</code></pre></div></div>
+
+<p>You need to add an include line in <code class="language-plaintext highlighter-rouge">slapd.conf</code> for your new schema file:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/local/etc/openldap/slapd.conf
+
+# Global section
+
+## Include the minimum schema required.
+include     /usr/local/etc/openldap/schema/core.schema
+
+## **NEW**
+## Include support for special plainjoe objects.
+include     /usr/local/etc/openldap/schema/plainjoe.schema
+</code></pre></div></div>
+
+<h3 id="56-sasl-and-openldap">5.6 SASL and OpenLDAP</h3>
+
+<p>(Skipping for now, currenlty not needed for my purposes)</p>
+
+<h2 id="chapter-6-replacing-nis">Chapter 6. Replacing NIS</h2>
+
+<p>(Skipping for now, currenlty not needed for my purposes)</p>
+
+<h2 id="chapter-7-email-and-ldap">Chapter 7. Email and LDAP</h2>
+
+<h3 id="71-representing-users">7.1 Representing Users</h3>
+
+<p>With only a few modifications to your directory, the posixAccount and inetOrgPerson objectclasses can be used to store a single user entry for both authentication and contact information.</p>
+
+<p>One final note before we begin looking at specifics of email integration: the mail attribute is optional in theinetOrgPerson schema definition. However, it’s clearly mandatory when you’re trying to support mail clients andservers</p>
+
+<h3 id="72-email-clients-and-ldap">7.2 Email Clients and LDAP</h3>
+
+<p>Using a standard schema is vastly preferableto building your own. Of course, with email you don’t have the ability to specify what client users will use: at yoursite, many different clients are probably in use, and you won’t make friends by asking users to change.</p>
+
+<p>(Skipping for now, currenlty not needed for my purposes)</p>
+
+
+</body>
+
+</html>

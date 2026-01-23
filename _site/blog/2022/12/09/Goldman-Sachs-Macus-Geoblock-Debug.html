@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Goldman Sachs Macus Geoblock Debug | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Goldman Sachs Macus Geoblock Debug</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Goldman Sachs Macus Geoblock Debug" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Over the past few weeks I’ve been evaluating money management tools. On my list was Goldman Sachs’s Marcus. A few years ago I created a Marcus account, but at the time it didn’t fit my needs. Since then things have changed and it was time re-evaluate it." />
+<meta property="og:description" content="Over the past few weeks I’ve been evaluating money management tools. On my list was Goldman Sachs’s Marcus. A few years ago I created a Marcus account, but at the time it didn’t fit my needs. Since then things have changed and it was time re-evaluate it." />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2022/12/09/Goldman-Sachs-Macus-Geoblock-Debug" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2022/12/09/Goldman-Sachs-Macus-Geoblock-Debug" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-12-09T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Goldman Sachs Macus Geoblock Debug" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2022-12-09T00:00:00-06:00","datePublished":"2022-12-09T00:00:00-06:00","description":"Over the past few weeks I’ve been evaluating money management tools. On my list was Goldman Sachs’s Marcus. A few years ago I created a Marcus account, but at the time it didn’t fit my needs. Since then things have changed and it was time re-evaluate it.","headline":"Goldman Sachs Macus Geoblock Debug","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2022/12/09/Goldman-Sachs-Macus-Geoblock-Debug"},"url":"http://0.0.0.0:4000/blog/2022/12/09/Goldman-Sachs-Macus-Geoblock-Debug"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h1>Goldman Sachs Macus Geoblock Debug</h1>
+<div class="post-date">
+    Friday, December 09, 2022
+</div>
+
+<p>Over the past few weeks I’ve been evaluating money management tools. On my list was Goldman Sachs’s Marcus. A few years ago I created a Marcus account, but at the time it didn’t fit my needs. Since then things have changed and it was time re-evaluate it.</p>
+
+<p>I attempted to login at  <a href="https://www.marcus.com/us/en/login">https://www.marcus.com/us/en/login</a> and was redirected to the following page <a href="https://www.marcus.com/US_Geoblock.html"> https://www.marcus.com/US_Geoblock.html</a> .</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 72%;" src="/assets/posts/marcus-login-bug/marcus-geoblock.png" />
+</div>
+
+<p>After confirming that I was indeed in the United States, I switched from Firefox to Chrome and tried both in incognito/privacy mode and still got geoblocked. Perhaps Goldman Sachs was having temporary technical difficulties, but the flowing day the same problem happened again. Next, I wondered if it was my home network, but again I was blocked on my phone’s hotspot. Finally, I asked my friend to let me try to login on his computer at his place and the yet geoblocked.</p>
+
+<p>At this point I called Marcus support and told the agent the information above. Their first question was, “Are you on a VPN or have any VPN software installed?” To which I said “No.” <mark>The next question was "Do you have a work computer with a VPN?" I said “yes” and the agent said “Your VPN is interfering with the Marcus on your personal computer.”</mark> Dumbfounded by this revelation that my work computer’s VPN can affect requests made from my personal computer. I asked “Are you sure? My work computer is turned off.” The agent said “Yes, this only happens with VPNs”.</p>
+
+<p>I started to think the issue was my account. It had been over a year since the last login and I never opened a financial account. Maybe the Marcus account was marked as inactive and the wrong error page was being displayed. I reset my password and was auto-logged into my account, but was it consistent? I logged-out and attempted logging back in and sure enough, the same geoblock page appeared. You can see this behavior in the video below.</p>
+
+<div style="text-align: center;">
+	<video style="max-width: 95%;" controls="">
+  	<source src="/assets/posts/marcus-login-bug/MarcusBug.mp4" type="video/mp4" />
+  	Your browser does not support HTML video.
+	</video>
+</div>
+
+<p>At this point I had already ruled Marcus as money management tool to us, but I wanted to know why I couldn’t login. Whatever was resulting in the geoblock was used during the login, but not the password reset. The issue is happening on Chrome and Firefox and its happening on at least one other person’s computer. What could be the culprit?</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 45%" src="/assets/images/one-hour-later.jpeg" />
+</div>
+
+<p>I realized that the problem might have to do with a browser extension. One-by-one I disabled each extension and all of a sudden no geoblock after the Selenium IDE extension was disabled. I installed the Selenium on both Chrome and Firefox and sure enough my friend also had the Selenium extension on his browser. In retrospective, the first debug step should have done to start Firefox in “add-ons Disabled” mode, but hindsight is 20-20.</p>
+
+<p>This doesn’t explain why the geoblock happens at login and not at password reset, but I have spend enough of my time debugging. The <strong>what</strong> has been found and its time to let someone at Marcus or the Selenium Project find the <strong>why</strong>. It seems doubtful this issue will be resolved because the unique and not many users would run into this problem, hopefully I am mistaken.</p>
+
+<p>This goes to show software is hard. There are many variables, moving pieces, and interconnected parts; its impossible to know how all of them are going to interact. There might be unintended side effects with every change or additional integration between systems. You simply can’t test them all. Who knows maybe one day a work computer’s VPN will affect a personal computer’s requests.</p>
+
+
+<div id="back-to-top">
+    <a onclick="scrollToTop()">▲ Back to Top ▲</a>
+  </div>
+</body>
+
+</html>

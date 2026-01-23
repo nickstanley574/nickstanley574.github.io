@@ -1,0 +1,62 @@
+#totallysafeandhelpful {
+    border: 1px solid;
+    padding: 14px;
+    box-shadow: 2px 4px #888888;
+    margin: auto;
+}
+
+.code {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 5px solid #606060;
+    color: #1b1b1b;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 0.5;
+    max-width: 100%;
+    overflow: auto;
+    padding: 0.75em 1.8em;
+    display: block;
+    word-wrap: break-word;
+    overflow: auto;
+}
+
+.nocopy {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.code1 {
+    padding: 0.05em 1em;
+}
+
+button {
+    font-size: 18px;
+    padding: 4px;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+}
+
+.button:hover span {
+    display: none
+}
+
+.button:hover:before {
+    content: "😈";
+}
+
+.button2:hover span {
+    display: none
+}
+
+.button2:hover:before {
+    content: "😈";
+}

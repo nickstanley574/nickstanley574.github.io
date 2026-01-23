@@ -1,0 +1,1053 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Running Serverless Adzic | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Running Serverless Adzic</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Running Serverless Adzic" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Running Serverless" />
+<meta property="og:description" content="Running Serverless" />
+<link rel="canonical" href="http://0.0.0.0:4000/library/running-serverless-adzic" />
+<meta property="og:url" content="http://0.0.0.0:4000/library/running-serverless-adzic" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-26T15:30:52-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Running Serverless Adzic" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2025-07-26T15:30:52-05:00","datePublished":"2025-07-26T15:30:52-05:00","description":"Running Serverless","headline":"Running Serverless Adzic","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/library/running-serverless-adzic"},"url":"http://0.0.0.0:4000/library/running-serverless-adzic"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h1 id="running-serverless">Running Serverless</h1>
+
+<p>By: Gojki Adzic - ISBN: 978-0-9930881-5-5 - Published On: 2019-06-01</p>
+
+<p>Serverless platforms are still rapidly evolving, and AWS is doing something important with Lambdas every few months. This version of the book captures the sate of the platform as of June 2019.</p>
+
+<h1 id="1-serverless-in-five-minutes">1. Serverless in five minutes</h1>
+
+<p>Explains the financial and technical constraints of server deployments.</p>
+
+<p>Serverless application are software that runs in an environment where the hosting provider is fully responsible for the infrastructural  and operational task such as receiving network request, scaling on demand, monitoring and recovery.</p>
+
+<p>The buzzword ‘serverless’ is a horrible marketing term, and the internet is full of jokes about how there are still servers in serverless environment.</p>
+
+<p>AWS Lambda is serverless in that, there are virtual and physical machines running in the background, but you the users don’t really need to care about them.</p>
+
+<p>🗨️ - The application is serverless if your workflow doesn’t include server configurations. From the perspective of the company there are no servers.</p>
+
+<p>The two big Benefits:</p>
+<ul>
+  <li>Shorter time to market</li>
+  <li>Reduce Operational costs</li>
+</ul>
+
+<h2 id="the-serverless-pricing-model">The serverless pricing model</h2>
+
+<p>You pay for the <strong>actual usage</strong>, not for <strong>reserved capacity</strong>. If the app isn’t doing much, you don’t pay. If millions of user appear, Lambda will spin up resources to handle the requests, charge you the increased usage, and remove the resources when no longer needed.</p>
+
+<p>Lambda pricing depends on 2 factors:</p>
+<ul>
+  <li>The max memory for a task</li>
+  <li>The time spend executing</li>
+</ul>
+
+<h2 id="important-aws-lambda-technical-constraints">Important AWS Lambda Technical constraints</h2>
+
+<ul>
+  <li>No session affinity: Lambda will decided whether it needs to create new resources to handle requests, and when to reuse and old resource and when to drop it. There is no way to control request routing to ensure that requests from same source arrive in sequence to the same destination. There are no guarantees about preserving state across requests and developers have no control over the routing.</li>
+  <li>Non-deterministic latency: Lambda is optimized for max throughput, not for minimizing latency.</li>
+  <li>Execution time limited to 15 minutes</li>
+  <li>no direct control over processing power: The only container choice you can make is the amount of memory from 128 MB to 3 GB.</li>
+</ul>
+
+<hr />
+
+<h1 id="part-1-basic-development-tasks"><strong>Part 1 Basic development tasks</strong></h1>
+
+<hr />
+
+<h1 id="2-set-up-tools-for-local-development">2. Set up tools for local development</h1>
+
+<p>The AWS Serverless Application Model (SAM) is a set of products that simplify developing, testing and deploying apps using Lambda.</p>
+
+<p>The SAM command line tools are a set of Python scripts, so you will need the Python runtime installed.</p>
+
+<p>The book uses JavaScript with Node.js for developing Lambdas. You do no need Node.js to work with SAM in a different language, but you will need the appropriate tools for that language.</p>
+
+<h1 id="3-create-a-web-service">3. Create a web service</h1>
+<p>This chapter introduces the basic workflow for serverless deployments.</p>
+
+<p>Ti create a simple SAM project in a new subdirectory rum:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam init --runtime nodejs10.x --name app
+</code></pre></div></div>
+
+<h2 id="infrastructure-as-code">Infrastructure as code</h2>
+
+<p>For deploying apps, Sam uses CloudFormation, an AWS service for managing infrastructure as code. CloudFormation converts a source file describing a infrastructure (called a template) into a set of running configured resources (called a stack).</p>
+
+<p>We can use CloudFormation to create a whole stack of resource from the template in a single command.</p>
+
+<p><strong>Do no set resource names</strong> - CloudFormation allows you to specify name for many resource types including functions, using the <code class="language-plaintext highlighter-rouge">Name</code> property. Unless there is VERY specific reason why you need this, avoid setting physical names. Letting AWS set random names make it easy to create several stacks based on the same template and avoid resource naming conflicts.</p>
+
+<p>In early 2016 before SAM a lambda has 20 lines of code but required 200 lines of config scripts. With SAM we can achieve the same thing in just 10-15 lines of CloudFormation templates.</p>
+
+<h2 id="the-lambda-programming-model">The Lambda programming model</h2>
+
+<p>All Lambda functions have two arguments:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">event</code> represent the data sent by the client invoking the function</li>
+  <li><code class="language-plaintext highlighter-rouge">context</code> contains information about the runtime environment.</li>
+</ul>
+
+<h3 id="lambda-interfaces-in-strongly-type-languages">Lambda interfaces in strongly type languages</h3>
+
+<p>In strongly typed languages you can set up functions with specific request types and interfaces. In languages without strong typing, like JavaScript or Python, these objects are mostly native key-value dictionaries or hash-maps.</p>
+
+<h2 id="deploying-sam-applications">Deploying SAM applications</h2>
+
+<p>Turning a SAM app on your disk into AWS resources require 3 steps:</p>
+<ol>
+  <li>Build – Create a clean copy of all Lambda functions, remove test and development resources, and download dependencies.</li>
+  <li>Package – Bundle each function into a self-contained ZIP archive and upload to S3 and produce a copy of the source app template that point to remove resources instead of local directories.</li>
+  <li>Deploy – Upload the package template to CloudFormation, and execute the change to create a running environment.</li>
+</ol>
+
+<h2 id="inspecting-a-stack">Inspecting a stack</h2>
+
+<p>The easiest way to insect a stack is with the AWS Web Console.  The <strong>resources</strong> section contains a list of all the AWS resources Cloudformation created for a stack. The <strong>Outputes</strong> section contains a list of stack results.</p>
+
+<p>The other way from the command line:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws cloudformation describe-stacks --stack-name sam-test-1
+</code></pre></div></div>
+
+<h1 id="4-development-and-troubleshooting">4. Development and troubleshooting</h1>
+
+<p>This chapter explain the basic monitoring and logging of Lambdas to help with troubleshooting. <strong>Also learn hot to simulate AWS services locally.</strong></p>
+
+<p>CloudWatch, another AWS services, groups logs into two levels:</p>
+<ul>
+  <li>Log Groups: correspond to a logical service. AWS Lambda create a group log for each function.</li>
+  <li>Log Streams: A single group log can have multiple log streams, which typically correspond to a single running process. Lambda create a log stream for each container instances. If Lambda reuse the container the log will appear in the same stream.</li>
+</ul>
+
+<p><strong>Lambda log are not instantaneous it might take few seconds between a function logging a message and the info appearing in CloudWatch.</strong></p>
+
+<p>Retrieving logs from the command line:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam logs -n HellWorldFunction --stack-name sam-test-1
+</code></pre></div></div>
+<p>Searching Logs:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam log -n HelloWorldFunction --stack-name sam-test-1 --filter ERROR -s "1 month ago"
+</code></pre></div></div>
+<p>Continuously check for updates and snow new logs:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam log -n HelloWorldFunction --stack-name same-test-1 --tail
+</code></pre></div></div>
+
+<h2 id="simulating-lambda-locally"><mark>Simulating Lambda Locally</mark></h2>
+
+<p>Run the following command from your project directory, which contains the <code class="language-plaintext highlighter-rouge">template.yaml</code>. This should start up a local API Gateway emulation and a local Lambda environment.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam local start-api
+</code></pre></div></div>
+
+<p>The simulation will automatically reload the function code if you rebuild the project.</p>
+
+<p>You can also use <code class="language-plaintext highlighter-rouge">sam local</code> to send event to individual Lambda functions (even for stacks that do not have an API Gateway) Use <code class="language-plaintext highlighter-rouge">invoke</code> followed by the name of the function from the stack template. If you do not specify an event, SAM will wait for the event on the console input. You can also pass <code class="language-plaintext highlighter-rouge">--event</code> followed by a file name containing the test event.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam local invoke HelloWorldFunction --event event.json
+</code></pre></div></div>
+
+<p><strong>SAM downloads Docker images</strong> – To save space, SAM does not download the Docker images for Lambda during initial install. The first time you try to execute a function, it will download the image. The init request will take longer then subsequent requests.</p>
+
+<h3 id="debugging-functions">Debugging functions</h3>
+
+<p>You can pass <code class="language-plaintext highlighter-rouge">-d</code> followed by a port number, and SAM will set up a debug session on the specific port; you can the use stand remote debugging tools. As of 2019 SAM supports this in JavaScript, Python and Go.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam local invoke HelloWorldFunction --event event.json -d 8080
+</code></pre></div></div>
+<p>Most IDE tools can connect the that debugging session as well as the Google Chrome DevTools. To open a debugging session in Chrome, open the special <code class="language-plaintext highlighter-rouge">chrome://inspect</code> page in the browser then add the local machine address and debugging port in the list of available network targets. Chrome will then provide a link to the active debugging session.</p>
+
+<h3 id="validating-templates">Validating templates</h3>
+
+<p>Instead of waiting for CloudFormation to explode in invalid templates, Use <strong>CDN Lint</strong> to validate locally.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># install
+pip install cfn-lint`
+
+# check
+cfn-lint template.yaml
+</code></pre></div></div>
+
+<h2 id="setting-up-a-deployment-pipeline">Setting up a deployment pipeline</h2>
+
+<p>The purpose of a pipeline is to reduce errors by making software release reproducible and reliable. A deployment pipeline does that by orchestrating the work required to convert source code into a fully deployed application, automating repetitive and error prone tasks.</p>
+
+<p>A pipeline is closely tied to the workflow of a particular team.</p>
+
+<p><mark>To fully isolate resources, its best to create septate AWS account for each environment.</mark> Multi-account pipelines are, by design, much more complex then single-account pipelines.</p>
+
+<h1 id="5-safe-deployments">5. Safe Deployments</h1>
+
+<p>In the pervious chapter, we deployed a new version of the example stack. New code was available almost immediately after deployment. This gives the wrong impression that Lambda works similarly to application hosting services such as Heroku. With a new deployment typically upload code to running resources or crease new resources with the upadtes code and then destroys the old resources. <mark>Lambda deployment does not create or destroy resources. It only creates new function configurations</mark>.</p>
+
+<h2 id="function-configurations">Function configurations</h2>
+
+<p>The core principle of serverless is that the platform is responsible for receiving event from clients NOT YOUR CODE. The network socket (server) belongs to the hosting provider, not your functions. This allows the platform to decided how many instance to run and when.</p>
+
+<p>The <em>function configuration</em> describes all the properties of a runtime environment necessary to spin up a ndew container:</p>
+<ul>
+  <li>The runtime type and version (Node, Python, etc)</li>
+  <li>How much memory and time the function can use (there are AWS limits)</li>
+  <li>The URL of the function code package</li>
+  <li>The IAM role</li>
+  <li>Error Recovery, logging and environment parameters of the function.</li>
+</ul>
+
+<p>You can see the config for any Lambda function using the CLI:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws cloudformation list-stack-resources --stack-name &lt;STACK_NAME&gt;
+</code></pre></div></div>
+
+<h2 id="version-and-aliases">Version and aliases</h2>
+
+<p>SAM wired the API gateway to use the <code class="language-plaintext highlighter-rouge">$LATEST</code> version of the our Lambda function. This is OK for a simple case, but it might be problematic for backwards incompatible deployment in the future. <mark>Update a distributed architecture is not instantaneous. We don't want the API show to get updates first then send a new version of a event ot a older version of the function which does not know how to handle it.</mark></p>
+
+<p>You can tell Lambda to keep a config version by publishing it. <em>Published versions</em> are read-only copies of you function configs, and they are not wiped out after a subsequent update. An event can request that a participle published function version handle a vent. That way, old deployment of the API Gateway can ask for the old Lambda code, and new deployments can ask for the new Lambda functions.</p>
+
+<p>You do not have to change the alias name for each deployment. SAM will automatically publish an new numerical version and the reassign the existing alias to it.</p>
+
+<p>AWS current limits 75GB for sorting Lambda functions, including published versions. SM will not auto clean old versions, you may need to do some housekeeping if you deploy large packages frequently. On the other hand, any version that you do not delete will be instantly available in the future.</p>
+
+<h2 id="gradual-deployments">Gradual deployments</h2>
+
+<p>An alias always point to some numerical version, but it can point to more then one version at hte same time, useful for safe deployments.</p>
+
+<p>Lambda supports automatic load balancing between versions assigned to the same alias, using a feature called <em>routing configuration</em>.</p>
+
+<p>Another AWS product, AWS Code Deploy, can modify the routing config over time to gradually switch aliases between version of code and infra. For example you can use the new version on 10% of traffic and wait for a short period, monitoring for problems, if OK deploy if stop the new code and rollback to older version.</p>
+
+<p>SAM automates most of the heavy lifting when setting up gradual deployments.</p>
+
+<p>There are two types of deployment preferences:</p>
+<ul>
+  <li>Linear: incrementally move traffic during a period of time. <code class="language-plaintext highlighter-rouge">Linear10PercentEvery1Minute</code> - New version start wit only 10% of requests and each mean gets 10%.</li>
+  <li>Canary: Setup request to new version and then deploy to all. <code class="language-plaintext highlighter-rouge">Canary10Percent15Minutes</code> would send 10% if traffic to the new version if no problems after 15minute move the remaining 90% to new version.</li>
+</ul>
+
+<p><strong>Adding deployment alerts</strong> - Cloud watch can look out for errors and send nitufaction if metrics exceed some thresholds, using a feature called <em>alarms</em>.</p>
+
+<p>CodeDeploy can also run custom code before and after the deployment, to setup or clean up after tests. This integration uses Lambda functions. Use the <code class="language-plaintext highlighter-rouge">Hooks</code> property to define a <code class="language-plaintext highlighter-rouge">PreTraffic</code> and a <code class="language-plaintext highlighter-rouge">PostTraffic</code> function.</p>
+
+<hr />
+
+<h1 id="part-2-working-with-aws-services"><strong>Part 2 Working with AWS services</strong></h1>
+
+<hr />
+
+<h1 id="6-handling-http-requests">6. Handling HTTP requests</h1>
+
+<p>So far we have just pass requests from the client browser to a Lambda, but a API Gateway can:</p>
+<ul>
+  <li>throttle requests to prevent overloading</li>
+  <li>authenticate/authorize requests</li>
+  <li>enforce usage plans</li>
+  <li>transform payloads</li>
+  <li>route requests to Lambdas, other web API hosts, or AWS services.</li>
+</ul>
+
+<h2 id="api-gateway-events">API Gateway events</h2>
+
+<p>If a Lambda has an <code class="language-plaintext highlighter-rouge">Api</code> events associated with it, SAM will create an API Gateway and connect it to the functions.</p>
+
+<p>In the API Gateway terminology, a <em>resource</em> is an endpoint configured to handle an HTTP request on a specific path, and with a specific HTTP method.</p>
+
+<h2 id="customizing-responses">Customizing responses</h2>
+
+<p>API Gateway expects responses in a specific form form Lambda Proxy integrations. The response needs to be a JSON object containing:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">statusCode</code> - numeric - a HTTP response code.</li>
+  <li><code class="language-plaintext highlighter-rouge">body</code> - string - response contents.</li>
+  <li><code class="language-plaintext highlighter-rouge">headers</code> - string - optional args, and can contain a map of HTTPS response headers.</li>
+</ul>
+
+<p>SAM assumes that we’ll use APU Gateway to create JSON APIs. It assume we’ll send a serialized JSON object. Thats why the same function formats the response object with <code class="language-plaintext highlighter-rouge">JSON.stringify</code></p>
+
+<h3 id="serving-static-html-from-lambda-is-a-bad-idea">Serving static HTML from Lambda is a bad idea</h3>
+
+<p><mark>To keep thing simple we'll use Lambda functions ot send HTML back to the browser. This is fine for quick tutorials. It is MUCH cheaper and faster to host static files in S3 and combine that with Lambda for dynamic responses. Well see this in Chapter 11.</mark></p>
+
+<h2 id="troubleshooting-gateway-interactions">Troubleshooting Gateway interactions</h2>
+
+<p>API Gateway masks unhandled errors, such as a missing resource, with a <code class="language-plaintext highlighter-rouge">403 Not Authorized</code> response. This is great for security, but it prevent data leaks, but its a pain for debugging.</p>
+
+<p>Here are some of the cases you’ll see this generic error:</p>
+<ul>
+  <li>If the requests does not reach the Lambda</li>
+  <li>If the function blows up with returning a proper response</li>
+  <li>If the function returns a response that’s not in the format the API Gateway expects.</li>
+</ul>
+
+<p>The <em>Resources</em> screen in the API Gateway Web Console is useful for troubleshooting problems. Click <em>Test</em> for a resource in the <em>Client</em> box. A diagnostic test screen will open. You can simulate requests and help you find the real problems.</p>
+
+<h2 id="using-global-setting-to-configure-the-implicit-api">Using global setting to configure the implicit API</h2>
+
+<p>Requests do no go directly from a client to a API Gateway. First they go threw the AWS global content distribution system call CloudFront, which, puts in additional headers like <code class="language-plaintext highlighter-rouge">CloudFront-Viewer-Country</code>.</p>
+
+<p>SAM can set up two types of API Gateway configs:</p>
+<ul>
+  <li><em>Edge Optimized</em> are server from a specific region, but the clients connect to the nearest AWS presence point. For example a API in <code class="language-plaintext highlighter-rouge">us-east-1</code> (which is North Virginia, USA)m but the user is in Germany, the request will likely connect first oa a CloudFront endpoint in Frankfurt, then the request will pass to the API through the internal AWS links, not the public internet. AWS has fast links between region and improves latency for global user.</li>
+  <li><em>Regional</em> APIs do not setup an intermediary connection using CloudFront. If we deploy in <code class="language-plaintext highlighter-rouge">us-east-1</code>, a user from Germany would connect to the AWS endpoint in North Virginia through the public internet. Global connection would be worst, but local connection would be slightly faster.</li>
+</ul>
+
+<p>Although CloudFront adds additional cost to each requests, removing it may not actually reduce over all spend. This is because both API Gateway and Cloudfront charge for the number of requests and data transfer, and Cloudfront is slightly cheaper then a API Gateway for data transfers, AWS does not change for transfer between its own services, so the overall combination requests are slightly more but the data transfer are cheaper.</p>
+
+<p>TLDR: Don’t deploy regional endpoints to save money, but do it if you want to remove an intermediary for connection in a specific territory.</p>
+
+<p><mark>By default, SAM assume you want edge-optimized APIs.</mark></p>
+
+<h2 id="create-parameterized-cloudformation-stacks">Create parameterized CloudFormation stacks</h2>
+
+<p>In the stack template, we confgured event for the <code class="language-plaintext highlighter-rouge">/hello-world</code> path. But the actual path in the API is slightly different, and it includes the <code class="language-plaintext highlighter-rouge">/Prod/</code> prefix. Sam Auto create a Prod stage for the implicit api.</p>
+
+<p>In the API Gateway, a <em>stage</em> is a published version of the API config. Using sages allows API Gateway to serve a stable version of the API while users are adding or configuring resources to prepare for a new version.</p>
+
+<p>An API needs at least one stage. The APIs created with SAM will usually have a single stage.</p>
+
+<p>The standard sage name, <code class="language-plaintext highlighter-rouge">Prod</code>, forces users to remember mixed cased url, which is more error prone then just lower case. SAM lets you config the same name for an API, but you can’t set this in the Global section.</p>
+
+<h3 id="defining-stack-parameters">Defining stack parameters</h3>
+
+<p><em>stack parameters</em> are a way to create customizable stacks. Users can provide their own config when deploy a stack. This make is easy to make reusable stacks.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#ch6/template-custom-stage.yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: &gt;
+  Custom stage API demo project 
+Globals:
+  Function:
+    Timeout: 3
+  Api:
+    EndpointConfiguration: REGIONAL
+Parameters:
+  AppStage:
+    Type: String
+    Default: api
+    Description: API Gateway stage, used as a prefix for the endpoint URLs
+    AllowedPattern: ^[A-Za-z]+$
+    MaxLength: 10
+    MinLength: 1
+    ConstraintDescription: "1-10 Latin letters"
+Resources:
+  WebApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref AppStage
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: hello-world/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      AutoPublishAlias: live
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+            RestApiId: !Ref WebApi
+        SubmitForm:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: post
+            RestApiId: !Ref WebApi
+Outputs:
+  HelloWorldApi:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${WebApi}.execute-api.${AWS::Region}.amazonaws.com/${AppStage}/hello/"
+</code></pre></div></div>
+
+<h3 id="ref-or-sub"><code class="language-plaintext highlighter-rouge">!Ref</code> or <code class="language-plaintext highlighter-rouge">!Sub</code></h3>
+
+<p>Because of the <code class="language-plaintext highlighter-rouge">!</code> this they are function calls.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">Sub</code> substitutes references enclosed with <code class="language-plaintext highlighter-rouge">${}</code> with related values.</p>
+
+<p><mark>Use Ref when you need the actual reference, and Sub when you want to combine references with some other text.</mark></p>
+
+<h3 id="providing-parameter-values-during-deployment">Providing Parameter values during deployment</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam deploy \
+    --template-file output.yaml \
+    --stack-name same-test-1 \
+    --capabilities CAPABILITY_IAM \ 
+    -- parameter-override AppStage=api AppName=Demo
+</code></pre></div></div>
+
+<h1 id="7-using-external-storage">7. Using external storage</h1>
+
+<p>This chapter explains how to connect a Lambda to persistent storage like a file system or a database.</p>
+
+<p>Lambda instances have a local file system you can write to. Anything stored there is only accessible to that resource and it will be lost once the resource is stopped.</p>
+
+<h2 id="cloud-storage-options">Cloud storage options</h2>
+
+<p>There are three main choices fro persistent storage in the cloud: Network file systems, Relational databases, and Key-value stores</p>
+
+<ul>
+  <li>Network File Systems
+    <ul>
+      <li>Generally not a good choice for Lambda.</li>
+      <li>Attaching an external file system take a significant amount of time.</li>
+      <li>Very few network storage system can cope with potentially 1000s of concurrent users.</li>
+    </ul>
+  </li>
+  <li>Relational Databases
+    <ul>
+      <li>Good when you need to storage data for flexible queries</li>
+      <li>You page for the flexibility with higher operational costs.</li>
+      <li>In general you have to plan for capacity and reserve it up front, which is opposite to what the goal is with Lambda.</li>
+    </ul>
+  </li>
+  <li>Key-Value stores
+    <ul>
+      <li>The most frequent choice for persistence of Lambda functions.</li>
+      <li>Generally optimized for writing and retrieving object by a primary key, not for ad-hoc queries on groups of object.</li>
+      <li>Because data is not interlinked kv stores are less compute demanding then relational dbs.</li>
+      <li>Their works can be parallelized and scaled more easily.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>AWS offer several types of <strong>Key-Value stores</strong> the two main choices are Simple Storage Service (S3) and Dynamo DB. <mark> Both need a init handshake for a connection and they can scale on demand, so Lambda spikes will not overload them and AWS chares actual utilization for them, priced per request. </mark></p>
+
+<ul>
+  <li>S3
+    <ul>
+      <li>object store, designed for large binary unstructured data</li>
+      <li>Object up to 5 TB</li>
+      <li>Object are aggregated into buckets</li>
+      <li>A bucket is like a namespace or a database table</li>
+      <li>if you prefer a file system analogy is like a disk drive</li>
+      <li>Designed for throughput, not predicable (or very low latency)</li>
+      <li>Is useful for extract-transform-load data warehouse scenarios than for ad-hoc or online queries.</li>
+      <li>Pretends to be a web server and let end user devices access object using HTTPS.</li>
+      <li>Supports automatic versioning of objects and can easily revert to pervious state. 
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>DynamoDB
+    <ul>
+      <li>A document database / No SQL database</li>
+      <li>Designed for store structured textual data (JSON)</li>
+      <li>Items up to 400KB</li>
+      <li>Stores items in tables, which can either be in a region or globally replicated.</li>
+      <li>Client can write to the same table or ven the same item from many regions at the same time.</li>
+      <li>Designed for low latency and sustained usage patterns.</li>
+      <li>Faster then S3 for individual operations.</li>
+      <li>Can scale on demand, but no has quickly as S3.</li>
+      <li>Sudden bursts might be throttled.</li>
+      <li>Accessing data require AWS SDK with IAM auth.</li>
+      <li>Do not provide versioning out of the box.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><mark> If you want to store huge object and only need to process individual object a time, S3. If you need to store small bits of structured data, with low latency and need to process groups of object in atomic transaction, choose DynamoDB.</mark></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th style="text-align: center">DynamoDB</th>
+      <th style="text-align: center">S3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Need low access latency</td>
+      <td style="text-align: center">■</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Atomic Operations on groups of objects</td>
+      <td style="text-align: center">■</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Append to existing objects</td>
+      <td style="text-align: center">■</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Query Item contents</td>
+      <td style="text-align: center">■</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Mostly small items (<code class="language-plaintext highlighter-rouge">&lt;4KB</code>)?</td>
+      <td style="text-align: center">■</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Items larger then 400KB</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">■</td>
+    </tr>
+    <tr>
+      <td>Need versioning and change history</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">■</td>
+    </tr>
+    <tr>
+      <td>Unpredictable burst traffic patterns</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">■</td>
+    </tr>
+    <tr>
+      <td>Mostly binary content</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">■</td>
+    </tr>
+    <tr>
+      <td>Serve items using HTTPS</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">■</td>
+    </tr>
+    <tr>
+      <td>Cheap archiving</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">■</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="lambda-access-rights">Lambda access rights</h2>
+
+<p>AWS does NOT trust a Lambda function to access a DB or S3 just because they belong to the same account. You must allow the use of each resource. To do this wee need modify/create IAM polices associated with the function.</p>
+
+<h2 id="generating-unique-references">Generating unique references</h2>
+
+<p>Each Lambda requests as a unique ID, which is auto printed into the logs. You can read it from the 2nd arg of the Lambda function, using <code class="language-plaintext highlighter-rouge">context.awsRequestId</code>.</p>
+
+<p>Using a ref based on the request ID make it unique but aslo easy ro correlate with a processing session.</p>
+
+<p>If a Lambda retires processing a event after an error, it will use the <strong>same</strong> request ID. If the function dies half-way through working the Lambda spins up another resource to recover from the error, it won’t generate two diff files.</p>
+
+<h2 id="using-aws-resources-form-lambda-functions">Using AWS resources form Lambda functions</h2>
+
+<p>Lambda function run under temporary access creds, valid only for a few minutes, and they are already setup in the env by the time the function starts.</p>
+
+<p>When using JavaScript (not other languages), we need to convert the result of a AWS SDK call to a <code class="language-plaintext highlighter-rouge">Promise</code> objects, to ensure that the Lambda waits for the external cal to finish.</p>
+
+<p>With Node.js Lambda functions must be <code class="language-plaintext highlighter-rouge">async</code> or return a <code class="language-plaintext highlighter-rouge">Promise</code> object. If you forget to convert and SDK into a promise and wait for it to finish, the function will exit too soon and the Lambda will kill the resource before the network call completes. THis does NOT apply to other runtime (but you may need to synchronies with network request differently)</p>
+
+<h3 id="passing-resource-reference-to-functions">Passing resource reference to functions</h3>
+
+<p>Lambda functions don’t know about the SAM and Cloudformation resources. So the function can’t just ask for the <code class="language-plaintext highlighter-rouge">UploadS3Bucket</code> resources.</p>
+
+<p><em>Environment Variables</em> are textual key-value pairs assigned to a running process. They are great for configuring function with references to other repousses in the same SAM template.</p>
+
+<p>SAM can config env vars for functions using the <code class="language-plaintext highlighter-rouge">Environment</code> property</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Environment:
+    Variables:
+        UPLOAD_S3_BUCKET: !Ref UploadS3Bucket
+</code></pre></div></div>
+
+<h2 id="authorizing-access-with-iam-polices">Authorizing access with IAM polices</h2>
+
+<p>Polices are not really signed to a Lambda function. They are assigned to a IAM role, which is associated with the functions.</p>
+
+<p>Sam automatically create a role for each function, named by appending the world <code class="language-plaintext highlighter-rouge">Role</code> to the function name.</p>
+
+<h2 id="dealing-with-network-timeouts">Dealing with network timeouts</h2>
+
+<p>by default, Lambda allows a function just three seconds to finish. To up this time use the <code class="language-plaintext highlighter-rouge">Timeout</code> property in the function Same template. This value is in seconds and the max value in 900 (15 minutes).</p>
+
+<p>To change the default value of <code class="language-plaintext highlighter-rouge">Timeout</code> for all functions in a template file, modify the <code class="language-plaintext highlighter-rouge">Globals</code> sections.</p>
+
+<h1 id="8-cheaper-faster-serverless">8. Cheaper, faster, serverless</h1>
+
+<p>With Lambda, API Gateway and S3, all that infrastructural stuff comes out of the box.</p>
+
+<p>Our example app still looks like a typical 3-tier server setup. In such an architecture an application server</p>
+<ol>
+  <li>contain the business logic</li>
+  <li>is a gatekeeper approving or rejecting requests</li>
+  <li>is workflow orchestration system talking to backend storage, scheduling asynchronous process</li>
+</ol>
+
+<p>Out of the 3 only the business logic should stay in Lambda functions. LEts stare by removing hte gatekeeper role from our example app. In Chapter 9 we will look at removing the orchestration role.</p>
+
+<p>Having a Lambda function siting between a user device and S3 is not useful if it only performs authorization. S3 can do that itself. Aws provides several ways of temporarily granting clients the right to do very specific operations:</p>
+
+<ul>
+  <li>Let clients use the AWS SDK directly, and set up IAM users for each client.
+    <ul>
+      <li>Using AMI directly, is grate for internal app, and with a small number of named user.</li>
+      <li>The big limit with IAM is that you can only create about 1000 user for an AWS account, and those user can’t register directly from your application.</li>
+    </ul>
+  </li>
+  <li>Setup templated IAM polices for groups of end users auth with AWS cognito (Managed server for user creds)
+    <ul>
+      <li>Great for publicly facing applications</li>
+      <li>Store username and passwords securely, optionally allowing user to sign themselves or using federated authentication systems.</li>
+    </ul>
+  </li>
+  <li>Use Lambda function to create temp grants for clients, so they can access our AWS resources in a limit way.
+    <ul>
+      <li>Great for anonymous access. This method allows you to safely pass on temporary access right with the account creds to the client devices</li>
+      <li>It does require the create of any kind of user records or up-front restoration</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="signing-requests">Signing requests</h2>
+
+<p>To explain how temp grands work, first we need to explain the roles of AWS security keys.</p>
+
+<p>Each IAM user has two keys: an <strong>access key</strong> and <strong>secret key</strong>.</p>
+
+<p>When the SDK makes request on t an AWS service it sends the access key in the request header. This allows the service to map the request to an AWS account.</p>
+
+<p>The SDK also send a cryptographic signature based on the request body and the secret key.</p>
+
+<p>The receiving service uses the access key to locate the corresponding secret key in the IAM database, and also creates a signature for the request.</p>
+
+<p>If the two signatures match, AWS know that the request was authorized by the user.</p>
+
+<p>The interesting part of this is that some services accept templated signature so we can create a grant up front without knowing all the requesting params. This allow us to effectively product temp grants for user to perform limited opration with our AWS resources.</p>
+
+<h2 id="protecting-s3-files">Protecting S3 Files</h2>
+
+<p>Lets encrypt the file content of upload files to s3 to protect them. In 3-tier server app, and app server could receive the user data and then encrypt it before uploading to S3. With a direct upload, we can’t control what is sent to S3, because we’ve removed the gatekeeper.</p>
+
+<p>We can’t do this on the client before setting it because we would need to somehow send our encryption key to the client devices, which is just no ok at all.</p>
+
+<p>Because encryption is such a common need, AWS implemented ita part of the platform.</p>
+
+<p>You can flip a switch and all newly create files on s3 will be encrypted at rest, regardless of where they come from. With CloudFormation, that switch is the <code class="language-plaintext highlighter-rouge">BucketEncryption</code> property.</p>
+
+<h1 id="9-handling-platform-events">9. Handling platform events</h1>
+
+<p>This chapter explains how to trigger Lambda functions after platform events such as file uploads to S3. You will also learn the diff between synchronous and asynchronous Lambda invocations.</p>
+
+<p>The pervious chapter let user upload files, but the app didn’t process the upload. To do this we have options</p>
+
+<p><strong>Create an API endpoint backed by a Lambda that synchronously converts image files into to thumbnails.</strong> It could send the outputs back to the user or save the output to to S3 and redirect the user to the result locations. Simple, but it would not work for large files. API Gateway will stop the requests that take longer then 29 seconds. API Gateway does not allow long-running tasks.</p>
+
+<p><strong>Handle the conversion asynchronously.</strong> A typical 3-tier server app the standard way to handle this is to create API endpoints.</p>
+<ol>
+  <li>The first endpoint would start a background task and send the task reference back to the client</li>
+  <li>The second endpoint allows the client to check the status of the task</li>
+  <li>The third allows the client to get outcome of the tasks.</li>
+</ol>
+
+<p>We can do this via Lambdas, but it can make the app cheaper and faster with serverless designs. We can move some of the orchestration tasks from the app to the platform.</p>
+
+<p>Instead of a API endpoint we can give the client a pre-signed URL to check the results on S3. With a API endpoint, we’d pay for an API call, a Lambda execution and access to check S3. With the direct S3 approach we only pay for S3 access.</p>
+
+<p>Similarly, we do not need a separate endpoint to trigger the conversion. Many AWS resources can notify Lambda functions about events. S3 can call a Lambda once a files is upload or deleted. There is no need to pay for the API call and Lambda.</p>
+
+<h2 id="generating-test-events"><mark>Generating Test Events</mark></h2>
+
+<p>Events coming from S3 will have a diff structure to those coming from API Gateway.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">sam local generate-event</code> to create sample events</p>
+
+<p>S3 upload:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sam local generate-event s3 put` 
+</code></pre></div></div>
+
+<h2 id="working-with-files">Working with files</h2>
+
+<p>When we create files in a Lambda resource we need to consider cleaning them up. <mark>Although Lambda functions calls aer independent they are NOT stateless. Lambda can choose to reuses a resource over and over again for the same function. If we never cleanup, the local disk the resource might run out of space. </mark></p>
+
+<h2 id="working-with-asynchronous-events">Working with asynchronous events</h2>
+
+<p>Lambda supports two types of calls, synchronous and asynchronous:</p>
+<ul>
+  <li>Sync Calls – expect the caller to wait until the Lambda completes. The Lambda reports the result directly to the caller.</li>
+  <li>Async Calls – complete immediately, and the Lambda keeps running in the background. The Lambda can’t send the results to the client. S3 and most other platform services use this method.</li>
+</ul>
+
+<p>With Async calls, the function needs to be responsible for storing the output somewhere.</p>
+
+<h2 id="avoiding-circular-references">Avoiding circular references</h2>
+
+<p>SAM sets up Lambda function polices together with the IAM role for the function. To set up the functions, it needs to first setup the role. To setup the role, it would need to know about the target buckers for the permissions.On the other hand, SAM sets up bucket lifecycle event, such as invoking function, together with the bucket.</p>
+
+<p>So in order o setup the bucket, it would need to know the function reference expecting bucket events. So the upload bucket depends on the conversion function, which depends on the role, which depends on the bucket. Hence the circular dependency.</p>
+
+<p>To fix this wee need to setup a custom IAM polices and not use SAM templates. SAM can then create the function role, then the conversion function, then the bucket lifestyle events, and then append a policy to an existing role. That way, the function and the role will not depend on the buckets during create.</p>
+
+<h3 id="setting-custom-iam-polices">Setting custom IAM polices</h3>
+
+<p>CloudFormation has a resource for attaching polices to existing roles, <code class="language-plaintext highlighter-rouge">AWS::IAM::Policy</code>. We can specify an IAM polices that lets teh roles execute <code class="language-plaintext highlighter-rouge">s3:GetObject</code> on any resource in the target bucket,  and attach it to the role after both the bucket and the role are create. The policy would depend both on the role adn the bucket, but nothing would depend on the policy it self.</p>
+
+<h2 id="handling-asynchronous-errors-with-dead-letters">Handling asynchronous errors with dead letters</h2>
+
+<p>With synchronous calls, errors can be reported directly back to the caller, and the caller can then decided to retry or not. With asynchronous calls, the caller can’t do that, because its not waiting on results.</p>
+
+<p><mark>To project again't infra issues, Lambda will auto retry twice. AWS doesn't state officially state the duration between retires but it seems the first will happen right after a error and the second retry will happen about a minute later.</mark></p>
+
+<p>If Lambda retires processing an event, it will send the same request ID as in the original attempt.</p>
+
+<p>If the second retry fails Lambda gives up assuming the issue is with the code.</p>
+
+<p>Failed events are not necessarily lost fot forever; you can config Lambda to send them a <em>death letter queue</em>. You can then set up post failure steps after a failure like, but not limited to, notifying staff of the issue, creating a error report or even a custom retry step.</p>
+
+<p>Lambda can use two types of death letter queues:</p>
+<ul>
+  <li>Amazon Simple Queue Service (SQS)
+    <ul>
+      <li>Better for offline or batch processing.</li>
+      <li>Sores the message for a listener to retrieve it. If nobody is listening when a message arrives, SQL will keep it in the queue.</li>
+    </ul>
+  </li>
+  <li>Amazon Simple Notification Service (SNS)
+    <ul>
+      <li>Better choice for instant processing.</li>
+      <li>will ignore message if it has no subscriptions when the message arrives.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="conditional-resources">Conditional resources</h2>
+
+<p>CloudFormation can activate or deactivate resources based on conditional, which we need to setup in a separate template sections titled <code class="language-plaintext highlighter-rouge">Conditions</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Conditions:
+  ContactEmailSet: !Not [ !Equals [ '', !Ref ContactEmailAddress]]
+</code></pre></div></div>
+
+<p>Checks if the <code class="language-plaintext highlighter-rouge">ContactEmailAddress</code> parameter has a value.</p>
+
+<hr />
+
+<h1 id="part-iii-designing-serverless-applications">Part III Designing serverless applications</h1>
+
+<hr />
+
+<h1 id="10-using-application-components">10. Using application components</h1>
+
+<p>Lambda runs a reduced version of Amazon Linux, a clone of CentOs, which is a clone of Red Hat Enterprise Linux. ImageMagick tools are usually present on Linux systems; however, they are not included in the more recent Lambda environment.</p>
+
+<h2 id="the-aws-serverless-application-repository">The AWS Serverless Application Repository</h2>
+
+<p>The <em>AWS Serverless Application Repository</em> (SAR) is a library of AWS SAM applications. The purposes are to enable orgs to share reusable components internally, so teams can easily deploy infra templates built by other teams and it works a a public library, making a few hundred open-source components available to everyone.</p>
+
+<h2 id="lambda-layers">Lambda layers</h2>
+
+<p>A <em>Lambda layer</em> is a file package that can be deployed to AWS and then attached to many functions. Layers are useful for sharing large packages across functions and for speeding up deployments.</p>
+
+<p>From the perspective of a Lambda function, layer is effectively a shared read-only filesystem. Files from a layer appear in the <code class="language-plaintext highlighter-rouge">/opt</code> directory and we can access them as if they were including the the function.</p>
+
+<p>A single function can only attach up to 5 layers.</p>
+
+<h3 id="linking-function-with-layers">Linking function with layers</h3>
+
+<p>LAyers similarly to functions, get numerical incremental version every time they are published. Unlike Lambda functions, there are NO textual aliases for layer versions, so it’s Not possible to mark a current or latest version easily or use a label to differentiate between prod and testing later version.</p>
+
+<p>This is a serious limitation, and it’s logical to expect AWS to provide between solution the future.</p>
+
+<h2 id="publishing-to-sar">Publishing to SAR</h2>
+
+<p>SAM just need a bit of metadata about the application added to the template to publish to SAR.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: image-thumbnails
+    Description: &gt;
+      A sample application for the Running Serverless book tutorial
+    Author: Gojko Adzic
+    SemanticVersion: 1.0.0
+    SpdxLicenseId: MIT
+    LicenseUrl: LICENSE.md
+    ReadmeUrl: README.md 
+    Labels: ['layer', 'image', 'lambda', 'imagemagick']
+    HomePageUrl: https://runningserverless.com
+    SourceCodeUrl: https://runningserverless.com
+</code></pre></div></div>
+<p>You can use markdown to create a basic markup such as header and links.</p>
+
+<p>Before we can publish the app to the repo, we need to allow SAR to read template from our deployment bucket.</p>
+
+<h1 id="11-managing-session-and-user-workflows">11. Managing session and user workflows</h1>
+
+<p>This chapter explains how to manage session data n serverless apps and how to reduce ops costs by moving user workflows and app assets out of Lambda functions.</p>
+
+<p>We used Lambda function to generate HTML code for browsers. There are 3 big problems with this.</p>
+
+<ol>
+  <li>There is no feedback from the conversion process to the client.</li>
+  <li>There is not error handling.</li>
+  <li>We have two lambdas that share an implicit session state.</li>
+</ol>
+
+<p>The typical solutions in a tradition web app would be to handle the user session workflow in the middle application layer, but this is creates a lot of problems in server architectures.</p>
+
+<p>With Lambda, app developers do not control request routing, so sticky sessions are not possible. Requests from the same user might reach two different Lambda instance with different memory session states.</p>
+
+<h2 id="moving-session-state-out-of-lambda-functions">Moving session state out of Lambda functions</h2>
+
+<p>Session state CANNOT reside in Lambda functions; full stop.</p>
+
+<p>The usual solution would be to put session state into some kind of distributed data grid. DynamoDB would fits well in this case. Each Lambda could read out the session state the the beginning of the request and save it at the end. BUT this will make each function slower, increase costs and make the app more error prone since function my experience problem update session state and returning to the client.</p>
+
+<p>In chapter 8, we move the gatekeeper out of the app and onto the platform. As a result, client code can talk directly to AWS using temp access grants. Keeping the workflow on the server side is not improving security anymore. It is safe to move user workflows all the way to the <strong>client devices</strong> and the user session data. <mark> Instead of making the backend stateful, we can keep the user state on the front end.</mark></p>
+
+<h3 id="resumable-sessions">Resumable sessions</h3>
+
+<p>A Big limitation of moving session sate to client devices is the unexpected problem on the frontend can cause user to lose session info. If the browner crashes hal-way though a workflow, the client will not be able to resume the session.</p>
+
+<p>If you want to create resumable session or let users across multiple browser tabs or devices concurrently, then you’ll need to sync session state somehow.</p>
+
+<p>In a typical three-tier the solution would be keep session in the application server or in a database.</p>
+
+<p>With serverless there are several ways of synchronizing client session without the app later:</p>
+<ul>
+  <li>Amazon Cognito has its own synchronization mechanism for a small amount of user data such as preferences. Its called Cognito Sync.</li>
+  <li>For more complex objects, you can give clients direct access to a DynamoDB table, where each user is restricted to reading and writing only their state.</li>
+  <li>For situation where different users need to share session state (for example in collaborative editing), us AWS AppSync. AppSync is a managed hierarchial database intended for direct use by client devices, and it can auto sync state across multiple clients, resolve conflicts and even deal with offline usage scenarios.</li>
+</ul>
+
+<h3 id="minimise-coordination">Minimise coordination</h3>
+
+<p>With state on the client, we need to minimise the chatter between the client devices and network services, and the amount of coordination between Lambda executions. There are two ways to achieve this:</p>
+
+<ul>
+  <li>For tightly couple tasks, aggregate processing so that different requests are independent.</li>
+  <li>For loosely coupled tasks, send full context info with each requests.</li>
+</ul>
+
+<p><mark>Controlling the user session from the client allow us to create a much better user-end experience and reduce costs.The downside is that the client code will need to be MUCH more complex and we will need some way of deploy and managing web assets and client-side code in addition to Lambda code.</mark></p>
+
+<h2 id="moving-static-assets-out-of-lambda-functions">Moving static assets out of Lambda functions</h2>
+
+<p>Traditional web apps bundle code and assets and web servers are responsible for sending both to client devices. Translated to the Lambda world, that would mean including client-side JavaScript and web assets in a Lambda function and creating at least another API endpoint and new function to send those files to clients on demand.</p>
+
+<p>Serving application static contents such as images, style sheets, client-side JavaScript and HTML files thought a Lambda is a BAD idea. Those files are typically public and do no need auth.</p>
+
+<p>With serverless its better to put static assets somewhere for client to fetch them directly, for example S3. <mark>This is so comment that S3 can pretend to be a web server.</mark></p>
+
+<h2 id="using-s3-as-a-web-server">Using S3 as a web server</h2>
+
+<p>There are two ways of using S3 as a web server:</p>
+<ul>
+  <li>Bucket Endpoints
+    <ul>
+      <li>Allow direct access to S3 objects usings HTTPS</li>
+      <li>AWS auto activates this endpoint when you create an S3 Bucket.</li>
+      <li>Access to the bucket endpoint is controlled via IAM</li>
+    </ul>
+  </li>
+  <li>Website Endpoints
+    <ul>
+      <li>Optional feature of s3 that can perform some basic web workflows.</li>
+      <li>This endpoint has a diff URL from the bucket endpoint.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>S3 will auto assign a domain to a website endpoint. Its not possible to set a custom domain, but you can put a CDN between the users and the website endpoint and conf a custom domain name in the CDN. this is the usual approach.</p>
+
+<h3 id="working-with-cross-origin-resource-sharing">Working with cross-origin resource sharing</h3>
+
+<p>Client code will need to access resource from S3 and API Gateway, which will be on different domains.</p>
+
+<p>To prevent fraud, browsers request special authorization when a page from one domain want to access resources from another domain. This is cross-origin resources sharing (CORS).</p>
+
+<p>Here is a quick overview:</p>
+
+<p>An <strong>origin</strong>, in browser terminology, is a combination of URL protocol, domain and, optionally, network port. For example: <code class="language-plaintext highlighter-rouge">https://runningserverless.com</code>.</p>
+
+<p>Browsers will load resources from a different origin during primary page parsing, but they will not allow background network requests to different origin so easily.</p>
+
+<p>For example a page from <code class="language-plaintext highlighter-rouge">https://runningserverless.com</code> will load a image from <code class="language-plaintext highlighter-rouge">gojko.net</code> without any configuration, however, the same image will not be able to be read asynchronously using JavaScript unless CORS settings allow it.</p>
+
+<p>Before executing a network request from JavaScript code, browsers will verify that the page is allowed to access a resource on a different origin. To do this a <em>pre-flight</em> request is sent to the resource URL. The pre-flight request is an HTTP call using the <code class="language-plaintext highlighter-rouge">OPTIONS</code> method, including the resource it wants to access and the CORS content URL. <mark>Its essentially a browser asking the remote serve: 'If I were to try making this request for a page from this origin, will you let me?'</mark></p>
+
+<p>The resource server is supposed to reply to the pre-flight request repeating the requested origin and providing ta list of HTTP header and method it would allow for the resource. Technically, the server respond needs to include the policy in the <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code>, <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Method</code>, and <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Headers</code> HTTP headers.</p>
+
+<p>The browser compares the headers to the request the Javascript want send. If everything matches the full request is made, otherwise the request will fail.</p>
+
+<p>When the resource server responds to the full request; it also needs to include the <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code> header, without that the browser will refuse to pass the result back to the JavaScript code.</p>
+
+<p><mark>CORS errors are tricky to troubleshoot, becuase they only apply to background browser actions. Running the same request from a command line won't show any problems. You won't find any logs on the server, because browsers kill request before they they get to our API.</mark></p>
+
+<p>When we move web assets to a separate website and move th client workflow to JavaScript, will introduce CORS issues into our example application.</p>
+
+<ol>
+  <li>“retrieving the web page” is a direct request so it is not affected by CORS</li>
+  <li>“get pre-signed grants” will be a JavaScript call to the API Gateway URL, which will be on a different domain, so it will be restricted by CORS.</li>
+  <li>“upload file” will post a from dynamically to the upload bucket URL, also a different origin and restricted by CORS.</li>
+  <li>“get results” also requires CORS, because we’ll be polling the results bucket dynamically to check whether the file is ready.</li>
+</ol>
+
+<div style="text-align: center;">
+  <img style="max-width: 60%;" src="/assets/books/runningServerlessAdzic_ch11LambdaDiagram.svg" />
+</div>
+
+<h1 id="12designing-robust-applications">12.Designing robust applications</h1>
+
+<h2 id="api-endpoints-with-pah-parameters">API endpoints with pah parameters</h2>
+
+<p>APU Gateways have a simple solution for case when a port of the request needs to be flexible.Declare an API endpoint using a parameter name in curly braces, and the API Gateway will use it for all matching requests. For example, <code class="language-plaintext highlighter-rouge">/sign/{extension}</code> and it will handle <code class="language-plaintext highlighter-rouge">/sign/jpg</code>, <code class="language-plaintext highlighter-rouge">/sign/gif</code> and any other request with <code class="language-plaintext highlighter-rouge">sign/</code> in the future.</p>
+
+<p>To read out the value of the param in a Lambda function. we can use the <code class="language-plaintext highlighter-rouge">pathParameters</code> field of the API Gateway event.</p>
+
+<p>Any component of a path can contain a parameter: <code class="language-plaintext highlighter-rouge">/sign/{extension}/image</code> or multiple <code class="language-plaintext highlighter-rouge">/sign/{extension}/image/{size}</code>. 
+n
+We CANNOT create <code class="language-plaintext highlighter-rouge">/sign/{extension}</code> and <code class="language-plaintext highlighter-rouge">sign/{type}</code> as the same time; API Gateway would not know who to choose between them.</p>
+
+<h3 id="greedy-path-parameters">Greedy Path Parameters</h3>
+
+<p><strong>Greedy parameters</strong> matches one or more path components. <code class="language-plaintext highlighter-rouge">/sign/{proxy+}</code> will match <code class="language-plaintext highlighter-rouge">/sign/jpg</code> and <code class="language-plaintext highlighter-rouge">/sign/jpg/size/500</code> this is a useful trick if you want to build your own request routing inside of a lambda function.</p>
+
+<p><mark>To prevent user errors, we will need to validate extensions using a list of supported types in the Lambda function connected to the API endpoints.</mark></p>
+
+<h2 id="protecting-against-abuse">Protecting Against abuse</h2>
+
+<p>Our example app is completely exposed to the internet. A billion people coming to the app could start a billion requests, and AWS will happily scale, but this is a financial risk.</p>
+
+<p>One of the biggest concerns is how to protect against someone doing a billion requests just o being down a system (DoS attack) or cause financial damage by racking up the AWS bill.</p>
+
+<h3 id="api-throttling">API throttling</h3>
+
+<p>API Gateway can auto throttle requests, one way of controlling the risk of abuse is to limit the number of requests from the API.</p>
+
+<p>You can config this for busrt requests per second or steady-sate requests per by using <code class="language-plaintext highlighter-rouge">MethodSettings</code> Property of the API resource.</p>
+
+<h3 id="lambda-throttling">Lambda throttling</h3>
+
+<p>We can limit financial risk from Lambda functions in two ways</p>
+
+<ol>
+  <li>Restrict the time allowed for execution. Use the <code class="language-plaintext highlighter-rouge">Timeout</code> setting on the individual functions. You’ll need to balance this with giving the function enoughs time to complete expected tasks.
+    <ul>
+      <li>🗨️ - I am not sure if this is the best option. This might protect again’t a stalled method once in a while, but the book uses the example of a user uploading a massive file that takes too long to process. If the process fails nothing is preventing a user from trying … again … and again … and again which might result in more costs. In reality this “large file” example should be solved somehow by putting a limit on the size of</li>
+    </ul>
+  </li>
+  <li>Control the number of concurrent execution for the function. This is effectively throttling requests at the lambda level. By default Lambda limits concurrent executions to 1000 (You can incease this limit by contacting AWS support). Individual Lambda functions can request a much lower limit by using the <code class="language-plaintext highlighter-rouge">ReservedConcurrentExecution</code> property.</li>
+</ol>
+
+<h3 id="monitoring-throttling">Monitoring throttling</h3>
+
+<p>We can use CloudWatch alert to notify us about throttling events.</p>
+
+<h1 id="13-deployment-options">13. Deployment options</h1>
+
+<h2 id="think-about-jobs-not-functions">Think about jobs, not functions</h2>
+
+<p>Mention Lambdas and function together and people who know functional programing make wrong assumption about AWS Lambda, such as that it is stateless, or that it can parallelize calculations automatically.</p>
+
+<p>That is why we need to unpick a terminological mess in order to discuss architecture of application base on cloud functions.</p>
+
+<p>A single Lambda can have a deployment package up to 250MB more than enough for a enterprise app server. There is nothing preventing a big monolithic website and deploying it as a single Lambda function.</p>
+
+<p>Likewise there is nothing preventing a deployment of a API where each endpoint is handled by a separate Lambda.</p>
+
+<p>Anything between the two extremes is possible.</p>
+
+<p>Lambda functions can be just small skeleton initializer which download additional code from a S3 to the temp disk space, because the temp space is shared between executions, this costly init can happen once once per cold start and most requests will not suffer from the additional over head.</p>
+
+<p>Lambda functions are not really stateless or state ful, they are transient.</p>
+
+<p>Instead of thinking about deploying functions, it is more useful to think about structuring function around discrete jobs which doesn’t necessarily perform a single code function. Instead of thinking about stateless or stateful services, its more useful to design for share-nothing architecture, when different parts can own data and share state, but different functions and instances of a single function don’t actively share data between themselves.</p>
+
+<h2 id="one-lambda-or-many">One Lambda or many?</h2>
+
+<p><mark>The common wisdom today seems to be monolithic code is bad and micro-services are boot, but I disagree. Monoliths are usually simpler to develop and manage thant a network service and in many cases faster to deploy. Dividing code and data into multiple machines introduces complexity related to synchronization and consistency, which simply does not exist when everything is in a single memory space. 🗨️ I agree with this!</mark></p>
+
+<p>Lambda provides many options for breaking down or aggregating processing, and its important to look at the platform constraints so you can pick the best solution in a particular case.</p>
+
+<h3 id="aggregate-processing-data-ownership">Aggregate processing data ownership</h3>
+
+<p>If modifying or accessing data and it needs to ensure conceptual consistency, aggregate it into a single function (and ideally a single request). Data consistency is easier to achieve with a single process then multiple process, even if they run the same code.</p>
+
+<p>Note the common argument in favor of distributed system over single-instance services is more machines usually have better resilience, but with Lambda this does not app. The platform will handle failover and recovery even if you set the concurrently limit to 1.</p>
+
+<h3 id="aggregate-code-that-needs-to-be-consistent">Aggregate code that needs to be consistent</h3>
+
+<p><mark>A important constraint of the Lambda platform is that different function don't deploy atomically.Its best to design the code assuming thats there will be a shorty period of time where different function may run with different version of app code or that there will be two versions of the same ruction running in parallel. </mark></p>
+
+<p><mark>If 2 prices of code need to be fully consistent with each other at all times, put them into the same functions.</mark></p>
+
+<h3 id="divide-code-around-security-boundaries">Divide code around security boundaries</h3>
+
+<p>Different function can have different security polices, but different parts of the function always run under the same privileges. If you need to reduce or increase the security privileges for some part of a process, it’s better to extract that part into a separate Lambda with a separate IAM role. Smaller, more focussed function are less risky from a security perspective.</p>
+
+<h3 id="divide-code-around-cpu-and-memory-needs">Divide code around CPU and Memory needs</h3>
+
+<p>Because Lambda chares for memory allocation multiplied by CPU time, bundling task with different memory needs can be unnecessarily expensive.</p>
+
+<p>When two different usages of the same code have different CPU or memory needs, isolating those usages into two different function van save a lot of money. Think about jobs (uses cases ) when deciding on Lambda granularity not code units.</p>
+
+<h3 id="divide-tasks-around-timing-restrictions">Divide tasks around timing restrictions</h3>
+
+<p>For tasks that take longer then 15 minutes Lambda might not be the correct solutions or you may be able to split a task into several steps and potentially parallelising the work.</p>
+
+<p>Spitting a job into smaller tasks due to timing restriction typically require an additional process to coordinate the execution of subtasks, and report error or success. Once option for such an umbrella process is to move it to a client devices.</p>
+
+<p>For tasks that cannot be paralleised, consider using AWS Fargate. Its a task management system for Elastic Containers servers with similar billing to Lambda. Fargate tasks start a lot more slowly then Lambda but if the expected duration for a tasks longer then 15 minutes  and few dozen seconds wont matter much.</p>
+
+<h2 id="sharing-behavior">Sharing behavior</h2>
+
+<p>There are currently thee options for sharing behavior</p>
+
+<ul>
+  <li>common libraries</li>
+  <li>Lambda layers</li>
+  <li>Invoking one function form another</li>
+</ul>
+
+<p>There option differ primarily in four aspects:</p>
+<ul>
+  <li>Latency to execution shared code</li>
+  <li>Runtime or deploy-time consistency</li>
+  <li>sharing across programming language runtime</li>
+  <li>Deployment speed and complexity.</li>
+</ul>
+
+
+</body>
+
+</html>
