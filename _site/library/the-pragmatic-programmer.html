@@ -1,0 +1,1281 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>The Pragmatic Programmer | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The Pragmatic Programmer</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="The Pragmatic Programmer" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Pragmatic Programmer Andrew Hunt, David Thomas ISBN: 978-0201616224 - Published On: 1999" />
+<meta property="og:description" content="The Pragmatic Programmer Andrew Hunt, David Thomas ISBN: 978-0201616224 - Published On: 1999" />
+<link rel="canonical" href="http://0.0.0.0:4000/library/the-pragmatic-programmer" />
+<meta property="og:url" content="http://0.0.0.0:4000/library/the-pragmatic-programmer" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-26T15:30:52-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The Pragmatic Programmer" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2025-07-26T15:30:52-05:00","datePublished":"2025-07-26T15:30:52-05:00","description":"The Pragmatic Programmer Andrew Hunt, David Thomas ISBN: 978-0201616224 - Published On: 1999","headline":"The Pragmatic Programmer","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/library/the-pragmatic-programmer"},"url":"http://0.0.0.0:4000/library/the-pragmatic-programmer"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h2 class="book-title">The Pragmatic Programmer </h2>
+<h4 class="book-sub ">Andrew Hunt, David Thomas</h4>
+<p class="book-sub">ISBN: 978-0201616224 - Published On: 1999</p>
+
+<h2 id="preface">Preface</h2>
+
+<p>Programming is a craft.  It comes down to getting a computer to do what you want it to do. As a programmer, you are part listener, part advisor, part interpreter, and part dictator.</p>
+
+<p>There are many people offering you help. Tool vendors out with their miracles their products. Gurus promise that their techniques guarantee results. Everyone claims that their programming language is the best, and every operating system is the answer to all conceivable ills.</p>
+
+<p><mark>None of this is true. There are no easy answers. There is no such thing as a best solution. There can only be systems that are more appropriate in a particular set of circumstances.</mark></p>
+
+<p>Theory and practice combine to make you strong.</p>
+
+<h3 id="what-makes-a-pragmatic-programmer">What Makes a Pragmatic Programmer?</h3>
+
+<ul>
+  <li><strong>Early adopter/fast adapter</strong> – You have an instinct for technologies and techniques, and you love trying things out. When given something new, you can grasp it quickly and integrate it with the rest of your knowledge.</li>
+  <li><strong>Inquisitive</strong> – You tend to ask questions. That’s neat—how did you do that? You are a pack rat for little facts, each of which may affect some decision years from now.</li>
+  <li><strong>Critical thinker</strong> – You rarely take things as given without first getting the facts. When colleagues say “because that’s the way it’s done,” or a vendor promises the solution to all your problems, you smell a challenge.</li>
+  <li><strong>Realistic</strong> – You try to understand the underlying nature of each problem you face. This realism gives you a good feel for how difficult things are, and how long things will take.</li>
+  <li><strong>Jack of all trades.</strong> – You try hard to be familiar with a broad range of technologies and environments, and you work to keep abreast of new developments.</li>
+</ul>
+
+<p>The most basic characteristics all Pragmatic Programmers share basic enough to state as tips:</p>
+
+<blockquote>
+  <p><strong>TIP 1</strong>: Care About Your Craft</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>TIP 2:</strong> Think! About Your Work</p>
+</blockquote>
+
+<p>This isn’t a one-time audit of current practices—it’s an ongoing critical appraisal of every decision you make, every day, and on every development.</p>
+
+<h2 id="individual-pragmatists-large-teams">Individual Pragmatists, Large Teams</h2>
+
+<p>The construction of software should be an engineering discipline. However, this doesn’t preclude individual craftsmanship.</p>
+
+<h2 id="its-a-continuous-process">It’s a Continuous Process</h2>
+
+<p><em>A tourist visiting England’s Eton College asked the gardener how he got the lawns so perfect. “That’s easy,” he replied, “You just brush off the dew every morning, mow them every other day, and roll them once a week.”</em></p>
+
+<p><em>“Is that all?” asked the tourist.</em></p>
+
+<p><em>“Absolutely,” replied the gardener. “Do that for 500 years and you’ll have a nice lawn, too.”</em></p>
+
+<h1 id="chapter-1---a-pragmatic-philosophy">Chapter 1 - A Pragmatic Philosophy</h1>
+
+<p>Being responsible, Pragmatic Programmers won’t sit idly by and watch their projects fall apart through neglect.</p>
+
+<h2 id="-1-the-cat-ate-my-source-code">➤ 1 The Cat Ate My Source Code</h2>
+
+<p><em>The greatest of all weaknesses is the fear of appearing weak.</em> - J. B. Bossuet, Politics from Holy Writ, 1709</p>
+
+<p>A Pragmatic Programmer takes charge of his or her own career, and isn’t afraid to admit ignorance or error. Despite thorough testing, good documentation, and solid automation, things go wrong. We can be proud of our abilities, but we must be honest about our shortcomings—our ignorance as well as our mistakes.</p>
+
+<h3 id="take-responsibility">Take Responsibility</h3>
+
+<p>Don’t blame all the problems on a vendor, a language, management, or your coworkers. Any and all of these may play a role, but it is up to you to provide solutions, not excuses.</p>
+
+<blockquote>
+  <p><strong>TIP 3:</strong> Provide Options, Don’t Make Lame Excuses</p>
+</blockquote>
+
+<h2 id="-2-software-entropy">➤ 2 Software Entropy</h2>
+
+<p>Entropy is a term from physics that refers to the amount of “disorder” in a system. Unfortunately, the laws of thermodynamics guarantee that the entropy in the universe tends toward a maximum. When disorder increases in software, programmers call it “software rot.”</p>
+
+<p>Researchers in the field of crime and urban decay discovered a fascinating trigger mechanism, one that very quickly turns a clean, intact, inhabited building into a smashed and abandoned derelict. One broken window, left unrepaired for any substantial length of time, instills in the inhabitants of the building a sense of abandonment a sense that the powers that be don’t care about the building.</p>
+
+<blockquote>
+  <p><strong>TIP 4</strong> Don’t Live with Broken Windows</p>
+</blockquote>
+
+<p>Don’t leave “broken windows” (bad designs, wrong decisions, or poor code) unrepaired. Fix each one as soon as it is discovered. If there is insufficient time to fix it properly, then board it up. Perhaps you can comment out the offending code, or display a “Not Implemented” message, or substitute dummy data instead.</p>
+
+<p>If you find yourself on a team and a project where the code is pristinely beautiful—cleanly written, well designed, and elegant you will likely take extra special care not to mess it up.</p>
+
+<h2 id="-3-stone-soup-and-boiled-frogs">➤ 3 Stone Soup and Boiled Frogs</h2>
+
+<p>You may be in a situation where you know exactly what needs doing and how to do it. The entire system just appears before your eyes you know it’s right. But ask permission to tackle the whole thing and you’ll be met with delays and blank stares. People will form committees, budgets will need approval, and things will get complicated. Everyone will guard their own resources. Sometimes this is called “start-up fatigue.”</p>
+
+<p>Work out what you can reasonably ask for. Develop it well. Once you’ve got it, show people, and let them marvel. Then say “of course, it would be better if we added .” Pretend it’s not important. Sit back and wait for them to start asking you to add the functionality you originally wanted. People find it easier to join an ongoing success.</p>
+
+<blockquote>
+  <p><strong>TIP 5</strong> Be a Catalyst for Change</p>
+</blockquote>
+
+<p>Most software disasters start out too small to notice, and most project overruns happen a day at a time. Systems drift from their specifications feature by feature, while patch after patch gets added to a piece of code until there’s nothing of the original left. It’s often the accumulation of small things that breaks morale and teams.</p>
+
+<blockquote>
+  <p><strong>TIP 6</strong> Remember the Big Picture</p>
+</blockquote>
+
+<h2 id="-4-good-enough-software">➤ 4 Good-Enough Software</h2>
+
+<p><mark>The real world just won’t let us produce much that’s truly perfect, particularly not bug-free software. Time, technology, and temperament all conspire against us. Discipline yourself to write software that’s good enough—good enough for your users, for future maintainers, for your own peace of mind. </mark></p>
+
+<p>The phrase “good enough” does not imply sloppy or poorly produced code. All systems must meet their users’ requirements to be successful. We are simply advocating that users be given an opportunity to participate in the process of deciding when what you’ve produced is good enough.</p>
+
+<h3 id="involve-your-users-in-the-trade-off">Involve Your Users in the Trade-Off</h3>
+
+<p>Normally you’re writing software for other people. How often do you ask them how good they want their software to be? Sometimes there’ll be no choice. If you’re working on pacemakers. However, if you’re working on a brand new product, you’ll have different constraints. The marketing people will have promises to keep, the eventual end users may have made plans based on a delivery schedule, and your company will certainly have cash-flow constraints. <strong>It would be unprofessional to ignore these users’ requirements simply to add new features to the program, or to polish up the code just one more time.</strong></p>
+
+<p><strong>TIP 7</strong> Make Quality a Requirements Issue</p>
+
+<h3 id="know-when-to-stop">Know When to Stop</h3>
+
+<p>Programming is like painting. You start with a blank canvas and materials. You use science, art, and craft to determine what to do with them. You sketch out an overall shape, paint the underlying environment, then fill in the details. You constantly step back with a critical eye to view what you’ve done. Artists will tell you that all the hard work is ruined if you don’t know when to stop. If you add layer upon layer, detail over detail, the painting becomes lost in the paint.</p>
+
+<h2 id="-5-your-knowledge-portfolio">➤ 5 Your Knowledge Portfolio</h2>
+
+<p>Your knowledge becomes out of date as new techniques, languages, and environments are developed. Your knowledge is a <mark>they’re expiring asset.</mark> Managing a knowledge portfolio is very similar to managing a financial portfolio:</p>
+
+<ol>
+  <li>Serious investors invest regularly—as a habit.</li>
+  <li>Diversification is the key to long-term success.</li>
+  <li>Smart investors balance their portfolios between conservative and high-risk, high-reward investments.</li>
+  <li>Investors try to buy low and sell high for maximum return.</li>
+  <li>Portfolios should be reviewed and rebalanced periodically.</li>
+</ol>
+
+<p><strong>TIP 8</strong> Invest Regularly in Your Knowledge Portfolio</p>
+
+<h3 id="goals">Goals</h3>
+<ol>
+  <li>Learn at least one new language every year.</li>
+  <li>Read a technical book each quarter.</li>
+  <li>Read nontechnical books, too.</li>
+  <li>Take classes.</li>
+  <li>Participate in local user groups.</li>
+  <li>Experiment with different environments.</li>
+  <li>Stay current.</li>
+  <li>Get wired.</li>
+</ol>
+
+<h2 id="critical-thinking">Critical Thinking</h2>
+
+<p><mark>You need to ensure that the knowledge in your portfolio is accurate and unswayed by either vendor or media hype.</mark> Just because a search engine lists a hit first doesn’t mean that it’s the best match.</p>
+
+<p><strong>TIP 9</strong> Critically Analyze What You Read and Hear</p>
+
+<h2 id="-6-communicate">➤ 6 Communicate!</h2>
+
+<h3 id="know-what-you-want-to-say">Know What You Want to Say</h3>
+
+<p>Plan what you want to say. Write an outline. Then ask yourself, “Does this get across whatever I’m trying to say?” Refine it until it does.</p>
+
+<p><mark>This approach is not just applicable to writing documents. When you’re faced with an important meeting or a phone call with a major client, jot down the ideas you want to communicate, and plan a couple of strategies for getting them across.</mark></p>
+
+<h3 id="know-your-audience">Know Your Audience</h3>
+
+<p>We’ve all sat in meetings where a development geek glazes over the eyes of the vice president of marketing with a long monologue on the merits of some arcane technology.  <strong>This isn’t communicating: it’s just talking, and it’s annoying.</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># The WISDOM acrostic—understanding an audience
+
+                    W-hat do you want them to learn?
+      What is their I-nterest in what you’ve got to say?
+                How S-ophisticated are they?
+           How much D-etail do they want?
+Whom do you want to O-wn the information?
+        How can you M-otivate them to listen to you?
+
+What
+Interest
+Sophisticated
+Detail
+Own
+Motivate
+</code></pre></div></div>
+
+<h3 id="choose-your-moment">Choose Your Moment</h3>
+
+<p>It’s six o’clock on Friday afternoon, following a week when the auditors have been in, and your boss’s youngest is in the hospital. probably isn’t a good time to ask her for a memory upgrade.</p>
+
+<h3 id="choose-a-style">Choose a Style</h3>
+
+<p>Adjust the style of your delivery to suit your audience.</p>
+
+<h3 id="make-it-look-good">Make It Look Good</h3>
+
+<p>Your ideas are important. They deserve a good-looking vehicle to convey them to your audience. <mark>Any chef will tell you that you can slave in the kitchen for hours only to ruin your efforts with poor presentation.</mark></p>
+
+<h3 id="involve-your-audience">Involve Your audience</h3>
+
+<p>Involve your readers with early drafts of your document. Get their feedback, and pick their brains.</p>
+
+<h3 id="be-a-listener">Be a Listener</h3>
+
+<p><mark>There’s one technique that you must use if you want people to listen to you: listen to them.</mark></p>
+
+<p>Even if this is a situation where you have all the information, even if this is a formal meeting with you standing in front of suits—if you don’t listen to them, they won’t listen to you.</p>
+
+<h3 id="get-back-to-people">Get Back to people</h3>
+
+<p>Always respond to e-mails and voice mails, even if the response is simply “I’ll get back to you later.” Keeping people informed makes them far more forgiving of the occasional slip, and makes them feel that you haven’t forgotten them.</p>
+
+<blockquote>
+  <p><strong>TIP 10</strong> It’s Both What You Say and the Way You Say It</p>
+</blockquote>
+
+<h1 id="chapter-2-a-pragmatic-approach">Chapter 2 A Pragmatic Approach</h1>
+
+<h2 id="-7-the-evils-of-duplication">➤ 7 The Evils of Duplication</h2>
+
+<p>Most people assume that maintenance begins when an application is released, that maintenance means fixing bugs and enhancing features. We think these people are wrong. Programmers are constantly in maintenance mode. Our understanding changes day by day.</p>
+
+<p>We feel that the only way to develop software reliably, and to make our developments easier to understand and maintain, is to follow what we call the DRY principle:</p>
+
+<p>EVERY PIECE OF KNOWLEDGE MUST HAVE A SINGLE, UNAMBIGUOUS, AUTHORITATIVE REPRESENTATION WITHIN A SYSTEM,</p>
+
+<blockquote>
+  <p><strong>TIP 11</strong> DRY — Don’t Repeat Yourself</p>
+</blockquote>
+
+<h3 id="how-does-duplication-arise">How Does Duplication Arise?</h3>
+
+<ul>
+  <li><strong>Imposed duplication.</strong> Developers feel they have no choice—the environment seems to require duplication.</li>
+  <li><strong>Inadvertent duplication.</strong> Developers don’t realize that they are duplicating information.</li>
+  <li><strong>Impatient duplication.</strong> Developers get lazy and duplicate because it seems easier.</li>
+  <li><strong>Interdeveloper duplication.</strong> Multiple people on a team (or on different teams) duplicate a piece of information</li>
+</ul>
+
+<blockquote>
+  <p><strong>TIP 12</strong> Make It Easy to Reuse</p>
+</blockquote>
+
+<h2 id="-8-orthogonality">➤ 8 Orthogonality</h2>
+
+<p>“Orthogonality” is a term borrowed from geometry. Two lines are orthogonal if they meet at right angles, such as the axes on a graph.</p>
+
+<p>In computing, the term has come to signify a kind of independence or decoupling. Two or more things are orthogonal if changes in one do not affect any of the others. In a well-designed system, the database code will be orthogonal to the user interface: you can change the interface without affecting the database, and swap databases without changing the interface.</p>
+
+<h3 id="a-nonorthogonal-system">A Nonorthogonal System</h3>
+
+<p>Helicopter controls are decidedly not orthogonal. Your hands and feet are constantly moving, trying to balance all the interacting forces.</p>
+
+<p>Nonorthogonal systems are inherently more complex to change and control.</p>
+
+<h3 id="benefits-of-orthogonality">Benefits of Orthogonality</h3>
+
+<blockquote>
+  <p><strong>TIP 13</strong> Eliminate Effects Between Unrelated Things</p>
+</blockquote>
+
+<p>You get two major benefits if you write orthogonal systems: increased productivity and reduced risk.</p>
+
+<p>Most developers are familiar with the need to design orthogonal systems, although they may use words such as modular, component-based, and layered to describe the process. Systems should be composed of a set of cooperating modules, each of which implements functionality independent of the others.</p>
+
+<p>There is an easy test for orthogonal design. Once you have your components mapped out, ask yourself: If I dramatically change the requirements behind a particular function, how many modules are affected? In an orthogonal system, the answer should be “one.” In reality, this is naive. Unless you are remarkably lucky, most real-world requirements changes will affect multiple functions in the system. However, if you analyze the change in terms of functions, each functional change should still ideally affect just one module.</p>
+
+<h3 id="toolkits-and-libraries">Toolkits and Libraries</h3>
+
+<p>Be careful to preserve the orthogonality of your system as you introduce third-party toolkits and libraries. Choose your technologies wisely. Ask yourself whether it imposes changes on your code that shouldn’t be there.</p>
+
+<h3 id="coding">Coding</h3>
+
+<p>There are several techniques you can use to maintain orthogonality:</p>
+<ul>
+  <li>Keep your code decoupled.</li>
+  <li>Avoid global data</li>
+  <li>Avoid similar functions.</li>
+</ul>
+
+<h2 id="-9-reversibility">➤ 9 Reversibility</h2>
+
+<p>Engineers prefer simple, single solutions to problems. Management tends to agree with the engineers: single, easy answers fit nicely on spreadsheets and project plans. If only the real world would cooperate! There is always more than one way. If you go into a project hampered by the myopic notion that there is only one way to do it, you may be in for an unpleasant surprise.</p>
+
+<p>Suppose you decide, early in the project, to use a relational database from vendor A. Much later, during performance testing, you discover that the database is simply too slow, but that the object database from vendor B is faster. With most conventional projects, you’d be out of luck. Most of the time, calls to third-party products are entangled throughout the code. But if you really abstracted the idea of a database out to the point where it simply provides persistence as a service then you have the flexibility to change horses in midstream.</p>
+
+<blockquote>
+  <p><strong>TIP 14</strong> There Are No Final Decisions</p>
+</blockquote>
+
+<h2 id="-10-tracer-bullets">➤ 10 Tracer Bullets</h2>
+
+<p><em>Ready, fire, aim…</em></p>
+
+<p>Tracer bullets are loaded at intervals on the ammo belt alongside regular ammunition. When they’re fired, their phosphorus ignites and leaves a pyrotechnic trail from the gun to whatever they hit. If the tracers are hitting the target, then so are the regular bullets.</p>
+
+<h3 id="code-that-glows-in-the-dark">Code That Glows in the Dark</h3>
+
+<blockquote>
+  <p><strong>TIP 15</strong> Use Tracer Bullets to Find the Target</p>
+</blockquote>
+
+<p>To get the same effect in code, we’re looking for something that gets us from a requirement to some aspect of the final system quickly, visibly, and repeatably.</p>
+
+<p><mark>Tracer code is not disposable: you write it for keeps. It contains all the error checking, structuring, documentation, and self-checking that any piece of production code has. It simply is not fully functional.</mark> However, once you have achieved an end-to-end connection among the components of your system, you can check how close to the target you are, adjusting if necessary. Once you’re on target, adding functionality is easy.</p>
+
+<p>The tracer code approach has many advantages:</p>
+<ul>
+  <li>Users get to see something working early.</li>
+  <li>Developers build a structure to work in.</li>
+  <li>You have an integration platform.</li>
+  <li>You have something to demonstrate.</li>
+  <li>You have a better feel for progress.</li>
+</ul>
+
+<h3 id="tracer-bullets-dont-always-hit-their-target">Tracer Bullets Don’t Always Hit Their Target</h3>
+
+<p>You use the technique in situations where you’re not 100% certain of where you’re going. You shouldn’t be surprised if your first couple of attempts miss: the user says “that’s not what I meant,” or data you need isn’t available when you need it, or performance problems seem likely. <mark>Work out how to change what you’ve got to bring it nearer the target, and be thankful that you’ve used a lean development methodology.</mark></p>
+
+<h3 id="tracer-code-versus-prototyping">Tracer Code versus Prototyping</h3>
+
+<p>With a prototype, you’re aiming to explore specific aspects of the final system.</p>
+
+<p><mark>With a true prototype, you will throw away whatever you lashed together when trying out the concept, and recode it properly using the lessons you’ve learned.</mark></p>
+
+<p>The tracer code approach addresses a different problem. You need to know how the application as a whole hangs together. You want to show your users how the interactions will work in practice, and you want to give your developers an architectural skeleton on which to hang code.</p>
+
+<h2 id="-11-prototypes-and-post-it-notes">➤ 11 Prototypes and Post-it Notes</h2>
+
+<p>We build software prototypes to analyze and expose risk, and to offer chances for correction at a greatly reduced cost. Like the car makers, we can target a prototype to test one or more specific aspects of a project.</p>
+
+<p>Prototypes are designed to answer just a few questions, so they are much cheaper and faster to develop than applications that go into production. The code can ignore unimportant details—unimportant to you at the moment, but probably very important to the user later on. If you are prototyping a GUI, for instance, you can get away with incorrect results or data.</p>
+
+<h3 id="things-to-prototype">Things to Prototype</h3>
+
+<ul>
+  <li>Architecture</li>
+  <li>New functionality in an existing system</li>
+  <li>Structure or contents of external data</li>
+  <li>Third-party tools or components</li>
+  <li>Performance issues</li>
+  <li>User interface design</li>
+</ul>
+
+<blockquote>
+  <p><strong>TIP 16</strong> Prototype to Learn</p>
+</blockquote>
+
+<h3 id="how-not-to-use-prototypes">How Not to Use Prototypes</h3>
+
+<p><mark>Before you embark on any code-based prototyping, make sure that everyone understands that you are writing disposable code.</mark>Prototypes can be deceptively attractive to people who don’t know that they are just prototypes. You must make it very clear that this code is disposable, incomplete, and unable to be completed.</p>
+
+<h2 id="-12-domain-languages">➤ 12 Domain Languages</h2>
+
+<p>Languages influence how you think about a problem, and how you think about communicating.</p>
+
+<blockquote>
+  <p><strong>TIP 17</strong> Program Close to the Problem Domain</p>
+</blockquote>
+
+<h2 id="-13-estimating">➤ 13 Estimating</h2>
+
+<blockquote>
+  <p><strong>TIP 18</strong> Estimate to Avoid Surprises</p>
+</blockquote>
+
+<h3 id="how-accurate-is-accurate-enough">How Accurate Is Accurate Enough?</h3>
+
+<p>One of the interesting things about estimating is that the units you use make a difference in the interpretation of the result. If you say that something will take about 130 working days, then people will be expecting it to come in pretty close. If you say “about six months” then they know to look for it any time between five and seven months from now.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Duration</th>
+      <th>Quote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1–15 days</td>
+      <td>days</td>
+    </tr>
+    <tr>
+      <td>3–8 weeks</td>
+      <td>weeks</td>
+    </tr>
+    <tr>
+      <td>8-30 weeks</td>
+      <td>months</td>
+    </tr>
+    <tr>
+      <td>30+ weeks</td>
+      <td>think hard before giving an estimate</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="where-do-estimates-come-from">Where Do Estimates Come From?</h3>
+
+<ul>
+  <li><strong>Understand What’s Being Asked</strong> - The first part of any estimation exercise is building an understanding of what’s being asked. As well as the accuracy issues discussed above, you need to have a grasp of the scope of the domain.</li>
+  <li><strong>Build a Model of the System</strong> - From your understanding of the question being asked, build a rough and ready bare-bones mental model. If you’re estimating response times, your model may involve a server and some kind of arriving traffic.</li>
+  <li><strong>Break the Model into Components</strong> - Once you have a model, you can decompose it into components. You’ll need to discover the mathematical rules that describe how these components interact.</li>
+  <li><strong>Give Each Parameter a Value</strong> - Once you have the parameters broken out, you can go through and assign each one a value. You expect to introduce some errors in this
+step. The trick is to work out which parameters have the most impact on the result, and concentrate on getting them about right.</li>
+</ul>
+
+<h3 id="keep-track-of-your-estimating-prowess">Keep Track of Your Estimating Prowess</h3>
+
+<p>We think it’s a great idea to record your estimates so you can see how close you were. If an overall estimate involved calculating sub estimates, keep track of these as well. Often you’ll find your estimates are pretty good—in fact, after a while, you’ll come to expect this.</p>
+
+<h3 id="estimating-project-schedules">Estimating Project Schedules</h3>
+
+<p>The normal rules of estimating can break down in the face of the complexities and vagaries of a sizable application development.</p>
+
+<blockquote>
+  <p><strong>TIP 19</strong> Iterate the Schedule with the Code</p>
+</blockquote>
+
+<p>This may not be popular with management, who typically want a single, hard-and-fast number before the project even starts. You’ll have to help them understand that the team, their productivity, and the environment will determine the schedule. By formalizing this, and refining the schedule as part of each iteration, you’ll be giving them the most accurate scheduling estimates you can.</p>
+
+<h3 id="what-to-say-when-asked-for-an-estimate">What to Say When Asked for an Estimate</h3>
+
+<p>You say “I’ll get back to you.”</p>
+
+<h1 id="chapter-3-the-basic-tools">Chapter 3 The Basic Tools</h1>
+
+<p>Every craftsman starts his or her journey with a basic set of good quality tools. Each tool will have its own personality and quirks, and will need its own special handling. Tools amplify your talent. Expect to add to your toolbox regularly. Always be on the lookout for better ways of doing things.</p>
+
+<h2 id="-14-the-power-of-plain-text">➤ 14 The Power of Plain Text</h2>
+
+<p>Plain text is made up of printable characters in a form that can be read and understood directly by people. Plain text doesn’t mean that the text is unstructured; XML, SGML, and HTML are great examples of plain text that has a well-defined structure.</p>
+
+<blockquote>
+  <p><strong>TIP 20</strong> Keep Knowledge in Plain Text</p>
+</blockquote>
+
+<h3 id="insurance-against-obsolescence">Insurance Against Obsolescence</h3>
+
+<p>Human-readable forms of data, and self-describing data, will outlive all other forms of data and the applications that created them. Period. Virtually every tool in the computing universe can operate on plain text.</p>
+
+<h2 id="-15-shell-games">➤ 15 Shell Games</h2>
+
+<p>Every woodworker needs a good, solid, reliable workbench, for a programmer manipulating files of text, that workbench is the command shell. From the shell prompt, you can invoke your full repertoire of tools, using pipes to combine them in ways never dreamt of by their original developers.</p>
+
+<blockquote>
+  <p><strong>TIP 21</strong> Use the Power of Command Shells</p>
+</blockquote>
+
+<h2 id="-16-power-editing">➤ 16 Power Editing</h2>
+
+<p>You need to be able to manipulate text as effortlessly as possible, because text is the basic raw material of programming.</p>
+
+<h3 id="one-editor">One Editor</h3>
+
+<p>We think it is better to know one editor very well, and use it for all editing tasks code, documentation, memos, system administration, and so on.</p>
+
+<blockquote>
+  <p><strong>TIP 22</strong> Use a Single Editor Well</p>
+</blockquote>
+
+<h2 id="-17-source-code-control">➤ 17 Source Code Control</h2>
+
+<blockquote>
+  <p><strong>TIP 23</strong> Always Use Source Code Control</p>
+</blockquote>
+
+<p>Always. Even if you are a single-person team on a one-week project. Even if it’s a “throw-away” prototype. Make sure that everything is under source code control—documentation, phone number lists, memos to vendors, makefiles, build and release procedures, that little shell script that burns the CD master—everything.</p>
+
+<p><mark>There is a tremendous hidden benefit in having an entire project under the umbrella of a source code control system: you can have product builds that are automatic and repeatable.</mark></p>
+
+<h2 id="-18-debugging">➤ 18 Debugging</h2>
+
+<p>No one writes perfect software, so it’s a given that debugging will take up a major portion of your day.</p>
+
+<h3 id="psychology-of-debugging">Psychology of Debugging</h3>
+
+<p>Debugging itself is a sensitive, emotional subject for many developers. Instead of attacking it as a puzzle to be solved.</p>
+
+<blockquote>
+  <p><strong>TIP 24</strong> Fix the Problem, Not the Blame</p>
+</blockquote>
+
+<h3 id="a-debugging-mindset">A Debugging Mindset</h3>
+
+<p>You need to turn off many of the defenses you use each day to protect your ego, tune out any project pressures you may be under, and get yourself comfortable. Above all, remember the first rule of debugging: Don’t Panic!</p>
+
+<blockquote>
+  <p><strong>TIP 25</strong> Don’t Panic</p>
+</blockquote>
+
+<h3 id="where-to-start">Where to Start</h3>
+
+<p>Before you start to look at the bug, make sure that you are working on code that compiled cleanly—without warnings. You may need to interview the user who reported the bug in order to gather more data than you were initially given.</p>
+
+<p>Artificial tests don’t exercise enough of an application. You must brutally test both boundary conditions and realistic end-user usage patterns. <mark>The best way to start fixing a bug is to make it reproducible. After all, if you can’t reproduce it, how will you know if it is ever fixed?</mark></p>
+
+<h3 id="tracing">Tracing</h3>
+
+<p>Debuggers generally focus on the state of the program now. Sometimes you need more—you need to watch the state of a program or a data structure over time.</p>
+
+<p>Tracing statements are those little diagnostic messages you print to the screen or to a file that say things such as “got here” and “value of x = 2.” It’s a primitive technique compared with IDE-style debuggers, but it is peculiarly effective at diagnosing several classes of errors that debuggers can’t.</p>
+
+<h3 id="rubber-ducking">Rubber Ducking</h3>
+
+<p>A very simple but particularly useful technique for finding the cause of a problem is simply to explain it to someone else. The other person should look over your shoulder at the screen, and nod his or her head constantly (like a rubber duck bobbing up and down in a bathtub). They do not need to say a word; the simple act of explaining, step by step, what the code is supposed to do often causes the problem to leap off the screen and announce itself.</p>
+
+<h3 id="process-of-elimination">Process of Elimination</h3>
+
+<blockquote>
+  <p><strong>TIP 26</strong> “select” Isn’t Broken</p>
+</blockquote>
+
+<h3 id="the-element-of-surprise">The Element of Surprise</h3>
+
+<p>When you find yourself surprised by a bug, you must reevaluate truths you hold dear.</p>
+
+<blockquote>
+  <p><strong>TIP 27</strong> Don’t Assume It - Prove IT</p>
+</blockquote>
+
+<h2 id="-19-text-manipulation">➤ 19 Text Manipulation</h2>
+
+<p>Pragmatic Programmers manipulate text the same way woodworkers shape wood. Text manipulation languages are to programming what routers. Here router means the tool that spins cutting blades very, very fast. They are noisy, messy, and somewhat brute force. Make mistakes with them, and entire pieces can be ruined</p>
+
+<blockquote>
+  <p><strong>TIP 28</strong> Learn a Text Manipulation Language</p>
+</blockquote>
+
+<h2 id="-20-code-generators">➤ 20 Code Generators</h2>
+
+<blockquote>
+  <p><strong>TIP 29</strong> Write Code That Writes Code</p>
+</blockquote>
+
+<h3 id="passive-code-generators">Passive Code Generators</h3>
+
+<p>Passive code generators save typing. They are basically parameterized templates, generating a given output from a set of inputs. Once the result is produced, it becomes a full-fledged source file in the project; it will be edited, compiled, and placed under source control just like any other file. Its origins will be forgotten.</p>
+
+<h3 id="active-code-generators">Active Code Generators</h3>
+
+<p>With an active code generator, you can take a single representation of some piece of knowledge and convert it into all the forms your application needs. This is not duplication, because the derived forms are disposable, and are generated as needed by the code generator (hence the word active).</p>
+
+<h1 id="chapter-4-pragmatic-paranoia">Chapter 4 Pragmatic Paranoia</h1>
+
+<blockquote>
+  <p><strong>TIP 30</strong> You Can’t Write Perfect Software</p>
+</blockquote>
+
+<p>We are constantly interfacing with other people’s code code that might not live up to our high standards and dealing with inputs that may or may not be valid. So we are taught to code defensively.</p>
+
+<p>Pragmatic Programmers take this a step further. They don’t trust themselves, either. Knowing that no one writes perfect code, including themselves, Pragmatic Programmers code in defenses against their own mistakes.</p>
+
+<h2 id="-21-design-by-contract">➤ 21 Design by Contract</h2>
+
+<p>A contract defines your rights and responsibilities, as well as those of the other party. In addition, there is an agreement concerning repercussions if either party fails to abide by the contract.</p>
+
+<p>Design by Contract (DBC, for short).</p>
+
+<p>Every function and method in a software system does something. Before it starts that something, the routine may have some expectation of the state of the world, and it may be able to make a statement about the state of the world when it concludes. Meyer describes these expectations and claims as follows:</p>
+<ul>
+  <li>Preconditions - What must be true in order for the routine to be
+called.</li>
+  <li>Postconditions - What the routine is guaranteed to do.</li>
+  <li>class invariants - A class ensures that this condition is always
+true from the perspective of a caller.</li>
+</ul>
+
+<p><em>If all the routine’s preconditions are met by the caller, the routine shall guarantee that all postconditions and invariants will be true when it completes.</em></p>
+
+<blockquote>
+  <p><strong>TIP 31</strong> Design with Contracts</p>
+</blockquote>
+
+<h2 id="-22-dead-programs-tell-no-lies">➤ 22 Dead Programs Tell No Lies</h2>
+
+<p>It’s easy to fall into the “it can’t happen” mentality. Most of us have written code that didn’t check that a file closed successfully, or that a trace statement got written as we expected. And all things being equal, it’s likely that we didn’t need to—the code in question wouldn’t fail under any normal conditions. But we’re coding defensively.</p>
+
+<p>All errors give you information. You could convince yourself that the error can’t happen, and choose to ignore it. Instead, Pragmatic Programmers tell themselves that if there is an error, something very, very bad has happened.</p>
+
+<blockquote>
+  <p><strong>TIP 32</strong> Crash Early</p>
+</blockquote>
+
+<h3 id="crash-dont-trash">Crash, Don’t Trash</h3>
+
+<p>Many times, crashing your program is the best thing you can do. The alternative may be to continue, writing corrupted data to some vital database or commanding the washing machine into its twentieth consecutive spin cycle. <mark>A dead program normally does a lot less damage than a crippled one.</mark></p>
+
+<h2 id="-23-assertive-programming">➤ 23 Assertive Programming</h2>
+
+<p>It seems that there’s a mantra that every programmer must memorize early in his or her career. “THIS CAN NEVER HAPPEN…” “This code won’t be used 30 years from now, so two-digit dates are fine.” “This application will never be used abroad, so why internationalize it?” “count can’t be negative.” “This printf can’t fail.”</p>
+
+<blockquote>
+  <p><strong>TIP 33</strong> – If It Can’t Happen, Use Assertions to Ensure That It Won’t</p>
+</blockquote>
+
+<p>Don’t use assertions in place of real error handling. Assertions check for things that should never happen.</p>
+
+<h3 id="leave-assertions-turned-on">Leave Assertions Turned On</h3>
+
+<p>There is a common misunderstanding about assertions, promulgated by the people who write compilers and language environments: “Assertions add some overhead to code. Because they check for things that should never happen, they’ll get triggered only by a bug in the code. Once the code has been tested and shipped, they are no longer needed, and should be turned off to make the code run faster. Assertions are a debugging facility.”</p>
+
+<p>There are two patently wrong assumptions here.</p>
+<ul>
+  <li>First, they assume that testing finds all the bugs. In reality, for any complex program you are unlikely to test even a miniscule percentage of the permutations
+your code will be put through.</li>
+  <li>Second, the optimists are forgetting that your program runs in a dangerous world. During testing, rats probably won’t gnaw through a communications cable, someone playing a game won’t exhaust memory, and log files won’t fill the hard drive. These things might happen when your program runs in a production environment. Your first line of defense is checking for any possible error, and your second is using assertions to try to detect those you’ve missed.</li>
+</ul>
+
+<p>Turning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice. There’s dramatic value, but it’s hard to get life insurance.</p>
+
+<h2 id="-24-when-to-use-exceptions">➤ 24 When to Use Exceptions</h2>
+
+<p>We believe that exceptions should rarely be used as part of a program’s normal flow; <mark> exceptions should be reserved for unexpected events.</mark></p>
+
+<p>Assume that an uncaught exception will terminate your program and ask yourself, “Will this code still run if I remove all the exception handlers?” If the answer is “no,” then maybe exceptions are being used in non-exceptional circumstances.</p>
+
+<p>For example, if your code tries to open a file for reading and that file does not exist, should an exception be raised?</p>
+
+<p>Our answer is, <strong>“It depends.”</strong></p>
+
+<ul>
+  <li>If the file <em>should</em> have been there, then an exception <strong>is</strong> warranted. Something unexpected happened. A file you were expecting to exist disappeared.</li>
+  <li>If you have no idea whether the file should exist or not, then it doesn’t seem exceptional if you can’t find it, and an error return is appropriate.</li>
+</ul>
+
+<blockquote>
+  <p><strong>TIP 34</strong> – Use Exceptions for Exceptional Problems</p>
+</blockquote>
+
+<p>Programs that use exceptions as part of their normal processing suffer from all the readability and maintainability problems of classic spaghetti code.</p>
+
+<h3 id="error-handlers-are-an-alternative">Error Handlers Are an Alternative</h3>
+
+<p>An error handler is a routine that is called when an error is detected. You can register a routine to handle a specific category of errors. There are times when you may want to use error handlers, either in-stead of or alongside exceptions.</p>
+
+<h2 id="-25-how-to-balance-resources">➤ 25 How to Balance Resources</h2>
+
+<p>We all manage resources whenever we code: memory, transactions, threads, files, timers—all kinds of things with limited availability.</p>
+
+<blockquote>
+  <p><strong>TIP 35</strong> – Finish What You Start</p>
+</blockquote>
+
+<p>the routine or object that allocates a resource should be responsible for deallocating it.</p>
+
+<h3 id="nest-allocations">Nest Allocations</h3>
+
+<p>The basic pattern for resource allocation can be extended for routines that need more than one resource at a time. There are just two more suggestions:</p>
+
+<ol>
+  <li><mark>Deallocate resources in the opposite order to that in which you allocate them. That way you won’t orphan resources if one resource contains references to another.</mark></li>
+  <li>When allocating the same set of resources in different places in your code, always allocate them in the same order. This will reduce the possibility of deadlock.</li>
+</ol>
+
+<h3 id="objects-and-exceptions">Objects and exceptions</h3>
+
+<p>If you are programming in an object-oriented language, you may find it useful to encapsulate resources in classes. Each time you need a particular resource type, you instantiate an object of that class. When the object goes out of scope, or is reclaimed by the garbage collector, the object’s destructor then deallocates the wrapped resource.</p>
+
+<h3 id="balancing-and-exceptions">Balancing and Exceptions</h3>
+
+<p>If an exception is thrown, how do you guarantee that everything allocated prior to the exception is tidied up? <strong>The answer depends to some extent on the language.</strong></p>
+
+<h1 id="chapter-5---bend-or-break">Chapter 5 - Bend, or Break</h1>
+
+<p>In order to keep up with today’s near-frantic pace of change, we need to make every effort to write code that’s as loose—as flexible—as possible. In this chapter, we’ll tell you how to make reversible decisions, so your code can stay flexible and adaptable in the face of an uncertain world.</p>
+
+<h2 id="-26-decoupling-and-the-law-of-demeter">➤ 26 Decoupling and the Law of Demeter</h2>
+
+<p>Organize your code into modules and limit the interaction between them.</p>
+
+<p>What’s wrong with having modules that know about each other? Nothing in principle — we don’t need to be as paranoid as spies or dissidents. However, you do need to be careful about how many other modules you interact with and, more importantly, how you came to interact with them.</p>
+
+<p>Traversing relationships between objects directly can quickly lead to a combinatorial explosion of dependency relationships. If <code class="language-plaintext highlighter-rouge">n</code> objects all know about each other, then a change to just one object can result in the other <code class="language-plaintext highlighter-rouge">n -1</code> objects needing changes</p>
+
+<p>You can see symptoms of this phenomenon in a number of ways:</p>
+<ul>
+  <li>Simple changes to one module that propagate through unrelated modules in the system.</li>
+  <li>Developers who are afraid to change code because they aren’t sure what might be affected.</li>
+</ul>
+
+<p>Systems with many unnecessary dependencies are very hard and expensive to maintain, and tend to be highly unstable.</p>
+
+<h3 id="the-law-of-demeter-for-functions">The Law of Demeter for Functions</h3>
+
+<blockquote>
+  <p><strong>TIP 36</strong> – Minimize Coupling Between Modules</p>
+</blockquote>
+
+<p>The Law of Demeter for functions states that any method of an object should call only methods belonging to:</p>
+<ol>
+  <li>itself</li>
+  <li>any parameters that were passed in to the method</li>
+  <li>any objects it created</li>
+  <li>any directly held component objects</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Demeter {
+    private:
+        A *a;
+        int func();
+public:
+    //...
+    void example(B&amp; b);
+}
+
+void Demeter::example(B&amp; b) { // 
+    C c;
+    int f = func();     // &lt;= 1. itself
+    b.invert();         // &lt;= 2. any parameters that were passed in to the method
+    a = new A();
+    a-&gt;setActive();     // &lt;= 3. any objects it created
+    c.print();          // &lt;= 4. any directly held component objects
+}
+</code></pre></div></div>
+
+<h2 id="-27-metaprogramming">➤ 27 Metaprogramming</h2>
+
+<p>Every time we have to go in and change the code to accommodate some change in business logic, or in the law, or in management’s personal tastes of the day, we run the risk of breaking the system—of introducing
+a new bug. So we say “out with the details!” Get them out of the code.</p>
+
+<h3 id="dynamic-configuration">Dynamic Configuration</h3>
+
+<blockquote>
+  <p><strong>TIP 37</strong> – Configure, Don’t Integrate</p>
+</blockquote>
+
+<p>First, we want to make our systems highly configurable. Not just things such as screen colors, but deeply ingrained items such as the choice of algorithms, database products, middleware technology, and user-interface style. These items should be implemented as configuration options, not through integration or engineering. Use <strong>metadata</strong> to describe configuration options for an application: tuning parameters, user preferences, the installation directory, and so on.</p>
+
+<p>We use the term in its broadest sense. Metadata is any data that describes the application—how it should run, what resources it should use, and so on. Typically, metadata is accessed and used at runtime, not at compile time.</p>
+
+<h3 id="metadata-driven-applications">Metadata-Driven Applications</h3>
+
+<blockquote>
+  <p><strong>TIP 38</strong> – Put Abstractions in Code, Details in Metadata</p>
+</blockquote>
+
+<p>There are several benefits to this approach:</p>
+<ul>
+  <li>It forces you to decouple your design, which results in a more flexible and adaptable program.</li>
+  <li>It forces you to create a more robust, abstract design by deferring details—deferring them all the way out of the program</li>
+  <li>You can customize the application without recompiling it.</li>
+  <li>Metadata can be expressed in a manner that’s much closer to the problem domain than a general-purpose programming language.</li>
+  <li>You may even be able to implement several different projects using the same application engine, but with different metadata.</li>
+</ul>
+
+<h3 id="business-logic">Business Logic</h3>
+
+<p><mark>Because business policy and rules are more likely to change than any other aspect of the project, it makes sense to maintain them in a very flexible format.</mark></p>
+
+<h2 id="-28-temporal-coupling">➤ 28 Temporal Coupling</h2>
+
+<p>We are talking about the role of time as a design element of the software itself. There are two aspects of time that are important to us:</p>
+<ul>
+  <li>concurrency - things happening at the same time</li>
+  <li>ordering - the relative positions of things in time</li>
+</ul>
+
+<p>When people first sit down to design an architecture or write a program, things tend to be linear. That’s the way most people think do this and then always do that.</p>
+
+<p>But thinking this way leads to temporal coupling: coupling in time.</p>
+<ul>
+  <li>Method A must always be called before method B;</li>
+  <li>only one report can be run at a time;</li>
+  <li>you must wait for the screen to redraw before the button click is received.</li>
+  <li>Tick must happen before tock.</li>
+</ul>
+
+<p>We need to allow for concurrency and to think about decoupling any time or order dependencies</p>
+
+<blockquote>
+  <p><strong>TIP 39</strong> – Analyze Workflow to Improve Concurrency</p>
+</blockquote>
+
+<p>One way to do this is to capture their description of workflow using a notation such as the UML activity diagram. You can use diagrams to maximize parallelism by identifying items that could be performed in parallel.</p>
+
+<blockquote>
+  <p><strong>TIP 40</strong> – Design Using Services</p>
+</blockquote>
+
+<p>Instead of components, we have really created services—independent, concurrent objects behind well-defined, consistent interfaces.</p>
+
+<h3 id="design-for-concurrency">Design for Concurrency</h3>
+
+<p>With linear code, it’s easy to make assumptions that lead to sloppy programming. But concurrency forces you to think through things a bit more carefully—you’re not alone at the party anymore. Because things can now happen at the “same time,” you may suddenly see some time based dependencies.</p>
+
+<p>To begin with, any global or static variables must be protected from concurrent access.</p>
+
+<blockquote>
+  <p><strong>TIP 41</strong> – Always Design for Concurrency</p>
+</blockquote>
+
+<h2 id="-29-its-just-a-view">➤ 29 It’s Just a View</h2>
+
+<p>We don’t want to have three separate copies of the data. So we create a model—the data itself, with common operations to manipulate it. Then we can create separate views that display the data in different ways: as a spreadsheet, as a graph, or in a totals box. Each of these views may have its own controller. This is the key concept behind the Model-View-Controller (MVC) idiom: separating the model from both the GUI that represents it and the controls that manage the view.</p>
+
+<p>The view and controller are tightly coupled, and in some implementations of MVC the view and controller are a single component.</p>
+
+<blockquote>
+  <p><strong>TIP 42</strong> – Separate Views from Models</p>
+</blockquote>
+
+<h3 id="beyond-guis">Beyond GUIs</h3>
+
+<ul>
+  <li><strong>Model</strong> - The abstract data model representing the target object. The model has no direct knowledge of any views or controllers.</li>
+  <li><strong>View</strong> - A way to interpret the model. It subscribes to changes in the model and logical events from the controller.</li>
+  <li><strong>Controller</strong> - A way to control the view and provide the model with new data. It publishes events to both the model and the view.</li>
+</ul>
+
+<h2 id="-30-blackboards">➤ 30 Blackboards</h2>
+
+<p>Consider how detectives might use a blackboard to coordinate and solve a murder investigation. Each detective may make contributions to this potential murder mystery by adding facts, statements from witnesses, any forensic evidence that might arise, and soon. As the data accumulates, a detective might notice a connection and post that observation or speculation as well.</p>
+
+<p>None of the detectives needs to know of the existence of any other detective—they watch the board for new information, and add their findings. The detectives may be trained in different disciplines, may have different levels of education and expertise, and may not even work in the same precinct. They share a desire to solve the case, but that’s all.</p>
+
+<p>Different detectives may come and go during the course of the process, and may work different shifts. There are no restrictions on what may be placed on the blackboard. It may be pictures, sentences, physical evidence, and so on.</p>
+
+<p>A blackboard system lets us decouple our objects from each other completely, providing a forum where knowledge consumers and producers can exchange data anonymously and asynchronously. As you might guess, it also cuts down on the amount of code we have to write.</p>
+
+<blockquote>
+  <p><strong>TIP 43</strong> – Use Blackboards to Coordinate Workflow</p>
+</blockquote>
+
+<h1 id="chapter-6---while-you-are-coding">Chapter 6 - While You Are Coding</h1>
+
+<p>Pragmatic Programmers think critically about all code, including our own. We constantly see room for improvement in our programs and our designs.</p>
+
+<h2 id="-31-programming-by-coincidence">➤ 31 Programming by Coincidence</h2>
+
+<h3 id="accidents-of-implementation">Accidents of Implementation</h3>
+
+<p>Accidents of implementation are things that happen simply because that’s the way the code is currently written. You end up relying on undocumented error or boundary conditions. “It works now, better leave well enough alone. . . .”</p>
+
+<p>It’s easy to be fooled by this line of thought. Why should you take the risk of messing with something that’s working?</p>
+
+<ul>
+  <li>It may not really be working—it might just look like it is.</li>
+  <li>The boundary condition you rely on may be just an accident. In different circumstances (a different screen resolution, perhaps), it might behave differently.</li>
+  <li>Undocumented behavior may change with the next release of the library.</li>
+  <li>Additional and unnecessary calls make your code slower.</li>
+  <li>Additional calls also increase the risk of introducing new bugs of their own.</li>
+</ul>
+
+<h3 id="implicit-assumptions">Implicit Assumptions</h3>
+
+<p>Coincidences can mislead at all levels from generating requirements through to testing. At all levels, people operate with many assumptions in mind but these assumptions are rarely documented and are often in conflict between different developers. Assumptions that aren’t based on well-established facts are the bane of all projects.</p>
+
+<blockquote>
+  <p><strong>TIP 44</strong> – Don’t Program by Coincidence</p>
+</blockquote>
+
+<h3 id="how-to-program-deliberately">How to Program Deliberately</h3>
+
+<ul>
+  <li>Always be aware of what you are doing.</li>
+  <li><mark>Don’t code blindfolded. Attempting to build an application you don’t fully understand, or to use a technology you aren’t familiar with, is an invitation to be misled by coincidences.</mark></li>
+  <li>Proceed from a plan.</li>
+  <li>Rely only on reliable things. Don’t depend on accidents or assumptions.</li>
+  <li><mark>Document your assumptions.</mark></li>
+  <li>Don’t just test your code, but test your assumptions as well.</li>
+  <li>Prioritize your effort.</li>
+  <li>Don’t be a slave to history. Don’t let existing code dictate future code.</li>
+</ul>
+
+<h2 id="-32-algorithm-speed">➤ 32 Algorithm Speed</h2>
+
+<h3 id="the-o-notation">The O() Notation</h3>
+
+<p>The O() notation is a mathematical way of dealing with approximation.</p>
+
+<p>Whenever you find yourself writing a simple loop, you know that you have an <em>O(n)</em> algorithm. If that loop contains an inner loop, then you’re looking at <em>O(m x n)</em>. You should be asking yourself how largethese values can get. If the numbers are bounded, then you’ll know how long the code will take to run. If the numbers depend on external factors, then you might want to stop and consider the effect that large values may have on your running time or memory consumption.</p>
+
+<blockquote>
+  <p><strong>TIP 45</strong> – Estimate the Order of Your Algorithms</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>TIP 46</strong> – Test Your Estimates</p>
+</blockquote>
+
+<p>If it’s tricky getting accurate timings, use code profilers to count the number of times the different steps in your algorithm get executed, and plot these figures against the size of the input.</p>
+
+<h2 id="-33-refactoring">➤ 33 Refactoring</h2>
+
+<p>Code needs to evolve; it’s not a static thing.</p>
+
+<p><mark>Unfortunately, the most common metaphor for software development is building construction. Well, software doesn’t quite work that way. Rather than construction, software is more like gardening—it is more organic than concrete. You plant many things in a garden according to an initial plan and conditions. Some thrive, others are destined to end up as compost. You may move plantings relative to each other to take advantage of the inter- play of light and shadow, wind and rain. Overgrown plants get split or pruned, and colors that clash may get moved to more aesthetically pleasing locations. You pull weeds, and you fertilize plantings that are in need of some extra help. You constantly monitor the health of the garden, and make adjustments as needed.</mark></p>
+
+<h3 id="when-should-you-refactor">When Should You Refactor?</h3>
+
+<ol>
+  <li>Duplication</li>
+  <li>Nonorthogonal design.</li>
+  <li>Outdated knowledge.</li>
+  <li>Performance.</li>
+</ol>
+
+<blockquote>
+  <p><strong>TIP 47</strong> – Refactor Early, Refactor Often</p>
+</blockquote>
+
+<h3 id="how-do-you-refactor">How Do You Refactor?</h3>
+
+<p>Martin Fowler offers the following simple tips on how to refactor without doing more harm than good:</p>
+
+<ol>
+  <li>Don’t try to refactor and add functionality at the same time.</li>
+  <li><mark>Make sure you have good tests before you begin refactoring. Run the tests as often as possible. That way you will know quickly if your changes have broken anything.<mark></mark></mark></li>
+  <li>Take short, deliberate steps.</li>
+</ol>
+
+<h2 id="-34-code-thats-easy-to-test">➤ 34 Code That’s Easy to Test</h2>
+
+<h3 id="unit-testing">Unit Testing</h3>
+
+<p>A software unit test is code that exercises a module. Typically, the unit test will establish some kind of artificial environment, then invoke rou- tines in the module being tested. It then checks the results that are returned, either against known values or against the results from previous runs of the same test (regression testing).</p>
+
+<blockquote>
+  <p><strong>TIP 48</strong> – Design to Test</p>
+</blockquote>
+
+<p>When you design a module, or even a single routine, you should design both its contract and the code to test that contract. By designing code to pass a test and fulfill its contract, you may well consider boundary conditions and other issues that wouldn’t occur to you otherwise. There’s no better way to fix errors than by avoiding them in the first place. In fact, by building the tests before you implement the code, you get to try out the interface before you commit to it.</p>
+
+<p>Regardless of the technology you decide to use, test harnesses should include the following capabilities</p>
+
+<ul>
+  <li>A standard way to specify setup and cleanup</li>
+  <li>A method for selecting individual tests or all available tests</li>
+  <li>A means of analyzing output for expected (or unexpected) results</li>
+  <li>A standardized form of failure reporting</li>
+</ul>
+
+<h3 id="a-culture-of-testing">A Culture of Testing</h3>
+
+<p>All software you write will be tested—if not by you and your team, then by the eventual users—so you might as well plan on testing it thoroughly.</p>
+
+<blockquote>
+  <p><strong>TIP 49</strong> – Test Your Software, or Your Users Will</p>
+</blockquote>
+
+<h2 id="-35-evil-wizards">➤ 35 Evil Wizards</h2>
+
+<p>Tool makers and infrastructure vendors have come up with a magic bullet, the wizard. Wizards are great. Just click a single button, answer a couple of simple questions, and the wizard will automatically generate skeleton code for you.</p>
+
+<p>But using a wizard designed by a guru does not automatically make Joe developer equally expert. Joe can feel pretty good—he’s just produced a mass of code and a pretty spiffy-looking program. He just adds in the specific application functionality and it’s ready to ship. But unless Joe actually understands the code that has been produced on his behalf, he’s fooling himself. He’s programming by coincidence.</p>
+
+<p>Wizards are a one-way street—they cut the code for you, and then move on. If the code they produce isn’t quite right, or if circumstances change and you need to adapt the code, you’re on your own.</p>
+
+<blockquote>
+  <p><strong>TIP 50</strong> – Don’t Use Wizard Code You Don’t Understand</p>
+</blockquote>
+
+<h1 id="chapter-7---before-the-project">Chapter 7 - Before the Project</h1>
+
+<p>Requirements rarely lie on the surface. Normally, they’re buried deep beneath layers of assumptions, misconceptions, and politics.</p>
+
+<blockquote>
+  <p><strong>TIP 51</strong> – Don’t Gather Requirements—Dig for Them</p>
+</blockquote>
+
+<p>A requirement is a statement of something that needs to be accomplished. Good requirements might include the following:</p>
+<ul>
+  <li>An employee record may be viewed only by a nominated group of people.</li>
+  <li>The cylinder-head temperature must not exceed the critical value, which varies by engine.</li>
+  <li>The editor will highlight keywords, which will be selected depending on the type of file being edited.</li>
+</ul>
+
+<p>However, very few requirements are as clear-cut, and that’s what makes requirements analysis complex.</p>
+
+<p>It’s important to discover the underlying reason why users do a particular thing, rather than just the way they currently do it. At the end of the day, your development has to solve their business problem, not just meet their stated requirements. Documenting the reasons behind requirements will give your team invaluable information when making daily implementation decisions.</p>
+
+<blockquote>
+  <p><strong>TIP 52</strong> – Work with a User to Think Like a User</p>
+</blockquote>
+
+<h2 id="overspecifying">Overspecifying</h2>
+
+<p>A big danger in producing a requirements document is being too specific. Good requirements documents remain abstract. Where requirements are concerned, the simplest statement that accurately reflects the business need is best.</p>
+
+<p>This doesn’t mean you can be vague—you must capture the underlying semantic invariants as requirements, and document the specific or current work practices as policy.</p>
+
+<p><mark>Requirements are not architecture. Requirements are not design, nor are they the user interface. Requirements are need.</mark></p>
+
+<blockquote>
+  <p><strong>TIP 53</strong> – Abstractions Live Longer than Details</p>
+</blockquote>
+
+<h2 id="just-one-more-wafer-thin-mint">Just One More Wafer-Thin Mint…</h2>
+
+<p><mark>Many projects failures are blamed on an increase in scope—also known as feature bloat, creeping featurism, or requirements creep. (Scope Creep) </mark></p>
+
+<p>Unfortunately, not many projects seem to track requirements actively. This means that they have no way to report on changes of scope— who requested a feature, who approved it, total number of requests approved, and so on. By tracking requirements you can get a clearer picture that “just one more feature” is really the fifteenth new feature added this month.</p>
+
+<h2 id="maintain-a-glossary">Maintain a Glossary</h2>
+
+<p>Create and maintain a project glossary—one place that defines all the specific terms and vocabulary used in a project. All participants in the project, from end users to support staff, should use the glossary to ensure consistency.</p>
+
+<blockquote>
+  <p><strong>TIP 54</strong> – Use a Project Glossary</p>
+</blockquote>
+
+<h2 id="-37-solving-impossible-puzzles">➤ 37 Solving Impossible Puzzles</h2>
+
+<p>Some constraints are absolute; others are merely preconceived notions.Absolute constraints must be honored, however distasteful or stupid they may appear to be. On the other hand, some apparent constraints may not be real constraints at all.</p>
+
+<p>For example, there’s that old bar trick where you take a brand new, unopened champagne bottle and bet that you can drink beer out of it. The trick is to turn the bottle upside down, and pour a small quantity of beer in the hollow in the bottom of the bottle. Many software problems can be just as sneaky.</p>
+
+<p>It’s not whether you think inside the box or outside the box. The problem lies in finding the box—identifying the real constraints.</p>
+
+<blockquote>
+  <p><strong>TIP 55</strong> – Don’t Think Outside the Box</p>
+</blockquote>
+
+<p>When faced with an intractable problem, enumerate all the possible avenues you have before you. Don’t dismiss anything, no matter how unusable or stupid it sounds. Now go through the list and explain why a certain path cannot be taken. Are you sure? Can you prove it?</p>
+
+<h2 id="-38-not-until-youre-ready">➤ 38 Not Until You’re Ready</h2>
+
+<p>You too need to listen to the voice that whispers “wait.” If you sit down to start typing and there’s some nagging doubt in your mind, heed it.</p>
+
+<blockquote>
+  <p><strong>TIP 56</strong> – Listen to Nagging Doubts—Start When You’re Ready</p>
+</blockquote>
+
+<p>When you feel a nagging doubt, or experience some reluctance when faced with a task, heed it. You may not be able to put your finger on exactly what’s wrong, but give it time and your doubts will probably crystallize into something more solid, something you can address. Software development is still not a science. Let your instincts contribute to your performance.</p>
+
+<h3 id="good-judgment-or-procrastination">Good Judgment or Procrastination?</h3>
+
+<p>Choose an area that you feel will be difficult and begin producing some kind of proof of concept. One of two things will typically happen. Shortly after starting, you may feel that you’re wasting your time. Give up on the prototype, and hack into the real development.</p>
+
+<p>On the other hand, as the prototype progresses you may have one of those moments of revelation when you suddenly realize that some basic premise was wrong. Not only that, but you’ll see clearly how you can put it right. You’ll feel comfortable abandoning the prototype and launching into the project proper. Your instincts were right, and you’ve just saved yourself and your team a considerable amount of wasted effort.</p>
+
+<p>When you make the decision to prototype as a way of investigating your unease, be sure to remember why you’re doing it. The last thing you want is to find yourself several weeks into serious development before remembering that you started out writing a prototype.</p>
+
+<h2 id="-39-the-specification-trap">➤ 39 The Specification Trap</h2>
+
+<p>The specification is also an agreement with the user a codification of their needs and an implicit contract that the final system will be in line with that requirement.</p>
+
+<p>The problem is that many designers find it difficult to stop. They feel that unless every little detail is pinned down in excruciating detail they haven’t earned their daily dollar.</p>
+
+<p>This is a mistake for several reasons.</p>
+<ul>
+  <li>First, it’s naive to assume that a specification will ever capture every detail and nuance of a system or its requirement. In restricted problem domains, there are formal methods that can describe a system, but they still require the designer to explain the meaning of the notation to the end users—there is still a human interpretation going on to mess things up.</li>
+  <li>Second, there is a problem with the expressive power of language itself. All the diagramming techniques and formal methods still rely on natural language expressions of the operations to be performed and natural language is really not up to the job. Look at the wording of any contract: in an attempt to be precise, lawyers have to bend the language in the most unnatural ways.</li>
+</ul>
+
+<blockquote>
+  <p><strong>TIP 57</strong> – Some Things Are Better Done than Described</p>
+</blockquote>
+
+<p>A design that leaves the coder no room for interpretation robs the programming effort of any skill and art. Some would say this is for the best, but they’re wrong. Often, it is only during coding that certain options become apparent.</p>
+
+<p>As a Pragmatic Programmer, you should tend to view requirements gathering, design, and implementation as different facets of the same mprocess—the delivery of a quality system.</p>
+
+<p>Just to be clear, we are not against generating specifications. Indeed, we recognize that there are times where incredibly detailed specifications are demanded—for contractual reasons, because of the environment where you work, or because of the nature of the product you are developing. Just be aware that you reach a point of diminishing, or even negative, returns as the specifications get more and more detailed. Also be careful about building specifications layered on top of specifications, without any supporting implementation or prototyping; it’s all too easy to specify something that can’t be built.</p>
+
+<p>Detailed specifications are clearly appropriate for life-critical systems. We feel they should also be produced for interfaces and libraries used by others. When your entire output is seen as a set of routine calls, you’d better make sure those calls are well specified.</p>
+
+<h2 id="-40-circles-and-arrows">➤ 40 Circles and Arrows</h2>
+<p>Computing has never been short of methods intended to make programming more like engineering. Each method gathers its disciples, and each enjoys a period of popularity. Then each is replaced by the next.</p>
+
+<p>Some developers, adrift in a sea of sinking projects, keep clinging to the latest fad. At the end of the day, though, it doesn’t matter how good the flot is, the developers are still aimlessly adrift.</p>
+
+<p><mark>We like (some) formal techniques and methods. But we believe that blindly adopting any technique without putting it into the context of your development practices and capabilities is a recipe for disappointment.</mark></p>
+
+<blockquote>
+  <p><strong>TIP 58</strong> – Don’t Be a Slave to Formal Methods</p>
+</blockquote>
+
+<p>Formal methods have some serious shortcomings.</p>
+
+<h3 id="should-we-use-formal-methods">Should We Use Formal Methods?</h3>
+
+<p>Absolutely. But always remember that formal development methods are just one more tool in the toolbox. If, after careful analysis, you feel you need to use a formal method, then embrace it—but remember who is in charge. Never become a slave to a methodology.</p>
+
+<p>Look at methodologies critically, then extract the best from each and meld them into a set of working practices that gets better each month. This is crucial. You should work constantly to refine and improve your processes.</p>
+
+<blockquote>
+  <p><strong>TIP 59</strong> – Expensive Tools Do Not Produce Better Designs</p>
+</blockquote>
+
+<h1 id="chapter-8---pragmatic-projects">Chapter 8 - Pragmatic Projects</h1>
+
+<p>As soon as you have more than one person working on a project, you need to establish some ground rules and delegate parts of the project accordingly. <mark> The single most important factor in making project-level activities work consistently and reliably is to automate your procedures. </mark></p>
+
+<h2 id="-41-pragmatic-teams">➤ 41 Pragmatic Teams</h2>
+
+<p><strong>No Broken Windows</strong> - Teams as a whole should not tolerate broken windows—those small imperfections that no one fixes.</p>
+
+<p><strong>Boiled Frogs</strong> - It’s easy for teams to get boiled. People assume that
+someone else is handling an issue. Even the best-intentioned teams can be oblivious to significant changes in their projects. Fight this. Make sure everyone actively monitors for changes.</p>
+
+<p><strong>Communicate</strong> - Great project teams have a distinct personality. People look forward to meetings with them, because it will be well-prepared.The documentation they produce is crisp, accurate, and consistent. The team speaks with one voice.</p>
+
+<p><strong>Don’t Repeat Yourself</strong> - This duplication leads to wasted effort, and can result in a maintenance nightmare. Some teams appoint a member as the project librarian, responsible for coordinating documentation and code repositories. Other team members can use this person as the first port of call when they’re looking for something.</p>
+
+<p><strong>Orthogonality</strong> - It is a mistake to think that the activities of a project—analysis, design, coding, and testing—can happen in isolation. They can’t. These are different views of the same problem, and artificially separating them can cause a boatload of trouble. We favor splitting teams functionally. Divide your people into small teams, each responsible for a particular functional aspect of the final system.</p>
+
+<blockquote>
+  <p><strong>TIP 60</strong> – Organize Around Functionality, Not Job Functions</p>
+</blockquote>
+
+<p><strong>Automation</strong> - A great way to ensure both consistency and accuracy is to automate
+everything the team does. To ensure that things get automated, appoint one or more team members as tool builders to construct and deploy the tools that automate the project drudgery. Have them produce makefiles, shell scripts, editor templates, utility programs, and the like.</p>
+
+<h2 id="-42-ubiquitous-automation">➤ 42 Ubiquitous Automation</h2>
+
+<h3 id="all-on-automatic">All on Automatic</h3>
+
+<blockquote>
+  <p><strong>TIP 61</strong> – Don’t Use Manual Procedures</p>
+</blockquote>
+
+<p>People just aren’t as repeatable as computers are. Nor should we expect them to be. A shell script or batch file will execute the same instructions, in the same order, time after time. It can be put under source control, so you can examine changes to the procedure over time as well (“but it used to work. . . ”).</p>
+
+<p>Because memory is the second thing you lose as you age, we don’t want to rely on it too heavily. We can run scripts to perform procedures for us automatically, based on the content of source code and documents. Our goal is to maintain an automatic, unattended, content- driven workflow.</p>
+
+<h2 id="-43-ruthless-testing">➤ 43 Ruthless Testing</h2>
+
+<blockquote>
+  <p><strong>TIP 62</strong> – Test Early. Test Often. Test Automatically.</p>
+</blockquote>
+
+<p>We want to start testing as soon as we have code. Those tiny minnows have a nasty habit of becoming giant, man-eating sharks pretty fast, and catching a shark is quite a bit harder.</p>
+
+<blockquote>
+  <p><strong>TIP 63</strong> – Coding Ain’t Done ’Til All the Tests Run</p>
+</blockquote>
+
+<h3 id="what-to-test">What to Test</h3>
+
+<p><strong>Unit testing</strong> - A unit test is code that exercises a module.</p>
+
+<p><strong>Integration testing</strong> - shows that the major subsystems that make up the
+project work and play well with each other.</p>
+
+<p><strong>Validation and verification</strong> - As soon as you have an executable user interface or prototype, you need to answer an all-important question: the users told you what they wanted, but is it what they need? This, too, needs to be tested.</p>
+
+<p><strong>Resource exhaustion, errors, and recovery</strong> -  In the real world, your programs don’t have limitless resources; they run out of things.</p>
+
+<p><strong>Performance testing</strong> - Performance testing, stress testing, or testing under load may be an important aspect of the project as well.
+Ask yourself if the software meets the performance requirements under real-world conditions—with the expected number of users, or connections, or transactions per second. Is it scalable?</p>
+
+<p><strong>Usability testing</strong> - It is performed with real users, under real environmental conditions. Look at usability in terms of human factors. Not only do we want our own tools to fit our hands, but we want the tools we create for users to fit their hands as well.</p>
+
+<h3 id="how-to-test">How to Test</h3>
+
+<p><strong>Regression testing</strong> - A regression test compares the output of the current test with previous (or known) values. We can ensure that bugs we fixed today didn’t break things that were working yesterday.</p>
+
+<p><strong>Test data</strong> - Where do we get the data to run all these tests? There are only two kinds of data: real-world data and synthetic data. We actually need to use both, because the different natures of these kinds of data will expose different bugs in our software. You need a lot of data, possibly more than any real-world sample could provide. You need data to stress the boundary conditions. You need data that exhibits certain statistical properties.</p>
+
+<p><strong>Exercising GUI systems</strong> - Testing GUI-intensive systems often requires specialized testing tools. These tools may be based on a simple event capture/playback model, or they may require specially written scripts to drive the GUI.</p>
+
+<p><strong>Testing the tests</strong> - Because we can’t write perfect software, we can’t write perfect tests. After you have written a test to detect a particular bug, cause the bug deliberately and make sure the test complains. If you are really serious about testing, you might want to appoint a project saboteur. The saboteur’s role is to take a separate copy of the source tree, introduce bugs on purpose, and verify that the tests will catch them.</p>
+
+<blockquote>
+  <p><strong>TIP 64</strong> – Use Saboteurs to Test Your Testing</p>
+</blockquote>
+
+<p><strong>Testing thoroughly</strong> - These coverage analysis tools watch your code during testing and keep track of which lines of code have been executed and which haven’t. These tools help give you a general feel for how comprehensive your testing is, but don’t expect to see 100% coverage.<mark>Even if you do happen to hit every line of code, that’s not the whole picture. What is important is the number of states that your program may have. States are not equivalent to lines of code</mark></p>
+
+<blockquote>
+  <p><strong>TIP 65</strong> – Test State Coverage, Not Code Coverage</p>
+</blockquote>
+
+<h3 id="when-to-test">When to Test</h3>
+
+<p>As soon as any code that is indented to be used in production exists.</p>
+
+<p>Most testing should be done automatically. It’s important to note that by “automatically” we mean that the test results are interpreted automatically as well.</p>
+
+<p>Usually, it isn’t a problem to run regressions on all of the individual unit tests and integration tests as often as needed. But some tests may not be easily run on a such a frequent basis. Stress tests, for instance, may require special setup or equipment, and some hand holding. These tests may be run less often—weekly or monthly, perhaps. But it is important that they be run on a regular, scheduled basis.</p>
+
+<h3 id="tightening-the-net">Tightening the Net</h3>
+
+<p>If a bug slips through the net of existing tests, you need to add a new test to trap it next time.</p>
+
+<blockquote>
+  <p><strong>TIP 66</strong> – Find Bugs Once</p>
+</blockquote>
+
+<p>Once a human tester finds a bug, it should be the last time a human tester finds that bug. The automated tests should be modified to check for that particular bug</p>
+
+<h2 id="-44-its-all-writing">➤ 44 It’s All Writing</h2>
+
+<p>Pragmatic Programmers embrace documentation as an integral part of the overall development process. Writing documentation can be made easier by not duplicating effort or wasting time, and by keeping documentation close at hand—in the code itself, if possible.</p>
+
+<blockquote>
+  <p><strong>TIP 67</strong> – Treat English as Just Another Programming Language</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>TIP 68</strong> – Build Documentation In, Don’t Bolt It On</p>
+</blockquote>
+
+<p><strong>Comments in Code</strong> - comments should discuss why something is done, its purpose and its goal. The code already shows how it is done, so commenting on this is redundant. Commenting gives you the perfect opportunity to document those elusive bits of a project that can’t be documented anywhere else: engineering trade-offs, why decisions were made, what other alternatives were discarded, and so on.</p>
+
+<h2 id="-45-great-expectations">➤ 45 Great Expectations</h2>
+
+<p>In reality, the success of a project is measured by how well it meets the expectations of its users. A project that falls below their expectations is deemed a failure, no matter how good the deliverable is in absolute terms.</p>
+
+<blockquote>
+  <p><strong>TIP 69</strong> – Gently Exceed Your Users’ Expectations</p>
+</blockquote>
+
+<h3 id="communicating-expectations">Communicating Expectations</h3>
+
+<p>Some consultants call this process “managing expectations”—actively
+controlling what users should hope to get from their systems. We think this is a somewhat elitist position. Our role is not to control the hopes of our users. Instead, we need to work with them to come to a common understanding of the development process and the ﬁnal deliverable, along with those expectations they have not yet verbalized. If the team is communicating ﬂuently with the outside world, this process is almost automatic; everyone should understand what’s expected and how it will be built.</p>
+
+<p>There are some important techniques that can be used to facilitate this process. Of these, Tracer Bullets, page 48, and Prototypes and Post it Notes, page 53, are the most important.</p>
+
+<h2 id="-46-pride-and-prejudice">➤ 46 Pride and Prejudice</h2>
+
+<blockquote>
+  <p><strong>TIP 70</strong> – Sign Your Work</p>
+</blockquote>
+
+<p>Craftsmen of an earlier age were proud to sign their work. You should be, too.</p>
+
+<p>On some projects, the idea of code ownership can cause cooperation problems. People may become territorial, or unwilling to work on common foundation elements. You become prejudiced in favor of your code and against your coworkers.</p>
+
+<p>That’s not what we want. You shouldn’t jealously defend your code against interlopers; by the same token, you should treat other people’s code with respect. The Golden Rule (“Do unto others as you would have them do unto you”) and a foundation of mutual respect among the developers is critical to make this tip work.</p>
+
+<p>Anonymity, especially on large projects, can provide a breeding ground for sloppiness, mistakes, and bad code. It becomes too easy to see yourself as just a cog in the wheel, producing lame excuses in endless status reports instead of good code.</p>
+
+<p>While code must be owned, it doesn’t have to be owned by an individual.</p>
+
+<p>We want to see pride of ownership. “I wrote this, and I stand behind my work.” Your signature should come to be recognized as an indicator of quality. People should see your name on a piece of code and expect it to be solid, well written, tested, and documented. A really professional job. Written by a real professional.</p>
+
+<p>A Pragmatic Programmer.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,1960 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Kubernetes Up And Running Burns | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Kubernetes Up And Running Burns</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Kubernetes Up And Running Burns" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Kubernetes: Up and Running Brendan Burns, Joe Beda, and Kelsey Hightower isbn=9781492046530" />
+<meta property="og:description" content="Kubernetes: Up and Running Brendan Burns, Joe Beda, and Kelsey Hightower isbn=9781492046530" />
+<link rel="canonical" href="http://0.0.0.0:4000/library/kubernetes-up-and-running-burns" />
+<meta property="og:url" content="http://0.0.0.0:4000/library/kubernetes-up-and-running-burns" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-26T15:30:52-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Kubernetes Up And Running Burns" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2025-07-26T15:30:52-05:00","datePublished":"2025-07-26T15:30:52-05:00","description":"Kubernetes: Up and Running Brendan Burns, Joe Beda, and Kelsey Hightower isbn=9781492046530","headline":"Kubernetes Up And Running Burns","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/library/kubernetes-up-and-running-burns"},"url":"http://0.0.0.0:4000/library/kubernetes-up-and-running-burns"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h1 class="book-title">Kubernetes: Up and Running</h1>
+<h4 class="book-sub ">Brendan Burns, Joe Beda, and Kelsey Hightower</h4>
+<p>isbn=9781492046530</p>
+
+<h1 id="chapter-1-introduction">Chapter 1: Introduction</h1>
+
+<p>Kubernetes is an open source orchestrator for deploying containerized applications. It was originally developed by Google.</p>
+
+<p>Kubernetes is a reliable infrastructure for distributed systems, catering to cloud-native developers of all sizes, from small Raspberry Pi clusters to large-scale warehouses. It provides essential software for deploying reliable, scalable distributed systems.</p>
+
+<p>There are many reasons why people come to use containers and container APIs like Kubernetes, but we believe they can all be traced back to one of these benefits:</p>
+
+<ul>
+  <li>Velocity</li>
+  <li>Scaling (of both software and teams)</li>
+  <li>Abstracting</li>
+  <li>Efficiency</li>
+</ul>
+
+<h2 id="velocity">Velocity</h2>
+
+<p>The difference between you and your competitors is often the speed with which you can develop and deploy new components and features, or the speed with which you can respond to innovations developed by others. Velocity is not defined in terms of speed, user are also interested in a highly reliable service.</p>
+
+<p>Containers and Kubernetes can provide the tools that you need to move quickly, while staying available. The core concepts that enable this are:</p>
+<ul>
+  <li>Immutability</li>
+  <li>Declarative configuration</li>
+  <li>Online self-healing systems</li>
+</ul>
+
+<h3 id="the-value-of-immutability">The Value of Immutability</h3>
+
+<p>In an immutable system, rather than a series of incremental updates and changes, an entirely new, complete image is built, where the update simply replaces the entire image with the newer image in a single operation. There are no incremental changes.</p>
+
+<h3 id="declarative-configuration">Declarative Configuration</h3>
+
+<p>Everything in Kubernetes is a declarative configuration object that represents the desired state of the system. It is the job of Kubernetes to ensure that the actual state of the world matches this desired state.</p>
+
+<p>The combination of declarative state stored in a version control system and the ability of Kubernetes to make reality match this declarative state makes rollback of a change trivially easy. It is simply restating the previous declarative state of the system.</p>
+
+<h3 id="self-healing-systems">Self-Healing Systems</h3>
+
+<p>Kubernetes continuously works to maintain the desired state configuration, rather than just making a one-time adjustment. It actively monitors and adjusts the system to prevent failures or disturbances that could compromise reliability, ensuring ongoing stability.</p>
+
+<h2 id="scaling-your-service-and-your-teams">Scaling Your Service and Your Teams</h2>
+
+<p>Kubernetes achieves scalability by favoring decoupled architectures.</p>
+
+<h3 id="decoupling">Decoupling</h3>
+
+<p>In a decoupled architecture, each component is separated from other components by defined APIs and service load balancers. APIs and load balancers isolate each piece of the system from the others.</p>
+
+<h3 id="easy-scaling-for-applications-and-clusters">Easy Scaling for Applications and Clusters</h3>
+
+<p>Because your containers are immutable, and the number of replicas is merely a number in a declarative config, scaling your service upward is simply a matter of changing a number in a configuration file, asserting this new declarative state to Kubernetes, and letting it take care of the rest. Alternatively, you can set up autoscaling and let Kubernetes take care of it for you.</p>
+
+<h3 id="scaling-development-teams-with-microservices">Scaling Development Teams with Microservices</h3>
+
+<p>Kubernetes provides numerous abstractions and APIs that make it easier to build these decoupled microservice architectures:</p>
+
+<ul>
+  <li><strong>Pods</strong>, or groups of containers, can group together container images developed by different teams into a single deployable unit.</li>
+  <li>Kubernetes <strong>services</strong> provide load balancing, naming, and discovery to isolate one microservice from another.</li>
+  <li><strong>Namespaces</strong> provide isolation and access control, so that each microservice can control the degree to which other services interact with it.</li>
+  <li><strong>Ingress</strong> objects provide an easy-to-use frontend that can combine multiple microservices into a single externalized API surface area.</li>
+</ul>
+
+<h3 id="separation-of-concerns-for-consistency-and-scaling">Separation of Concerns for Consistency and Scaling</h3>
+
+<p>The choice between KaaS and self-management depends on skills and needs. Small organizations often prefer KaaS for simplicity, while larger ones with dedicated teams may opt for self-management for more flexibility.</p>
+
+<h2 id="abstracting-your-infrastructure">Abstracting Your Infrastructure</h2>
+
+<p>When your developers build applications in terms of container images and deploy them in terms of portable Kubernetes APIs, transferring your app between environments, is a matter of sending the declarative config to a new cluster. Kubernetes has a number of plug-ins that can abstract you from a particular cloud.</p>
+
+<h2 id="efficiency">Efficiency</h2>
+
+<p>As developers no longer focus on individual machines, their applications can be colocated without affecting them. This allows tasks from multiple users to be tightly packed onto fewer machines, increasing efficiency. Moreover, developers can easily and affordably create test environments by running containers in their personal view of a shared Kubernetes cluster using namespaces.</p>
+
+<h1 id="chapter-2-creating-and-running-containers">Chapter 2: Creating and Running Containers</h1>
+
+<p>Traditional methods involve sharing libraries among multiple programs on a single machine, leading to complexity and coupling. Container images, such as Docker or OCI format, package programs and dependencies into a single artifact, simplifying management. Kubernetes supports both Docker and OCI-compatible images, offering flexibility for runtime environments.</p>
+
+<h2 id="container-images">Container Images</h2>
+
+<p>A <strong>container image</strong> is a binary package that encapsulates all of the files necessary to run a program inside of an OS container.</p>
+
+<h3 id="the-docker-image-format">The Docker Image Format</h3>
+
+<p>The Docker image format continues to be the de facto standard, and is made up of a series of filesystem layers. Each layer adds, removes, or modifies files from the preceding layer in the filesystem. This is an example of an overlay filesystem.</p>
+
+<h3 id="building-application-images-with-docker">Building Application Images with Docker</h3>
+
+<p>A Dockerfile can be used to automate the creation of a Docker container image.</p>
+
+<h3 id="multistage-image-builds">Multistage Image Builds</h3>
+
+<p>Multistage builds in Docker allow for the creation of multiple images from a single Dockerfile. This approach helps to avoid including unnecessary development tools in the final image, resulting in faster deployments.</p>
+
+<h2 id="the-docker-container-runtime">The Docker Container Runtime</h2>
+
+<p>Kubernetes provides an API for describing an application deployment, but relies on a container runtime to set up an application container using the container-specific APIs native to the target OS. On a Linux system that means configuring cgroups and namespaces. The interface to this container runtime is defined by the Container Run‐ time Interface (CRI) standard.</p>
+
+<h3 id="running-containers-with-docker">Running Containers with Docker</h3>
+
+<p>Kubernetes containers are launched by a daemon on each node called the <strong>kubelet</strong>.</p>
+
+<h3 id="limiting-resource-usage">Limiting Resource Usage</h3>
+
+<p>Docker provides the ability to limit the amount of resources used by applications by exposing the underlying cgroup technology provided by the Linux kernel. These capabilities are likewise used by Kubernetes to limit the resources used by each Pod.</p>
+
+<h1 id="chapter-3-deploying-a-kubernetes-cluster">Chapter 3: Deploying a Kubernetes Cluster</h1>
+
+<p>Local development can be more attractive, and in that case the <code class="language-plaintext highlighter-rouge">minikube</code> tool provides an easy-to-use way to get a local Kubernetes cluster up running in a VM on your local laptop or desktop. Though this is a nice option, <code class="language-plaintext highlighter-rouge">minikube</code> only creates a single-node cluster, which doesn’t quite demonstrate all of the aspects of a complete Kubernetes cluster.</p>
+
+<p>We recommend starting with a cloud-based solution unless it’s not suitable for your needs. Another option is running a Docker-in-Docker cluster, which can create a multi-node cluster on a single machine. However, this project is still in beta, so unexpected issues may arise.</p>
+
+<p>Appendix A at the end of this book gives instructions for building a cluster from a collection of Raspberry Pi single-board computers. These instructions use the <code class="language-plaintext highlighter-rouge">kubeadm</code> tool and can be adapted to other machines beyond Raspberry Pis.</p>
+
+<h2 id="the-kubernetes-client">The Kubernetes Client</h2>
+
+<p>The official Kubernetes client is kubectl: a command-line tool for interacting with the Kubernetes API. kubectl can be used to manage most Kubernetes objects, such as Pods, ReplicaSets, and Services. kubectl can also be used to explore and verify the overall health of the cluster.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Checking Cluster Status
+$ kubectl version
+
+
+# Simple diagnostic for the cluster
+$ kubectl get componentstatuses
+
+NAME                STATUS      MESSAGE             ERROR
+scheduler           Healthy     ok
+controller-manager  Healthy     ok
+etcd-0              Healthy     {"health": "true"}
+
+# Listing Kubernetes Worker Nodes
+$ kubectl get nodes
+
+# Get more information about a specific node, such as node-1:
+kubectl describe nodes node-1
+
+</code></pre></div></div>
+
+<h2 id="cluster-components">Cluster Components</h2>
+
+<h3 id="kubernetes-proxy">Kubernetes Proxy</h3>
+
+<p>The Kubernetes proxy is responsible for routing network traffic to load-balanced services in the Kubernetes cluster. To do its job, the proxy must be present on every node in the cluster.</p>
+
+<h3 id="kubernetes-dns">Kubernetes DNS</h3>
+
+<p>Kubernetes also runs a DNS server, which provides naming and discovery for the services that are defined in the cluster. This DNS server also runs as a replicated service on the cluster.</p>
+
+<p>The DNS service is run as a Kubernetes deployment, which manages these replicas:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get deployments --namespace=kube-system core-dns
+</code></pre></div></div>
+
+<h3 id="kubernetes-ui">Kubernetes UI</h3>
+
+<p>The final Kubernetes component is a GUI. The UI is run as a single replica, but it is still managed by a Kubernetes deployment for reliability and upgrades.</p>
+
+<p>The final Kubernetes component is a GUI. The UI is run as a single replica, but it is still managed by a Kubernetes deployment for reliability and upgrades. You can see this UI server using:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get deployments --namespace=kube-system kubernetes-dashboard
+</code></pre></div></div>
+
+<p>The dashboard also has a service that performs load balancing for the dashboard:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get services --namespace=kube-system kubernetes-dashboard
+</code></pre></div></div>
+
+<p>You can use kubectl proxy to access this UI. Launch the Kubernetes proxy using:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl proxy
+</code></pre></div></div>
+
+<p>This starts up a server running on <code class="language-plaintext highlighter-rouge">localhost:8001</code> If you visit http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ in your web browser, you should see the Kubernetes web UI. You can use this interface to explore your cluster, as well as create new containers.</p>
+
+<h1 id="chapter-4-common-kubectl-commands">Chapter 4: Common <code class="language-plaintext highlighter-rouge">kubectl</code> Commands</h1>
+
+<h2 id="namespaces">Namespaces</h2>
+
+<p>Kubernetes uses <strong>namespaces</strong> to organize objects in the cluster. You can think of each namespace as a folder that holds a set of objects. By default, the <code class="language-plaintext highlighter-rouge">kubectl</code> commandline tool interacts with the <code class="language-plaintext highlighter-rouge">default</code> namespace. If you want to use a different namespace, you can pass the <code class="language-plaintext highlighter-rouge">--namespace</code> flag. If you want to interact with all namespaces—for example, to list all Pods in your cluster— you can pass the <code class="language-plaintext highlighter-rouge">--all-namespaces</code> flag.</p>
+
+<h2 id="contexts">Contexts</h2>
+
+<p>If you want to change the default namespace more permanently, you can use a context. This gets recorded in a kubectl configuration file, usually located at <code class="language-plaintext highlighter-rouge">$HOME/.kube/config</code>. <mark>This file also stores how to both find and authenticate to your cluster.</mark></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># For example, you can create a context with a different default namespace for your kubectl commands using:
+$ kubectl config set-context my-context --namespace=mystuff
+# To use this newly created context, you can run:
+$ kubectl config use-context my-context
+</code></pre></div></div>
+
+<h2 id="viewing-kubernetes-api-objects">Viewing Kubernetes API Objects</h2>
+
+<p>Everything contained in Kubernetes is represented by a RESTful resource.</p>
+
+<p>Each Kubernetes object exists at a unique HTTP path; for example, https://your-k8s.com/api/v1/namespaces/default/pods/my-pod leads to the representation of a Pod in the default namespace named my-pod</p>
+
+<p>The most basic command for viewing Kubernetes objects via kubectl is get. If you run <code class="language-plaintext highlighter-rouge">kubectl get &lt;resource-name&gt;</code> you will get a listing of all resources in the current namespace. If you want to get a specific resource, you can use <code class="language-plaintext highlighter-rouge">kubectl get &lt;resource-name&gt; &lt;obj-name&gt;</code>.</p>
+
+<p>If you are interested in more detailed information about a particular object, use the describe command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl describe &lt;resource-name&gt; &lt;obj-name&gt;
+</code></pre></div></div>
+
+<h2 id="creating-updating-and-destroying-kubernetes-objects">Creating, Updating, and Destroying Kubernetes Objects</h2>
+
+<p>Objects in the Kubernetes API are represented as JSON or YAML files. These files are either returned by the server in response to a query or posted to the server as part of an API request. You can use these YAML or JSON files to create, update, or delete objects on the Kubernetes server.</p>
+
+<p>Let’s assume that you have a simple object stored in obj.yaml. You can use kubectl to create this object in Kubernetes by running:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f obj.yaml
+</code></pre></div></div>
+
+<p>Similarly, after you make changes to the object, you can use the apply command again to update the object:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f obj.yaml
+</code></pre></div></div>
+
+<p><mark>The apply tool modifies only differing objects in the cluster. If the objects exist, it exits successfully without changes, making it useful for ensuring cluster and filesystem states match.</mark></p>
+
+<p>The apply command also records the history of previous configurations in an annotation within the object. You can manipulate these records with the <code class="language-plaintext highlighter-rouge">edit-last-applied</code>, <code class="language-plaintext highlighter-rouge">set-last-applied</code>, and <code class="language-plaintext highlighter-rouge">view-last-applied</code> commands.</p>
+
+<p>For example:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f myobj.yaml view-last-applied
+</code></pre></div></div>
+<p>will show you the last state that was applied to the object.</p>
+
+<p><code class="language-plaintext highlighter-rouge">kubectl delete -f obj.yaml</code> - It is important to note that kubectl will not prompt you to confirm the deletion. Once you issue the command, the object will be deleted.</p>
+
+<h2 id="debugging-commands">Debugging Commands</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># You can use the following to see the logs for a running container:
+$ kubectl logs &lt;pod-name&gt;
+
+# You can also use the exec command to execute a command in a running container:
+$ kubectl exec -it &lt;pod-name&gt; -- bash
+
+# If you don’t have bash or some other terminal available within your
+$ container, you can always attach to the running process:
+$ kubectl attach -it &lt;pod-name&gt;
+
+# You can also copy files to and from a container using the cp command:
+$ kubectl cp &lt;pod-name&gt;:&lt;/path/to/remote/file&gt; &lt;/path/to/local/file&gt;
+
+# Display the total CPU and memory in use by the nodes
+kubectl top nodes
+
+# Show all Pods and their resource usage. By default it only displays
+# Pods in the current namespace, but you can add the --all-namespaces
+# flag.
+kubectl top pods
+</code></pre></div></div>
+
+<h1 id="chapter-5-pods">Chapter 5: Pods</h1>
+
+<p>A <strong>Pod</strong> represents a collection of application containers and volumes running in the same execution environment.</p>
+
+<p><mark>Pods, NOT containers, are the smallest deployable artifact in a Kubernetes cluster.</mark></p>
+
+<p>This means all of the containers in a Pod <strong>always</strong> land on the same machine.</p>
+
+<p>Applications running in the same Pod share the same IP address and port space (network namespace), have the same hostname (UTS namespace), and can communicate using native interprocess communication channels over System V IPC or POSIX message queues (IPC namespace).</p>
+
+<p>When designing Pods, ask yourself, “Will these containers function correctly if they’re on different machines?” If not, a Pod is the correct grouping. If yes, multiple Pods are likely the correct solution.</p>
+
+<h2 id="the-pod-manifest">The Pod Manifest</h2>
+
+<p>T he simplest way to create a Pod is via the imperative <code class="language-plaintext highlighter-rouge">kubectl</code> run command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:blue
+</code></pre></div></div>
+
+<p>Kubernetes strongly believes in <strong>declarative configuration</strong>. Pods are described in a Pod manifest. Pod manifests can be written using <code class="language-plaintext highlighter-rouge">YAML</code> or <code class="language-plaintext highlighter-rouge">JSON</code>, but <code class="language-plaintext highlighter-rouge">YAML</code> is preferred because it is more human-editable and has the ability to add comments.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 5-1. kuard-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+    name: kuard
+spec:
+    containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:blue
+      name: kuard
+      ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+</code></pre></div></div>
+
+<p>Use the kubectl apply command to launch a single instance of kuard:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f kuard-pod.yaml
+$ kubectl get pods
+$ kubectl describe pods kuard
+$ kubectl delete pods/kuard
+# or kubectl delete -f kuard-pod.yaml
+</code></pre></div></div>
+
+<p>When a Pod is deleted, it is not immediately killed. Instead, all Pods have a termination grace period. By default, this is 30 seconds. When a Pod is transitioned to <code class="language-plaintext highlighter-rouge">Terminating</code> it no longer receives new requests. In a serving scenario, the grace period is important for reliability because it allows the Pod to finish any active requests that it may be in the middle of processing before it is terminated.</p>
+
+<h2 id="using-port-forwarding">Using Port Forwarding</h2>
+
+<p>Later we’ll expose a service to the world or other containers using load balancers—but oftentimes you simply want to access a specific Pod.</p>
+
+<p>To achieve this, you can use the port-forwarding</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl port-forward kuard 8080:8080
+</code></pre></div></div>
+
+<p>A secure tunnel is created from your local machine, through the Kubernetes master, to the instance of the Pod running on one of the worker nodes As long as the port-forward command is still running, you can access the Pod (in this case the kuard web interface) at http://localhost:8080.</p>
+
+<h2 id="health-checks">Health Checks</h2>
+
+<p>In Kubernetes, containers are kept alive through a process health check, ensuring the main process runs. Yet, this may not suffice. For instance, a deadlocked process won’t be detected. To remedy this, Kubernetes introduced liveness health checks. These checks run application-specific logic to ensure proper functionality. As they’re application-specific, they must be defined in your Pod manifest.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Example 5-2. kuard-pod-health.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+    name: kuard
+spec:
+    containers:
+        - image: gcr.io/kuar-demo/kuard-amd64:blue
+        name: kuard
+        livenessProbe:
+            httpGet:
+                path: /healthy
+                port: 8080
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 10
+            failureThreshold: 3
+        ports:
+        - containerPort: 8080
+        name: http
+        protocol: TCP
+</code></pre></div></div>
+
+<p>Of course, liveness isn’t the only kind of health check we want to perform. Kubernetes makes a distinction between liveness and readiness. We will review readiness in Chapter 7.</p>
+
+<h2 id="resource-management">Resource Management</h2>
+
+<p>Kubernetes allows users to specify two different resource metrics. Resource requests specify the minimum amount of a resource required to run the application. Resource limits specify the maximum amount of a resource that an application can consume.</p>
+
+<h3 id="resource-requests-minimum-required-resources">Resource Requests: Minimum Required Resources</h3>
+
+<p>For example, to request that the kuard container lands on a machine with half a CPU free and gets 128 MB of memory allocated to it, we define the Pod as shown</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: v1
+kind: Pod
+metadata:
+    name: kuard
+spec:
+    containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:blue
+    name: kuard
+    resources:
+        requests:
+            cpu: "500m"
+            memory: "128Mi"
+    ports:
+        - containerPort: 8080
+        name: http
+        protocol: TCP
+</code></pre></div></div>
+
+<p><mark>Resources are requested per container, not per Pod. The total resources requested by the Pod is the sum of all resources requested by all containers in the Pod.</mark></p>
+
+<p>Requests are used when scheduling Pods to nodes. The Kubernetes scheduler will ensure that the sum of all requests of all Pods on a node does not exceed the capacity of the node. Therefore, a Pod is guaranteed to have at least the requested resources when running on the node. Importantly, “request” specifies a minimum. It does not specify a maximum cap on the resources a Pod may use.</p>
+
+<h3 id="capping-resource-usage-with-limits">Capping Resource Usage with Limits</h3>
+
+<p>In our previous example we created a kuard Pod that requested a minimum of 0.5 of a core and 128 MB of memory. In the Pod manifest in Example 5-4, we extend this configuration to add a limit of 1.0 CPU and 256 MB of memory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 5-4. kuard-pod-reslim.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kuard
+spec:
+  containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:blue
+      name: kuard
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "128Mi"
+        limits:
+          cpu: "1000m"
+          memory: "256Mi"
+      ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+</code></pre></div></div>
+
+<h2 id="persisting-data-with-volumes">Persisting Data with Volumes</h2>
+
+<p>When a Pod is deleted or a container restarts, any and all data in the container’s filesystem is also deleted, but having access to persistent disk storage is an important part of some applications.</p>
+
+<p>To add a volume to a Pod manifest, there are two new stanzas to add to our configuration. The first is a new spec.volumes section.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 5-5. kuard-pod-vol.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+    name: kuard
+spec:
+  volumes:
+    - name: "kuard-data"
+      hostPath:
+        path: "/var/lib/kuard"
+  containers:
+      - image: gcr.io/kuar-demo/kuard-amd64:blue
+        name: kuard
+   volumeMounts:
+      - mountPath: "/data"
+        name: "kuard-data"
+   ports:
+     - containerPort: 8080
+       name: http
+       protocol: TCP
+</code></pre></div></div>
+
+<p>To preserve data integrity across Pod restarts, you can mount a remote network storage volume into your Pod. Kubernetes offers support for various network storage protocols like NFS, iSCSI, and cloud provider-specific APIs.</p>
+
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: kuard
+spec:
+  volumes:
+    - name: "kuard-data"
+    nfs:
+      server: my.nfs.server.local
+      path: "/exports"
+  containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:blue
+      name: kuard
+      ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "128Mi"
+        limits:
+          cpu: "1000m"
+          memory: "256Mi"
+      volumeMounts:
+        - mountPath: "/data"
+          name: "kuard-data"
+      livenessProbe:
+        httpGet:
+           path: /healthy
+           port: 8080
+        initialDelaySeconds: 5
+        timeoutSeconds: 1
+        periodSeconds: 10
+        failureThreshold: 3
+      readinessProbe:
+        httpGet:
+          path: /ready
+          port: 8080
+        initialDelaySeconds: 30
+        timeoutSeconds: 1
+        periodSeconds: 10
+        failureThreshold: 3
+</code></pre></div></div>
+
+<h1 id="chapter-6-labels-and-annotations">Chapter 6: Labels and Annotations</h1>
+
+<h2 id="labels">Labels</h2>
+
+<p><strong>Labels</strong> are key/value pairs attached to Kubernetes objects like Pods and ReplicaSets, offering arbitrary identifying information. They’re fundamental for grouping objects.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get deployments --show-labels
+NAME                ... LABELS
+alpaca-prod         ... app=alpaca,env=prod,ver=1
+alpaca-test         ... app=alpaca,env=test,ver=2
+bandicoot-prod      ... app=bandicoot,env=prod,ver=2
+bandicoot-staging   ... app=bandicoot,env=staging,ver=2
+</code></pre></div></div>
+
+<p>You can also use the <code class="language-plaintext highlighter-rouge">-L</code> option to <code class="language-plaintext highlighter-rouge">kubectl</code> get to show a label value as a column:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get deployments -L &lt;label_key&gt;
+</code></pre></div></div>
+
+<p>If we only wanted to list Pods that had the ver label set to 2, we could use the <code class="language-plaintext highlighter-rouge">--selector</code> flag:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get pods --selector="ver=2"
+
+$ kubectl get pods --selector="app=bandicoot,ver=2"
+</code></pre></div></div>
+
+<p><strong>Selector operators</strong>
+| Operator          | Description                        |
+|——————-|————————————|
+| key=value         | key is set to value                |
+| key!=value        | key is not set to value            |
+| key in (value1, value2) | key is one of value1 or value2 |
+| key notin (value1, value2) | key is not one of value1 or value2 |
+| key               | key is set                         |
+| !key              | key is not set                     |</p>
+
+<h2 id="annotations">Annotations</h2>
+
+<p><strong>Annotations</strong> are also key/value pairs but are intended for storing nonidentifying information, serving as a storage mechanism for tools and libraries.</p>
+
+<p>Annotations provide a place to store additional metadata for Kubernetes objects with the sole purpose of assisting tools and libraries. Annotations are used to provide extra information about where an object came from, how to use it, or policy around that object.</p>
+
+<h1 id="chapter-7-service-discovery">Chapter 7: Service Discovery</h1>
+
+<p>Service discovery is essential in Kubernetes for efficiently locating processes and services within the cluster.  Traditional DNS systems are insufficient for Kubernetes, Service objects provide real service discovery capabilities within the cluster.</p>
+
+<p>To understand how service discovery works in Kubernetes, let’s create some deployments and services.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl run alpaca-prod \
+--image=gcr.io/kuar-demo/kuard-amd64:blue \
+--replicas=3 \
+--port=8080 \
+--labels="ver=1,app=alpaca,env=prod"
+
+$ kubectl expose deployment alpaca-prod
+
+$ kubectl run bandicoot-prod \
+--image=gcr.io/kuar-demo/kuard-amd64:green \
+--replicas=2 \
+--port=8080 \
+--labels="ver=2,app=bandicoot,env=prod"
+
+$ kubectl expose deployment bandicoot-prod
+
+$ kubectl get services -o wide
+
+NAME                CLUSTER-IP      ... PORT(S)     ... SELECTOR
+alpaca-prod         10.115.245.13   ... 8080/TCP    ... app=alpaca,env=prod,ver=1
+bandicoot-prod      10.115.242.3    ... 8080/TCP    ... app=bandicoot,env=prod,ver=2
+kubernetes          10.115.240.1    ... 443/TCP     ... &lt;none&gt;
+</code></pre></div></div>
+
+<p>The kubernetes service is automatically created for you so that you can find and talk to the Kubernetes API from within the app.</p>
+
+<h2 id="service-dns">Service DNS</h2>
+
+<p>Because the cluster IP is virtual, it is stable, and it is appropriate to give it a DNS address. All of the issues around clients caching DNS results no longer apply. Within a namespace, it is as easy as just using the service name to connect to one of the Pods identified by a service.</p>
+
+<p>The full DNS name here is <code class="language-plaintext highlighter-rouge">alpaca-prod.default.svc.cluster.local.</code></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">alpaca-prod</code> - The name of the service in question.</li>
+  <li><code class="language-plaintext highlighter-rouge">default</code> - The namespace that this service is in.</li>
+  <li><code class="language-plaintext highlighter-rouge">svc</code> - Recognizing that this is a service. This allows Kubernetes to expose other types of things as DNS in the future.</li>
+  <li><code class="language-plaintext highlighter-rouge">cluster.local.</code> - The base domain name for the cluster. This is the default and what you will see for most clusters. Administrators may change this to allow unique DNS names across multiple clusters.</li>
+</ul>
+
+<h2 id="readiness-checks">Readiness Checks</h2>
+
+<p>One nice thing the Service object does is track which of your Pods are ready via a readiness check.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  periodSeconds: 2
+  initialDelaySeconds: 0
+  failureThreshold: 3
+  successThreshold: 1
+</code></pre></div></div>
+
+<p>This sets up the Pods this deployment will create so that they will be checked for readiness via an HTTP GET to /ready on port 8080. This check is done every 2 seconds starting as soon as the Pod comes up. If three successive checks fail, then the Pod will be considered not ready.</p>
+
+<p><mark>Only ready Pods are sent traffic.</mark></p>
+
+<h2 id="looking-beyond-the-cluster">Looking Beyond the Cluster</h2>
+
+<p>Pod IPs are often only accessible within the cluster, necessitating the allowance of new inbound traffic. A portable solution for this is employing NodePorts, which augment services. Alongside a cluster IP, NodePorts allocate a port (either system-picked or user-specified), enabling every node in the cluster to forward traffic to that port for the service.</p>
+
+<p>Try this out by modifying the alpaca-prod service:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl edit service alpaca-prod
+</code></pre></div></div>
+
+<p>Change the <code class="language-plaintext highlighter-rouge">spec.type</code> field to NodePort. You can also do this when creating the service via kubectl expose by specifying <code class="language-plaintext highlighter-rouge">--type=NodePort</code>. The system will assign a new NodePort:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl describe service alpaca-prod
+</code></pre></div></div>
+
+<p>Here we see that the system assigned port 32711 to this service. Now we can hit any of our cluster nodes on that port to access the service.</p>
+
+<p>If your cluster is in the cloud someplace, you can use SSH tunneling with something like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh &lt;node&gt; -L 8080:localhost:32711
+</code></pre></div></div>
+
+<p>Now if you point your browser to http://localhost:8080 you will be connected to that service. Each request that you send to the service will be randomly directed to one of the Pods that implements the service. Reload the page a few times and you will see that you are randomly assigned to different Pods.</p>
+
+<h2 id="advanced-details">Advanced Details</h2>
+
+<h3 id="endpoints">Endpoints</h3>
+
+<p>For applications and the system to utilize services without relying on a cluster IP, Kubernetes introduces Endpoints objects. For each Service object, Kubernetes generates a corresponding Endpoints object containing the IP addresses associated with that service.</p>
+
+<p>Advanced applications can interact directly with the Kubernetes API to access endpoints and make calls. The Kubernetes API supports object watching, allowing clients to promptly respond to changes in objects such as IP addresses associated with a service.</p>
+
+<p>While the Endpoints object is ideal for newly developed code designed for Kubernetes, existing systems typically operate with static IP addresses, making them less reliant on dynamic changes.</p>
+
+<h3 id="manual-service-discovery">Manual Service Discovery</h3>
+
+<p>Kubernetes services use label selectors to identify Pods, enabling basic service discovery through the Kubernetes API without a Service object. However, managing accurate label sets can be complex, leading to the creation of the Service object to address this challenge.</p>
+
+<h3 id="cluster-ip-environment-variables">Cluster IP Environment Variables</h3>
+
+<p>While most users should be using the DNS services to find cluster IPs, there are some older mechanisms that may still be in use. One of these is injecting a set of environment variables into Pods as they start up.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ALPACA_PROD_PORT</td>
+      <td>tcp://10.115.245.13:8080</td>
+    </tr>
+    <tr>
+      <td>ALPACA_PROD_PORT_8080_TCP</td>
+      <td>tcp://10.115.245.13:8080</td>
+    </tr>
+    <tr>
+      <td>ALPACA_PROD_PORT_8080_TCP_ADDR</td>
+      <td>10.115.245.13</td>
+    </tr>
+    <tr>
+      <td>ALPACA_PROD_PORT_8080_TCP_PORT</td>
+      <td>8080</td>
+    </tr>
+    <tr>
+      <td>ALPACA_PROD_PORT_8080_TCP_PROTO</td>
+      <td>tcp</td>
+    </tr>
+    <tr>
+      <td>ALPACA_PROD_SERVICE_HOST</td>
+      <td>10.115.245.13</td>
+    </tr>
+    <tr>
+      <td>ALPACA_PROD_SERVICE_PORT</td>
+      <td>8080</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A problem with the environment variable approach is that it requires resources to be created in a specific order. The services must be created before the Pods that reference them. This can introduce quite a bit of complexity when deploying a set of services that make up a larger application.</p>
+
+<h2 id="cleanup">Cleanup</h2>
+
+<p>Run the following command to clean up all of the objects created in this chapter:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl delete services,deployments -l app
+</code></pre></div></div>
+
+<h1 id="chapter-8-http-load-balancing-with-ingress">CHAPTER 8: HTTP Load Balancing with Ingress</h1>
+
+<p>In non-Kubernetes setups, users use “virtual hosting” to host multiple HTTP sites on one IP. A load balancer or reverse proxy manages incoming connections on ports 80 and 443, parsing HTTP requests to direct traffic to the right server. The oad balancer or reverse proxy plays “traffic cop” for decoding and directing incoming connections.</p>
+
+<p>Kubernetes calls its HTTP-based load-balancing system Ingress. Ingress is a Kubernetes-native way to implement the “virtual hosting” pattern we just discussed. The Kubernetes Ingress system works to simplify this by</p>
+
+<ul>
+  <li>standardizing that configuration</li>
+  <li>moving it to a standard Kubernetes object</li>
+  <li>merging multiple Ingress objects into a single config for the load balancer.</li>
+</ul>
+
+<p>The Ingress controller is a software system exposed outside the cluster using a service of <code class="language-plaintext highlighter-rouge">type: LoadBalancer</code>. It then proxies requests to “upstream” servers.</p>
+
+<h2 id="ingress-spec-versus-ingress-controllers">Ingress Spec Versus Ingress Controllers</h2>
+
+<p>Ingress is very different from pretty much every other regular resource object in Kubernetes. <mark>There is no “standard” Ingress controller that is built into Kubernetes, so the user must install one of many optional implementations.</mark></p>
+
+<p>Users can create and modify Ingress objects similar to other objects. However, there’s no default code executing to act on these objects. It’s the responsibility of users (or their distribution) to install and manage an external controller.</p>
+
+<h3 id="installing-contour">Installing Contour</h3>
+
+<p>Here, we use Contour as our Ingress controller. Contour configures Envoy, an open-source load balancer, which is designed for dynamic configuration via an API. The Contour Ingress controller translates Ingress objects into a format that Envoy can interpret.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f https://j.hept.io/contour-deployment-rbac
+</code></pre></div></div>
+
+<p>This one line works for most configurations. It creates a namespace called heptio-contour.</p>
+
+<p>After you install it, you can fetch the external address of Contour via:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get -n heptio-contour service contour -o wide
+</code></pre></div></div>
+
+<p>Look at the EXTERNAL-IP column. This can be either an IP address (for GCP and Azure) or a hostname (for AWS). Other clouds and environments may differ.</p>
+
+<p>If you are using minikube, you probably won’t have anything listed for EXTERNAL-IP. To fix this, you need to open a separate terminal window and run minikube tunnel.</p>
+
+<h4 id="configuring-dns">Configuring DNS</h4>
+
+<p>To enable Ingress, set up DNS entries to your load balancer’s external address. You can map multiple hostnames to one endpoint, and the Ingress controller will route requests accordingly. For example.com, configure alpaca.example.com and bandicoot.example.com DNS entries. Use A records for IP addresses and CNAME records for hostnames.</p>
+
+<h4 id="configuring-a-local-hosts-file">Configuring a Local hosts File</h4>
+
+<p>If you don’t have a domain or if you are using a local solution such as minikube, you can set up a local configuration by editing your /etc/hosts file to add an IP address.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ip-address&gt; alpaca.example.com bandicoot.example.com
+</code></pre></div></div>
+
+<h3 id="using-ingress">Using Ingress</h3>
+
+<h4 id="simplest-usage">Simplest Usage</h4>
+
+<p>The simplest way to use Ingress is to have it just blindly pass everything that it sees through to an upstream service.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 8-1. simple-ingress.yaml
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: simple-ingress
+spec:
+  backend:
+    serviceName: alpaca
+    servicePort: 8080
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f simple-ingress.yaml
+
+$ kubectl get ingress
+NAME            HOSTS   ADDRESS PORTS  AGE
+simple-ingress  *               80     13m
+
+$ kubectl describe ingress simple-ingress
+Name:           simple-ingress
+Namespace:      default
+Address:
+Default backend: be-default:8080
+(172.17.0.6:8080,172.17.0.7:8080,172.17.0.8:8080)
+Rules:
+Host Path Backends
+---- ---- --------
+*    *    be-default:8080 (172.17.0.6:8080,172.17.0.7:8080,172.17.0.8:8080)
+Annotations:
+...
+
+Events: &lt;none&gt;
+</code></pre></div></div>
+
+<p>This configuration forwards any HTTP request hitting the Ingress controller to the alpaca service. Now, you can access the alpaca instance of kuard using any of the raw IPs/CNAMEs associated with the service, such as alpaca.example.com or bandicoot.example.com.</p>
+
+<p>However, at this stage, it doesn’t provide much additional value beyond a simple service of type LoadBalancer. We’ll explore more complex configurations in the following sections.</p>
+
+<h4 id="using-hostnames">Using Hostnames</h4>
+
+<p>The common example is having the Ingress system examine the HTTP host header, which matches the DNS domain in the original URL, to route traffic accordingly.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 8-2. host-ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: host-ingress
+spec:
+  rules:
+  - host: alpaca.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: alpaca
+          servicePort: 8080
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f host-ingress.yaml
+
+We can verify that things are set up correctly as follows:
+$ kubectl get ingress
+NAME            HOSTS               ADDRESS   PORTS   AGE
+host-ingress    alpaca.example.com            80      54s
+simple-ingress  *                             80      13m
+
+$ kubectl describe ingress host-ingress
+Name:         host-ingress
+Namespace:    default
+Address:
+Default backend: default-http-backend:80 (&lt;none&gt;)
+Rules:
+  Host              Path  Backends
+  ----              ----  --------
+alpaca.example.com  /     alpaca:8080 (&lt;none&gt;)
+Annotations:
+  ...
+Events:&lt;none&gt;
+</code></pre></div></div>
+
+<p>You should now be able to address the alpaca service via http://alpaca.example.com.</p>
+
+<h4 id="using-paths">Using Paths</h4>
+
+<p>Another scenario is routing traffic based the path in the HTTP request.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Example 8-3. path-ingress.yaml
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: path-ingress
+spec:
+  rules:
+  - host: bandicoot.example.com
+    http:
+      paths:
+      - path: "/"
+        backend:
+          serviceName: bandicoot
+          servicePort: 8080
+      - path: "/a/"
+        backend:
+          serviceName: alpac
+</code></pre></div></div>
+
+<p>When there are multiple paths listed for the same host in the Ingress system, the longest prefix match applies. In this example, traffic starting with <code class="language-plaintext highlighter-rouge">/a/</code> goes to the alpaca service, while other traffic goes to the bandicoot service.</p>
+
+<h2 id="advanced-ingress-topics-and-gotchas">Advanced Ingress Topics and Gotchas</h2>
+
+<h3 id="running-multiple-ingress-controllers">Running Multiple Ingress Controllers</h3>
+
+<p>To manage multiple Ingress controllers on a cluster, use the <code class="language-plaintext highlighter-rouge">kubernetes.io/ingress.class</code> annotation to specify which controller should handle each Ingress object. Controllers should be configured with matching strings and process only the relevant annotations. Without this annotation, behavior is undefined, potentially leading to conflicts between controllers.</p>
+
+<h3 id="multiple-ingress-objects">Multiple Ingress Objects</h3>
+
+<p>When you specify multiple Ingress objects, Ingress controllers should read and merge them into a coherent configuration. However, if there are duplicate or conflicting configurations, the behavior is undefined.</p>
+
+<h3 id="ingress-and-namespaces">Ingress and Namespaces</h3>
+
+<p>Ingress interacts with namespaces in some nonobvious ways.</p>
+
+<p>Ingress objects are limited to referencing services within the same namespace. Although multiple Ingress objects across namespaces can specify subpaths for the same host, they require global coordination within the cluster. Lack of careful coordination can lead to issues or undefined behavior. Generally, Ingress controllers do not restrict namespaces from specifying hostnames and paths, but advanced users can enforce policies using custom admission controllers.</p>
+
+<h3 id="path-rewriting">Path Rewriting</h3>
+
+<p>Some Ingress controllers support path rewriting, altering the path in HTTP requests. This is typically set via an annotation on the Ingress object. For example, NGINX Ingress uses <code class="language-plaintext highlighter-rouge">nginx.ingress.kubernetes.io/rewrite-target: /</code>, allowing upstream services to function on a subpath. However, path rewriting can introduce bugs as web apps often assume absolute paths. For complex applications, it’s best to minimize subpath usage.</p>
+
+<h3 id="serving-tls">Serving TLS</h3>
+
+<p>Users need to specify a secret with their TLS certificate and keys</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 8-4. tls-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: tls-secret-name
+type: kubernetes.io/tls
+data:
+  tls.crt: &lt;base64 encoded certificate&gt;
+  tls.key: &lt;base64 encoded private key&gt;
+</code></pre></div></div>
+
+<p>You can also create a secret imperatively with <code class="language-plaintext highlighter-rouge">kubectl create secret tls &lt;secret-name&gt; --cert &lt;certificate-pem-file&gt; -- key &lt;private-key-pem-file&gt;</code>.</p>
+
+<p>If multiple Ingress objects specify certificates for the same hostname, the behavior is undefined.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 8-5. tls-ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tls-ingress
+spec:
+  tls:
+  - hosts:
+    - alpaca.example.com
+    secretName: tls-secret-name
+  rules:
+  - host: alpaca.example.com
+    http:
+      paths:
+      - backend:
+      serviceName: alpaca
+      servicePort: 8080
+</code></pre></div></div>
+
+<h1 id="chapter-9-replicasets">CHAPTER 9: ReplicaSets</h1>
+
+<p>Pods are typically one-off singletons, but in many cases, you’ll want multiple replicas of a container running simultaneously. Several reasons drive this replication:</p>
+
+<ol>
+  <li>Redundancy: Multiple instances allow for fault tolerance.</li>
+  <li>Scale: More instances enable handling a higher volume of requests.</li>
+  <li>Sharding: Different replicas can concurrently handle various parts of a computation.</li>
+</ol>
+
+<p>A ReplicaSet acts as a cluster-wide Pod manager, ensuring that the right types and number of Pods are running at all times. The actual act of managing the replicated Pods is an example of a <em>reconciliation loop</em>.</p>
+
+<p>The reconciliation loop is constantly running, observing the current state of the world and taking action to try to make the observed state match the desired state.</p>
+
+<h2 id="relating-pods-and-replicasets">Relating Pods and ReplicaSets</h2>
+
+<p>Though ReplicaSets create and manage Pods, they do not own the Pods they create. ReplicaSets use label queries to identify the set of Pods they should be managing. They then use the exact same Pod API that you used directly in Chapter 5 to create the Pods that they are managing.</p>
+
+<h3 id="adopting-existing-containers">Adopting Existing Containers</h3>
+
+<p>ReplicaSets are decoupled from the Pods they manage, allowing you to create a ReplicaSet that adopts existing Pods and scales out additional copies of those containers. This seamless transition enables you to move from a single imperative Pod to a replicated set of Pods managed by a ReplicaSet.</p>
+
+<h3 id="quarantining-containers">Quarantining Containers</h3>
+
+<p>To debug a problematic Pod, update its labels to disconnect it from the ReplicaSet and service. This allows for interactive debugging while the ReplicaSet controller creates a new Pod to replace it. Debugging directly from the Pod is more valuable than relying solely on logs.</p>
+
+<h2 id="designing-with-replicasets">Designing with ReplicaSets</h2>
+
+<p>The key characteristic of ReplicaSets is that every Pod that is created by the ReplicaSet controller is homogeneous. The elements created by the ReplicaSet are interchangeable; when a ReplicaSet is scaled down, an arbitrary Pod is selected for deletion. Your application’s behavior shouldn’t change because of such a scale-down operation.</p>
+
+<h2 id="replicaset-spec">ReplicaSet Spec</h2>
+
+<p>Each ReplicaSet requires a unique name specified in the <code class="language-plaintext highlighter-rouge">metadata.name</code> field. Additionally, it must include a <code class="language-plaintext highlighter-rouge">spec</code> section defining the desired number of Pods (replicas) to be running across the cluster at any given time. Lastly, it should contain a Pod template describing the Pod to be created when the specified number of replicas is not met.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 9-1. kuard-rs.yaml
+
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: kuard
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kuard
+        version: "2"
+    spec:
+      containers:
+        - name: kuard
+          image: "gcr.io/kuar-demo/kuard-amd64:green"
+</code></pre></div></div>
+
+<p>ReplicaSets use Pod labels to monitor cluster state, adjusting the number of Pods to match desired replicas by creating or deleting Pods based on label-filtered results from the Kubernetes API.</p>
+
+<h2 id="creating-a-replicaset">Creating a ReplicaSet</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f kuard-rs.yaml
+</code></pre></div></div>
+
+<p>After accepting the kuard ReplicaSet, the controller detects the absence of matching kuard Pods and creates a new one based on the Pod template.</p>
+
+<p>Example of using describe to obtain the details of the ReplicaSet:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl describe rs kuard
+Name:         kuard
+Namespace:    default
+Image(s):     kuard:1.9.15
+Selector:     app=kuard,version=2
+Labels:       app=kuard,version=2
+Replicas:     1 current / 1 desired
+Pods Status:  1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+No volumes.
+</code></pre></div></div>
+
+<p>The ReplicaSet controller adds an annotation to every Pod that it creates. The key for the annotation is kubernetes.io/created-by. This will tell you if it was created by a ReplicaSet.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get pods &lt;pod-name&gt; -o yaml
+</code></pre></div></div>
+
+<p>Finding a Set of Pods for a ReplicaSet. Get the set of labels using the kubectl describe command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get pods -l app=kuard,version=2
+</code></pre></div></div>
+
+<p>This is exactly the same query that the ReplicaSet executes to determine the current number of Pods.</p>
+
+<h2 id="scaling-replicasets">Scaling ReplicaSets</h2>
+
+<p>ReplicaSets are scaled up or down by updating the <code class="language-plaintext highlighter-rouge">spec.replicas</code> key on the ReplicaSet object stored in Kubernetes</p>
+
+<p>The easiest way to achieve this is using the <code class="language-plaintext highlighter-rouge">scale</code> command in <code class="language-plaintext highlighter-rouge">kubectl</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl scale replicasets kuard --replicas=4
+</code></pre></div></div>
+
+<p><mark>While imperative commands are handy for demonstrations and rapid responses to emergencies, it's crucial to update configurations to align with the number of replicas set via the imperative scale command. Any imperative changes should promptly be followed by a declarative update. If the situation isn't urgent, it's recommended to prioritize declarative changes.</mark></p>
+
+<p>To declaratively scale the kuard ReplicaSet, edit the <code class="language-plaintext highlighter-rouge">kuard-rs.yaml</code> configuration file and set the <code class="language-plaintext highlighter-rouge">replicas</code> count to <code class="language-plaintext highlighter-rouge">3</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f kuard-rs.yaml
+</code></pre></div></div>
+
+<h3 id="autoscaling-a-replicaset">Autoscaling a ReplicaSet</h3>
+
+<p>Kubernetes can handle all of these scenarios via Horizontal Pod Autoscaling (HPA). HPA relies on the heapster Pod in your cluster to monitor metrics and make scaling decisions. Most Kubernetes installations include heapster by default. Verify its presence by listing the Pods in the kube-system namespace. If heapster is missing, autoscaling won’t work correctly.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get pods --namespace=kube-system
+</code></pre></div></div>
+
+<p>You should see a Pod named heapster.</p>
+
+<h4 id="autoscaling-based-on-cpu">Autoscaling based on CPU</h4>
+
+<p>Scaling based on CPU usage is the most common use case for Pod autoscaling.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl autoscale rs kuard --min=2 --max=5 --cpu-percent=80
+</code></pre></div></div>
+
+<p>This command creates an autoscaler that scales between two and five replicas with a CPU threshold of 80%. You can use standard kubectl commands to view, modify, or delete this resource using the horizontalpodautoscalers resource. To simplify, you can use the shortened form “hpa”:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get hpa
+</code></pre></div></div>
+
+<h2 id="deleting-replicasets">Deleting ReplicaSets</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl delete rs kuard
+</code></pre></div></div>
+
+<p>If you don’t want to delete the Pods that are being managed by the ReplicaSet, you can set the <code class="language-plaintext highlighter-rouge">--cascade</code> flag to false to ensure only the ReplicaSet object is deleted and not the Pods:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl delete rs kuard --cascade=false
+</code></pre></div></div>
+<h1 id="chapter-10-deployments">CHAPTER 10: Deployments</h1>
+
+<p>Using deployments you can simply and reliably roll out new software versions without downtime or errors.</p>
+
+<p>Like all objects in Kubernetes, a deployment can be represented as a declarative
+YAML object that provides the details about what you want to run. In the following
+case, the deployment is requesting a single instance of the kuard application:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kuard
+spec:
+  selector:
+    matchLabels:
+      run: kuard
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: kuard
+  spec:
+    containers:
+    - name: kuard
+      image: gcr.io/kuar-demo/kuard-amd64:blue
+</code></pre></div></div>
+
+<p>Save this YAML file as kuard-deployment.yaml, then you can create it using:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl create -f kuard-deployment.yaml
+</code></pre></div></div>
+
+<p>As with all relationships in Kubernetes, this relationship is defined by labels and a label selector. You can see the label selector by looking at the Deployment object:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get deployments kuard -o jsonpath --template {.spec.selector.matchLabels}
+
+map[run:kuard]
+</code></pre></div></div>
+
+<p>You can see that the deployment is managing a ReplicaSet with the label <code class="language-plaintext highlighter-rouge">run=kuard</code>. We can use this in a label selector query across ReplicaSets to find that specific ReplicaSet:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get replicasets --selector=run=kuard
+
+NAME              DESIRED   DESIRED   READY     AGE
+kuard-1128242161  1         1         1         13m
+</code></pre></div></div>
+
+<p>We can resize the deployment using the imperative scale command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl scale deployments kuard --replicas=2
+
+$ kubectl get replicasets --selector=run=kuard
+
+NAME              DESIRED   DESIRED   READY     AGE
+kuard-1128242161  2         2         2         13m
+</code></pre></div></div>
+
+<p>Try the opposite, scaling the ReplicaSet:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl scale replicasets kuard-1128242161 --replicas=1
+
+$ kubectl get replicasets --selector=run=kuard
+
+NAME              DESIRED   DESIRED   READY     AGE
+kuard-1128242161  2         2         2         13m
+</code></pre></div></div>
+
+<p>Scaling the ReplicaSet to one replica doesn’t change the desired state set by the Deployment object, which manages the ReplicaSet. As Kubernetes is self-healing, the deployment controller adjusts the replica count back to two to match the desired state. To manage the ReplicaSet directly, delete the deployment with the <code class="language-plaintext highlighter-rouge">--cascade=false</code> flag to retain the ReplicaSet and Pods.</p>
+
+<h2 id="creating-deployments">Creating Deployments</h2>
+
+<p>Prefer declarative management of Kubernetes configurations by maintaining the state of deployments in YAML or JSON files on disk.</p>
+
+<p>The deployment specification closely resembles that of the ReplicaSet. It includes a Pod template, which defines the containers created for each replica managed by the deployment. Additionally, there’s a strategy object.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: kuard
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+...
+</code></pre></div></div>
+
+<p>The strategy object dictates rollout methods for new software. Deployments support two strategies: Recreate and RollingUpdate, detailed later in this chapter.</p>
+
+<h2 id="managing-deployments">Managing Deployments</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl describe deployments kuard
+Name:                   kuard
+Namespace:              default
+CreationTimestamp:      Tue, 16 Apr 2019 21:43:25 -0700
+Labels:                 run=kuard
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=kuard
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 ...
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surg
+...
+OldReplicaSets:         &lt;none&gt;
+NewReplicaSet:          kuard-6d69d9fc5c (2/2 replicas created)
+...
+</code></pre></div></div>
+
+<p>Crucial output includes <code class="language-plaintext highlighter-rouge">OldReplicaSets</code> and <code class="language-plaintext highlighter-rouge">NewReplicaSet</code>, pointing to current and previous ReplicaSets managed by the deployment. Once the rollout is complete, <code class="language-plaintext highlighter-rouge">OldReplicaSets</code> will be set to <code class="language-plaintext highlighter-rouge">&lt;none&gt;</code>.</p>
+
+<h2 id="updating-deployments">Updating Deployments</h2>
+
+<p>The two most common operations on a deployment are scaling and application updates.</p>
+
+<h3 id="scaling-a-deployment">Scaling a Deployment</h3>
+
+<p>Although we showed imperative scaling with kubectl scale, it’s best to manage deployments declaratively using YAML files for updates.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+spec:
+   replicas: 3
+...
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl apply -f kuard-deployment.yaml
+</code></pre></div></div>
+<h3 id="updating-a-container-image">Updating a Container Image</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+containers:
+  - image: gcr.io/kuar-demo/kuard-amd64:green
+  imagePullPolicy: Always
+...
+spec:
+  ...
+  template:
+    metadata:
+      annotations:
+        kubernetes.io/change-cause: "Update to green kuard"
+</code></pre></div></div>
+
+<p>Add this annotation to the template, not the deployment itself, as kubectl apply uses this field in the Deployment object. Also, refrain from updating the change-cause annotation during simple scaling operations, as it signifies a significant change triggering a new rollout.</p>
+
+<h3 id="rollout-history">Rollout History</h3>
+
+<p>Kubernetes deployments maintain a history of rollouts.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl rollout history deployment kuard
+deployment.extensions/kuard
+REVISION  CHANGE-CAUSE
+1         &lt;none&gt;
+2         Update to green kuard
+</code></pre></div></div>
+
+<p>Add the <code class="language-plaintext highlighter-rouge">--revision</code> flag to view details about that specific revision:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl rollout history deployment kuard --revision=2
+</code></pre></div></div>
+
+<p>Say there is an issue with the release and you want to roll back:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl rollout undo deployments kuard
+deployment "kuard" rolled back
+
+$ kubectl rollout history deployment kuard
+deployment.extensions/kuard
+REVISION  CHANGE-CAUSE
+1         &lt;none&gt;
+3         Update to blue kuard
+4         Update to green kuard
+</code></pre></div></div>
+
+<p>Revision 2 is missing! Rolling back to a previous revision reuses the template, renumbering it as the latest revision. What was revision 2 is now reordered as revision 4.</p>
+
+<p>By default, the deployment keeps the complete revision history, which can grow large over time. It’s recommended to set a maximum history size to limit the total size of the Deployment object, especially for long-term deployments.</p>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">revisionHistoryLimit</code> property in the deployment specification:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+spec:
+# We do daily rollouts, limit the revision history to two weeks of
+# releases as we don't expect to roll back beyond that.
+revisionHistoryLimit: 14
+...
+</code></pre></div></div>
+
+<h2 id="deployment-strategies">Deployment Strategies</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Recreate</code> &amp; <code class="language-plaintext highlighter-rouge">RollingUpdate</code></p>
+
+<p>The <strong><code class="language-plaintext highlighter-rouge">Recreate</code></strong> updates the ReplicaSet to use the new image and terminates all associated Pods. The ReplicaSet then recreates all Pods with the new image. While fast and simple, <mark>it can cause site downtime. It's best suited for test deployments where some downtime is acceptable.</mark></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">RollingUpdate</code></strong> is the preferred strategy for user-facing services. While slower than Recreate, it’s more robust and enables updates without downtime by gradually updating Pods until all are running the new version.<mark> During this time, both old and new versions of your service handle requests. It's vital that each version and its clients can communicate with both older and newer versions.</mark></p>
+
+<p>The rolling update is highly configurable to suit specific needs. Two parameters allow you to tune its behavior: <code class="language-plaintext highlighter-rouge">maxUnavailable</code> and <code class="language-plaintext highlighter-rouge">maxSurge</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">maxUnavailable</code> config sets the max number of Pods that can be unavailable during a rolling update, either as an absolute number or a percentage. If it’s set to <code class="language-plaintext highlighter-rouge">50%</code>, the update initially scales down the old ReplicaSet to half its size, immediately replacing it with the new ReplicaSet. This process repeats until the rollout is complete, with service capacity reduced to <code class="language-plaintext highlighter-rouge">50%</code> at times. This allows us to trade roll‐out speed for availability.</p>
+
+<p>In situations where maintaining 100% capacity is crucial during a rollout, set <code class="language-plaintext highlighter-rouge">maxUnavailable</code> to <code class="language-plaintext highlighter-rouge">0%</code>. Instead, manage the rollout with the <code class="language-plaintext highlighter-rouge">maxSurge</code> parameter, which can be specified as a number or a percentage.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">maxSurge</code> value controls amount of extra resource usage during a rollout. For example, if we have <code class="language-plaintext highlighter-rouge">10</code> replicas and set <code class="language-plaintext highlighter-rouge">maxUnavailable</code> to <code class="language-plaintext highlighter-rouge">0%</code> and <code class="language-plaintext highlighter-rouge">maxSurge</code> to <code class="language-plaintext highlighter-rouge">20%</code>, the rollout initially scales the new ReplicaSet to <code class="language-plaintext highlighter-rouge">12</code> replicas, <code class="language-plaintext highlighter-rouge">120%</code> standard capacity. Then, it scales down the old ReplicaSet, maintaining a maximum of <code class="language-plaintext highlighter-rouge">20%</code> additional resources used during the rollout.</p>
+
+<p>With <code class="language-plaintext highlighter-rouge">maxSurge</code> set to <code class="language-plaintext highlighter-rouge">100%</code>, a blue/green deployment is achieved.</p>
+
+<p>Staged rollouts ensure a healthy service by waiting for each Pod to report readiness before updating the next one. To reliably roll out software using deployments, you must specify readiness health checks for the containers in your Pod. Without these checks, the deployment controller operates blindly.</p>
+
+<p>Sometimes, merely observing a Pod becoming ready doesn’t guarantee it’s functioning correctly. Certain error conditions may arise after a delay, like a memory leak or rare bugs. Typically, you need to wait for a period to ensure the new version operates correctly before updating the next Pod.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+spec:
+  minReadySeconds: 60
+...
+</code></pre></div></div>
+
+<p>Setting <code class="language-plaintext highlighter-rouge">minReadySeconds</code> to 60 indicates that the deployment must wait for 60s after seeing a Pod become healthy before moving on to updating the next Pod.</p>
+
+<p>To set the timeout period, the deployment parameter <code class="language-plaintext highlighter-rouge">progressDeadlineSeconds</code> is used:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+spec:
+   progressDeadlineSeconds: 600
+...
+</code></pre></div></div>
+
+<p>This example sets a progress deadline of 10 minutes. If any stage fails to progress within this time, the deployment is marked as failed, halting further attempts to proceed. Importantly, this timeout measures deployment progress, not its overall duration.</p>
+
+<h1 id="chapter-11-daemonsets">CHAPTER 11: DaemonSets</h1>
+
+<p>For a single Pod per node requirement, use a DaemonSet. For a homogeneous replicated service serving user traffic, a ReplicaSet is the appropriate Kubernetes resource.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ReplicaSets</code> are primarily used to ensure that a specified number of identical pods are running simultaneously.</p>
+
+<p><code class="language-plaintext highlighter-rouge">DaemonSets</code> ensure that a copy of a pod is running on all (or a subset of) nodes in the Kubernetes cluster. They are typically used for deploying system daemons or background services such as log collectors, monitoring agents, or storage daemons, where one instance per node is necessary.</p>
+
+<p>By default, a DaemonSet will replicate a Pod on every node unless a node selector is applied, restricting eligible nodes based on matching labels. DaemonSets specify the node for Pod creation using the nodeName field in the Pod spec, bypassing the Kubernetes scheduler.</p>
+
+<h2 id="limiting-daemonsets-to-specific-nodes">Limiting DaemonSets to Specific Nodes</h2>
+
+<p><mark>DaemonSets are commonly used to deploy a Pod across every node in a Kubernetes cluster. However, there are scenarios where you may want to deploy a Pod to only a subset of nodes. For instance, if your workload requires a GPU or fast storage available on specific nodes, you can use node labels to tag nodes meeting these requirements.</mark></p>
+
+<p>Adding Labels to Nodes.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl label nodes k0-default-pool-35609c18-z7tb ssd=true
+</code></pre></div></div>
+
+<p>Node selectors can be used to limit what nodes a Pod can run on in a given Kubernetes cluster. Node selectors are defined as part of the Pod spec when creating a DaemonSet.</p>
+
+<p><mark>If you remove labels from a node required by a DaemonSet's node selector, the DaemonSet will remove the Pod it manages from that node.</mark></p>
+
+<h2 id="updating-a-daemonset">Updating a DaemonSet</h2>
+
+<p>DaemonSets can be rolled out using the same RollingUpdate strategy that deployments use.</p>
+
+<p>Two parameters control the rolling update of a DaemonSet:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">spec.minReadySeconds</code>: Specifies how long a Pod must be “ready” before upgrading subsequent Pods.</li>
+  <li><code class="language-plaintext highlighter-rouge">spec.updateStrategy.rollingUpdate.maxUnavailable</code>: Indicates the maximum number of Pods updated simultaneously.</li>
+</ul>
+
+<p>A recommended practice is to set <code class="language-plaintext highlighter-rouge">spec.minReadySeconds</code> to 30–60 seconds to ensure Pod health before proceeding with the rollout.</p>
+
+<p>Delete a DaemonSet</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl delete -f fluentd.yaml
+</code></pre></div></div>
+
+<p>When you delete a DaemonSet, it also removes all managed Pods. To delete only the DaemonSet without affecting Pods, use the –cascade=false flag.</p>
+
+<h1 id="chapter-12-jobs">CHAPTER 12: Jobs</h1>
+
+<p>While most workloads on a Kubernetes cluster are long-running processes, there’s often a need for short-lived, one-off tasks. The Job object is designed specifically for managing such tasks.</p>
+
+<h2 id="job-patterns">Job Patterns</h2>
+
+<p>Jobs are intended for managing batch-like workloads, where work items are processed by one or more Pods. By default, each job runs a single Pod once until successful termination.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Use case</th>
+      <th>Behavior</th>
+      <th>Completions</th>
+      <th>Parallelism</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>One shot</td>
+      <td>Database migrations</td>
+      <td>A single Pod running once until successful termination</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Parallel fixed completions</td>
+      <td>Multiple Pods processing a set of work in parallel</td>
+      <td>One or more Pods running one or more times until reaching a fixed completion count</td>
+      <td>1+</td>
+      <td>1+</td>
+    </tr>
+    <tr>
+      <td>Work queue: parallel jobs</td>
+      <td>Multiple Pods processing from a centralized work queue</td>
+      <td>One or more Pods running once until successful termination</td>
+      <td>1</td>
+      <td>2+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>See book for specific examples.</em></p>
+
+<h2 id="cronjobs">CronJobs</h2>
+
+<p>Sometimes you want to schedule a job to be run at a certain interval. To achieve this you can declare a CronJob in Kubernetes, which is responsible for creating a new Job object at a particular interval.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+spec:
+  # Run every fifth hour
+  schedule: "0 */5 * * *"
+...
+</code></pre></div></div>
+
+<h1 id="chapter-13-configmaps-and-secrets">CHAPTER 13: ConfigMaps and Secrets</h1>
+
+<h2 id="configmaps">ConfigMaps</h2>
+
+<p>A ConfigMap in Kubernetes acts as a small filesystem or a set of variables for defining environment or command line settings in containers. It’s combined with the Pod before execution, enabling reuse of container images and Pod definitions across various applications by changing the associated ConfigMap.</p>
+
+<p>Suppose we have a file on disk (called <code class="language-plaintext highlighter-rouge">my-config.txt</code>) that we want to make available to the Pod.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 13-1. my-config.txt
+# This is a sample config file that I might use to configure an application
+parameter1 = value1
+parameter2 = value2
+</code></pre></div></div>
+
+<p>Let’s create a ConfigMap with that file. We’ll also add a couple of simple key/value pairs here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create configmap my-config \
+--from-file=my-config.txt \
+--from-literal=extra-param=extra-value \
+--from-literal=another-param=another-value
+</code></pre></div></div>
+
+<p>Here’s the YAML representation of the provided ConfigMap:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl get configmaps my-config -o yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: ...
+  name: my-config
+  namespace: default
+  resourceVersion: "13556"
+  selfLink: /api/v1/namespaces/default/configmaps/my-config
+  uid: 3641c553-f7de-11e6-98c9-06135271a273
+data:
+  another-param: another-value
+  extra-param: extra-value
+  my-config.txt: |
+    # This is a sample config file that I might use to configure an application
+    parameter1 = value1
+    parameter2 = value2
+</code></pre></div></div>
+
+<p>As you can see, the ConfigMap is really just some key/value pairs stored in an object.</p>
+
+<h3 id="there-are-three-main-ways-to-use-a-configmap">There are three main ways to use a ConfigMap:</h3>
+
+<ol>
+  <li>Filesystem - You can mount a ConfigMap into a Pod.</li>
+  <li>Environment variable - A ConfigMap can be used to dynamically set the value of an environment variable.</li>
+  <li>Command-line argument - Kubernetes supports dynamically creating the command line for a container based on ConfigMap values.</li>
+</ol>
+
+<p><em>See book for specific examples.</em></p>
+
+<h2 id="secrets">Secrets</h2>
+
+<p><mark>By default, Kubernetes secrets are stored in plaintext in etcd, which might not suffice for security. Recent Kubernetes versions support encrypting secrets with a user-supplied key, often integrated into a cloud key store. Alternatively, cloud key stores can be integrated with Kubernetes flexible volumes, allowing you to bypass Kubernetes secrets entirely. These options offer flexibility to tailor security profiles to your needs.</mark></p>
+
+<p>With the <code class="language-plaintext highlighter-rouge">kuard.crt</code> and <code class="language-plaintext highlighter-rouge">kuard.key</code> files stored locally, we are ready to create a secret. Create a secret named kuard-tls using the create secret command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl create secret generic kuard-tls \
+--from-file=kuard.crt \
+--from-file=kuard.key
+
+$ kubectl describe secrets kuard-tls
+Name:         kuard-tls
+Namespace:    default
+Labels:       &lt;none&gt;
+Annotations:  &lt;none&gt;
+
+Type:         Opaque
+
+Data
+====
+kuard.crt:  1050 bytes
+kuard.key:  1679 bytes
+</code></pre></div></div>
+
+<p>Instead of accessing secrets through the API server, we can use a <strong>secrets volume</strong>.</p>
+
+<p>Secret volumes in Kubernetes are managed by the kubelet and are created when Pods are initialized. These volumes are stored on tmpfs volumes (also known as RAM disks) and are not written to disk on nodes. Each data element of a secret is stored in a separate file under the target mount point specified in the volume mount.</p>
+
+<p><em>See book for specific examples.</em></p>
+
+<h3 id="private-docker-registries">Private Docker Registries</h3>
+
+<p>Image pull secrets automate the distribution of private registry credentials by leveraging the secrets API. Stored like normal secrets, they are consumed via the <code class="language-plaintext highlighter-rouge">spec.imagePullSecrets</code> field in the Pod specification.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create secret docker-registry my-image-pull-secret \
+  --docker-username=&lt;username&gt; \
+  --docker-password=&lt;password&gt; \
+  --docker-email=&lt;email-address&gt;
+</code></pre></div></div>
+
+<h3 id="naming-constraints">Naming Constraints</h3>
+
+<p>Key names for data items inside secrets or ConfigMaps are mapped to valid environment variable names. They can start with a dot followed by a letter or number, and may contain dots, dashes, or underscores. However, dots cannot be repeated, and dots or underscores cannot be adjacent to each other.</p>
+
+<h2 id="managing-configmaps-and-secrets">Managing ConfigMaps and Secrets</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># list all secrets in the current namespace:
+$ kubectl get secrets
+
+# list all of the ConfigMaps in a namespace:
+$ kubectl get configmaps
+</code></pre></div></div>
+
+<p><em>See book for specific examples.</em></p>
+
+<h1 id="chapter-14-role-based-access-control-for-kubernetes">CHAPTER 14: Role-Based Access Control for Kubernetes</h1>
+
+<p>Every request that comes to Kubernetes is associated with some identity. Even a request with no identity is associated with the <code class="language-plaintext highlighter-rouge">system:unauthenticated</code> group.</p>
+
+<p>Kubernetes makes a distinction between user identities and service account identities.</p>
+
+<p>Kubernetes supports a number of different authentication providers, including:</p>
+
+<ul>
+  <li>HTTP Basic Authentication (largely deprecated)</li>
+  <li>x509 client certificates</li>
+  <li>Static token files on the host</li>
+  <li>Cloud authentication providers</li>
+  <li>Authentication webhooks</li>
+</ul>
+
+<p>A <strong>role</strong> is a set of abstract capabilities. For example, the <code class="language-plaintext highlighter-rouge">appdev</code> role might represent the ability to create Pods and services. A <strong>role binding</strong> is an assignment of a role to one
+or more identities. Binding the <code class="language-plaintext highlighter-rouge">appdev</code> role to the user identity <code class="language-plaintext highlighter-rouge">alice</code> indicates give the user the ability to create Pods and services.</p>
+
+<p>Kubernetes uses two sets of resources for roles and role bindings. One pair is specific to a namespace (<code class="language-plaintext highlighter-rouge">Role</code> and <code class="language-plaintext highlighter-rouge">RoleBinding</code>), while the other pair applies across the entire cluster (<code class="language-plaintext highlighter-rouge">ClusterRole</code> and <code class="language-plaintext highlighter-rouge">ClusterRoleBinding</code>).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: pod-and-services
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services"]
+  verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: default
+  name: pods-and-services
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: alice
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: mydevs
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-and-services
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ClusterRole</code> and <code class="language-plaintext highlighter-rouge">ClusterRoleBinding</code> are used for broader permissions across the entire cluster, compared to Role and RoleBinding, which are limited to specific namespaces.</p>
+
+<h2 id="verbs-for-kubernetes-roles">Verbs for Kubernetes roles</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Verb</th>
+      <th>HTTP method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>create</td>
+      <td>POST</td>
+      <td>Create a new resource.</td>
+    </tr>
+    <tr>
+      <td>delete</td>
+      <td>DELETE</td>
+      <td>Delete an existing resource.</td>
+    </tr>
+    <tr>
+      <td>get</td>
+      <td>GET</td>
+      <td>Get a resource.</td>
+    </tr>
+    <tr>
+      <td>list</td>
+      <td>GET</td>
+      <td>List a collection of resources.</td>
+    </tr>
+    <tr>
+      <td>patch</td>
+      <td>PATCH</td>
+      <td>Modify an existing resource via a partial change.</td>
+    </tr>
+    <tr>
+      <td>update</td>
+      <td>PUT</td>
+      <td>Modify an existing resource via a complete object.</td>
+    </tr>
+    <tr>
+      <td>watch</td>
+      <td>GET</td>
+      <td>Watch for streaming updates to a resource.</td>
+    </tr>
+    <tr>
+      <td>proxy</td>
+      <td>GET</td>
+      <td>Connect to resource via a streaming WebSocket proxy.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="using-built-in-roles">Using built-in roles</h2>
+
+<p>Among the built-in roles in Kubernetes, four are aimed at generic end users:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cluster-admin</code>: Grants full access across the entire cluster.</li>
+  <li><code class="language-plaintext highlighter-rouge">admin</code>: Offers complete access within a specific namespace.</li>
+  <li><code class="language-plaintext highlighter-rouge">edit</code>: Allows users to modify resources within a namespace.</li>
+  <li><code class="language-plaintext highlighter-rouge">view</code>: Provides read-only access to resources within a namespace.</li>
+</ul>
+
+<h2 id="auto-reconciliation-of-built-in-roles">Auto-reconciliation of built-in roles</h2>
+
+<p>When the Kubernetes API server starts, it installs default ClusterRoles from its code. Modifying these built-in roles is temporary, as changes get overwritten on server restarts (e.g., during upgrades). To preserve modifications, add the <code class="language-plaintext highlighter-rouge">rbac.authorization.kubernetes.io/autoupdate</code> annotation with a value of <code class="language-plaintext highlighter-rouge">false</code> to the built-in ClusterRole resource. This prevents the API server from overwriting the modified ClusterRole.</p>
+
+<p><mark>By default, the Kubernetes API server allows unauthenticated access to its API discovery endpoint, which can be risky in hostile environments like the public internet.</mark> To mitigate this risk, set the <code class="language-plaintext highlighter-rouge">--anonymous-auth=false</code> flag on your API server to disable anonymous authentication.</p>
+
+<h2 id="techniques-for-managing-rbac">Techniques for Managing RBAC</h2>
+
+<h3 id="testing-authorization-with-can-i">Testing Authorization with can-i</h3>
+
+<p><code class="language-plaintext highlighter-rouge">kubectl auth i-can</code></p>
+
+<p>The “can-i” tool is great for testing if a user has permission for a specific action. It’s handy for validating configurations during cluster setup or for users to check their access when reporting errors or bugs.</p>
+
+<p><code class="language-plaintext highlighter-rouge">kubectl auth can-i create pods</code> will indicate if the current kubectl user is authorized to create Pods.</p>
+
+<h3 id="managing-rbac-in-source-control">Managing RBAC in Source Control</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">kubectl</code> tool has a <code class="language-plaintext highlighter-rouge">reconcile</code> command, which aligns roles and role bindings specified in a configuration file with the current cluster state.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ kubectl auth reconcile -f some-rbac-config.yaml</code></p>
+
+<p>You can add the <code class="language-plaintext highlighter-rouge">--dry-run</code> flag to the command to print but not submit the changes.</p>
+
+<h2 id="advanced-topics">Advanced Topics</h2>
+
+<h3 id="aggregating-clusterroles">Aggregating ClusterRoles</h3>
+
+<p><mark>Kubernetes RBAC enables combining multiple roles into a new role using aggregation rules. This new role inherits all capabilities from its subroles, and any changes to them are automatically applied to the aggregate role.</mark></p>
+
+<h3 id="using-groups-for-bindings">Using Groups for Bindings</h3>
+
+<p>For managing access to the cluster for many individuals across different organizations with similar permissions, it’s best practice to use groups to manage roles instead of individually assigning bindings to each identity.</p>
+
+<p>Group systems often support “just in time” (JIT) access, temporarily adding individuals in response to events like a middle-of-the-night page. This allows auditing access and prevents compromised identities from having continuous access to production infrastructure.</p>
+
+<p>To bind a group to a ClusterRole you use a Group kind for the subject in the binding:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: my-great-groups-name
+...
+</code></pre></div></div>
+
+<h1 id="chapter-15-integrating-storage-solutions-and-kubernetes">CHAPTER 15: Integrating Storage Solutions and Kubernetes</h1>
+
+<p>The shift to containerized architectures also signifies a move towards decoupled, immutable, and declarative application development. While these patterns are straightforward to implement for stateless web applications, even “cloud-native” storage solutions such as Cassandra or MongoDB often require manual or imperative steps to establish a reliable, replicated solution.</p>
+
+<h2 id="importing-external-services">Importing External Services</h2>
+
+<p>Imagine that we have test and production namespaces defined.The test service is imported using an object like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kind: Service
+metadata:
+  name: my-database
+  # note 'test' namespace here
+  namespace: test
+</code></pre></div></div>
+<p>The production service looks the same, except it uses a different namespace:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kind: Service
+metadata:
+  name: my-database
+  # note 'prod' namespace here
+  namespace: prod
+...
+</code></pre></div></div>
+
+<p>In different namespaces, querying the service named “my-database” directs Pods to different databases: “my-database.test.svc.cluster.internal” for the “test” namespace and “my-database.prod.svc.cluster.internal” for the “prod” namespace.</p>
+
+<h3 id="services-without-selectors">Services Without Selectors</h3>
+
+<p>With services, label queries can be used for identifying sets of Pods as backends for a service. However, external services operate differently. Instead of a label query, there’s typically a DNS name pointing directly to the specific server, such as “database.company.com.” To incorporate this external database service into Kubernetes, we create a service without a Pod selector that references the DNS name of the database server.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 15-1. dns-service.yaml
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-database
+spec:
+  type: ExternalName
+  externalName: database.company.com
+</code></pre></div></div>
+
+<p>When a standard Kubernetes service is created, it generates an IP address and adds an <code class="language-plaintext highlighter-rouge">A</code> record to the Kubernetes DNS service. In contrast, creating a service of type ExternalName adds a <code class="language-plaintext highlighter-rouge">CNAME</code> record pointing to the specified external name (e.g., database.company.com). So, when an application in the cluster looks up “external-database.svc.default.cluster,” it resolves to “database.company.com” through DNS aliasing.</p>
+
+<p>Sometimes, you only have an IP address for an external database service, without a DNS address.</p>
+
+<p>First, you create a <code class="language-plaintext highlighter-rouge">Service</code> without a label selector, but also without the <code class="language-plaintext highlighter-rouge">ExternalName</code> type we used before</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 15-2. external-ip-service.yaml
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-ip-database
+</code></pre></div></div>
+
+<p>Kubernetes assigns a virtual IP address and creates an <code class="language-plaintext highlighter-rouge">A</code> record for the service. However, without a selector, no endpoints are populated for the load balancer to redirect traffic to.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 15-3. external-ip-endpoints.yaml
+
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: external-ip-database
+subsets:
+  - addresses:
+    - ip: 192.168.0.1
+  ports:
+  - port: 3306
+</code></pre></div></div>
+
+<p>If redundancy is needed with multiple IP addresses, you can repeat them in the addresses array. Once endpoints are populated, the load balancer will redirect traffic from your Kubernetes service to the IP address endpoint(s). Because the user assumes responsibility for keeping the IP address of the server up to date, it’s necessary to either ensure that it doesn’t changes or to implement an automated process for updating the Endpoints record.</p>
+
+<p>External services in Kubernetes do not conduct health checks. Users must ensure the reliability of the provided endpoint or DNS name for the application.</p>
+
+<h2 id="running-reliable-singletons">Running Reliable Singletons</h2>
+
+<p>Instead, deploy a single Pod to run the database or storage solution. This eliminates the challenges associated with replicated storage in Kubernetes, as there is no replication needed. For smaller-scale applications, accepting limited downtime as a trade-off for reduced complexity may be reasonable, although it may not be acceptable for large-scale or mission-critical systems.</p>
+
+<p><em>See book example of Running a MySQL Singleton</em></p>
+
+<h2 id="dynamic-volume-provisioning">Dynamic Volume Provisioning</h2>
+
+<p>Clusters employ <strong>dynamic volume provisioning</strong>, where operators establish StorageClass objects. These classes can be referenced in persistent volume claims instead of specific volumes. When a dynamic provisioner detects this claim, it uses the relevant volume driver to generate and bind the volume.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Example 15-8. storageclass.yaml
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: default
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "true"
+  labels:
+     kubernetes.io/cluster-service: "true"
+provisioner: kubernetes.io/azure-disk
+</code></pre></div></div>
+<p><mark>Automatic provisioning of persistent volumes in Kubernetes simplifies managing stateful applications. By default, the volume's lifespan aligns with that of the Pod creating it. Thus, deleting the Pod also deletes the volume, which may lead to accidental deletions if not managed carefully.</mark></p>
+
+<p>Persistent volumes are suitable for traditional applications needing storage. However, for high-availability, scalable storage in a Kubernetes-native manner, StatefulSet objects are preferred.</p>
+
+<h2 id="kubernetes-native-storage-with-statefulsets">Kubernetes-Native Storage with StatefulSets</h2>
+
+<p>Initially, Kubernetes focused on homogeneity in replicated sets, lacking individual identities. This posed challenges for stateful application development. To address this, Kubernetes introduced <code class="language-plaintext highlighter-rouge">StatefulSets</code> in version 1.5, following community feedback.</p>
+
+<h3 id="properties-of-statefulsets">Properties of StatefulSets</h3>
+
+<p>StatefulSets are replicated Pod groups, akin to ReplicaSets. However, they possess distinct properties:</p>
+
+<ul>
+  <li>
+    <p>Each replica gets a persistent hostname with a unique index (e.g., database-0, database-1, etc.).</p>
+  </li>
+  <li>
+    <p>Replicas in a StatefulSet are created sequentially, from the lowest to the highest index. Creation will pause until the Pod at the previous index is healthy and available. This sequencing also applies when scaling up.</p>
+  </li>
+  <li>
+    <p>When deleting a StatefulSet, each managed replica Pod is also deleted sequentially, from the highest to the lowest index. Similarly, scaling down the number of replicas follows the same order.</p>
+  </li>
+</ul>
+
+<p><em>See book example of Running MongoDB with StatefulSets</em></p>
+
+<p>After setting up a StatefulSet, create a “headless” service to manage DNS entries. In Kubernetes, a service is “headless” if it lacks a cluster virtual IP address. Since each Pod in a StatefulSet has a unique identity, load balancing is unnecessary. Specify <code class="language-plaintext highlighter-rouge">clusterIP: None</code> in the service specification to create a headless service.</p>
+
+<h2 id="one-final-thing-readiness-probes">One Final Thing: Readiness Probes</h2>
+
+<p>To finalize our MongoDB cluster setup for production, we add liveness checks to the containers serving MongoDB. These checks ensure container functionality. We employ the mongo tool by adding the following to the Pod template in the StatefulSet object:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+livenessProbe:
+exec:
+  command:
+    - /usr/bin/mongo
+    - --eval
+    - db.serverStatus()
+  initialDelaySeconds: 10
+  timeoutSeconds: 10
+...
+</code></pre></div></div>
+
+<h1 id="chapter-16-extending-kubernetes">CHAPTER 16: Extending Kubernetes</h1>
+
+<p>In general, extensions to the Kubernetes API server either enhance cluster functionality or refine user interaction with their clusters.</p>
+
+<p><em>See book for this sections</em></p>
+
+<h2 id="patterns-for-custom-resources">Patterns for Custom Resources</h2>
+
+<h3 id="just-data">Just Data</h3>
+
+<p>The simplest pattern for API extension is the concept of “just data,” where the API server is used solely for storing and retrieving information for applications. However, it’s important not to use the Kubernetes API server for application data storage. Instead, API extensions should consist of control or configuration objects to manage application deployment or runtime. An example of this pattern is configuring canary deployments, such as directing 10% of traffic to an experimental backend. While such information could be stored in a ConfigMap, using a more strongly typed API extension object often offers clarity and ease of use.</p>
+
+<h3 id="compilers">Compilers</h3>
+
+<p>A more advanced pattern is the “compiler” or “abstraction” pattern. Here, the API extension object represents a high-level concept that is translated into lower-level Kubernetes objects. For instance, the LoadTest extension is compiled into Kubernetes Pods and services. Unlike the operator pattern, compiled abstractions do not have online health maintenance; this responsibility falls to the lower-level objects like Pods.</p>
+
+<h3 id="operators">Operators</h3>
+
+<p>Operators provide proactive management of resources, offering higher-level abstractions like databases. They monitor the extension API and the running state of the application, taking actions to ensure health and perform tasks like snapshot backups or upgrades. Operators are the most complex pattern for Kubernetes API extensions, enabling “self-driving” abstractions responsible for deployment, health checking, and repair.</p>
+
+<h1 id="chapter-17-deploying-real-world-applications">CHAPTER 17: Deploying Real-World Applications</h1>
+
+<p>We’ll take a look at four real-world applications::</p>
+
+<ul>
+  <li>Jupyter, an open source scientific notebook</li>
+  <li>Parse, an open source API server for mobile applications</li>
+  <li>Ghost, a blogging and content management platform</li>
+  <li>Redis, a lightweight, performant key/value store</li>
+</ul>
+
+<h2 id="jupyter">Jupyter</h2>
+
+<p>Create a namespace:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl create namespace jupyter
+</code></pre></div></div>
+
+<p>Create a deployment of size one with the program itself:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#  jupyter.yaml
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: jupyter
+  name: jupyter
+  namespace: jupyter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: jupyter
+  template:
+    metadata:
+      labels:
+        run: jupyter
+    spec:
+      containers
+      - image: jupyter/scipy-notebook:abdb27a6dfbb
+        name: jupyter
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl create -f jupyter.yaml
+</code></pre></div></div>
+
+<p>Now you need to wait for the container to be created.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ watch kubectl get pods --namespace jupyter
+</code></pre></div></div>
+
+<p>Once the Jupyter running, you the initial login token</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod_name=$(kubectl get pods --namespace jupyter --no-headers | awk '{print $1}') \
+  kubectl logs --namespace jupyter ${pod_name}
+</code></pre></div></div>
+
+<p>Set up port forwarding to the Jupyter container</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl port-forward ${pod_name} 8888:8888
+</code></pre></div></div>
+
+<p>Visit <code class="language-plaintext highlighter-rouge">http://localhost:8888/?token=&lt;token&gt;</code></p>
+
+<p><em>See book for Parse, Ghost, and Redis</em></p>
+
+<h1 id="chapter-18-organizing-your-application">Chapter 18 Organizing your Application</h1>
+
+<h2 id="principles-to-guide-us">Principles to Guide Us</h2>
+
+<ul>
+  <li>Filesystems as the source of truth</li>
+  <li>Code review to ensure the quality of changes</li>
+  <li>Feature flags for staged roll forward and roll back</li>
+</ul>
+
+<h2 id="managing-your-application-in-source-control">Managing Your Application in Source Control</h2>
+
+<p><mark>Combining multiple objects in a single YAML file in Kubernetes is usually discouraged. Only do so if the objects are conceptually identical. Follow design principles akin to defining a class or struct: if the grouping doesn't form a single concept, they shouldn't be in the same file.</mark></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>frontend/
+  frontend-deployment.yaml
+  frontend-service.yaml
+  frontend-ingress.yaml
+service-1/
+  service-1-deployment.yaml
+  service-1-service.yaml
+  service-1-configmap.yaml
+...
+</code></pre></div></div>
+
+<h2 id="structuring-your-application-for-development-testing-and-deployment">Structuring Your Application for Development, Testing, and Deployment</h2>
+
+<p><em>See book for this sections</em></p>
+
+<h2 id="parameterizing-your-application-with-templates">Parameterizing Your Application with Templates</h2>
+
+<p>When considering the Cartesian product of environments and stages, it becomes apparent that maintaining them as entirely identical is impractical or impossible.</p>
+
+<p>Different languages for parameterized configurations typically split files into a template file for the main configuration and a parameters file. Most templating languages also allow default parameter values. For instance, Helm, a Kubernetes package manager, offers ways to parameterize configurations.</p>
+
+<p>the Helm template language uses the “mustache” syntax, so for example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>metadata:
+  name: -deployment
+</code></pre></div></div>
+
+<p>To pass a parameter for this value you use a <code class="language-plaintext highlighter-rouge">values.yaml</code> file with contents like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Release:
+  Name: my-release
+</code></pre></div></div>
+
+<p>Which after parameter substitution results in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>metadata:
+  name: my-release-deployment
+</code></pre></div></div>
+
+<p>Developing dashboards that provide a quick overview of the version running in each region is crucial. Additionally, setting up alerting to trigger when too many different versions of the application are deployed is essential. It’s recommended to limit the number of active versions to no more than three: one for testing, one for rolling out, and one for replacement during the rollout process. Having more than three active versions can lead to complications.</p>
+
+
+</body>
+
+</html>

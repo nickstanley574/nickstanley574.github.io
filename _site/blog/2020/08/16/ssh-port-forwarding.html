@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>SSH Port Forwarding | nickstanley574</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- external -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <scriptfenced_code_blocks src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <script data-goatcounter="https://nickstanley574.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="/assets/scripts.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>SSH Port Forwarding</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="SSH Port Forwarding" />
+<meta name="author" content="Nick Stanley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The software discipline has an abundance of tools, options and commands. An individual will never know them all. Tools used by someone every day can hide a hidden trick they never knew existed. One of my favorite tricks to show people is SSH port forwarding using the L and R options. They are not hard to use or understand and once added to your toolbox, open a whole new world of advantages." />
+<meta property="og:description" content="The software discipline has an abundance of tools, options and commands. An individual will never know them all. Tools used by someone every day can hide a hidden trick they never knew existed. One of my favorite tricks to show people is SSH port forwarding using the L and R options. They are not hard to use or understand and once added to your toolbox, open a whole new world of advantages." />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2020/08/16/ssh-port-forwarding" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2020/08/16/ssh-port-forwarding" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-16T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="SSH Port Forwarding" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nick Stanley"},"dateModified":"2020-08-16T00:00:00-05:00","datePublished":"2020-08-16T00:00:00-05:00","description":"The software discipline has an abundance of tools, options and commands. An individual will never know them all. Tools used by someone every day can hide a hidden trick they never knew existed. One of my favorite tricks to show people is SSH port forwarding using the L and R options. They are not hard to use or understand and once added to your toolbox, open a whole new world of advantages.","headline":"SSH Port Forwarding","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2020/08/16/ssh-port-forwarding"},"url":"http://0.0.0.0:4000/blog/2020/08/16/ssh-port-forwarding"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<div class="header">
+  <ul class="nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/library/">Library</a></li>
+    <li><a href="/manifesto/">Manifesto</a></li>
+    <li><a href="/resume/">Resume</a></li>
+  </ul>
+</div>
+
+<body>
+  <h1>SSH Port Forwarding</h1>
+<div class="post-date">
+    Sunday, August 16, 2020
+</div>
+
+<p>The software discipline has an abundance of tools, options and commands. An individual will never know them all. Tools used by someone every day can hide a hidden trick they never knew existed. One of my favorite tricks to show people is SSH port forwarding using the <code class="language-plaintext highlighter-rouge">L</code> and <code class="language-plaintext highlighter-rouge">R</code> options. They are not hard to use or understand and once added to your toolbox, open a whole new world of advantages.</p>
+
+<h3 id="local-port-forwarding--l">Local Port Forwarding <code class="language-plaintext highlighter-rouge">-L</code></h3>
+
+<p>Local port forwarding sends requests made to a port on your local machine to a port on a remote machine via the SSH client and SSH server. This might seem complex, seeing it in action should show how simple it is.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nick@local:~$ ssh -N -v 3.22.101.132 -L 6363:localhost:8282
+</code></pre></div></div>
+
+<p>The core of the command <code class="language-plaintext highlighter-rouge">-L 6363:localhost:8282</code> instructs the ssh-client to listen for requests made on your machine’s <code class="language-plaintext highlighter-rouge">localhost:6363</code> and forward the requests over the secure ssh tunnel to <code class="language-plaintext highlighter-rouge">localhost:8282</code> on <code class="language-plaintext highlighter-rouge">3.22.101.132</code>. The <code class="language-plaintext highlighter-rouge">-v</code> gives verbose output to see the connection details and the <code class="language-plaintext highlighter-rouge">-N</code> doesn’t open an actual remote shell. The port forwarding would still work with <code class="language-plaintext highlighter-rouge">-v</code> and <code class="language-plaintext highlighter-rouge">-N</code> omitted.</p>
+
+<p>I spun-up a remote server running NGINX on <code class="language-plaintext highlighter-rouge">localhost:8282</code> and the security rules only allow connections from my machine’s IP address on port 22.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nick@local:~$ ssh -N -v 3.22.101.132 -L 6363:localhost:8282
+OpenSSH_7.6p1 Ubuntu-4ubuntu0.3, OpenSSL 1.0.2n  7 Dec 2017
+...
+debug1: Authentication succeeded (publickey).
+Authenticated to 3.22.101.132 ([3.22.101.132]:22).
+debug1: Local connections to LOCALHOST:6363 forwarded to remote address localhost:8282
+debug1: Local forwarding listening on ::1 port 6363.
+debug1: channel 0: new [port listener]
+debug1: Local forwarding listening on 127.0.0.1 port 6363.
+debug1: channel 1: new [port listener]
+...
+</code></pre></div></div>
+
+<p>The connection succeeded and the output shows SSH forwarding my machine’s <code class="language-plaintext highlighter-rouge">localhost:6363</code> to <code class="language-plaintext highlighter-rouge">localhost:8282</code> on <code class="language-plaintext highlighter-rouge">3.22.101.132</code>. Using <code class="language-plaintext highlighter-rouge">curl</code> to make a request to my machine’s <code class="language-plaintext highlighter-rouge">localhost:6363</code> let’s see the response.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nick@local:~$ curl localhost:6363
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;h1&gt;Welcome to 3.22.101.132 a.k.a the remote server!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+==&gt; $ ssh -N -v 3.22.101.132 -L 6363:localhost:8282 &lt;==
+...
+debug1: Connection to port 6363 forwarding to localhost port 8282 requested.
+debug1: channel 2: new [direct-tcpip]
+...
+
+</code></pre></div></div>
+
+<p>The output confirms the <code class="language-plaintext highlighter-rouge">curl</code> request was forwarded to <code class="language-plaintext highlighter-rouge">3.22.101.132</code>’s <code class="language-plaintext highlighter-rouge">localhost:8282</code>. And it is just that easy, well deceptively easy, the diagram gives a high level of how the request forwarding is being handled by <code class="language-plaintext highlighter-rouge">ssh -L</code> and <code class="language-plaintext highlighter-rouge">sshd</code>.</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="/assets/posts/ssh-port-fowarding/ssh-L-diagram.svg" />
+</div>
+
+<h3 id="remote-port-forwarding--r">Remote Port Forwarding <code class="language-plaintext highlighter-rouge">-R</code></h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">-R</code> option works the same way has <code class="language-plaintext highlighter-rouge">-L</code>, but in reverse. Instead of forwarding requests from your local machine to the remote server the remote server forwards request to your local machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nick@local:~$ ssh -N -v 3.22.101.132 -R 7373:localhost:9292
+</code></pre></div></div>
+
+<p>This instructs <code class="language-plaintext highlighter-rouge">sshd</code> on <code class="language-plaintext highlighter-rouge">3.22.101.132</code> to listen for requests made to <code class="language-plaintext highlighter-rouge">localhost:7373</code> and forward them to your machine’s <code class="language-plaintext highlighter-rouge">localhost:9292</code>. Time to see this in action round two.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nick@local:~$ ssh -N -v 3.22.101.132 -R 7373:localhost:9292
+OpenSSH_7.6p1 Ubuntu-4ubuntu0.3, OpenSSL 1.0.2n  7 Dec 2017
+...
+debug1: remote forward success for: listen 7373, connect localhost:9292
+debug1: All remote forwarding requests processed
+...
+</code></pre></div></div>
+
+<p>Similar to <code class="language-plaintext highlighter-rouge">-L</code> the <code class="language-plaintext highlighter-rouge">-R</code> command output indicates the port forwarding is configured and ready for use. From <code class="language-plaintext highlighter-rouge">3.22.101.132</code> lets make a request to its <code class="language-plaintext highlighter-rouge">localhost:7373</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nick@ip-3-22-101-132:~$ curl localhost:7373
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;h1&gt;Welcome to Nick's local machine!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+==&gt; $ nick@local:~$ -N -v 3.22.101.132 -R 7373:localhost:9292 &lt;==
+...
+debug1: client_input_channel_open: ctype forwarded-tcpip rchan 2 win 2097152 max 32768
+debug1: client_request_forwarded_tcpip: listen localhost port 7373, originator 127.0.0.1 port 37594
+debug1: connect_next: host localhost ([127.0.0.1]:9292) in progress, fd=5
+debug1: channel 0: new [127.0.0.1]
+debug1: confirm forwarded-tcpip
+debug1: channel 0: connected to localhost port 9292
+...
+</code></pre></div></div>
+
+<p>Boom, <code class="language-plaintext highlighter-rouge">3.22.101.132</code> accessed the <code class="language-plaintext highlighter-rouge">index.html</code> file served from my local machine’s <code class="language-plaintext highlighter-rouge">localhost:9292</code>.</p>
+
+<div style="text-align: center;">
+    <img style="max-width: 100%;" src="/assets/posts/ssh-port-fowarding/ssh-R-diagram.svg" />
+</div>
+
+<h3 id="ssh-port-forwarding-out-in-the-wild">SSH Port Forwarding out in the Wild</h3>
+
+<p>You might be wondering ok this is cool, so what? What can I use this for in the real world? Below is a list of cases either I or a colleague I know has used SSH port forwarding.</p>
+
+<ul>
+  <li>Keep security group simple by only allowing connections over port 22.</li>
+  <li>Limit access to a non-federated webpage with sensitive materials.</li>
+  <li>Connect to a remote database bound to localhost and use a local GUI interface.</li>
+  <li>Test an application by forwarding the local instance of an webapp to a development load balancer.</li>
+  <li>Limit access to an API endpoint.</li>
+  <li>Connect to servers via a Bastion/Jump host.</li>
+  <li>Temporarily encrypt traffic on a legacy application while setting up TLS.</li>
+  <li>Get around firewall rules by forwarding requests through your local machine that doesn’t have the same restrictions. Tread carefully with this one.</li>
+</ul>
+
+
+<div id="back-to-top">
+    <a onclick="scrollToTop()">▲ Back to Top ▲</a>
+  </div>
+</body>
+
+</html>
